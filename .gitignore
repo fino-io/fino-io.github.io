@@ -2,5 +2,6 @@ node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 docs/generated/
+docs/.vitepress/general-sidebar.generated.json
 
 .idea
