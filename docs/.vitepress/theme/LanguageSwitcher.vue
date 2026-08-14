@@ -9,34 +9,38 @@ const routeMap: Record<string, string> = {
   '/aip/': '/general',
   '/aip/general': '/general',
   '/aip/scopes': '/general',
+  '/aip/translation-plan': '/general',
   '/aip/3': '/aip/general/0003_zh',
 }
 
-const localPairs: Record<string, string> = {
-  '/aip/general/0001_zh': '/aip/general/0001',
-  '/aip/general/0001': '/aip/general/0001_zh',
-  '/aip/general/0002_zh': '/aip/general/0002',
-  '/aip/general/0002': '/aip/general/0002_zh',
-  '/aip/general/0003_zh': '/aip/general/0003',
-  '/aip/general/0003': '/aip/general/0003_zh',
-  '/aip/general/0008_zh': '/aip/general/0008',
-  '/aip/general/0008': '/aip/general/0008_zh',
-  '/aip/general/0009_zh': '/aip/general/0009',
-  '/aip/general/0009': '/aip/general/0009_zh',
-}
+const chinesePages = new Set([
+  '/aip/',
+  '/aip/general',
+  '/aip/scopes',
+  '/aip/translation-plan',
+])
 
 const target = computed(() => {
   const pathname = route.path.replace(/\.html$/, '')
-  if (localPairs[pathname]) return localPairs[pathname]
+  const generalDocument = pathname.match(/^\/aip\/general\/(\d{4})(_zh)?$/)
+  if (generalDocument) {
+    const [, number, language] = generalDocument
+    return `/aip/general/${number}${language ? '' : '_zh'}`
+  }
   return `https://google.aip.dev${routeMap[pathname] ?? '/'}`
 })
 
-const label = computed(() => route.path.includes('_zh') ? 'English' : '中文')
+const isChinesePage = computed(() => {
+  const pathname = route.path.replace(/\.html$/, '')
+  return pathname.endsWith('_zh') || chinesePages.has(pathname)
+})
+
+const label = computed(() => isChinesePage.value ? 'English' : '中文')
 
 </script>
 
 <template>
-  <a class="language-switcher" :href="target" :aria-label="`切换到${label}`">
+  <a class="language-switcher i18n-button" :href="target" :aria-label="`切换到${label}`">
     <span aria-hidden="true">文</span>
     <span>{{ label }}</span>
   </a>

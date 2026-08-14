@@ -12,13 +12,30 @@
   --vp-font-family-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+.dark {
+  --vp-c-brand-1: #8ab4f8;
+  --vp-c-brand-2: #aecbfa;
+  --vp-c-brand-3: #3c4043;
+  --vp-c-text-1: #e8eaed;
+  --vp-c-text-2: #bdc1c6;
+  --vp-c-divider: #3c4043;
+  --vp-c-bg: #202124;
+  --vp-c-bg-soft: #292a2d;
+  --vp-c-bg-mute: #303134;
+}
+
 body {
   background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
 }
 
 .VPNav {
   border-bottom: 1px solid var(--vp-c-divider);
   box-shadow: 0 1px 2px rgb(60 64 67 / 8%);
+}
+
+.VPNavBar .container {
+  max-width: 1280px;
 }
 
 .VPNavBar .title {
@@ -36,9 +53,29 @@ body {
 
 .VPNavBarMenuLink {
   font-size: 13px;
+  white-space: nowrap;
 }
 
-.language-switcher {
+.VPNavBarMenuLink[href*='github.com'] {
+  margin-left: 8px;
+  padding: 0 12px;
+  border-radius: 4px;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+}
+
+.VPNavBarMenuLink[href*='github.com']:hover {
+  background: var(--vp-c-brand-2);
+  color: #fff;
+  text-decoration: none;
+}
+
+.VPNavBarAppearance {
+  display: none !important;
+}
+
+.language-switcher,
+.theme-switcher {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -47,20 +84,51 @@ body {
   padding: 0 9px;
   border: 1px solid #dadce0;
   border-radius: 4px;
-  color: #5f6368;
+  background: transparent;
+  color: var(--vp-c-text-2);
   font-size: 12px;
   line-height: 1;
   white-space: nowrap;
 }
 
-.language-switcher:hover {
+.theme-switcher {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.language-switcher:hover,
+.theme-switcher:hover {
   border-color: #1a73e8;
   color: #1a73e8;
   text-decoration: none;
 }
 
+.dark .language-switcher,
+.dark .theme-switcher {
+  border-color: #5f6368;
+}
+
+.dark .language-switcher:hover,
+.dark .theme-switcher:hover {
+  border-color: #8ab4f8;
+  color: #8ab4f8;
+}
+
+.aip-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  color: var(--vp-c-text-2);
+  font-size: 12px;
+}
+
+.aip-breadcrumb a {
+  color: var(--vp-c-brand-1);
+}
+
 .VPSidebar {
-  background: #f8f9fa;
+  background: var(--vp-c-bg-soft);
   border-right: 1px solid var(--vp-c-divider);
   padding-top: 24px;
 }
@@ -71,6 +139,7 @@ body {
 
 .VPSidebarItem .text {
   font-size: 13px;
+  color: var(--vp-c-text-1);
 }
 
 .VPSidebarItem.level-0 > .item > .text {
@@ -109,6 +178,7 @@ body {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: .02em;
+  text-transform: uppercase;
 }
 
 .VPDoc h1 {
@@ -142,8 +212,8 @@ body {
 }
 
 .VPDoc th {
-  background: #f8f9fa;
-  color: #3c4043;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
   font-weight: 500;
 }
 
@@ -174,6 +244,40 @@ body {
   border-top: 1px solid var(--vp-c-divider);
 }
 
+.dark .VPNav,
+.dark .VPNavBar,
+.dark .VPNavScreen,
+.dark .VPSidebar {
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+}
+
+.dark .VPNavBar .title,
+.dark .VPNavBarMenuLink,
+.dark .VPSidebarItem .text,
+.dark .VPDoc,
+.dark .VPDoc .outline-link {
+  color: var(--vp-c-text-1);
+}
+
+.dark .VPSidebarItem.is-active > .item .text,
+.dark .VPSidebarItem .link:hover .text,
+.dark .VPDoc a {
+  color: var(--vp-c-brand-1);
+}
+
+.dark .VPDoc th {
+  background: var(--vp-c-bg-soft);
+}
+
+.dark .VPDoc tr {
+  background: var(--vp-c-bg);
+}
+
+.dark .VPDoc tr:nth-child(2n) {
+  background: var(--vp-c-bg-soft);
+}
+
 @media (max-width: 960px) {
   .VPContent.has-sidebar {
     padding-right: 24px;
@@ -181,7 +285,12 @@ body {
 }
 
 @media (max-width: 720px) {
-  .language-switcher {
+  .language-switcher,
+  .theme-switcher {
     margin-left: 0;
+  }
+
+  .aip-breadcrumb {
+    margin-bottom: 12px;
   }
 }

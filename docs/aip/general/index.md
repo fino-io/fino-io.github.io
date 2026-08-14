@@ -4,7 +4,13 @@ title: 'General：通用 AIP'
 
 # General：通用 AIP
 
-General AIPs 面向跨产品、跨团队的通用 API 设计。以下目录按官方主题分组；标题为中文译名，已完成中文译文的条目链接到站内中文页，并保留英文入口。
+<nav class="aip-breadcrumb" aria-label="Breadcrumb">
+  <a href="/aip/">API Improvement Proposals</a>
+  <span aria-hidden="true">»</span>
+  <span>General AIPs</span>
+</nav>
+
+General AIPs 面向跨产品、跨团队的通用 API 设计。以下目录收录当前官方 General 目录中的 72 篇 AIP，按官方主题分组；每个条目均链接到站内中文页，并保留英文原文入口。
 
 ## Meta：元规范
 
@@ -12,7 +18,7 @@ General AIPs 面向跨产品、跨团队的通用 API 设计。以下目录按�
 | --- | --- | --- |
 | [AIP-1](./0001_zh) | AIP 的目的与指南 | Approved · [English](./0001) |
 | [AIP-2](./0002_zh) | AIP 编号 | Approved · [English](./0002) |
-| [AIP-3](/aip/general/0003_zh) | AIP 版本管理 | Approved · [English](./0003) |
+| [AIP-3](./0003_zh) | AIP 版本管理 | Approved · [English](./0003) |
 | [AIP-200](./0200_zh) | 先例 | Approved · [English](./0200) |
 | [AIP-8](./0008_zh) | AIP 风格与指导 | Approved · [English](./0008) |
 | [AIP-9](./0009_zh) | 术语表 | Approved · [English](./0009) |
