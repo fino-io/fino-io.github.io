@@ -1,0 +1,71 @@
+# 中文层的翻译元数据。
+#
+# 文件名、字段结构与官方 scope.yaml 对齐；官方原文保存在
+# upstream/google-aip/aip/general；英文构建产物位于 docs/generated，中文正文采用同目录的 *_zh.md。
+
+title: 通用 AIP
+source: https://google.aip.dev/general
+scope: general
+categories:
+  - code: meta
+    title: 元规范
+  - code: process
+    title: 流程
+  - code: api-concepts
+    title: API 概念
+  - code: resource-design
+    title: 资源设计
+  - code: operations
+    title: 操作
+  - code: fields
+    title: 字段
+  - code: design-patterns
+    title: 设计模式
+  - code: compatibility
+    title: 兼容性与版本管理
+  - code: polish
+    title: 润色
+  - code: protobuf
+    title: Protocol Buffers
+  - code: misc
+    title: 其他
+    default: true
+
+# AIP 1–99 当前官方 General 目录中的条目。
+# status 保留官方状态值，便于自动同步；title/summary 为中文展示文案。
+aips:
+  - id: 1
+    file: 0001.md
+    translation: 0001_zh.md
+    translated: true
+    status: approved
+    title: AIP 的目的与指南
+    summary: 说明 AIP 的定位、用途以及编写和采用 AIP 的基本原则。
+  - id: 2
+    file: 0002.md
+    translation: 0002_zh.md
+    translated: true
+    status: approved
+    title: AIP 编号
+    summary: 定义 AIP 的编号规则与编号分配方式。
+  - id: 3
+    file: 0003.md
+    translation: 0003_zh.md
+    translated: true
+    status: approved
+    title: AIP 版本管理
+    summary: 定义 AIP 的统一版本方案。
+  - id: 8
+    file: 0008.md
+    translation: 0008_zh.md
+    translated: true
+    status: approved
+    title: AIP 风格与指导
+    summary: 规定 AIP 的文档结构、措辞和内容表达方式。
+  - id: 9
+    file: 0009.md
+    translation: 0009_zh.md
+    translated: true
+    status: approved
+    title: 术语表
+    summary: 汇总 AIP 与 API 设计中使用的关键术语。
