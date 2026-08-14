@@ -1,7 +1,10 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { instance } from '@viz-js/viz'
 import { defineConfig } from 'vitepress'
+
+const graphviz = await instance()
 
 const generatedSidebarPath = resolve(
   dirname(fileURLToPath(import.meta.url)),
@@ -16,6 +19,27 @@ export default defineConfig({
   cleanUrls: true,
   rewrites: {
     'generated/aip/general/:page.md': 'aip/general/:page.md',
+  },
+  markdown: {
+    config(md) {
+      const defaultFence = md.renderer.rules.fence
+
+      md.renderer.rules.fence = (tokens, index, options, env, self) => {
+        const token = tokens[index]
+        if (token.info.trim() !== 'graphviz') {
+          return defaultFence(tokens, index, options, env, self)
+        }
+
+        try {
+          const svg = graphviz
+            .renderString(token.content, { format: 'svg' })
+            .replace(/^<\?xml[\s\S]*?\?>\s*<!DOCTYPE[\s\S]*?>\s*/, '')
+          return `<div class="graphviz-diagram">${svg}</div>`
+        } catch {
+          return `<pre><code>${md.utils.escapeHtml(token.content)}</code></pre>`
+        }
+      }
+    },
   },
   transformPageData(pageData) {
     if (pageData.relativePath === 'aip/general/index.md') {

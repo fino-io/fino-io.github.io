@@ -9,6 +9,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "@viz-js/viz": "^3.29.0",
     "vitepress": "^1.6.3",
     "yaml": "^2.9.0"
   }

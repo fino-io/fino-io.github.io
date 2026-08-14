@@ -364,6 +364,12 @@ body {
     display: none;
   }
 
+  .aip-article .VPDoc h2 {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 32px;
+  }
+
   .aip-directory .vp-doc table {
     margin: 10px 0 20px;
     border-collapse: collapse;
@@ -406,6 +412,7 @@ body {
   }
 
   :is(.aip-directory, .aip-article) .VPDocAsideOutline .content {
+    border-left: 0;
     padding: 0;
   }
 
@@ -435,15 +442,48 @@ body {
     margin-top: 12px;
   }
 
-  .aip-article .VPDoc .VPDocOutlineItem.root > li {
-    height: auto;
-    min-height: 23px;
+    .aip-article .VPDoc .VPDocOutlineItem.root > li {
+      height: auto;
+      min-height: 23px;
+      margin-top: 20px;
+    }
+
+    .aip-article .VPDoc .VPDocOutlineItem.root > li > .outline-link {
+      color: var(--vp-c-text-1);
+      font-weight: 600;
+    }
+
+    .aip-article .VPDoc .VPDocOutlineItem.root > li > ul {
+      margin-top: 6px;
+    }
+
+    .aip-article .VPDoc .VPDocOutlineItem.root > li > ul > li {
+      min-height: 18px;
+      margin-top: 2px;
+    }
+
+    .aip-article .VPDoc .VPDocOutlineItem.root > li > ul .outline-link {
+      color: var(--vp-c-text-2);
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .aip-article .VPDoc .outline-link {
+      height: auto;
+      min-height: 18px;
+    white-space: normal;
   }
 
-  .aip-article .VPDoc .outline-link {
+  .graphviz-diagram {
+    margin: 24px 0;
+    overflow-x: auto;
+    text-align: center;
+  }
+
+  .graphviz-diagram svg {
+    display: inline-block;
+    max-width: 100%;
     height: auto;
-    min-height: 18px;
-    white-space: normal;
   }
 }
 
