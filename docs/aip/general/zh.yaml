@@ -31,7 +31,7 @@ categories:
     title: 其他
     default: true
 
-# AIP 1–99 当前官方 General 目录中的条目。
+# AIP 1–236 当前官方 General 目录中的条目。
 # status 保留官方状态值，便于自动同步；title/summary 为中文展示文案。
 aips:
   - id: 1
@@ -69,3 +69,472 @@ aips:
     status: approved
     title: 术语表
     summary: 汇总 AIP 与 API 设计中使用的关键术语。
+  - id: 100
+    file: 0100.md
+    translation: 0100_zh.md
+    translated: true
+    status: approved
+    title: API 设计评审常见问题
+    summary: 解答 API 设计评审的适用范围、流程、时长与常见问题。
+  - id: 111
+    file: 0111.md
+    translation: 0111_zh.md
+    translated: true
+    status: approved
+    title: 平面
+    summary: 区分管理平面与数据平面，以及两者在 API 设计中的要求。
+  - id: 121
+    file: 0121.md
+    translation: 0121_zh.md
+    translated: true
+    status: approved
+    title: 面向资源的设计
+    summary: 说明资源、标准方法、无状态协议和一致性在 API 设计中的关系。
+  - id: 122
+    file: 0122.md
+    translation: 0122_zh.md
+    translated: true
+    status: approved
+    title: 资源名称
+    summary: 规定资源名称、资源 ID、集合标识符及跨 API 引用的设计方式。
+  - id: 123
+    file: 0123.md
+    translation: 0123_zh.md
+    translated: true
+    status: approved
+    title: 资源类型
+    summary: 定义资源类型命名、资源注解和模式唯一性的要求。
+  - id: 124
+    file: 0124.md
+    translation: 0124_zh.md
+    translated: true
+    status: approved
+    title: 资源关联
+    summary: 说明多对一和多对多资源关联的建模方式。
+  - id: 126
+    file: 0126.md
+    translation: 0126_zh.md
+    translated: true
+    status: approved
+    title: 枚举
+    summary: 规定枚举的命名、演进方式、适用场景与替代方案。
+  - id: 127
+    file: 0127.md
+    translation: 0127_zh.md
+    translated: true
+    status: approved
+    title: HTTP 与 gRPC 转码
+    summary: 规定 RPC 的 HTTP 映射、请求体、URI 绑定和 JSON 编码方式。
+  - id: 128
+    file: 0128.md
+    translation: 0128_zh.md
+    translated: true
+    status: approved
+    title: 声明式友好的接口
+    summary: 说明面向声明式工具的资源、生命周期和协调要求。
+  - id: 129
+    file: 0129.md
+    translation: 0129_zh.md
+    translated: true
+    status: approved
+    title: 服务端修改值与默认值
+    summary: 规定服务端默认值、有效值、规范化和字段所有权的表达方式。
+  - id: 130
+    file: 0130.md
+    translation: 0130_zh.md
+    translated: true
+    status: approved
+    title: 方法
+    summary: 分类 API 方法，并说明标准、批量、自定义和流式方法的选择顺序。
+  - id: 131
+    file: 0131.md
+    translation: 0131_zh.md
+    translated: true
+    status: approved
+    title: 标准方法：Get
+    summary: 规定获取单个资源的标准方法、请求消息、URI 映射和错误处理。
+  - id: 132
+    file: 0132.md
+    translation: 0132_zh.md
+    translated: true
+    status: approved
+    title: 标准方法：List
+    summary: 规定列出资源集合的标准方法、分页、排序、过滤和软删除语义。
+  - id: 133
+    file: 0133.md
+    translation: 0133_zh.md
+    translated: true
+    status: approved
+    title: 标准方法：Create
+    summary: 规定创建资源的标准方法、用户指定 ID、长时运行和一致性要求。
+  - id: 134
+    file: 0134.md
+    translation: 0134_zh.md
+    translated: true
+    status: approved
+    title: 标准方法：Update
+    summary: 规定资源更新、字段掩码、ETag、长时运行和 allow_missing 语义。
+  - id: 135
+    file: 0135.md
+    translation: 0135_zh.md
+    translated: true
+    status: approved
+    title: 标准方法：Delete
+    summary: 规定资源删除、级联删除、受保护删除、软删除和权限错误。
+  - id: 136
+    file: 0136.md
+    translation: 0136_zh.md
+    translated: true
+    status: approved
+    title: 自定义方法
+    summary: 规定资源、集合和无状态自定义方法的命名、HTTP 映射和适用边界。
+  - id: 140
+    file: 0140.md
+    translation: 0140_zh.md
+    translated: true
+    status: approved
+    title: 字段名称
+    summary: 规定字段的英语、大小写、复数、缩写、URI 和布尔命名约定。
+  - id: 141
+    file: 0141.md
+    translation: 0141_zh.md
+    translated: true
+    status: approved
+    title: 数量
+    summary: 规定数量、计量单位、复合单位、倒数单位和数量消息的命名方式。
+  - id: 142
+    file: 0142.md
+    translation: 0142_zh.md
+    translated: true
+    status: approved
+    title: 时间与时长
+    summary: 规定时间戳、时长、相对时间、公历时间和兼容性字段的表示方式。
+  - id: 143
+    file: 0143.md
+    translation: 0143_zh.md
+    translated: true
+    status: approved
+    title: 标准化代码
+    summary: 规定国家、货币、语言、时区和内容类型等标准代码的使用方式。
+  - id: 144
+    file: 0144.md
+    translation: 0144_zh.md
+    translated: true
+    status: approved
+    title: 重复字段
+    summary: 规定列表数据、重复标量和消息字段的建模与更新策略。
+  - id: 145
+    file: 0145.md
+    translation: 0145_zh.md
+    translated: true
+    status: approved
+    title: 范围
+    summary: 规定起止字段、半开区间、时间戳区间和日期范围的表示方式。
+  - id: 146
+    file: 0146.md
+    translation: 0146_zh.md
+    translated: true
+    status: approved
+    title: 通用字段
+    summary: 规定 oneof、map、Struct 和 Any 等通用或多态字段的选择顺序。
+  - id: 147
+    file: 0147.md
+    translation: 0147_zh.md
+    translated: true
+    status: approved
+    title: 敏感字段
+    summary: 规定必需或可选敏感信息的仅输入、仅输出和混淆字段设计。
+  - id: 148
+    file: 0148.md
+    translation: 0148_zh.md
+    translated: true
+    status: approved
+    title: 标准字段
+    summary: 规定 name、parent、时间戳、注解、IP 地址和 uid 等标准字段。
+  - id: 149
+    file: 0149.md
+    translation: 0149_zh.md
+    translated: true
+    status: approved
+    title: 未设置的字段值
+    summary: 说明 proto3 optional 的字段 presence 语义及其兼容性影响。
+  - id: 151
+    file: 0151.md
+    translation: 0151_zh.md
+    translated: true
+    status: approved
+    title: 长时运行操作
+    summary: 规定 Operation、响应类型、元数据、错误和异步任务兼容性。
+  - id: 152
+    file: 0152.md
+    translation: 0152_zh.md
+    translated: true
+    status: approved
+    title: 作业
+    summary: 规定持久 Job 资源、Run 方法、执行记录和结果管理。
+  - id: 153
+    file: 0153.md
+    translation: 0153_zh.md
+    translated: true
+    status: approved
+    title: 导入与导出
+    summary: 规定多资源与单资源导入导出、外部存储、部分失败和数据格式。
+  - id: 154
+    file: 0154.md
+    translation: 0154_zh.md
+    translated: true
+    status: approved
+    title: 资源新鲜度校验
+    summary: 规定 ETag、并发校验、声明式资源和强弱校验值。
+  - id: 155
+    file: 0155.md
+    translation: 0155_zh.md
+    translated: true
+    status: approved
+    title: 请求标识
+    summary: 规定 request_id、幂等重试、去重窗口和请求审计。
+  - id: 156
+    file: 0156.md
+    translation: 0156_zh.md
+    translated: true
+    status: approved
+    title: 单例资源
+    summary: 规定每个父资源唯一实例的资源名称、生命周期和标准方法。
+  - id: 157
+    file: 0157.md
+    translation: 0157_zh.md
+    translated: true
+    status: approved
+    title: 部分响应
+    summary: 规定字段掩码参数、View 枚举和读取掩码的使用边界。
+  - id: 158
+    file: 0158.md
+    translation: 0158_zh.md
+    translated: true
+    status: approved
+    title: 分页
+    summary: 规定 page_size、page_token、稳定顺序、令牌不透明性和过期。
+  - id: 159
+    file: 0159.md
+    translation: 0159_zh.md
+    translated: true
+    status: approved
+    title: 跨集合读取
+    summary: 规定使用连字符通配符跨多个集合读取资源的方式。
+  - id: 160
+    file: 0160.md
+    translation: 0160_zh.md
+    translated: true
+    status: approved
+    title: 过滤
+    summary: 规定过滤器语法、逻辑和比较运算、函数、限制与校验。
+  - id: 161
+    file: 0161.md
+    translation: 0161_zh.md
+    translated: true
+    status: approved
+    title: 字段掩码
+    summary: 规定更新掩码相对资源、嵌套字段、map、通配符和无效条目。
+  - id: 162
+    file: 0162.md
+    translation: 0162_zh.md
+    translated: true
+    status: draft
+    title: 资源修订版本
+    summary: 说明资源历史修订、别名、回滚、子资源和标准方法；当前为 Draft。
+  - id: 163
+    file: 0163.md
+    translation: 0163_zh.md
+    translated: true
+    status: approved
+    title: 变更校验
+    summary: 规定 validate_only 只校验不执行的请求语义。
+  - id: 164
+    file: 0164.md
+    translation: 0164_zh.md
+    translated: true
+    status: approved
+    title: 软删除
+    summary: 规定恢复、永久清除、列表读取、长时运行和软删除错误处理。
+  - id: 165
+    file: 0165.md
+    translation: 0165_zh.md
+    translated: true
+    status: approved
+    title: 基于条件的删除
+    summary: 规定按过滤条件批量删除的限制、确认、Operation 和部分失败。
+  - id: 180
+    file: 0180.md
+    translation: 0180_zh.md
+    translated: true
+    status: approved
+    title: 向后兼容
+    summary: 规定组件、字段、类型、资源名称和语义变更的兼容性边界。
+  - id: 181
+    file: 0181.md
+    translation: 0181_zh.md
+    translated: true
+    status: approved
+    title: 稳定性级别
+    summary: 说明 Alpha、Beta、Stable 级别以及 major、孤立和紧急变更。
+  - id: 182
+    file: 0182.md
+    translation: 0182_zh.md
+    translated: true
+    status: reviewing
+    title: 外部软件依赖
+    summary: 说明外部软件版本、生命周期、持续支持、弃用和迁移要求；当前为 Reviewing。
+  - id: 185
+    file: 0185.md
+    translation: 0185_zh.md
+    translated: true
+    status: approved
+    title: API 版本管理
+    summary: 规定 major 版本、渠道、发布和可见性版本管理策略。
+  - id: 190
+    file: 0190.md
+    translation: 0190_zh.md
+    translated: true
+    status: approved
+    title: 命名约定
+    summary: 规定接口、方法、消息和请求响应名称的直观、一致原则。
+  - id: 191
+    file: 0191.md
+    translation: 0191_zh.md
+    translated: true
+    status: approved
+    title: 文件与目录结构
+    summary: 规定 proto3、单一 package、文件命名、布局和打包选项。
+  - id: 192
+    file: 0192.md
+    translation: 0192_zh.md
+    translated: true
+    status: approved
+    title: 文档
+    summary: 规定公共组件注释、文档风格、链接、弃用和内部注释。
+  - id: 193
+    file: 0193.md
+    translation: 0193_zh.md
+    translated: true
+    status: approved
+    title: 错误
+    summary: 规定 google.rpc.Status、规范错误码、结构化详情和权限错误。
+  - id: 194
+    file: 0194.md
+    translation: 0194_zh.md
+    translated: true
+    status: approved
+    title: 自动重试配置
+    summary: 规定幂等、事务、可重试错误码、退避和重试边界。
+  - id: 200
+    file: 0200.md
+    translation: 0200_zh.md
+    translated: true
+    status: approved
+    title: 先例
+    summary: 说明 API 偏离 AIP 时的局部一致性、外部规范、遗留系统和记录要求。
+  - id: 202
+    file: 0202.md
+    translation: 0202_zh.md
+    translated: true
+    status: approved
+    title: 字段
+    summary: 规定字段格式信息及 UUID、IPv4、IPv6 等格式的表达方式。
+  - id: 203
+    file: 0203.md
+    translation: 0203_zh.md
+    translated: true
+    status: approved
+    title: 字段行为文档
+    summary: 说明字段行为注解、词汇、兼容性及客户端生成要求。
+  - id: 205
+    file: 0205.md
+    translation: 0205_zh.md
+    translated: true
+    status: approved
+    title: 阻断 Beta 发布的变更
+    summary: 规定需要在 API 晋级 Beta 前修正或明确记录的设计问题。
+  - id: 210
+    file: 0210.md
+    translation: 0210_zh.md
+    translated: true
+    status: approved
+    title: Unicode
+    summary: 规定字符、长度、计费、唯一标识符和 Unicode 规范化的处理方式。
+  - id: 211
+    file: 0211.md
+    translation: 0211_zh.md
+    translated: true
+    status: approved
+    title: 授权校验
+    summary: 规定授权检查顺序、错误处理和避免泄露资源存在的信息。
+  - id: 213
+    file: 0213.md
+    translation: 0213_zh.md
+    translated: true
+    status: approved
+    title: 通用组件
+    summary: 说明组织专用与全局通用 proto 组件的使用边界和演进规则。
+  - id: 214
+    file: 0214.md
+    translation: 0214_zh.md
+    translated: true
+    status: approved
+    title: 资源过期
+    summary: 规定绝对过期时间、相对过期时间和 TTL 的字段表达方式。
+  - id: 215
+    file: 0215.md
+    translation: 0215_zh.md
+    translated: true
+    status: approved
+    title: API 专用 proto
+    summary: 规定 API 专用 proto 的隔离、版本和跨 API 资源引用方式。
+  - id: 216
+    file: 0216.md
+    translation: 0216_zh.md
+    translated: true
+    status: approved
+    title: 状态
+    summary: 规定状态枚举、状态转换方法、默认值和常见状态命名。
+  - id: 217
+    file: 0217.md
+    translation: 0217_zh.md
+    translated: true
+    status: approved
+    title: 不可达资源
+    summary: 规定部分资源不可达时的响应字段、分页和部分成功行为。
+  - id: 231
+    file: 0231.md
+    translation: 0231_zh.md
+    translated: true
+    status: approved
+    title: 批量方法：Get
+    summary: 规定批量获取资源的方法命名、请求、响应和嵌套请求形式。
+  - id: 233
+    file: 0233.md
+    translation: 0233_zh.md
+    translated: true
+    status: approved
+    title: 批量方法：Create
+    summary: 规定批量创建资源的原子性、部分成功和操作元数据。
+  - id: 234
+    file: 0234.md
+    translation: 0234_zh.md
+    translated: true
+    status: approved
+    title: 批量方法：Update
+    summary: 规定批量更新资源的原子性、部分成功和操作元数据。
+  - id: 235
+    file: 0235.md
+    translation: 0235_zh.md
+    translated: true
+    status: approved
+    title: 批量方法：Delete
+    summary: 规定批量删除资源的原子性、软删除、部分成功和操作元数据。
+  - id: 236
+    file: 0236.md
+    translation: 0236_zh.md
+    translated: true
+    status: approved
+    title: 策略预览
+    summary: 规定通过实验、元数据和日志安全预览策略变更的方式。

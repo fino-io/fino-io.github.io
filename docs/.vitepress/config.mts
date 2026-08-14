@@ -30,8 +30,9 @@ export default defineConfig({
           text: 'Google AIP 中文版',
           items: [
             { text: '总览', link: '/aip/' },
-      { text: 'General：通用 AIP', link: '/aip/general' },
+            { text: 'General：通用 AIP', link: '/aip/general' },
             { text: '按 Scope 浏览', link: '/aip/scopes' },
+            { text: '翻译与布局计划', link: '/aip/translation-plan' },
             { text: 'AIP-3：AIP 版本管理', link: '/aip/general/0003_zh' },
           ],
         },
