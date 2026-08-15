@@ -233,11 +233,19 @@ body {
   display: flex;
 }
 
-.Layout.fino-home .VPNavBarMenuLink:not(:first-of-type) {
+.Layout.fino-home .VPNavBarMenuLink:not(:nth-of-type(-n + 2)) {
   display: none;
 }
 
-.AipLanguageLink {
+.Layout:not(:is(.grpc-directory, .grpc-article)) .VPNavBarMenuLink:is(:nth-of-type(3), :nth-of-type(4)) {
+  display: none;
+}
+
+.Layout:is(.grpc-directory, .grpc-article) .VPNavBarMenuLink:not(:is(:nth-of-type(3), :nth-of-type(4))) {
+  display: none;
+}
+
+.ContentLanguageLink {
   display: none;
   align-items: center;
   gap: 6px;
@@ -247,11 +255,11 @@ body {
   font-weight: 500;
 }
 
-.AipLanguageLink:hover {
+.ContentLanguageLink:hover {
   color: var(--vp-c-brand-1);
 }
 
-.aip-article .VPNavBarTranslations {
+:is(.aip-article, .grpc-article) .VPNavBarTranslations {
   display: none;
 }
 
@@ -302,7 +310,7 @@ body {
 
 /* Keep the General directory on the same grid as google.aip.dev/general. */
 @media (min-width: 960px) {
-  .AipLanguageLink {
+  .ContentLanguageLink {
     display: flex;
   }
   .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .container {
@@ -439,6 +447,10 @@ body {
   .aip-directory .vp-doc > div > h1,
   .aip-directory .vp-doc > div > .aip-breadcrumb + p {
     display: none;
+  }
+
+  .grpc-directory .vp-doc > div > h1 {
+    display: block;
   }
 
   .aip-directory .vp-doc h3 {

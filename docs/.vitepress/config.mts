@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { instance } from '@viz-js/viz'
 import { defineConfig } from 'vitepress'
 import { isAipArticle } from './aip'
+import { isGrpcArticle } from './grpc'
 
 const graphviz = await instance()
 const configDir = dirname(fileURLToPath(import.meta.url))
@@ -29,6 +30,8 @@ export default defineConfig({
   },
   rewrites: {
     'generated/aip/general/:page.md': 'aip/general/:page.md',
+    'generated/grpc-guides/:page.md': 'grpc/guides/:page.md',
+    'generated/grpc-blog/:page.md': 'grpc/blog/:page.md',
   },
   markdown: {
     config(md) {
@@ -56,6 +59,10 @@ export default defineConfig({
       pageData.frontmatter.pageClass = 'aip-directory'
     } else if (isAipArticle(pageData.relativePath)) {
       pageData.frontmatter.pageClass = 'aip-article'
+    } else if (['grpc/index.md', 'grpc/guides/index.md', 'grpc/blog/index.md'].includes(pageData.relativePath)) {
+      pageData.frontmatter.pageClass = 'aip-directory grpc-directory'
+    } else if (isGrpcArticle(pageData.relativePath)) {
+      pageData.frontmatter.pageClass = 'aip-article grpc-article'
     }
   },
   themeConfig: {
@@ -66,12 +73,15 @@ export default defineConfig({
     ],
     nav: [
       { text: 'Browse AIPs', link: '/aip/general' },
+      { text: 'gRPC', link: '/grpc/blog/' },
+      { text: 'Guides', link: '/grpc/guides/' },
+      { text: 'Blog', link: '/grpc/blog/' },
       { text: 'News', link: 'https://google.aip.dev/news' },
       { text: 'FAQ', link: 'https://google.aip.dev/faq' },
       { text: 'Contributing', link: 'https://google.aip.dev/contributing' },
       { text: 'API Linter ↗', link: 'https://linter.aip.dev/' },
       { text: 'View on GitHub', link: 'https://github.com/aip-dev/google.aip.dev' },
-      { component: 'AipLanguageLink' },
+      { component: 'ContentLanguageLink' },
     ],
     sidebar: {
       '/aip/general': generalSidebar,
@@ -119,6 +129,28 @@ export default defineConfig({
         {
           text: '项目文档',
           items: [{ text: '收录计划', link: '/projects/' }],
+        },
+      ],
+      '/grpc/': [
+        {
+          text: 'gRPC 中文版',
+          items: [
+            { text: '总览', link: '/grpc/' },
+            { text: 'Guides：使用指南', link: '/grpc/guides/' },
+            { text: 'Blog：官方博客', link: '/grpc/blog/' },
+          ],
+        },
+        {
+          text: 'Guides',
+          items: [
+            { text: 'Deadlines：截止时间', link: '/grpc/guides/deadlines_zh' },
+          ],
+        },
+        {
+          text: 'Blog',
+          items: [
+            { text: 'gRPC-Rust 路线图', link: '/grpc/blog/grpc-rust-roadmap_zh' },
+          ],
         },
       ],
     },
