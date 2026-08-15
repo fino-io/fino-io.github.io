@@ -13,6 +13,9 @@ hero:
     - theme: brand
       text: 浏览 AIP 中文版
       link: /aip/
+    - theme: alt
+      text: 浏览 gRPC 中文版
+      link: /grpc/guides/
 
 features:
   - title: AIP 中文版

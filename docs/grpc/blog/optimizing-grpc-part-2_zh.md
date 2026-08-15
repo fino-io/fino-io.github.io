@@ -140,7 +140,7 @@ sys	0m1.660s
 
 后：
 
-```node
+```txt
 Apr 16, 2018 10:36:48 AM io.grpc.examples.KvRunner runClient
 INFO: Did 2,449.8 RPCs/s
 
@@ -157,7 +157,7 @@ sys	0m20.692s
 
 如果您自己运行此代码，您将看到更多以下形式的日志垃圾邮件：
 
-```nocode
+```txt
 Apr 16, 2018 10:38:40 AM io.grpc.examples.KvClient$3 onFailure
 INFO: Key not found
 io.grpc.StatusRuntimeException: NOT_FOUND
