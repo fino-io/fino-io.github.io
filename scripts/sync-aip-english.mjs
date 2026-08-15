@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, rm } from 'node:fs/promises'
+import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -11,7 +11,11 @@ await mkdir(target, { recursive: true })
 
 for (const file of await readdir(source)) {
   if (!/^\d{4}\.md$/.test(file)) continue
-  await cp(join(source, file), join(target, file))
+  const content = await readFile(join(source, file), 'utf8')
+  await writeFile(
+    join(target, file),
+    content.replace('](../0180.md#semantic-changes)', '](/aip/general/0180#semantic-changes)'),
+  )
 }
 
 console.log('Synced English AIPs from upstream/google-aip/aip/general')

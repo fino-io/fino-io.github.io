@@ -58,8 +58,6 @@ export default defineConfig({
       pageData.frontmatter.pageClass = 'aip-article'
     }
   },
-  // 官方英文源文件保留原站链接（/1、/general 等），镜像层不改写原文。
-  ignoreDeadLinks: true,
   themeConfig: {
     logo: '/fino-mark.svg',
     siteTitle: 'Fino',

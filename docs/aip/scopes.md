@@ -20,7 +20,7 @@ title: 'AIPs by Scope：按范围浏览'
 
 ## 如何阅读
 
-建议先从 [General：通用 AIP](/aip/general) 了解通用原则，再按 API 所属产品或团队查看对应 Scope。若 Scope 与 General 对同一主题给出不同指导，应结合目标 API 的适用范围与原文状态一并判断。
+建议先从 [General：通用 AIP](/aip/general/) 了解通用原则，再按 API 所属产品或团队查看对应 Scope。若 Scope 与 General 对同一主题给出不同指导，应结合目标 API 的适用范围与原文状态一并判断。
 
 当前中文版先接入 Scope 目录与官方入口；具体 Scope 下的条目会沿用 `AIP 编号 + 中文标题 + 状态 + 原文` 的方式逐步补齐。
 

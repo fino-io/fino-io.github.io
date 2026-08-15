@@ -598,6 +598,12 @@ body {
   }
 }
 
+@media (min-width: 960px) and (max-width: 1279px) {
+  :is(.aip-directory, .aip-article) .VPDoc > .container > .aside {
+    display: none;
+  }
+}
+
 @media (max-width: 960px) {
   .VPContent.has-sidebar {
     padding-right: 24px;
