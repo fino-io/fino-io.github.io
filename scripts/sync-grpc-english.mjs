@@ -30,6 +30,10 @@ for (const section of ['guides', 'blog']) {
         .replace(/: \/img\//g, ': https://grpc.io/img/')
         .replace(/src="\/img\//g, 'src="https://grpc.io/img/')
         .replace(/\]\(\/(?!\/)/g, '](https://grpc.io/')
+        .replace(/: \/(?!\/)/g, ': https://grpc.io/')
+        .replace(/\]:\/(?!\/)/g, ']:https://grpc.io/')
+        .replace(/\]\(\.\/\.\.\/([^/)]+)\/?\)/g, `](https://grpc.io/${section}/$1/)`)
+        .replace(/\]\(\.\.\/([^/)]+)\/?\)/g, `](https://grpc.io/${section}/$1/)`)
         .replace(/\]\(\.\.\/([^/)]+)\/?\)/g, `](https://grpc.io/${section}/$1/)`),
     )
   }))
