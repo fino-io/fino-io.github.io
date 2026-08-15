@@ -237,6 +237,24 @@ body {
   display: none;
 }
 
+.AipLanguageLink {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.AipLanguageLink:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.aip-article .VPNavBarTranslations {
+  display: none;
+}
+
 .VPFooter {
   border-top: 1px solid var(--vp-c-divider);
 }
@@ -277,6 +295,9 @@ body {
 
 /* Keep the General directory on the same grid as google.aip.dev/general. */
 @media (min-width: 960px) {
+  .AipLanguageLink {
+    display: flex;
+  }
   .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .container {
     max-width: calc(var(--vp-layout-max-width) - 64px);
   }

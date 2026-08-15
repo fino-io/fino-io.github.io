@@ -55,7 +55,11 @@ export default defineConfig({
   transformPageData(pageData) {
     if (pageData.relativePath === 'aip/general/index.md') {
       pageData.frontmatter.pageClass = 'aip-directory'
-    } else if (/^aip\/general\/\d{4}_zh\.md$/.test(pageData.relativePath)) {
+    } else if (
+      /^(aip\/general\/\d{4}_zh|generated\/aip\/general\/\d{4}|aip\/general\/\d{4})\.md$/.test(
+        pageData.relativePath,
+      )
+    ) {
       pageData.frontmatter.pageClass = 'aip-article'
     }
   },
@@ -74,6 +78,7 @@ export default defineConfig({
       { text: 'Contributing', link: 'https://google.aip.dev/contributing' },
       { text: 'API Linter ↗', link: 'https://linter.aip.dev/' },
       { text: 'View on GitHub', link: 'https://github.com/aip-dev/google.aip.dev' },
+      { component: 'AipLanguageLink' },
     ],
     sidebar: {
       '/aip/general': generalSidebar,
