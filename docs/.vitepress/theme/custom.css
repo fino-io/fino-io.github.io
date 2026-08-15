@@ -248,6 +248,9 @@ body {
 .ContentLanguageLink {
   display: none;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 92px;
   gap: 6px;
   padding: 0 12px;
   color: var(--vp-c-text-1);
@@ -259,7 +262,7 @@ body {
   color: var(--vp-c-brand-1);
 }
 
-:is(.aip-article, .grpc-directory, .grpc-article) .VPNavBarTranslations {
+:is(.fino-home, .aip-directory, .aip-article, .grpc-directory, .grpc-article) .VPNavBarTranslations {
   display: none;
 }
 
@@ -440,6 +443,26 @@ body {
     padding-top: 15px;
   }
 
+  :is(.grpc-directory, .grpc-article) .VPSidebar .group + .group {
+    margin-top: 8px;
+  }
+
+  :is(.grpc-directory, .grpc-article) .VPSidebar .group + .group .VPSidebarItem.level-0 {
+    padding-top: 8px;
+  }
+
+  :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .item {
+    align-items: center;
+  }
+
+  :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .item .caret {
+    height: 16px;
+  }
+
+  :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .item .caret-icon {
+    font-size: 14px;
+  }
+
   .dark :is(.aip-directory, .aip-article) .VPSidebar {
     background: var(--vp-c-bg-alt);
   }
@@ -472,9 +495,10 @@ body {
 
   /* Blog titles include dates and can span several lines. */
   :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .items > .VPSidebarItem > .item {
+    box-sizing: border-box;
     height: auto;
-    min-height: 28px;
-    padding: 5px 0;
+    min-height: 24px;
+    padding: 2px 0;
   }
 
   :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .items > .VPSidebarItem > .item .text {
@@ -484,6 +508,10 @@ body {
     padding: 0;
     line-height: 18px;
     white-space: normal;
+  }
+
+  :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .items > .VPSidebarItem > .item {
+    margin-top: 2px;
   }
 
   .aip-article .VPDoc h2 {

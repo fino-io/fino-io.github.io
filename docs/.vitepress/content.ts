@@ -21,6 +21,22 @@ const translations: Array<{
 ]
 
 export function getContentTranslation(relativePath: string): Translation | null {
+  if (relativePath === 'index.md') {
+    return { href: '/en/', text: 'English' }
+  }
+
+  if (relativePath === 'en/index.md') {
+    return { href: '/', text: '中文' }
+  }
+
+  if (relativePath === 'aip/index.md') {
+    return { href: 'https://google.aip.dev/', text: 'English' }
+  }
+
+  if (relativePath === 'aip/general/index.md') {
+    return { href: 'https://google.aip.dev/general', text: 'English' }
+  }
+
   if (relativePath === 'grpc/guides/index.md') {
     return { href: 'https://grpc.io/docs/guides/', text: 'English' }
   }
