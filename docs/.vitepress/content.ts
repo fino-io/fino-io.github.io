@@ -14,9 +14,9 @@ const translations: Array<{
   },
   {
     chinese: /^grpc\/(guides|blog)\/([\w-]+)_zh\.md$/,
-    english: /^generated\/grpc-(guides|blog)\/([\w-]+)\.md$/,
+    english: /^(?:generated\/grpc-(guides|blog)|grpc\/(guides|blog))\/(?!index\.md$)([\w-]+)\.md$/,
     toEnglish: (match) => `/grpc/${match[1]}/${match[2]}`,
-    toChinese: (match) => `/grpc/${match[1]}/${match[2]}_zh`,
+    toChinese: (match) => `/grpc/${match[1] ?? match[2]}/${match[3]}_zh`,
   },
 ]
 
