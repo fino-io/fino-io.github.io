@@ -76,7 +76,7 @@ export default defineConfig({
     ],
     nav: [
       { text: 'Browse AIPs', link: '/aip/general' },
-      { text: 'gRPC', link: '/grpc/blog/' },
+      { text: 'gRPC', link: '/grpc/guides/' },
       { text: 'Guides', link: '/grpc/guides/' },
       { text: 'Blog', link: '/grpc/blog/' },
       { text: 'News', link: 'https://google.aip.dev/news' },
@@ -134,7 +134,9 @@ export default defineConfig({
           items: [{ text: '收录计划', link: '/projects/' }],
         },
       ],
-      '/grpc/': grpcSidebar,
+      '/grpc/guides/': grpcSidebar.guides,
+      '/grpc/blog/': grpcSidebar.blog,
+      '/grpc/': grpcSidebar.root,
     },
     search: {
       provider: 'local',

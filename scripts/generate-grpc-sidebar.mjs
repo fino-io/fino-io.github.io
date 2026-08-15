@@ -35,26 +35,29 @@ for (const article of blog) {
   articles.push(article)
   blogByYear.set(year, articles)
 }
-const sidebar = [
-  {
-    text: 'gRPC 中文版',
-    items: [
-      { text: `Guides（${guides.length} 篇）`, link: '/grpc/guides/' },
-      { text: `Blog（${blog.length} 篇）`, link: '/grpc/blog/' },
-      { text: '翻译计划', link: '/grpc/translation-plan' },
-    ],
-  },
-  {
-    text: 'Guides',
-    collapsed: false,
-    items: guides.map(({ link, title }) => ({ text: title, link })),
-  },
-  ...[...blogByYear.entries()].map(([year, articles]) => ({
-    text: `Blog · ${year}`,
-    collapsed: year !== '2026',
-    items: articles.map(({ date, link, title }) => ({ text: `${date} ${title}`, link })),
-  })),
-]
+const overview = {
+  text: 'gRPC 中文版',
+  items: [
+    { text: `Guides（${guides.length} 篇）`, link: '/grpc/guides/' },
+    { text: `Blog（${blog.length} 篇）`, link: '/grpc/blog/' },
+    { text: '翻译计划', link: '/grpc/translation-plan' },
+  ],
+}
+const guideSection = {
+  text: 'Guides',
+  collapsed: false,
+  items: guides.map(({ link, title }) => ({ text: title, link })),
+}
+const blogSections = [...blogByYear.entries()].map(([year, articles]) => ({
+  text: `Blog · ${year}`,
+  collapsed: year !== '2026',
+  items: articles.map(({ date, link, title }) => ({ text: `${date} ${title}`, link })),
+}))
+const sidebar = {
+  root: [overview],
+  guides: [overview, guideSection],
+  blog: [overview, ...blogSections],
+}
 
 await mkdir(dirname(output), { recursive: true })
 await writeFile(output, `${JSON.stringify(sidebar, null, 2)}\n`)

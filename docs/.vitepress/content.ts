@@ -21,6 +21,14 @@ const translations: Array<{
 ]
 
 export function getContentTranslation(relativePath: string): Translation | null {
+  if (relativePath === 'grpc/guides/index.md') {
+    return { href: 'https://grpc.io/docs/guides/', text: 'English' }
+  }
+
+  if (relativePath === 'grpc/blog/index.md') {
+    return { href: 'https://grpc.io/blog/', text: 'English' }
+  }
+
   for (const translation of translations) {
     const chinese = relativePath.match(translation.chinese)
     if (chinese) return { href: translation.toEnglish(chinese), text: 'English' }
