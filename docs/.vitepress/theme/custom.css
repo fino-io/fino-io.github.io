@@ -539,7 +539,11 @@ body {
   }
 
   :is(.grpc-directory, .grpc-article) .VPSidebarItem.level-0 > .items > .VPSidebarItem > .item {
-    margin-top: 2px;
+    margin-top: 4px;
+  }
+
+  :is(.grpc-directory, .grpc-article) .VPSidebar .group:first-child .VPSidebarItem.level-0 > .items > .VPSidebarItem:first-child > .item {
+    margin-top: 12px;
   }
 
   .aip-article .VPDoc h2 {
