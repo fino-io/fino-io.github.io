@@ -185,18 +185,66 @@ body {
 }
 
 .VPHome {
-  background: #fff;
+  background:
+    radial-gradient(circle at 76% 12%, #e8f0fe 0, rgb(232 240 254 / 0%) 24rem),
+    var(--vp-c-bg);
 }
 
-.VPHero .name,
-.VPHero .text {
+.VPHome .VPHero {
+  padding: 96px 24px 72px;
+}
+
+.VPHome .VPHero .name,
+.VPHome .VPHero .text {
   font-weight: 400;
   letter-spacing: -.04em;
 }
 
-.VPFeature {
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgb(60 64 67 / 10%);
+.VPHome .VPHero .name {
+  color: var(--vp-c-brand-1);
+}
+
+.VPHome .VPHero .image-container {
+  transform: none;
+}
+
+.VPHome .VPHero .image-bg {
+  background: rgb(26 115 232 / 12%);
+  filter: blur(56px);
+}
+
+.VPHome .VPHero .image-src {
+  max-width: 280px;
+}
+
+.VPHome .VPFeatures {
+  padding: 0 24px 56px;
+}
+
+.VPHome .VPFeature {
+  height: 100%;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  box-shadow: none;
+}
+
+.VPHome .VPFeature .title {
+  font-weight: 500;
+}
+
+.VPHome .vp-doc.container {
+  max-width: 1152px;
+  padding: 0 24px 72px;
+}
+
+.VPHome .vp-doc h2 {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.Layout.fino-home .VPNavBarMenu {
+  display: none;
 }
 
 .VPFooter {
@@ -239,6 +287,31 @@ body {
 
 /* Keep the General directory on the same grid as google.aip.dev/general. */
 @media (min-width: 960px) {
+  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .container {
+    max-width: calc(var(--vp-layout-max-width) - 64px);
+  }
+
+  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .wrapper {
+    padding: 0 32px;
+  }
+
+  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .title {
+    position: static;
+    z-index: auto;
+    width: auto;
+    padding: 0;
+  }
+
+  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .content {
+    position: static;
+    z-index: auto;
+    padding: 0;
+  }
+
+  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .content-body {
+    background-color: transparent;
+  }
+
   .Layout:is(.aip-directory, .aip-article) .VPContent {
     width: min(1136px, calc(100vw - 48px));
     max-width: 1136px;
@@ -494,6 +567,14 @@ body {
 }
 
 @media (max-width: 720px) {
+  .VPHome .VPHero {
+    padding-top: 56px;
+  }
+
+  .VPHome .VPHero .image-src {
+    max-width: 190px;
+  }
+
   .aip-breadcrumb {
     margin-bottom: 12px;
   }

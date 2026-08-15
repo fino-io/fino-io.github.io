@@ -13,10 +13,21 @@ const generatedSidebarPath = resolve(
 const generalSidebar = JSON.parse(readFileSync(generatedSidebarPath, 'utf8'))
 
 export default defineConfig({
-  title: 'Fino Docs',
+  title: 'Fino',
   description: 'API 规范与项目文档的中文知识库',
-  appearance: false,
+  appearance: true,
   cleanUrls: true,
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/en/',
+    },
+  },
   rewrites: {
     'generated/aip/general/:page.md': 'aip/general/:page.md',
   },
@@ -51,7 +62,11 @@ export default defineConfig({
   // 官方英文源文件保留原站链接（/1、/general 等），镜像层不改写原文。
   ignoreDeadLinks: true,
   themeConfig: {
-    siteTitle: 'Google AIPs',
+    logo: '/fino-mark.svg',
+    siteTitle: 'Fino',
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/fino-io/fino-io.github.io' },
+    ],
     nav: [
       { text: 'Browse AIPs', link: '/aip/general' },
       { text: 'News', link: 'https://google.aip.dev/news' },
