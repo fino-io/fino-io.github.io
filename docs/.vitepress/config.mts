@@ -135,10 +135,6 @@ export default defineConfig({
     outline: { label: 'Categories', level: [2, 3] },
     docFooter: { prev: '上一篇', next: '下一篇' },
     lastUpdated: { text: '最后更新' },
-    footer: {
-      message: '为清晰而写',
-      copyright: 'Fino Docs',
-    },
     i18nRouting: false,
   },
 })

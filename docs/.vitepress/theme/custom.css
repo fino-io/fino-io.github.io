@@ -53,20 +53,6 @@ body {
   white-space: nowrap;
 }
 
-.VPNavBarMenuLink[href*='github.com'] {
-  margin-left: 8px;
-  padding: 0 12px;
-  border-radius: 4px;
-  background: var(--vp-c-brand-1);
-  color: #fff;
-}
-
-.VPNavBarMenuLink[href*='github.com']:hover {
-  background: var(--vp-c-brand-2);
-  color: #fff;
-  text-decoration: none;
-}
-
 .VPNavBarMenuLink[href*='google.aip.dev']::after,
 .VPNavBarMenuLink[href*='github.com']::after,
 :is(.aip-directory, .aip-article) .VPSidebar .vp-external-link-icon::after {
@@ -244,6 +230,10 @@ body {
 }
 
 .Layout.fino-home .VPNavBarMenu {
+  display: flex;
+}
+
+.Layout.fino-home .VPNavBarMenuLink:not(:first-of-type) {
   display: none;
 }
 
@@ -308,8 +298,8 @@ body {
     padding: 0;
   }
 
-  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar .content-body {
-    background-color: transparent;
+  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar {
+    background-color: var(--vp-nav-bg-color);
   }
 
   .Layout:is(.aip-directory, .aip-article) .VPContent {
