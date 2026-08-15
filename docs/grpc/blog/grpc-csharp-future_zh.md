@@ -125,11 +125,11 @@ C# 项目将继续受到支持（并且可能会得到改进）——因为 Grpc
 
 **在哪里可以找到支持的功能列表？**
 
-我们的 [github 上的文档](https://github.com/grpc/grpc-dotnet/blob/master/doc/implementation_comparison.md) 对支持的功能进行了比较。
+我们的 [GitHub 文档](https://github.com/grpc/grpc-dotnet/blob/master/doc/implementation_comparison.md) 对支持的功能进行了比较。
 
 **我有一个重要的 Grpc.Core 用例，但本文档未涵盖。**
 
-我们欢迎您的反馈！通过 [grpc-io][] Google Group 或任何其他主要 [gRPC 社区渠道]() 给我们写信。
+我们欢迎您的反馈！可以通过 [grpc-io][] Google Group 或其他主要 [gRPC 社区渠道][grpc-io] 联系我们。
 
 [ga]：
 [grpc-io]: https://groups.google.com/g/grpc-io

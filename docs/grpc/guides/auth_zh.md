@@ -17,7 +17,7 @@ gRPC 内置了以下认证机制：
 - **SSL/TLS**：gRPC 具有 SSL/TLS 集成并推广 SSL/TLS 的使用
 对服务端进行认证，并对客户端和服务端之间交换的所有数据进行加密。客户端可以使用可选机制来提供相互认证的证书。
 - **ALTS**：gRPC 支持
-如果应用程序在 [Compute Engine](https://cloud.google.com/compute) 或 [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) 上运行，则 [ALTS](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security) 作为传输安全机制。有关详细信息，请参阅以下特定于语言的页面之一：[C++ 中的 ALTS]()、[Go 中的 ALTS]()、[Java 中的 ALTS]()、[Python 中的 ALTS]()。
+如果应用程序在 [Compute Engine](https://cloud.google.com/compute) 或 [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) 上运行，则 [ALTS](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security) 作为传输安全机制。有关详细信息，请参阅对应语言的 [ALTS 官方文档](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security)。
 - **与 Google 进行基于令牌的认证**：gRPC 提供了通用的
 将基于元数据的凭据附加到请求和响应的机制（如下所述）。某些认证流程还提供了在通过 gRPC 访问 Google API 时获取访问令牌（通常是 OAuth2 令牌）的额外支持：您可以在下面的代码示例中了解其工作原理。一般来说，必须在通道上使用此机制*以及*SSL/TLS - Google 不会允许没有 SSL/TLS 的连接，并且大多数 gRPC 语言实现不会让您在未加密的通道上发送凭据。
 Google 凭据只能用于连接到 Google 服务。将 Google 颁发的 OAuth2 令牌发送到非 Google 服务可能会导致该令牌被盗并用于冒充 Google 服务的客户端。

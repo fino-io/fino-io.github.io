@@ -35,9 +35,9 @@ gRPC 和 Protobuf 解析器的主要功能如下：
 这篇文章重点分析捕获的 gRPC 消息。要了解如何在_捕获文件_中存储网络流量，请参阅[Wireshark 用户指南][]中的[捕获实时网络数据][]。
 目前，Wireshark 只能解析**纯文本** gRPC 消息。虽然 [Wireshark 支持 TLS 解析][]，但它需要每个会话的密钥。截至撰写本文时，唯一的 [Go gRPC][] 支持导出此类密钥。   要了解如何使用 Go gRPC 以及可用的其他语言导出密钥，请参阅[如何导出 gRPC 的 TLS 主密钥][]。
 
-[Go gRPC]：https://grpc.io/docs/languages/go
+[Go gRPC](https://grpc.io/docs/languages/go)
   [How to Export TLS Master keys of gRPC]: https://gitlab.com/wireshark/wireshark/-/wikis/How-to-Export-TLS-Master-keys-of-gRPC
-[语言]：https://grpc.io/docs/语言
+[语言](https://grpc.io/docs/languages/)
   [Wireshark supports TLS dissection]: https://gitlab.com/wireshark/wireshark/-/wikis/tls
 ## 例子
 

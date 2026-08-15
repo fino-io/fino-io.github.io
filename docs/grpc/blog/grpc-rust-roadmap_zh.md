@@ -29,7 +29,7 @@ source_url: https://grpc.io/blog/grpc-rust-roadmap/
 该团队将在接下来的几个月中重点关注。  除了[无代理服务网格](https://docs.cloud.google.com/service-mesh/legacy/load-balancing-apis/proxyless-configure-advanced-traffic-management) (PSM) 使用案例之外，此功能还为 Google Cloud 服务启用[直接连接](https://docs.cloud.google.com/storage/docs/direct-connectivity)。
 
 * gRPC Status -> Abseil Status：[gRPC 状态类型]
-C++](https://grpc.github.io/grpc/cpp/classgrpc_1_1_status.html) 与 [`absl::Status`](https://abseil.io/docs/cpp/guides/status) 非常相似，这并非偶然 - 但它们的微小*内部*差异引起了一些痛苦。   我们打算标准化共享的 Rust RPC 状态类型，而不是使用我们自己的状态类型。  我们热切地等待 [Try 特性](https://github.com/rust-lang/rust-project-goals/blob/main/src/2026/stabilize-try.md) 的稳定，这将使这种新型能够符合人体工程学地提供一些非常有用的功能。  有关该更改的更多详细信息将在可用时发布。
+[gRPC 状态类型](https://grpc.github.io/grpc/cpp/classgrpc_1_1_status.html) 与 [`absl::Status`](https://abseil.io/docs/cpp/guides/status) 非常相似，这并非偶然 - 但它们的微小*内部*差异引起了一些痛苦。   我们打算标准化共享的 Rust RPC 状态类型，而不是使用我们自己的状态类型。  我们热切地等待 [Try 特性](https://github.com/rust-lang/rust-project-goals/blob/main/src/2026/stabilize-try.md) 的稳定，这将使这种新型能够符合人体工程学地提供一些非常有用的功能。  有关该更改的更多详细信息将在可用时发布。
 
 * 性能调整：虽然我们最初专注于“把事情做好”，
 我们还将研究如何提高预览版提供的性能。  我们将考虑减少内存使用（总体和每个连接）、零复制支持和较低级别的 HTTP/2 实现，从而实现更高的吞吐量、更低的延迟和更多的并行性。

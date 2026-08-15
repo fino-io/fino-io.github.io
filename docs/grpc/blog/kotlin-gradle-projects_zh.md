@@ -9,7 +9,7 @@ source_url: https://grpc.io/blog/kotlin-gradle-projects/
 ---
 
 您是否知道 gRPC Java 现在对使用 Gradle 构建的 Kotlin 项目提供开箱即用的支持？ [Kotlin](https://kotlinlang.org/) 是由 JetBrains 开发的一种现代静态类型语言，面向 JVM 和 Android。 Kotlin 程序通常很容易与现有 Java 库进行互操作。为了进一步改善这种体验，我们添加了对 [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin/releases) 的支持，以便 Kotlin 自动获取生成的 Java 库。现在，您可以将 protobuf-gradle-plugin 添加到您的 Kotlin 项目中，并像使用典型的 Java 项目一样使用 gRPC。
-正在寻找 gRPC 的原生 Kotlin 支持？请参阅 [Kotlin，遇见 gRPC]()。
+正在寻找 gRPC 的原生 Kotlin 支持？请参阅 [Kotlin，遇见 gRPC](/grpc/blog/kotlin-meet-grpc_zh)。
 以下示例向您展示如何使用 Kotlin 为 JVM 应用程序和 Android 应用程序配置项目。
 
 ### Kotlin gRPC 客户端和服务端

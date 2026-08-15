@@ -7,7 +7,10 @@ const source = join(root, 'upstream/grpc.io/content/en')
 const translations = join(root, 'docs/grpc')
 const target = join(root, 'docs/generated')
 
-await rm(join(target, 'grpc'), { recursive: true, force: true })
+function normalizeMarkdown(content) {
+  return content
+    .replace(/\[([^\]]+)\]：((?:https?:\/\/|\/)[^\s)]+)/g, '[$1]($2)')
+}
 
 for (const section of ['guides', 'blog']) {
   const files = await readdir(join(translations, section))
@@ -24,7 +27,7 @@ for (const section of ['guides', 'blog']) {
 
     await writeFile(
       targetPath,
-      content
+      normalizeMarkdown(content)
         .replace(/\{\{[<%][\s\S]*?[>%]\}\}/g, '')
         .replace(/\]\(\/img\//g, '](https://grpc.io/img/')
         .replace(/: \/img\//g, ': https://grpc.io/img/')
@@ -33,7 +36,6 @@ for (const section of ['guides', 'blog']) {
         .replace(/: \/(?!\/)/g, ': https://grpc.io/')
         .replace(/\]:\/(?!\/)/g, ']:https://grpc.io/')
         .replace(/\]\(\.\/\.\.\/([^/)]+)\/?\)/g, `](https://grpc.io/${section}/$1/)`)
-        .replace(/\]\(\.\.\/([^/)]+)\/?\)/g, `](https://grpc.io/${section}/$1/)`)
         .replace(/\]\(\.\.\/([^/)]+)\/?\)/g, `](https://grpc.io/${section}/$1/)`),
     )
   }))

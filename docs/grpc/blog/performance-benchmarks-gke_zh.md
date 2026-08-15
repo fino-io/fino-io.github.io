@@ -190,7 +190,7 @@ https://github.com/grpc/test-infra/blob/master/tools/README.md#test-runner
 [bigquery]: https://cloud.google.com/bigquery
 [仪表板实施]：
 https://github.com/grpc/test-infra/tree/master/dashboard/README.md
-[快照]：https://grpc.io/img/blog/performance-benchmarks-gke/dashboard.png
+[快照](https://grpc.io/img/blog/performance-benchmarks-gke/dashboard.png)
 
 ## 结果
 
@@ -231,7 +231,7 @@ https://github.com/grpc/test-infra/tree/master/dashboard/README.md
 
 [Test Infra][testinfra] 存储库中的代码允许任何用户创建集群、部署控制器、运行 gRPC 基准测试并在自己的仪表板上显示结果。如果您对性能感兴趣并运行自己的基准测试，[让我们知道！][g/grpc-io]
 
-[基准测试]：https://grpc.io/docs/guides/benchmarking
+[基准测试](https://grpc.io/docs/guides/benchmarking)
 [示例]：
 https://github.com/grpc/test-infra/blob/master/config/samples/README.md
 [g/grpc-io]: https://groups.google.com/g/grpc-io

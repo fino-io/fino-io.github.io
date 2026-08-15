@@ -233,15 +233,15 @@ body {
   display: flex;
 }
 
-.Layout.fino-home .VPNavBarMenuLink:not(:nth-of-type(-n + 2)) {
+.Layout.fino-home .VPNavBarMenuLink:not([href='/aip/general']):not([href='/grpc/guides/']) {
   display: none;
 }
 
-.Layout:not(:is(.grpc-directory, .grpc-article)) .VPNavBarMenuLink:is(:nth-of-type(3), :nth-of-type(4)) {
+.Layout:not(:is(.grpc-directory, .grpc-article)) .VPNavBarMenuLink:is([href='/grpc/guides/'], [href='/grpc/blog/']) {
   display: none;
 }
 
-.Layout:is(.grpc-directory, .grpc-article) .VPNavBarMenuLink:not(:is(:nth-of-type(3), :nth-of-type(4))) {
+.Layout:is(.grpc-directory, .grpc-article) .VPNavBarMenuLink:not([href='/grpc/guides/']):not([href='/grpc/blog/']) {
   display: none;
 }
 
@@ -291,6 +291,30 @@ body {
 .dark .VPDoc,
 .dark .VPDoc .outline-link {
   color: var(--vp-c-text-1);
+}
+
+.grpc-article-header {
+  margin-bottom: 32px;
+}
+
+.grpc-article-header h1 {
+  margin: 0;
+}
+
+.grpc-article-meta,
+.grpc-article-description {
+  color: var(--vp-c-text-2);
+}
+
+.grpc-article-meta {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.grpc-article-description {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .dark .VPSidebarItem.is-active > .item .text,
@@ -525,10 +549,10 @@ body {
     line-height: 56px;
   }
 
-  .grpc-article .VPDoc h1 {
-    font-size: 32px;
-    line-height: 40px;
-  }
+.grpc-article .VPDoc h1 {
+  font-size: 32px;
+  line-height: 40px;
+}
 
   .aip-article .VPDoc p,
   .aip-article .VPDoc li {

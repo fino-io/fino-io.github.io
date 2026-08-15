@@ -84,10 +84,10 @@ gRPC 客户端 API 提供了一种以 JSON 格式指定服务配置的方法。�
 ```
 
 [protobuf definition]:https://github.com/grpc/grpc-proto/blob/master/grpc/service_config/service_config.proto
-[超时]：https://grpc.io/docs/guides/deadlines/
+[超时](https://grpc.io/docs/guides/deadlines/)
 [Retry]:https://grpc.io/docs/guides/retry/
-[健康检查]：https://grpc.io/docs/guides/health-checking/
-[请求对冲]：https://grpc.io/docs/guides/request-hedging/
-[等待就绪]：https://grpc.io/docs/guides/等待就绪/
+[健康检查](https://grpc.io/docs/guides/health-checking/)
+[请求对冲](https://grpc.io/docs/guides/request-hedging/)
+[等待就绪](https://grpc.io/docs/guides/wait-for-ready/)
 [name resolution mechanism]:https://github.com/grpc/grpc/blob/master/doc/naming.md
 [stored as TXT records]:https://github.com/grpc/proposal/blob/master/A2-service-configs-in-dns.md

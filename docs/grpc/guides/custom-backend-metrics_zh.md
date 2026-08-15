@@ -48,5 +48,5 @@ gRPC 传统上允许用户插入自己的负载均衡策略，请参阅[指南][
 [ORCA]: https://github.com/cncf/xds/blob/main/xds/data/orca/v3/orca_load_report.proto
 [Java example]: https://github.com/grpc/grpc-java/tree/master/examples/example-orca
 [Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/orca
-[自定义负载均衡指南]：https://grpc.io/docs/guides/custom-load-balancing/
+[自定义负载均衡指南](https://grpc.io/docs/guides/custom-load-balancing/)
 [custom load balancer]: https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md

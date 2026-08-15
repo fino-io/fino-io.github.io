@@ -26,4 +26,4 @@ source_url: https://grpc.io/blog/kotlin-meet-grpc/
 [Cloud Run]: https://cloud.run
 [gRPC Kotlin]: https://github.com/grpc/grpc-kotlin
 [Kotlin]: https://kotlinlang.org
-[Kotlin 页面]：https://grpc.io/docs/languages/kotlin/
+[Kotlin 页面](https://grpc.io/docs/languages/kotlin/)

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { instance } from '@viz-js/viz'
@@ -14,6 +14,16 @@ const generalSidebar = JSON.parse(
 const grpcSidebar = JSON.parse(
   readFileSync(resolve(configDir, '../generated/grpc-sidebar.json'), 'utf8'),
 )
+
+function startsWithHeading(relativePath: string) {
+  const filePath = resolve(configDir, '..', relativePath)
+  if (!existsSync(filePath)) return false
+
+  return readFileSync(filePath, 'utf8')
+    .replace(/^---\n[\s\S]*?\n---\n?/, '')
+    .trimStart()
+    .startsWith('# ')
+}
 
 export default defineConfig({
   title: 'Fino',
@@ -39,6 +49,22 @@ export default defineConfig({
   markdown: {
     config(md) {
       const defaultFence = md.renderer.rules.fence
+      const defaultImage = md.renderer.rules.image
+
+      md.renderer.rules.image = (tokens, index, options, env, self) => {
+        const token = tokens[index]
+        const source = token.attrGet('src') ?? ''
+        const localSource = source
+          .replace('https://grpc.io/img/', '/grpc-assets/img/')
+          .replace(
+            'https://raw.githubusercontent.com/grpc/grpc-community/main/PanCakes/',
+            '/grpc-assets/PanCakes/',
+          )
+
+        if (localSource !== source) token.attrSet('src', localSource)
+        return defaultImage?.(tokens, index, options, env, self)
+          ?? self.renderToken(tokens, index, options)
+      }
 
       md.renderer.rules.fence = (tokens, index, options, env, self) => {
         const token = tokens[index]
@@ -66,6 +92,8 @@ export default defineConfig({
       pageData.frontmatter.pageClass = 'aip-directory grpc-directory'
     } else if (isGrpcArticle(pageData.relativePath) || pageData.relativePath.startsWith('grpc/')) {
       pageData.frontmatter.pageClass = 'aip-article grpc-article'
+      pageData.frontmatter.showArticleHeader = isGrpcArticle(pageData.relativePath)
+        && !startsWithHeading(pageData.relativePath)
     }
   },
   themeConfig: {
@@ -77,7 +105,6 @@ export default defineConfig({
     nav: [
       { text: 'Browse AIPs', link: '/aip/general' },
       { text: 'gRPC', link: '/grpc/guides/' },
-      { text: 'Guides', link: '/grpc/guides/' },
       { text: 'Blog', link: '/grpc/blog/' },
       { text: 'News', link: 'https://google.aip.dev/news' },
       { text: 'FAQ', link: 'https://google.aip.dev/faq' },

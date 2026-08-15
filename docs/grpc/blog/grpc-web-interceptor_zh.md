@@ -170,7 +170,7 @@ const client = new MyServiceClient(
 发现 `grpc-web` 存在问题或需要某个功能？通过 [grpc-web][] 存储库提交 [问题][]。如果您有一般性问题或意见，请考虑发布到 [gRPC 邮件列表][] 或向我们发送电子邮件 [grpc-web-team@google.com][]。
 
 [1.1.0]: https://github.com/grpc/grpc-web/releases/tag/1.1.0
-[gRPC 语言]：https://grpc.io/docs/languages/
+[gRPC 语言](https://grpc.io/docs/languages/)
 [gRPC mailing list]: https://groups.google.com/g/grpc-io
 [grpc-web-team@google.com]：mailto：grpc-web-team@google.com
 [grpc-web]: https://github.com/grpc/grpc-web

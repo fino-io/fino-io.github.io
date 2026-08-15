@@ -8,6 +8,7 @@ on:
       - 'docs/**'
       - 'scripts/**'
       - 'upstream/google-aip/**'
+      - 'upstream/grpc.io/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/docs.yml'
@@ -28,8 +29,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -41,7 +40,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: docs/.vitepress/cache
-          key: ${{ runner.os }}-vitepress-${{ hashFiles('docs/**', 'scripts/**', 'upstream/google-aip/**', 'package-lock.json') }}
+          key: ${{ runner.os }}-vitepress-${{ hashFiles('docs/**', 'scripts/**', 'upstream/google-aip/**', 'upstream/grpc.io/**', 'package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-vitepress-
 

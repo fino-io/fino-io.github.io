@@ -121,6 +121,6 @@ gRPC 支持在启用重试功能时公开 OpenCensus 和 OpenTelemetry 指标。
 [Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/retrying
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/retry
 [Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#enableRetry()
-[请求对冲指南]：https://grpc.io/docs/guides/request-hedging/
-[gRPC 服务配置]：https://grpc.io/docs/guides/service-config
+[请求对冲指南](https://grpc.io/docs/guides/request-hedging/)
+[gRPC 服务配置](https://grpc.io/docs/guides/service-config)
 [gRFC for Otel metrics]:https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
