@@ -105,6 +105,7 @@ export default defineConfig({
     nav: [
       { text: 'Browse AIPs', link: '/aip/general' },
       { text: 'gRPC', link: '/grpc/guides/' },
+      { text: 'Guides', link: '/grpc/guides/?view=guides' },
       { text: 'Blog', link: '/grpc/blog/' },
       { text: 'News', link: 'https://google.aip.dev/news' },
       { text: 'FAQ', link: 'https://google.aip.dev/faq' },

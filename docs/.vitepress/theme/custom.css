@@ -233,15 +233,19 @@ body {
   display: flex;
 }
 
-.Layout.fino-home .VPNavBarMenuLink:not([href='/aip/general']):not([href='/grpc/guides/']) {
+.Layout.fino-home .VPNavBarMenuLink:is([href='/grpc/guides/?view=guides'], [href='/grpc/blog/'], [href^='https://']) {
   display: none;
 }
 
-.Layout:not(:is(.grpc-directory, .grpc-article)) .VPNavBarMenuLink:is([href='/grpc/guides/'], [href='/grpc/blog/']) {
+.Layout:not(:is(.fino-home, .grpc-directory, .grpc-article)) .VPNavBarMenuLink:is([href='/grpc/guides/'], [href='/grpc/guides/?view=guides'], [href='/grpc/blog/']) {
   display: none;
 }
 
-.Layout:is(.grpc-directory, .grpc-article) .VPNavBarMenuLink:not([href='/grpc/guides/']):not([href='/grpc/blog/']) {
+.Layout:is(.grpc-directory, .grpc-article) .VPNavBarMenuLink:not([href='/grpc/guides/']):not([href='/grpc/guides/?view=guides']):not([href='/grpc/blog/']) {
+  display: none;
+}
+
+.Layout:is(.grpc-directory, .grpc-article) .VPNavBarMenuLink[href='/grpc/guides/'] {
   display: none;
 }
 
