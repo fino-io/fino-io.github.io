@@ -466,6 +466,10 @@ body {
     display: none;
   }
 
+  .grpc-directory .vp-doc h3:last-of-type {
+    display: block;
+  }
+
   .aip-article .VPDoc h2 {
     border-top: 0;
     padding-top: 0;

@@ -11,6 +11,9 @@ const configDir = dirname(fileURLToPath(import.meta.url))
 const generalSidebar = JSON.parse(
   readFileSync(resolve(configDir, 'general-sidebar.generated.json'), 'utf8'),
 )
+const grpcSidebar = JSON.parse(
+  readFileSync(resolve(configDir, '../generated/grpc-sidebar.json'), 'utf8'),
+)
 
 export default defineConfig({
   title: 'Fino',
@@ -61,7 +64,7 @@ export default defineConfig({
       pageData.frontmatter.pageClass = 'aip-article'
     } else if (['grpc/index.md', 'grpc/guides/index.md', 'grpc/blog/index.md'].includes(pageData.relativePath)) {
       pageData.frontmatter.pageClass = 'aip-directory grpc-directory'
-    } else if (isGrpcArticle(pageData.relativePath)) {
+    } else if (isGrpcArticle(pageData.relativePath) || pageData.relativePath.startsWith('grpc/')) {
       pageData.frontmatter.pageClass = 'aip-article grpc-article'
     }
   },
@@ -131,35 +134,13 @@ export default defineConfig({
           items: [{ text: '收录计划', link: '/projects/' }],
         },
       ],
-      '/grpc/': [
-        {
-          text: 'gRPC 中文版',
-          items: [
-            { text: '总览', link: '/grpc/' },
-            { text: 'Guides：使用指南', link: '/grpc/guides/' },
-            { text: 'Blog：官方博客', link: '/grpc/blog/' },
-            { text: '全量翻译计划', link: '/grpc/translation-plan' },
-          ],
-        },
-        {
-          text: 'Guides',
-          items: [
-            { text: 'Deadlines：截止时间', link: '/grpc/guides/deadlines_zh' },
-          ],
-        },
-        {
-          text: 'Blog',
-          items: [
-            { text: 'gRPC-Rust 路线图', link: '/grpc/blog/grpc-rust-roadmap_zh' },
-          ],
-        },
-      ],
+      '/grpc/': grpcSidebar,
     },
     search: {
       provider: 'local',
       options: {
         translations: {
-          button: { buttonText: 'Search AIPs' },
+          button: { buttonText: '搜索文档' },
         },
       },
     },

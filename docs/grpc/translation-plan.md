@@ -5,7 +5,7 @@ outline: [2, 3]
 
 # gRPC 全量翻译计划
 
-本计划覆盖当前 `upstream/grpc.io` 快照中的全部 Guides 与 Blog 内容。每篇完成后的中文页面以 `_zh` 结尾，英文原文保留无后缀页面，并通过页首语言按钮双向切换。
+本计划覆盖当前 `upstream/grpc.io` 快照中的全部 Guides 与 Blog 内容。该基线范围已经完成：24 篇 Guides 与 59 篇 Blog 共 83 篇文章。每篇中文页面以 `_zh` 结尾，英文原文保留无后缀页面，并通过页首语言按钮双向切换。
 
 ## 范围与基线
 
@@ -15,7 +15,7 @@ outline: [2, 3]
 
 ## 翻译状态
 
-每篇文章在翻译清单中维护以下状态：
+基线范围内全部条目均为“已发布”。后续上游更新使用以下状态维护：
 
 当前基线已完成：24 篇 Guides、59 篇 Blog 均已生成 `_zh.md` 译文，并已纳入英文镜像同步范围，状态为“已发布”。
 
@@ -27,9 +27,9 @@ outline: [2, 3]
 | 已发布 | 中英文页面可切换并通过构建验证 |
 | 待复核 | 官方原文更新，需要复查中文译文 |
 
-## Guides
+## 已完成范围
 
-### 第一批：核心可靠性与可观测性
+### Guides：24/24
 
 - Deadlines
 - Error Handling
@@ -41,38 +41,11 @@ outline: [2, 3]
 - Interceptors
 - Graceful Shutdown
 
-### 第二批：通用运行行为
+覆盖认证、截止时间、错误处理、健康检查、拦截器、重试、服务配置、可观测性与性能等全部官方 Guides。
 
-- Authentication
-- Cancellation
-- Compression
-- Flow Control
-- Service Config
-- Wait-for-Ready
-- Reflection
-- Performance Best Practices
+### Blog：59/59
 
-### 第三批：高级能力
-
-- Benchmarking
-- Debugging
-- OpenTelemetry Metrics
-- Custom Backend Metrics
-- Custom Load Balancing Policies
-- Custom Name Resolution
-- Request Hedging
-
-每完成一篇，在 `docs/grpc/guides/<slug>_zh.md` 新增译文；同步脚本据此生成对应的英文页面 `/grpc/guides/<slug>`。
-
-## Blog
-
-Blog 按发布日期从新到旧推进：
-
-1. 优先完成最新年份文章，确保首页内容对中文读者有时效性。
-2. 再按年份倒序完成剩余历史文章。
-3. 每完成一个年份，更新 Blog 目录的年份分组和完成度。
-
-每篇译文位于 `docs/grpc/blog/<slug>_zh.md`；对应英文页面为 `/grpc/blog/<slug>`。
+覆盖 2015 至 2026 年当前快照中的全部官方 Blog 文章，并按发布日期归档。
 
 ## 翻译与校对规范
 
