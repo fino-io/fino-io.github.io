@@ -3,14 +3,13 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { instance } from '@viz-js/viz'
 import { defineConfig } from 'vitepress'
+import { isAipArticle } from './aip'
 
 const graphviz = await instance()
-
-const generatedSidebarPath = resolve(
-  dirname(fileURLToPath(import.meta.url)),
-  'general-sidebar.generated.json',
+const configDir = dirname(fileURLToPath(import.meta.url))
+const generalSidebar = JSON.parse(
+  readFileSync(resolve(configDir, 'general-sidebar.generated.json'), 'utf8'),
 )
-const generalSidebar = JSON.parse(readFileSync(generatedSidebarPath, 'utf8'))
 
 export default defineConfig({
   title: 'Fino',
@@ -55,11 +54,7 @@ export default defineConfig({
   transformPageData(pageData) {
     if (pageData.relativePath === 'aip/general/index.md') {
       pageData.frontmatter.pageClass = 'aip-directory'
-    } else if (
-      /^(aip\/general\/\d{4}_zh|generated\/aip\/general\/\d{4}|aip\/general\/\d{4})\.md$/.test(
-        pageData.relativePath,
-      )
-    ) {
+    } else if (isAipArticle(pageData.relativePath)) {
       pageData.frontmatter.pageClass = 'aip-article'
     }
   },

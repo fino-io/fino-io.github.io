@@ -526,35 +526,35 @@ body {
     margin-top: 12px;
   }
 
-    .aip-article .VPDoc .VPDocOutlineItem.root > li {
-      height: auto;
-      min-height: 23px;
-      margin-top: 20px;
-    }
+  .aip-article .VPDoc .VPDocOutlineItem.root > li {
+    height: auto;
+    min-height: 23px;
+    margin-top: 20px;
+  }
 
-    .aip-article .VPDoc .VPDocOutlineItem.root > li > .outline-link {
-      color: var(--vp-c-text-1);
-      font-weight: 600;
-    }
+  .aip-article .VPDoc .VPDocOutlineItem.root > li > .outline-link {
+    color: var(--vp-c-text-1);
+    font-weight: 600;
+  }
 
-    .aip-article .VPDoc .VPDocOutlineItem.root > li > ul {
-      margin-top: 6px;
-    }
+  .aip-article .VPDoc .VPDocOutlineItem.root > li > ul {
+    margin-top: 6px;
+  }
 
-    .aip-article .VPDoc .VPDocOutlineItem.root > li > ul > li {
-      min-height: 18px;
-      margin-top: 2px;
-    }
+  .aip-article .VPDoc .VPDocOutlineItem.root > li > ul > li {
+    min-height: 18px;
+    margin-top: 2px;
+  }
 
-    .aip-article .VPDoc .VPDocOutlineItem.root > li > ul .outline-link {
-      color: var(--vp-c-text-2);
-      font-size: 13px;
-      font-weight: 400;
-    }
+  .aip-article .VPDoc .VPDocOutlineItem.root > li > ul .outline-link {
+    color: var(--vp-c-text-2);
+    font-size: 13px;
+    font-weight: 400;
+  }
 
-    .aip-article .VPDoc .outline-link {
-      height: auto;
-      min-height: 18px;
+  .aip-article .VPDoc .outline-link {
+    height: auto;
+    min-height: 18px;
     white-space: normal;
   }
 
