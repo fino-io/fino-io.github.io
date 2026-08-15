@@ -138,6 +138,7 @@ export default defineConfig({
             { text: '总览', link: '/grpc/' },
             { text: 'Guides：使用指南', link: '/grpc/guides/' },
             { text: 'Blog：官方博客', link: '/grpc/blog/' },
+            { text: '全量翻译计划', link: '/grpc/translation-plan' },
           ],
         },
         {
