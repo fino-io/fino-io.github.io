@@ -625,6 +625,10 @@ body {
     padding: 0;
   }
 
+  :is(.aip-directory, .aip-article) .VPDocAsideOutline .outline-marker {
+    display: none;
+  }
+
   :is(.aip-directory, .aip-article) .VPDoc .outline-title {
     height: 21px;
     line-height: 21px;
