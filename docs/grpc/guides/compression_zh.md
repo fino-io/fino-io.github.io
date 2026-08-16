@@ -37,20 +37,17 @@ gRPC 允许非对称压缩通信，因此响应可以与请求以不同的方式
 
 ### 其他资源
 
-* [gRPC 压缩]
-* [gRPC（核心）压缩手册]
-* [Python 压缩 API 的 gRFC]
+* [gRPC 压缩](https://github.com/grpc/grpc/blob/master/doc/compression.md)
+* [gRPC（核心）压缩手册](https://github.com/grpc/grpc/blob/master/doc/compression_cookbook.md#per-call-settings)
+* [Python 压缩 API 的 gRFC](https://github.com/grpc/proposal/blob/master/L46-python-compression-api.md)
 
 [C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
-[C++ Documentation]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
+[C++ 文档]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
 [Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/compression
-[Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/compression.md
+[Go 文档]: https://github.com/grpc/grpc-go/blob/master/Documentation/compression.md
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/experimental
 [Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/compression
-[Python Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/compression
-[gRPC Compression]: https://github.com/grpc/grpc/blob/master/doc/compression.md
-[gRPC (Core) Compression Cookbook]: https://github.com/grpc/grpc/blob/master/doc/compression_cookbook.md#per-call-settings
-[gRFC for Python Compression API]: https://github.com/grpc/proposal/blob/master/L46-python-compression-api.md
+[Python 文档]: https://github.com/grpc/grpc/tree/master/examples/python/compression
+[Java 文档]: https://grpc.github.io/grpc-java/javadoc/io/grpc/CallOptions.html#withCompression-java.lang.String-
 [BEAST]: https://en.wikipedia.org/wiki/Transport_Layer_Security#BEAST_attack
 [CRIME]: https://en.wikipedia.org/wiki/CRIME
-[Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/CallOptions.html#withCompression-java.lang.String-

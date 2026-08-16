@@ -17,7 +17,7 @@ gRPC 的内置重试逻辑会保存潜在重试的调用历史记录并监视 RP
 
 如果满足某些条件 - RPC 关闭并显示与重试策略的可重试状态码匹配的失败状态码，并且保持在重试尝试限制内 - gRPC 将在指数退避延迟后创建新的重试流。
 
-gRPC 还支持其他功能，例如重试限制和服务端推回。有关更多详细信息，请参阅[客户端重试的 gRFC]。
+gRPC 还支持其他功能，例如重试限制和服务端推回。有关更多详细信息，请参阅[客户端重试的 gRFC](https://github.com/grpc/proposal/blob/master/A6-client-retries.md)。
 
 一旦收到响应头，就提交 RPC。不会再尝试重试，gRPC 将 RPC 移交给应用程序。
 
@@ -45,7 +45,7 @@ sequenceDiagram
 * 指数退避
 * 可重试的状态码集
 
-重试可通过 [gRPC Service Config] 以每个方法的粒度进行配置。   该配置包含以下旋钮：
+重试可通过 [gRPC 服务配置](https://grpc.io/docs/guides/service-config) 以每个方法的粒度进行配置。   该配置包含以下旋钮：
 
 ```
 "retryPolicy": {
@@ -72,7 +72,7 @@ gRPC 支持油门限制，防止因重试而导致服务端过载。以下是重
 
 对于每个服务端，gRPC 客户端都会跟踪 `token_count`（最初设置为 `maxTokens`）。失败的 RPC 将计数减 1，成功的 RPC 将计数增加 `tokenRatio`。  如果 `token_count` 低于 `maxTokens` 的一半，则重试将暂停，直到计数恢复。
 
-此外，请求对冲是重试的补充功能，并且可以进行类似的配置。更多详情请参见【套期保值指南】。
+此外，请求对冲是重试的补充功能，并且可以进行类似的配置。更多详情请参见[请求对冲指南](https://grpc.io/docs/guides/request-hedging/)。
 
 ### 重试可观察性
 
@@ -91,7 +91,7 @@ gRPC 支持在启用重试功能时公开 OpenCensus 和 OpenTelemetry 指标。
 * `grpc.server.call.rcvd_total_compressed_message_size`
 * `grpc.server.call.duration`
 
-在 [gRFC for Otel 指标]、[gRFC for retry status] 中查找深入的指标和跟踪信息以及配置说明。
+在 [OTel 指标的 gRFC](https://github.com/grpc/proposal/blob/master/A66-otel-stats.md)、[重试状态的 gRFC](https://github.com/grpc/proposal/blob/master/A45-retry-stats.md) 中查找深入的指标和跟踪信息以及配置说明。
 
 
 
@@ -108,19 +108,16 @@ gRPC 支持在启用重试功能时公开 OpenCensus 和 OpenTelemetry 指标。
 
 ### 其他资源
 
-* [客户端重试的gRFC]
-* [重试状态的gRFC]
-*【套期保值指南】
-* [gRPC服务配置]
-* [酒店指标的 gRFC]
+* [客户端重试的 gRFC](https://github.com/grpc/proposal/blob/master/A6-client-retries.md)
+* [重试状态的 gRFC](https://github.com/grpc/proposal/blob/master/A45-retry-stats.md)
+* [请求对冲指南](https://grpc.io/docs/guides/request-hedging/)
+* [gRPC 服务配置](https://grpc.io/docs/guides/service-config)
+* [OTel 指标的 gRFC](https://github.com/grpc/proposal/blob/master/A66-otel-stats.md)
 
-[gRFC for client side retry]: https://github.com/grpc/proposal/blob/master/A6-client-retries.md  
-[gRFC for retry status]:https://github.com/grpc/proposal/blob/master/A45-retry-stats.md
 [C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/retry
 [Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/retry
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/retrying
 [Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/retry
-[Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#enableRetry()
+[Java 文档]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#enableRetry()
 [请求对冲指南](https://grpc.io/docs/guides/request-hedging/)
 [gRPC 服务配置](https://grpc.io/docs/guides/service-config)
-[gRFC for Otel metrics]:https://github.com/grpc/proposal/blob/master/A66-otel-stats.md

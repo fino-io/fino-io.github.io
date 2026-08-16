@@ -59,24 +59,20 @@ Linux 提供了 TCP_USER_TIMEOUT 套接字选项，当发送的数据包在超�
 
 ### 其他资源
 
-* [客户端 Keepalive 的 gRFC]
-* [服务端连接管理的gRFC]
-* [TCP 用户超时的 gRFC]
-* [使用 gRPC 实现长寿命和流式 RPC]
+* [客户端 Keepalive 的 gRFC](https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md)
+* [服务端连接管理的 gRFC](https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md)
+* [TCP 用户超时的 gRFC](https://github.com/grpc/proposal/blob/master/A18-tcp-user-timeout.md)
+* [使用 gRPC 实现长寿命和流式 RPC](https://www.youtube.com/watch?v=Naonb2XD_2Q)
 
 
-[Health Checking]: https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+[健康检查]: https://github.com/grpc/grpc/blob/master/doc/health-checking.md
 [TCP keepalive]: https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive
-[PING frame]: https://httpwg.org/specs/rfc7540.html#PING
+[PING 帧]: https://httpwg.org/specs/rfc7540.html#PING
 [C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/keepalive
-[C++ Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
+[C++ 文档]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
 [Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive
-[Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md
+[Go 文档]: https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive
 [Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/keep_alive
-[Python Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
-[gRFC for Client-side Keepalive]: https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md
-[gRFC for Server-side Connection Management]: https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md
-[gRFC for TCP User Timeout]: https://github.com/grpc/proposal/blob/master/A18-tcp-user-timeout.md
-[Using gRPC for Long-lived and Streaming RPCs]: https://www.youtube.com/watch?v=Naonb2XD_2Q
-[Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#keepAliveTime-long-java.util.concurrent.TimeUnit-
+[Python 文档]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
+[Java 文档]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#keepAliveTime-long-java.util.concurrent.TimeUnit-

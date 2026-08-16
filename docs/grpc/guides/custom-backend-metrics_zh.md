@@ -13,7 +13,7 @@ source_url: https://grpc.io/docs/guides/custom-backend-metrics/
 ### 用例
 该功能主要适用于高级用例，其中使用自定义 LB 策略将流量更智能地路由到后端服务端列表以提高路由性能，例如加权循环 LB 策略。
 
-gRPC 传统上允许用户插入自己的负载均衡策略，请参阅[指南][自定义负载均衡指南]。对于xDS用户，可以配置【自定义负载均衡器】来选择自定义LB策略。
+gRPC 传统上允许用户插入自己的负载均衡策略，请参阅[自定义负载均衡指南](https://grpc.io/docs/guides/custom-load-balancing/)。对于 xDS 用户，可以配置[自定义负载均衡器](https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md)来选择自定义 LB 策略。
 
 ### 指标报告
 开放请求成本聚合 ([ORCA]) 是用于传达后端指标信息的开放标准。 gRPC 使用 ORCA 服务和指标标准，并支持两种指标报告机制：
@@ -33,7 +33,7 @@ gRPC 传统上允许用户插入自己的负载均衡策略，请参阅[指南][
 
 ### 执行
 
-有关更多详细信息，请参阅 gRPC [提案 A51]。
+有关更多详细信息，请参阅 gRPC [提案 A51](https://github.com/grpc/proposal/blob/master/A51-custom-backend-metrics.md)。
 
 
 ### 语言支持
@@ -44,9 +44,6 @@ gRPC 传统上允许用户插入自己的负载均衡策略，请参阅[指南][
 |Go|[Go 示例]|
 |C++|即将推出的示例|
 
-[proposal A51]: https://github.com/grpc/proposal/blob/master/A51-custom-backend-metrics.md
 [ORCA]: https://github.com/cncf/xds/blob/main/xds/data/orca/v3/orca_load_report.proto
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-orca
 [Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/orca
-[自定义负载均衡指南](https://grpc.io/docs/guides/custom-load-balancing/)
-[custom load balancer]: https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md

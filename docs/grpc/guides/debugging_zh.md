@@ -17,17 +17,15 @@ source_url: https://grpc.io/docs/guides/debugging/
 
 ### 参考
 
-* [grpcdebug安装]
-* 【grpcdebug快速入门】
+* [grpcdebug 安装](https://github.com/grpc-ecosystem/grpcdebug#installation)
+* [grpcdebug 快速入门](https://github.com/grpc-ecosystem/grpcdebug#quick-start)
 
 
 [grpcdebug]: https://github.com/grpc-ecosystem/grpcdebug
 [Health]:https://github.com/grpc/grpc/blob/master/src/proto/grpc/health/v1/health.proto
 [Channelz]: https://github.com/grpc/proposal/blob/master/A14-channelz.md
-[admin services]: https://github.com/grpc/proposal/blob/master/A38-admin-interface-api.md
+[管理服务]: https://github.com/grpc/proposal/blob/master/A38-admin-interface-api.md
 [C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/debugging#using-grpcdebug
 [Go 示例]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#quick-start
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-debug#using-grpcdebug
-[grpcdebug installation]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#installation
-[grpcdebug quick start]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#quick-start
-[Go test server implementing admin services from grpcdebug docs]: https://github.com/grpc-ecosystem/grpcdebug/tree/main/internal/testing/testserver
+[Go 测试服务端实现 grpcdebug 文档中的管理服务]: https://github.com/grpc-ecosystem/grpcdebug/tree/main/internal/testing/testserver

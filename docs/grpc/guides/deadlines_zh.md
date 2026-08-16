@@ -74,6 +74,4 @@ sequenceDiagram
 
 ### 其他资源
 
-- [截止时间博客文章]
-
-[Deadlines blogpost]: https://grpc.io/blog/deadlines/
+- [截止时间博客文章](https://grpc.io/blog/deadlines/)

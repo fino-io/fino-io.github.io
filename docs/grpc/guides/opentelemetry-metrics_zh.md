@@ -177,3 +177,8 @@ Python|[Python 示例]
 [A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
 [A89: Backend Service Metric Label]: https://github.com/grpc/proposal/blob/master/A89-backend-service-metric-label.md
 [A96: OTel Metrics for Retries]: https://github.com/grpc/proposal/blob/master/A96-retry-otel-stats.md
+[A66：OpenTelemetry Metrics]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
+[A66：OpenTelemetry 指标]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
+[A78：WRR、Pick First 和 XdsClient 的 gRPC OTel 指标]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
+[A79：非每次调用指标架构]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
+[A96：重试的 OTel 指标]: https://github.com/grpc/proposal/blob/master/A96-retry-otel-stats.md

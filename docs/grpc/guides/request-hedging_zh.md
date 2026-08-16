@@ -14,12 +14,12 @@ source_url: https://grpc.io/docs/guides/request-hedging/
 
 请求对冲是一种减少大规模分布式系统中尾部延迟的技术。虽然简单的实现可能会给后端服务端增加显着的负载，但有可能在仅适度增加负载的情况下获得大部分延迟减少效果。
 
-有关尾部延迟的深入讨论，请参阅 Jeff Dean 和 Luiz André Barroso 撰写的开创性文章 [The Tail At Scale]。
+有关尾部延迟的深入讨论，请参阅 Jeff Dean 和 Luiz André Barroso 撰写的开创性文章 [规模尾巴](https://research.google/pubs/pub40801/)。
 
 
 #### 在 gRPC 中配置请求对冲
 
-请求对冲可通过 [gRPC Service Config] 以每个方法的粒度进行配置。该配置包含以下旋钮：
+请求对冲可通过 [gRPC 服务配置](https://github.com/grpc/grpc/blob/master/doc/service_config.md) 以每个方法的粒度进行配置。该配置包含以下旋钮：
 
 ```
 "hedgingPolicy": {
@@ -76,9 +76,9 @@ gRPC 提供了一种限制请求对冲 RPC 以防止服务端过载的方法。�
 
 ### 资源
 
-- [规模尾巴]
-- [gRPC服务配置]
-- [gRPC重试设计]
+- [规模尾巴](https://research.google/pubs/pub40801/)
+- [gRPC 服务配置](https://github.com/grpc/grpc/blob/master/doc/service_config.md)
+- [gRPC 重试设计](https://github.com/grpc/proposal/blob/master/A6-client-retries.md)
 
 ### 语言支持
 
@@ -88,7 +88,4 @@ gRPC 提供了一种限制请求对冲 RPC 以防止服务端过载的方法。�
 |C++|尚不可用|
 |Go|尚不支持|
 
-[The Tail At Scale]: https://research.google/pubs/pub40801/
-[gRPC Service Config]: https://github.com/grpc/grpc/blob/master/doc/service_config.md 
-[gRPC Retry Design]: https://github.com/grpc/proposal/blob/master/A6-client-retries.md
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/hedging

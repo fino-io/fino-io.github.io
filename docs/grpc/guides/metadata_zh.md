@@ -46,11 +46,11 @@ WARNING: Servers may limit the size of Request-Headers, with a default of 8 KiB 
 
 ### 有关更多详细信息，请参阅以下 gRFC
 
-* [提案：G1真正的二进制元数据][提案G1]
-* [提案：L7 go 元数据 api][提案 L7]
-* [提案：L48节点元数据选项][提案L48]
-* [提案：L42 python 元数据标志][提案 L42]
-* [提案：L11红宝石拦截器][提案L11]
+* [提案：G1 真正的二进制元数据](https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/G1-true-binary-metadata.md)
+* [提案：L7 Go 元数据 API](https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L7-go-metadata-api.md)
+* [提案：L48 Node 元数据选项](https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695ba8dd3f7dd3/L48-node-metadata-options.md)
+* [提案：L42 Python 元数据标志](https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L42-python-metadata-flags.md)
+* [提案：L11 Ruby 拦截器](https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L11-ruby-interceptors.md)
 
 ### 语言支持
 
@@ -63,28 +63,11 @@ WARNING: Servers may limit the size of Request-Headers, with a default of 8 KiB 
 |Python|[Python元数据]|                    |
 |红宝石|                                            |即将推出的示例|
 
-[proposal L7]: https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L7-go-metadata-api.md
-
-[proposal G1]: https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/G1-true-binary-metadata.md
-
-[proposal L48]: https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L48-node-metadata-options.md
-
-[proposal L42]: https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L42-python-metadata-flags.md
-
-[proposal L11]: https://github.com/grpc/proposal/blob/7c05212d14f4abef5f74f71695f95ba8dd3f7dd3/L11-ruby-interceptors.md
-
-[Java Header]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/header
-
-[Java Error Handling]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errorhandling
-
-[Node Metadata]: https://github.com/grpc/grpc-node/tree/master/examples/metadata
-
-[Go Metadata]: https://github.com/grpc/grpc-go/tree/master/examples/features/metadata
-
-[Go Metadata interceptor]: https://github.com/grpc/grpc-go/tree/master/examples/features/metadata_interceptor
-
-[C++ Metadata]: https://github.com/grpc/grpc/tree/master/examples/cpp/metadata
-
-[Python Metadata]: https://github.com/grpc/grpc/tree/master/examples/python/metadata
-
-[Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md
+[Java 标头]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/header
+[Java 错误处理]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errorhandling
+[节点元数据]: https://github.com/grpc/grpc-node/tree/master/examples/metadata
+[Go元数据]: https://github.com/grpc/grpc-go/tree/master/examples/features/metadata
+[Go元数据拦截器]: https://github.com/grpc/grpc-go/tree/master/examples/features/metadata_interceptor
+[C++ 元数据]: https://github.com/grpc/grpc/tree/master/examples/cpp/metadata
+[Python元数据]: https://github.com/grpc/grpc/tree/master/examples/python/metadata
+[Go 文档]: https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md

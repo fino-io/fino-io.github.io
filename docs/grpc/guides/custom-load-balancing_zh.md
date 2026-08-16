@@ -40,13 +40,13 @@ P --> |Picks one| SC
 
 如果您的负载均衡策略需要有关后端服务端的实时信息怎么办？为此，您可以依靠后端指标。您可以在带内、后端 RPC 响应中提供指标，也可以在带外作为来自后端的单独 RPC 提供指标。提供了 CPU 和内存利用率等标准指标，但您也可以实现自己的自定义指标。
 
-有关这方面的更多信息，请参阅自定义后端指标[指南][自定义后端指标指南]
+有关这方面的更多信息，请参阅[自定义后端指标指南](https://grpc.io/docs/guides/custom-backend-metrics/)。
 
 ### 服务网格
 
 如果您有一个服务网格设置，其中中央控制平面正在协调微服务的配置，则您无法直接通过服务配置来配置自定义负载均衡器。但控制平面用于与 gRPC 客户端通信的 xDS 协议提供了支持来执行此操作。请参阅您的控制平面文档以确定如何支持自定义负载均衡配置。
 
-有关更多详细信息，请参阅 gRPC [提案 A52]。
+有关更多详细信息，请参阅 gRPC [提案 A52](https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md)。
 
 ### 语言支持
 
@@ -56,7 +56,5 @@ P --> |Picks one| SC
 |Go|[Go 示例]|                                  |
 |C++|                |尚不支持|
 
-[proposal A52]:https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md
 [Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
 [Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/customloadbalancer
-[自定义后端指标指南](https://grpc.io/docs/guides/custom-backend-metrics/)
