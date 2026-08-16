@@ -170,6 +170,17 @@ body {
   text-decoration: underline;
 }
 
+.mermaid-diagram {
+  margin: 24px 0;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.mermaid-diagram svg {
+  height: auto;
+  max-width: 100%;
+}
+
 .VPHome {
   background:
     radial-gradient(circle at 76% 12%, #e8f0fe 0, rgb(232 240 254 / 0%) 24rem),

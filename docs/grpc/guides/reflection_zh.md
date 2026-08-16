@@ -14,10 +14,10 @@ source_url: https://grpc.io/docs/guides/reflection/
 
 gRPC 出色性能的一个重要因素是使用 Protobuf 进行序列化——一种非人类可读的二进制协议。虽然这极大地加快了 RPC 的速度，但也使手动与服务端交互变得更加困难。假设，为了使用 `curl` 通过 HTTP/2 手动向服务端发送 gRPC 请求，您必须：
 
-1. 了解服务端暴露了哪些RPC服务。
-2.了解请求消息的protobuf定义和所有类型_it_
+1. 了解服务端暴露了哪些 RPC 服务。
+2. 了解请求消息的 protobuf 定义和所有类型 _it_
 参考。
-3.了解响应消息的protobuf定义和所有类型_it_
+3. 了解响应消息的 protobuf 定义和所有类型 _it_
 参考。
 
 然后，您必须使用这些知识将请求消息手工制作为二进制文件，并精心解码响应消息。这将是耗时、令人沮丧且容易出错的。相反，反射协议使工具能够自动化整个过程，使其不可见。
@@ -36,15 +36,15 @@ gRPC 服务端上不会自动启用反射。服务端作者必须调用一些附
 |Python|[Python 示例]|
 |JavaScript|[Javascript 示例]|
 
-[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/example-reflection 
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-reflection 
 
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/reflection 
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/reflection 
 
-[C++ example]: https://github.com/grpc/grpc/tree/master/examples/cpp/reflection
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/reflection
 
-[Python example]: https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server_with_reflection.py
+[Python 示例]: https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server_with_reflection.py
 
-[Javascript example]: https://github.com/grpc/grpc-node/blob/master/examples/reflection/server.js
+[Javascript 示例]: https://github.com/grpc/grpc-node/blob/master/examples/reflection/server.js
 
 ### 尖端
  

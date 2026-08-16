@@ -93,7 +93,7 @@ stateDiagram-v2
 
 [health/v1]:https://github.com/grpc/grpc-proto/blob/master/grpc/health/v1/health.proto
 [service config]:https://github.com/grpc/grpc/blob/master/doc/service_config.md
-[Java example]:https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/healthservice
-[Go example]:https://github.com/grpc/grpc-go/tree/master/examples/features/health
-[Python example]:https://github.com/grpc/grpc/tree/master/examples/python/health_checking
-[C++ example]:https://github.com/grpc/grpc/tree/master/examples/cpp/health
+[Java 示例]:https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/healthservice
+[Go 示例]:https://github.com/grpc/grpc-go/tree/master/examples/features/health
+[Python 示例]:https://github.com/grpc/grpc/tree/master/examples/python/health_checking
+[C++ 示例]:https://github.com/grpc/grpc/tree/master/examples/cpp/health

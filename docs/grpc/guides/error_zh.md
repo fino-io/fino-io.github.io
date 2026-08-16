@@ -72,23 +72,23 @@ gRPC 在各种情况下都会引发错误，从网络故障到未经认证的连
 
 |语言|例子|
 |----------|--------------------------------|
-|C++|[C++错误处理示例]|
+|C++|[C++ 错误处理示例]|
 |          |[C++ 错误详细信息示例]|
-|Go|【Go错误处理示例】|
-|          |[Go错误详情示例]|
-|Java|【Java错误处理示例】|
-|          |[Java错误详细信息示例]|
-|节点|【节点错误处理示例】|
-|Python|[Python错误详细信息示例]|
+|Go|[Go 错误处理示例]|
+|          |[Go 错误详情示例]|
+|Java|[Java 错误处理示例]|
+|          |[Java 错误详细信息示例]|
+|节点|[节点 错误处理示例]|
+|Python|[Python 错误详细信息示例]|
 
 [grpc-errors] 存储库还包含其他错误处理示例。
 
-[C++ error handling example]: https://github.com/grpc/grpc/tree/master/examples/cpp/error_handling
-[C++ error details example]: https://github.com/grpc/grpc/tree/master/examples/cpp/error_details
-[Go error handling example]: https://github.com/grpc/grpc-go/tree/master/examples/features/error_handling
-[Go error details example]: https://github.com/grpc/grpc-go/tree/master/examples/features/error_details
-[Java error handling example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errorhandling
-[Java error details example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errordetails
-[Node error handling example]: https://github.com/grpc/grpc-node/tree/master/examples/error_handling
-[Python error details example]: https://github.com/grpc/grpc/tree/master/examples/python/errors
+[C++ 错误处理示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/error_handling
+[C++ 错误详细信息示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/error_details
+[Go 错误处理示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/error_handling
+[Go 错误详情示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/error_details
+[Java 错误处理示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errorhandling
+[Java 错误详细信息示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errordetails
+[节点 错误处理示例]: https://github.com/grpc/grpc-node/tree/master/examples/error_handling
+[Python 错误详细信息示例]: https://github.com/grpc/grpc/tree/master/examples/python/errors
 [grpc-errors]: https://github.com/avinassh/grpc-errors

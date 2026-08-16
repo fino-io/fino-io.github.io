@@ -91,4 +91,4 @@ gRPC 提供了一种限制请求对冲 RPC 以防止服务端过载的方法。�
 [The Tail At Scale]: https://research.google/pubs/pub40801/
 [gRPC Service Config]: https://github.com/grpc/grpc/blob/master/doc/service_config.md 
 [gRPC Retry Design]: https://github.com/grpc/proposal/blob/master/A6-client-retries.md
-[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/hedging
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/hedging

@@ -58,5 +58,5 @@ stateDiagram-v2
 |Python|                  |
 
 
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/gracefulstop
-[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/example-hostname/src/main/java/io/grpc/examples/hostname
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/gracefulstop
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-hostname/src/main/java/io/grpc/examples/hostname

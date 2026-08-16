@@ -68,12 +68,12 @@ Linux 提供了 TCP_USER_TIMEOUT 套接字选项，当发送的数据包在超�
 [Health Checking]: https://github.com/grpc/grpc/blob/master/doc/health-checking.md
 [TCP keepalive]: https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive
 [PING frame]: https://httpwg.org/specs/rfc7540.html#PING
-[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/keepalive
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/keepalive
 [C++ Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive
 [Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md
-[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive
-[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/keep_alive
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/keep_alive
 [Python Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
 [gRFC for Client-side Keepalive]: https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md
 [gRFC for Server-side Connection Management]: https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md

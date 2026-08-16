@@ -25,9 +25,9 @@ source_url: https://grpc.io/docs/guides/debugging/
 [Health]:https://github.com/grpc/grpc/blob/master/src/proto/grpc/health/v1/health.proto
 [Channelz]: https://github.com/grpc/proposal/blob/master/A14-channelz.md
 [admin services]: https://github.com/grpc/proposal/blob/master/A38-admin-interface-api.md
-[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/debugging#using-grpcdebug
-[Go Example]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#quick-start
-[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-debug#using-grpcdebug
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/debugging#using-grpcdebug
+[Go 示例]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#quick-start
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-debug#using-grpcdebug
 [grpcdebug installation]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#installation
 [grpcdebug quick start]: https://github.com/grpc-ecosystem/grpcdebug?tab=readme-ov-file#quick-start
 [Go test server implementing admin services from grpcdebug docs]: https://github.com/grpc-ecosystem/grpcdebug/tree/main/internal/testing/testserver

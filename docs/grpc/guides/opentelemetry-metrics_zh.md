@@ -152,7 +152,7 @@ grpc.xds.resource_type|xDS 资源类型，例如“envoy.config.listener.v3.List
 语言|例子
 -------- | ----------------
 C++|[C++ 示例]
-去|[Go 示例]
+Go|[Go 示例]
 Java|[Java 示例]
 Python|[Python 示例]
 
@@ -168,10 +168,10 @@ Python|[Python 示例]
 [OpenTelemetry API]: https://opentelemetry.io/docs/specs/otel/overview/#api
 [Meter]: https://opentelemetry.io/docs/specs/otel/metrics/api/#get-a-meter
 [OpenTelemetry SDK]: https://opentelemetry.io/docs/specs/otel/overview/#sdk
-[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/otel
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/opentelemetry
-[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-opentelemetry
-[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/observability
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/otel
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/opentelemetry
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-opentelemetry
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/observability
 [A66: OpenTelemetry Metrics]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
 [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
 [A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture

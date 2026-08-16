@@ -64,7 +64,7 @@ NET(Network)
 |Java|[Java 示例]|
 |Python|[Python 示例]|
 
-[C++ example]: https://github.com/grpc/grpc/tree/master/examples/cpp/interceptors
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/interceptor
-[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/header
-[Python example]: https://github.com/grpc/grpc/tree/master/examples/python/interceptors
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/interceptors
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/interceptor
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/header
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/interceptors

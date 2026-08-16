@@ -116,10 +116,10 @@ gRPC 支持在启用重试功能时公开 OpenCensus 和 OpenTelemetry 指标。
 
 [gRFC for client side retry]: https://github.com/grpc/proposal/blob/master/A6-client-retries.md  
 [gRFC for retry status]:https://github.com/grpc/proposal/blob/master/A45-retry-stats.md
-[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/retry
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/retry
-[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/retrying
-[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/retry
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/retry
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/retry
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/retrying
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/retry
 [Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#enableRetry()
 [请求对冲指南](https://grpc.io/docs/guides/request-hedging/)
 [gRPC 服务配置](https://grpc.io/docs/guides/service-config)

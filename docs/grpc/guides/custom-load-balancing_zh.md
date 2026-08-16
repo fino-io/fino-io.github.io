@@ -57,6 +57,6 @@ P --> |Picks one| SC
 |C++|                |尚不支持|
 
 [proposal A52]:https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md
-[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/customloadbalancer
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/customloadbalancer
 [自定义后端指标指南](https://grpc.io/docs/guides/custom-backend-metrics/)

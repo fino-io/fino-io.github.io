@@ -41,12 +41,12 @@ gRPC 允许非对称压缩通信，因此响应可以与请求以不同的方式
 * [gRPC（核心）压缩手册]
 * [Python 压缩 API 的 gRFC]
 
-[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
+[C++ 示例]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
 [C++ Documentation]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/compression
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/compression
 [Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/compression.md
-[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/experimental
-[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/compression
+[Java 示例]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/experimental
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/compression
 [Python Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/compression
 [gRPC Compression]: https://github.com/grpc/grpc/blob/master/doc/compression.md
 [gRPC (Core) Compression Cookbook]: https://github.com/grpc/grpc/blob/master/doc/compression_cookbook.md#per-call-settings

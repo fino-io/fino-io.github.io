@@ -141,13 +141,13 @@ auto call_creds = grpc::MetadataCredentialsFromPlugin(
 |Python|[Python 示例]|[Python 文档]|
 
 
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption
-[Go Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption#encryption
-[Java Example TLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls
-[Java Example ATLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-alts
-[Java Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls#hello-world-example-with-tls
-[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/auth
-[Python Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/auth#authentication-extension-example-in-grpc-python
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption
+[Go 文档]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption#encryption
+[Java 示例 TLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls
+[Java 示例 ATLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-alts
+[Java 文档]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls#hello-world-example-with-tls
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/auth
+[Python 文档]: https://github.com/grpc/grpc/tree/master/examples/python/auth#authentication-extension-example-in-grpc-python
 
 ### 基于 OAuth 令牌的认证的语言指南和示例
 
@@ -161,12 +161,12 @@ auto call_creds = grpc::MetadataCredentialsFromPlugin(
 |Python|[Python OAuth 示例]|[Python OAuth 文档]|
 
 
-[Go OAuth Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#authentication
-[Go OAuth Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#oauth2
-[Java OAuth Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth#authentication-example
-[Java OAuth Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth
-[Python OAuth Example]: https://github.com/grpc/grpc/blob/master/examples/python/auth/token_based_auth_client.py
-[Python OAuth Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/auth#token-based-authentication
+[转到 OAuth 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#authentication
+[转到 OAuth 文档]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#oauth2
+[Java OAuth 示例]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth#authentication-example
+[Java OAuth 文档]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth
+[Python OAuth 示例]: https://github.com/grpc/grpc/blob/master/examples/python/auth/token_based_auth_client.py
+[Python OAuth 文档]: https://github.com/grpc/grpc/tree/master/examples/python/auth#token-based-authentication
 
 
 ### 其他示例

@@ -86,7 +86,7 @@ _（对于支持此功能的语言）_。
 |Go|[Go 示例]|
 |Python|[Python 示例]|
 
-[Java example]: https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/waitforready/WaitForReadyClient.java
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/wait_for_ready
-[Python example]: https://github.com/grpc/grpc/tree/master/examples/python/wait_for_ready
+[Java 示例]: https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/waitforready/WaitForReadyClient.java
+[Go 示例]: https://github.com/grpc/grpc-go/tree/master/examples/features/wait_for_ready
+[Python 示例]: https://github.com/grpc/grpc/tree/master/examples/python/wait_for_ready
 [grpc doc]: https://github.com/grpc/grpc/blob/master/doc/wait-for-ready.md

@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@viz-js/viz": "^3.29.0",
+    "mermaid": "^11.16.1",
     "vitepress": "^1.6.3",
     "yaml": "^2.9.0"
   }
