@@ -182,7 +182,7 @@ sys	0m1.660s
 
 After:
 
-```node
+```txt
 Apr 16, 2018 10:36:48 AM io.grpc.examples.KvRunner runClient
 INFO: Did 2,449.8 RPCs/s
 
@@ -208,7 +208,7 @@ scaling per the number of RPCs, it would scale per the number of cores.  Thus, i
 
 If you run this code yourself, you will see a lot more log spam in the form:
 
-```nocode
+```txt
 Apr 16, 2018 10:38:40 AM io.grpc.examples.KvClient$3 onFailure
 INFO: Key not found
 io.grpc.StatusRuntimeException: NOT_FOUND

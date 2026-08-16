@@ -366,7 +366,7 @@ Do the numbers make sense?  We expect to issue mutation (create, update, and del
 about with 1/4 probability.  Reads are also issue 1/4 of the time, but don't take as long.  The
 mean RPC time should be about the weighted average RPC time:
 
-```nocode
+```txt
   .25 * 50ms (create)
   .25 * 10ms (retrieve)
   .25 * 50ms (update)
