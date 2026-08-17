@@ -7,7 +7,7 @@ hero:
   text: API Design Knowledge Base
   tagline: A Chinese reference for API standards that helps teams and individuals design clearer, more consistent interfaces.
   image:
-    src: /fino-mark.svg
+    src: /fino-mark.png
     alt: Fino
   actions:
     - theme: brand

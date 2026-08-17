@@ -48,6 +48,22 @@ body {
   content: none;
 }
 
+.VPNavBarTitle .logo {
+  width: auto;
+  height: 30px;
+  mix-blend-mode: multiply;
+}
+
+.VPHome .VPHero .image-src {
+  mix-blend-mode: multiply;
+}
+
+.dark .VPNavBarTitle .logo,
+.dark .VPHome .VPHero .image-src {
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
 .VPNavBarMenuLink {
   font-size: 13px;
   white-space: nowrap;

@@ -28,6 +28,7 @@ function startsWithHeading(relativePath: string) {
 export default defineConfig({
   title: 'Fino',
   description: 'API 规范与项目文档的中文知识库',
+  head: [['link', { rel: 'icon', href: '/fino-mark.png', type: 'image/png' }]],
   appearance: true,
   cleanUrls: true,
   locales: {
@@ -97,8 +98,8 @@ export default defineConfig({
     }
   },
   themeConfig: {
-    logo: '/fino-mark.svg',
-    siteTitle: 'Fino',
+    logo: { src: '/fino-logo.png', alt: 'Fino' },
+    siteTitle: false,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/fino-io/fino-io.github.io' },
     ],

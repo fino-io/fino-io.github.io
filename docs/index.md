@@ -7,7 +7,7 @@ hero:
   text: API 设计知识库
   tagline: 面向团队与个人的 API 规范中文参考，帮助设计更清晰、更一致的接口。
   image:
-    src: /fino-mark.svg
+    src: /fino-mark.png
     alt: Fino
   actions:
     - theme: brand
