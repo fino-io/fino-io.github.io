@@ -106,8 +106,6 @@ export default defineConfig({
     nav: [
       { text: 'Browse AIPs', link: '/aip/general', activeMatch: '^/aip/' },
       { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
-      { text: 'Guides', link: '/grpc/guides/?view=guides', activeMatch: '^/grpc/guides/' },
-      { text: 'Blog', link: '/grpc/blog/', activeMatch: '^/grpc/blog/' },
       {
         text: '更多',
         items: [

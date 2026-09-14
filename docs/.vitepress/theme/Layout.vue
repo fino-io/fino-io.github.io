@@ -10,8 +10,18 @@ type DirectoryPage = {
   description: string
   count: string
   searchLabel: string
-  parent: { label: string; href: string }
+  parent: { label: string; href: string } | null
   source: { label: string; href: string }
+}
+
+const guidesDirectoryPage: DirectoryPage = {
+  eyebrow: 'GRPC DOCUMENTATION',
+  title: 'Guides',
+  description: '面向认证、截止时间、错误处理、重试与性能等常见场景的操作指南。',
+  count: '24 篇指南',
+  searchLabel: '搜索 Guides',
+  parent: { label: 'gRPC', href: '/grpc/' },
+  source: { label: '查看官方 Guides', href: 'https://grpc.io/docs/guides/' },
 }
 
 const directoryPages: Record<string, DirectoryPage> = {
@@ -24,15 +34,8 @@ const directoryPages: Record<string, DirectoryPage> = {
     parent: { label: 'API Improvement Proposals', href: '/aip/' },
     source: { label: '查看官方 AIPs', href: 'https://google.aip.dev/general' },
   },
-  '/grpc/guides': {
-    eyebrow: 'GRPC DOCUMENTATION',
-    title: 'Guides',
-    description: '面向认证、截止时间、错误处理、重试与性能等常见场景的操作指南。',
-    count: '24 篇指南',
-    searchLabel: '搜索 Guides',
-    parent: { label: 'gRPC', href: '/grpc/' },
-    source: { label: '查看官方 Guides', href: 'https://grpc.io/docs/guides/' },
-  },
+  '/grpc': { ...guidesDirectoryPage, parent: null },
+  '/grpc/guides': guidesDirectoryPage,
   '/grpc/blog': {
     eyebrow: 'GRPC DOCUMENTATION',
     title: 'Blog',
@@ -69,8 +72,8 @@ function formatArticleDate(value: unknown) {
       <header v-if="directoryPage" class="directory-header">
         <div class="directory-header-copy">
           <nav class="directory-breadcrumb" aria-label="Breadcrumb">
-            <a :href="directoryPage.parent.href">{{ directoryPage.parent.label }}</a>
-            <span aria-hidden="true">›</span>
+            <a v-if="directoryPage.parent" :href="directoryPage.parent.href">{{ directoryPage.parent.label }}</a>
+            <span v-if="directoryPage.parent" aria-hidden="true">›</span>
             <span aria-current="page">{{ directoryPage.title }}</span>
           </nav>
           <p class="directory-eyebrow">{{ directoryPage.eyebrow }}</p>

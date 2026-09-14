@@ -54,7 +54,7 @@ const blogSections = [...blogByYear.entries()].map(([year, articles]) => ({
   items: articles.map(({ date, link, title }) => ({ text: `${date} ${title}`, link })),
 }))
 const sidebar = {
-  root: [overview],
+  root: [overview, guideSection],
   guides: [overview, guideSection],
   blog: [overview, ...blogSections],
 }

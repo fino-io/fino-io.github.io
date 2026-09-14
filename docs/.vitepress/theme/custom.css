@@ -33,6 +33,35 @@ html {
   scrollbar-gutter: stable;
 }
 
+html:has(.VPSidebar.open) {
+  overflow: hidden;
+}
+
+@media (min-width: 960px) {
+  /* Keep document scrolling inside the app so the fixed sidebar is the only visible bar. */
+  html.fino-document-layout,
+  html.fino-document-layout body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  html.fino-document-layout #app {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  html.fino-document-layout #app::-webkit-scrollbar {
+    display: none;
+  }
+
+  html.fino-document-layout .VPSidebar {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+}
+
 .VPNav {
   border-bottom: 1px solid var(--vp-c-divider);
   box-shadow: 0 1px 2px rgb(60 64 67 / 8%);
@@ -300,15 +329,7 @@ html {
   padding-top: 0;
 }
 
-.Layout.fino-home .VPNavBarMenuLink:is([href='/grpc/guides/?view=guides'], [href='/grpc/blog/']) {
-  display: none;
-}
-
-.Layout.fino-home .VPNavBarMenuGroup {
-  display: none;
-}
-
-.Layout:not(:is(.fino-home, .grpc-directory, .grpc-article)) .VPNavBarMenuLink:is([href='/grpc/guides/?view=guides'], [href='/grpc/blog/']) {
+.Layout:is(.fino-home, .aip-directory, .aip-article) .VPNavBarMenuGroup {
   display: none;
 }
 

@@ -41,17 +41,6 @@ const aipItems = entries
 
 const sidebar = [
   {
-    text: 'AIPs by Scope',
-    items: [
-      { text: 'General', link: '/aip/general' },
-      { text: 'Google Cloud Platform', link: 'https://google.aip.dev/cloud' },
-      { text: 'Auth', link: 'https://google.aip.dev/auth' },
-      { text: 'Client libraries', link: 'https://google.aip.dev/client-libraries' },
-      { text: 'Workspace', link: 'https://google.aip.dev/apps' },
-      { text: 'Actions on Google', link: 'https://google.aip.dev/aog' },
-    ],
-  },
-  {
     text: 'AIPs',
     collapsed: false,
     items: aipItems,
