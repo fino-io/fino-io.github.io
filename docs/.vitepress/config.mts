@@ -104,15 +104,21 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/fino-io/fino-io.github.io' },
     ],
     nav: [
-      { text: 'Browse AIPs', link: '/aip/general' },
-      { text: 'gRPC', link: '/grpc/guides/' },
-      { text: 'Guides', link: '/grpc/guides/?view=guides' },
-      { text: 'Blog', link: '/grpc/blog/' },
-      { text: 'News', link: 'https://google.aip.dev/news' },
-      { text: 'FAQ', link: 'https://google.aip.dev/faq' },
-      { text: 'Contributing', link: 'https://google.aip.dev/contributing' },
-      { text: 'API Linter ↗', link: 'https://linter.aip.dev/' },
-      { text: 'View on GitHub', link: 'https://github.com/aip-dev/google.aip.dev' },
+      { text: 'Browse AIPs', link: '/aip/general', activeMatch: '^/aip/' },
+      { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
+      { text: 'Guides', link: '/grpc/guides/?view=guides', activeMatch: '^/grpc/guides/' },
+      { text: 'Blog', link: '/grpc/blog/', activeMatch: '^/grpc/blog/' },
+      {
+        text: '更多',
+        items: [
+          { text: '项目文档', link: '/projects/' },
+          { text: 'AIP News', link: 'https://google.aip.dev/news' },
+          { text: 'FAQ', link: 'https://google.aip.dev/faq' },
+          { text: 'Contributing', link: 'https://google.aip.dev/contributing' },
+          { text: 'API Linter ↗', link: 'https://linter.aip.dev/' },
+          { text: 'Google AIP 源码', link: 'https://github.com/aip-dev/google.aip.dev' },
+        ],
+      },
       { component: 'ContentLanguageLink' },
     ],
     sidebar: {
@@ -171,7 +177,10 @@ export default defineConfig({
       provider: 'local',
       options: {
         translations: {
-          button: { buttonText: '搜索文档' },
+          button: {
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档',
+          },
         },
       },
     },

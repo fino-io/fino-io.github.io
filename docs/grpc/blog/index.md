@@ -2,10 +2,6 @@
 outline: false
 ---
 
-# Blog：官方博客
-
-gRPC 项目的官方动态、发布说明与工程实践文章。[查看官方 Blog](https://grpc.io/blog/)。
-
 ## 翻译状态：已发布 59/59
 
 ### 2026

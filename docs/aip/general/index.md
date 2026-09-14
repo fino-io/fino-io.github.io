@@ -3,12 +3,6 @@ title: 'General：通用 AIP'
 pageClass: aip-directory
 ---
 
-<nav class="aip-breadcrumb" aria-label="Breadcrumb">
-  <a href="/aip/">API Improvement Proposals</a>
-  <span aria-hidden="true">»</span>
-  <span>General AIPs</span>
-</nav>
-
 ### Meta
 
 | Number | Title |

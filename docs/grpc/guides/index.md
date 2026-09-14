@@ -2,10 +2,6 @@
 outline: false
 ---
 
-# Guides：使用指南
-
-gRPC 面向认证、截止时间、错误处理、重试与性能等常见场景的操作指南。[查看官方 Guides](https://grpc.io/docs/guides/)。
-
 ## 翻译状态：已发布 24/24
 
 | 主题 | 中文译文 |

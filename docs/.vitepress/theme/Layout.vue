@@ -1,9 +1,60 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
-import { useData } from 'vitepress'
+import { computed } from 'vue'
+import { useData, useRoute } from 'vitepress'
 import MermaidRenderer from './MermaidRenderer.vue'
 
+type DirectoryPage = {
+  eyebrow: string
+  title: string
+  description: string
+  count: string
+  searchLabel: string
+  parent: { label: string; href: string }
+  source: { label: string; href: string }
+}
+
+const directoryPages: Record<string, DirectoryPage> = {
+  '/aip/general': {
+    eyebrow: 'API IMPROVEMENT PROPOSALS',
+    title: 'General AIPs',
+    description: '按主题与编号浏览通用 API 设计规范，译文与英文原文一一对应。',
+    count: '72 篇规范',
+    searchLabel: '搜索 AIP',
+    parent: { label: 'API Improvement Proposals', href: '/aip/' },
+    source: { label: '查看官方 AIPs', href: 'https://google.aip.dev/general' },
+  },
+  '/grpc/guides': {
+    eyebrow: 'GRPC DOCUMENTATION',
+    title: 'Guides',
+    description: '面向认证、截止时间、错误处理、重试与性能等常见场景的操作指南。',
+    count: '24 篇指南',
+    searchLabel: '搜索 Guides',
+    parent: { label: 'gRPC', href: '/grpc/' },
+    source: { label: '查看官方 Guides', href: 'https://grpc.io/docs/guides/' },
+  },
+  '/grpc/blog': {
+    eyebrow: 'GRPC DOCUMENTATION',
+    title: 'Blog',
+    description: '按年份浏览 gRPC 的发布说明、工程实践与社区动态。',
+    count: '59 篇文章',
+    searchLabel: '搜索 Blog',
+    parent: { label: 'gRPC', href: '/grpc/' },
+    source: { label: '查看官方 Blog', href: 'https://grpc.io/blog/' },
+  },
+}
+
 const { frontmatter } = useData()
+const route = useRoute()
+const directoryPage = computed(() => directoryPages[normalizePath(route.path)] ?? null)
+
+function openSearch() {
+  document.querySelector<HTMLButtonElement>('.VPNavBar .DocSearch-Button')?.click()
+}
+
+function normalizePath(pathname: string) {
+  return pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+}
 
 function formatArticleDate(value: unknown) {
   if (value instanceof Date) return value.toISOString().slice(0, 10)
@@ -14,10 +65,34 @@ function formatArticleDate(value: unknown) {
 
 <template>
   <DefaultTheme.Layout>
-    <template #layout-bottom>
-      <MermaidRenderer />
-    </template>
     <template #doc-before>
+      <header v-if="directoryPage" class="directory-header">
+        <div class="directory-header-copy">
+          <nav class="directory-breadcrumb" aria-label="Breadcrumb">
+            <a :href="directoryPage.parent.href">{{ directoryPage.parent.label }}</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">{{ directoryPage.title }}</span>
+          </nav>
+          <p class="directory-eyebrow">{{ directoryPage.eyebrow }}</p>
+          <h1>{{ directoryPage.title }}</h1>
+          <p class="directory-description">{{ directoryPage.description }}</p>
+          <a class="directory-source" :href="directoryPage.source.href" target="_blank" rel="noreferrer">
+            {{ directoryPage.source.label }} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="directory-search" role="search" :aria-label="directoryPage.searchLabel">
+          <div class="directory-search-heading">
+            <span>快速查找</span>
+            <small>{{ directoryPage.count }}</small>
+          </div>
+          <button class="directory-search-trigger" type="button" @click="openSearch">
+            <span class="vpi-search" aria-hidden="true"></span>
+            <span class="directory-search-placeholder">{{ directoryPage.searchLabel }}</span>
+            <kbd aria-hidden="true">⌘ K</kbd>
+          </button>
+          <p class="directory-search-hint">从标题、目录和正文中查找</p>
+        </div>
+      </header>
       <header v-if="frontmatter.showArticleHeader" class="grpc-article-header">
         <p v-if="frontmatter.date" class="grpc-article-meta">
           {{ formatArticleDate(frontmatter.date) }}<span v-if="frontmatter.author?.name"> · {{ frontmatter.author.name }}</span>
@@ -27,6 +102,9 @@ function formatArticleDate(value: unknown) {
           {{ frontmatter.description }}
         </p>
       </header>
+    </template>
+    <template #layout-bottom>
+      <MermaidRenderer />
     </template>
   </DefaultTheme.Layout>
 </template>
