@@ -11,7 +11,7 @@ hero:
     alt: Fino
   actions:
     - theme: brand
-      text: Browse AIPs in Chinese
+      text: Google AIPs in Chinese
       link: /aip/
 
 features:

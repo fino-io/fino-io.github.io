@@ -104,7 +104,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/fino-io/fino-io.github.io' },
     ],
     nav: [
-      { text: 'Browse AIPs', link: '/aip/general', activeMatch: '^/aip/' },
+      { text: 'Google AIPs', link: '/aip/general', activeMatch: '^/aip/' },
       { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
       {
         text: '更多',
