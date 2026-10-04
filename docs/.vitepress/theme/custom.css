@@ -368,6 +368,11 @@ html:has(.VPSidebar.open) {
   border-top: 1px solid var(--vp-c-divider);
 }
 
+.Layout.rust-article .VPDoc h1 {
+  font-size: clamp(28px, 3vw, 32px);
+  line-height: 1.3;
+}
+
 .dark .VPNav,
 .dark .VPNavBar,
 .dark .VPNavScreen,
