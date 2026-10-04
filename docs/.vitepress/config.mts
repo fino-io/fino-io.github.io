@@ -106,6 +106,7 @@ export default defineConfig({
     nav: [
       { text: 'Google AIPs', link: '/aip/general', activeMatch: '^/aip/' },
       { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
+      { text: 'Rust', link: '/rust/', activeMatch: '^/rust/' },
       {
         text: '更多',
         items: [
@@ -170,6 +171,47 @@ export default defineConfig({
       '/grpc/guides/': grpcSidebar.guides,
       '/grpc/blog/': grpcSidebar.blog,
       '/grpc/': grpcSidebar.root,
+      '/rust/': [
+        { text: 'Rust 学习', items: [{ text: '学习路线与目录', link: '/rust/' }] },
+        {
+          text: '起步与语言基础',
+          items: [
+            { text: '01 · 环境与工具链', link: '/rust/toolchain' },
+            { text: '02 · 语法与基本类型', link: '/rust/basics' },
+            { text: '03 · 所有权与借用', link: '/rust/ownership' },
+            { text: '04 · 结构体、枚举与模式匹配', link: '/rust/data-modeling' },
+            { text: '05 · 字符串与集合', link: '/rust/collections' },
+            { text: '06 · 错误处理', link: '/rust/error-handling' },
+          ],
+        },
+        {
+          text: '类型系统与工程实践',
+          items: [
+            { text: '07 · 泛型与 Trait', link: '/rust/traits' },
+            { text: '08 · 生命周期', link: '/rust/lifetimes' },
+            { text: '09 · 模块、Cargo 与依赖', link: '/rust/project-structure' },
+            { text: '10 · 闭包与迭代器', link: '/rust/iterators' },
+            { text: '11 · 智能指针与内部可变性', link: '/rust/smart-pointers' },
+            { text: '12 · 测试、文档与质量检查', link: '/rust/testing' },
+          ],
+        },
+        {
+          text: '并发与进阶',
+          items: [
+            { text: '13 · 线程与并发', link: '/rust/concurrency' },
+            { text: '14 · Async 与 Tokio', link: '/rust/async' },
+            { text: '15 · 常用生态与技术选型', link: '/rust/ecosystem' },
+            { text: '16 · 宏、Unsafe 与性能', link: '/rust/advanced' },
+          ],
+        },
+        {
+          text: '项目与延伸阅读',
+          items: [
+            { text: '17 · 从练习到完整项目', link: '/rust/projects' },
+            { text: '18 · 资料、方向与常见问题', link: '/rust/resources' },
+          ],
+        },
+      ],
     },
     search: {
       provider: 'local',

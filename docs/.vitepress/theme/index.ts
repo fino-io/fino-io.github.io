@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme'
 import ContentLanguageLink from './ContentLanguageLink.vue'
 import Layout from './Layout.vue'
 import './custom.css'
+import LibraryHome from './LibraryHome.vue'
 
 function syncDocumentLayout(pathname: string) {
   const root = document.documentElement
@@ -22,5 +23,6 @@ export default {
     }
 
     app.component('ContentLanguageLink', ContentLanguageLink)
+    app.component('LibraryHome', LibraryHome)
   },
 }
