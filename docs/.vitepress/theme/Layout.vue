@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import { computed } from 'vue'
 import { useData, useRoute } from 'vitepress'
 import MermaidRenderer from './MermaidRenderer.vue'
+import ContentLanguageLink from './ContentLanguageLink.vue'
 
 type DirectoryPage = {
   eyebrow: string
@@ -77,6 +78,9 @@ function formatArticleDate(value: unknown) {
 
 <template>
   <DefaultTheme.Layout>
+    <template #nav-bar-content-after>
+      <ContentLanguageLink />
+    </template>
     <template #doc-before>
       <header v-if="directoryPage" class="directory-header">
         <div class="directory-header-copy">

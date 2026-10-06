@@ -37,7 +37,7 @@ export function getContentTranslation(relativePath: string): Translation | null 
     return { href: 'https://google.aip.dev/general', text: 'English' }
   }
 
-  if (relativePath === 'grpc/guides/index.md') {
+  if (relativePath === 'grpc/index.md' || relativePath === 'grpc/guides/index.md') {
     return { href: 'https://grpc.io/docs/guides/', text: 'English' }
   }
 

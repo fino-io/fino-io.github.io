@@ -25,7 +25,6 @@ const collections = computed(() => frontmatter.value.collections as Collection[]
       <nav class="library-sidebar-nav">
         <a class="is-active" href="/" aria-current="page">概览</a>
         <a v-for="collection in collections" :key="collection.link" :href="collection.link">{{ collection.title }}</a>
-        <a href="/projects/">项目文档</a>
       </nav>
       <div class="library-sidebar-heading library-sidebar-heading--reading">
         <span>阅读参考</span>

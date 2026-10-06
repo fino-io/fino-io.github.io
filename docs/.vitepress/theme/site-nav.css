@@ -1,0 +1,182 @@
+/* Shared site navigation, including pages with a document sidebar. */
+.Layout {
+  --vp-nav-height: 58px;
+  --site-nav-width: min(1440px, calc(100% - 48px));
+}
+
+.Layout .VPNav {
+  --library-surface: #fffdf8;
+  --library-muted: #f2eadf;
+  --vp-c-bg: #f8f5ee;
+  --vp-c-text-1: #261f1b;
+  --vp-c-text-2: #786b5f;
+  --vp-c-divider: #ded2c2;
+  --vp-c-brand-1: #c15f3c;
+  --vp-nav-bg-color: color-mix(in srgb, var(--vp-c-bg) 94%, var(--library-surface));
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.dark .Layout .VPNav {
+  --library-surface: #211e1b;
+  --library-muted: #2a2521;
+  --vp-c-bg: #171513;
+  --vp-c-text-1: #f4eee6;
+  --vp-c-text-2: #b8aa9b;
+  --vp-c-divider: #473d34;
+  --vp-c-brand-1: #f28a5d;
+}
+
+.Layout .VPNav {
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-nav-bg-color);
+  box-shadow: none;
+}
+
+.Layout .VPNavBar > .wrapper {
+  padding: 0;
+}
+
+.Layout .VPNavBar > .wrapper > .container {
+  gap: 12px;
+  width: var(--site-nav-width);
+  max-width: none;
+}
+
+.Layout .VPNavBarTitle .title {
+  gap: 12px;
+}
+
+.Layout .VPNavBarTitle .logo {
+  width: 88px;
+  height: 30px;
+  margin: 0;
+  object-fit: contain;
+}
+
+.Layout .VPNavBarTitle .title > span {
+  border-left: 1px solid var(--vp-c-divider);
+  padding-left: 12px;
+  color: var(--vp-c-brand-1);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.Layout .VPNavBar .content-body {
+  gap: 8px;
+  background: transparent;
+}
+
+.Layout .VPNavBarMenu {
+  order: 1;
+  align-items: center;
+  gap: 8px;
+}
+
+.Layout .VPNavBarMenuLink,
+.Layout .VPNavBarMenuGroup .button,
+.Layout .ContentLanguageLink {
+  min-height: 32px;
+  height: 32px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0 10px;
+  color: var(--vp-c-text-1);
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.Layout .VPNavBarMenuGroup .text {
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.Layout .VPNavBarMenuLink:hover,
+.Layout .VPNavBarMenuGroup .button:hover,
+.Layout .ContentLanguageLink:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--library-muted);
+}
+
+.Layout .VPNavBarSearch {
+  order: 2;
+  flex: 0 0 auto;
+  width: auto;
+  margin-left: auto;
+  padding: 0;
+}
+
+.Layout .VPNavBar .VPNavBarSearch #local-search {
+  display: block;
+}
+
+.Layout .DocSearch-Button {
+  height: 32px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--library-surface);
+}
+
+.Layout .DocSearch-Button:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.Layout .VPNavBarAppearance,
+.Layout .VPNavBarExtra,
+.Layout .VPNavBarHamburger {
+  order: 4;
+}
+
+.Layout .VPNavBarSocialLinks {
+  order: 5;
+}
+
+.Layout .VPNavBar .content-body > div::before,
+.Layout .VPNavBar .divider,
+.Layout .VPNavBarTranslations {
+  display: none;
+}
+
+.Layout .VPNavBarMenu { flex: 0 1 auto; }
+.Layout .ContentLanguageLink {
+  display: flex;
+  order: 3;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+.Layout .VPNavBarTitle .title { border-bottom: 0; }
+.Layout .VPNavBar .content-body { justify-content: flex-end; }
+.Layout .VPNav :is(a, button):focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+@media (min-width: 960px) {
+  .Layout .VPNavBar.has-sidebar > .wrapper { padding: 0; }
+  .Layout .VPNavBar.has-sidebar > .wrapper > .container { max-width: none; }
+}
+
+@media (max-width: 959px) {
+  .Layout .DocSearch-Button-Keys { display: none; }
+}
+
+@media (max-width: 767px) {
+  .Layout { --site-nav-width: calc(100% - 32px); }
+  .Layout .VPNavBarTitle .title {
+    gap: 8px;
+  }
+
+  .Layout .VPNavBarTitle .logo {
+    width: 72px;
+  }
+
+  .Layout .VPNavBarTitle .title > span {
+    padding-left: 8px;
+    font-size: 1.25rem;
+  }
+
+  .Layout .DocSearch-Button {
+    width: 32px;
+  }
+
+}

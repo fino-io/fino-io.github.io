@@ -99,7 +99,8 @@ export default defineConfig({
   },
   themeConfig: {
     logo: { src: '/fino-logo.png', alt: 'Fino' },
-    siteTitle: false,
+    logoLink: '/',
+    siteTitle: 'docs',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/fino-io/fino-io.github.io' },
     ],
@@ -107,18 +108,6 @@ export default defineConfig({
       { text: 'Google AIPs', link: '/aip/general', activeMatch: '^/aip/' },
       { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
       { text: 'Rust', link: '/rust/', activeMatch: '^/rust/' },
-      {
-        text: '更多',
-        items: [
-          { text: '项目文档', link: '/projects/' },
-          { text: 'AIP News', link: 'https://google.aip.dev/news' },
-          { text: 'FAQ', link: 'https://google.aip.dev/faq' },
-          { text: 'Contributing', link: 'https://google.aip.dev/contributing' },
-          { text: 'API Linter ↗', link: 'https://linter.aip.dev/' },
-          { text: 'Google AIP 源码', link: 'https://github.com/aip-dev/google.aip.dev' },
-        ],
-      },
-      { component: 'ContentLanguageLink' },
     ],
     sidebar: {
       '/aip/general': generalSidebar,
@@ -160,12 +149,6 @@ export default defineConfig({
             { text: 'Protocol Buffers', link: '/aip/general#protocol-buffers-protocol-buffers' },
             { text: '其他', link: '/aip/general#miscellaneous-其他' },
           ],
-        },
-      ],
-      '/projects/': [
-        {
-          text: '项目文档',
-          items: [{ text: '收录计划', link: '/projects/' }],
         },
       ],
       '/grpc/guides/': grpcSidebar.guides,

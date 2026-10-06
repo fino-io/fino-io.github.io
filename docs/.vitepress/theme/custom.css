@@ -228,6 +228,10 @@ html:has(.VPSidebar.open) {
   font-weight: 400;
 }
 
+.VPDoc h2 .header-anchor {
+  top: 28px;
+}
+
 .VPDoc h3 {
   font-size: 18px;
   font-weight: 500;
@@ -776,6 +780,10 @@ html:has(.VPSidebar.open) {
     border-top: 0;
     padding-top: 0;
     margin-top: 32px;
+  }
+
+  .aip-article .VPDoc h2 .header-anchor {
+    top: 0;
   }
 
   .aip-article .VPDoc h1 {

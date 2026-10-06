@@ -37,115 +37,6 @@
   outline-offset: 2px;
 }
 
-.fino-library-home .VPNav {
-  border-bottom: 1px solid var(--vp-c-divider);
-  background: var(--vp-nav-bg-color);
-  box-shadow: none;
-}
-
-.fino-library-home .VPNavBar > .wrapper {
-  padding: 0;
-}
-
-.fino-library-home .VPNavBar > .wrapper > .container {
-  gap: 12px;
-  width: var(--library-width);
-  max-width: none;
-}
-
-.fino-library-home .VPNavBarTitle .title {
-  gap: 12px;
-}
-
-.fino-library-home .VPNavBarTitle .logo {
-  width: 88px;
-  height: 30px;
-  margin: 0;
-  object-fit: contain;
-}
-
-.fino-library-home .VPNavBarTitle .title::after {
-  content: 'docs';
-  border-left: 1px solid var(--vp-c-divider);
-  padding-left: 12px;
-  color: var(--vp-c-brand-1);
-  font-size: 1.45rem;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.fino-library-home .VPNavBar .content-body {
-  gap: 8px;
-  background: transparent;
-}
-
-.fino-library-home .VPNavBarMenu {
-  order: 1;
-  align-items: center;
-  gap: 8px;
-}
-
-.fino-library-home .VPNavBarMenuLink,
-.fino-library-home .VPNavBarMenuGroup .button,
-.fino-library-home .ContentLanguageLink {
-  min-height: 32px;
-  height: 32px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0 10px;
-  color: var(--vp-c-text-1);
-  font-size: .82rem;
-  font-weight: 800;
-}
-
-.fino-library-home .VPNavBarMenuGroup .text {
-  font-size: .82rem;
-  font-weight: 800;
-}
-
-.fino-library-home .VPNavBarMenuLink:hover,
-.fino-library-home .VPNavBarMenuGroup .button:hover,
-.fino-library-home .ContentLanguageLink:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--library-muted);
-}
-
-.fino-library-home .VPNavBarSearch {
-  order: 2;
-  flex: 0 0 auto;
-  width: auto;
-  margin-left: auto;
-  padding: 0;
-}
-
-.fino-library-home .VPNavBar .VPNavBarSearch #local-search {
-  display: block;
-}
-
-.fino-library-home .DocSearch-Button {
-  height: 32px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--library-surface);
-}
-
-.fino-library-home .DocSearch-Button:hover {
-  border-color: var(--vp-c-brand-1);
-}
-
-.fino-library-home .VPNavBarAppearance,
-.fino-library-home .VPNavBarExtra,
-.fino-library-home .VPNavBarHamburger {
-  order: 3;
-}
-
-.fino-library-home .VPNavBarSocialLinks {
-  order: 4;
-}
-
-.fino-library-home .VPNavBar .content-body > div::before,
-.fino-library-home .VPNavBar .divider,
-.fino-library-home .VPNavBarTranslations,
 .fino-library-home .VPLocalNav {
   display: none;
 }
@@ -465,32 +356,11 @@
   .library-grid {
     grid-template-columns: 1fr;
   }
-
-  .fino-library-home .DocSearch-Button-Keys {
-    display: none;
-  }
 }
 
 @media (max-width: 767px) {
   .fino-library-home {
     --library-width: calc(100% - 32px);
-  }
-
-  .fino-library-home .VPNavBarTitle .title {
-    gap: 8px;
-  }
-
-  .fino-library-home .VPNavBarTitle .logo {
-    width: 72px;
-  }
-
-  .fino-library-home .VPNavBarTitle .title::after {
-    padding-left: 8px;
-    font-size: 1.25rem;
-  }
-
-  .fino-library-home .DocSearch-Button {
-    width: 32px;
   }
 
   .library-shell {
