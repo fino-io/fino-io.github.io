@@ -2,8 +2,6 @@
 outline: false
 ---
 
-## 翻译状态：已发布 24/24
-
 | 主题 | 中文译文 |
 | --- | --- |
 | Authentication | [认证](/grpc/guides/auth_zh) |

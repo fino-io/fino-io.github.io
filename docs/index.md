@@ -13,15 +13,15 @@ next: false
 
 ## 文档合集
 
-- **[Google AIPs](/aip/)** · 72 篇规范
+- **[Google AIPs](/aip/)** 72 篇规范
 
   从资源设计、标准方法到兼容性的 API 设计规范。
 
-- **[gRPC Guides](/grpc/guides/)** · 24 篇指南
+- **[gRPC Guides](/grpc/guides/)** 24 篇指南
 
   认证、截止时间、错误处理、重试与性能等常见场景指南。
 
-- **[gRPC Blog](/grpc/blog/)** · 59 篇文章
+- **[gRPC Blog](/grpc/blog/)** 59 篇文章
 
   发布说明、工程实践与社区动态。
 

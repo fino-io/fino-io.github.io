@@ -1,7 +1,7 @@
 ---
 title: Rust 学习指南
 description: 从工具链、所有权和类型系统到并发、异步与项目实战的完整中文 Rust 学习路线。
-pageClass: aip-directory
+pageClass: rust-directory
 outline: false
 aside: false
 prev: false
