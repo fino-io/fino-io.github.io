@@ -1,56 +1,31 @@
 ---
-layout: LibraryHome
-pageClass: fino-library-home
+pageClass: fino-home
+sidebar: false
 aside: false
 outline: false
-
-hero:
-  name: Fino
-  text: API 设计知识库
-  tagline: 面向团队与个人的 API 规范中文参考，帮助设计更清晰、更一致的接口。
-  actions:
-    - theme: brand
-      text: 浏览 AIP 中文版
-      link: /aip/
-    - theme: alt
-      text: 浏览 gRPC 中文版
-      link: /grpc/guides/
-
-collections:
-  - title: Google AIPs
-    count: 72
-    unit: 篇规范
-    label: API 设计原则与实践
-    description: 从资源设计、标准方法到兼容性，按主题与编号查阅通用 API 设计规范。
-    link: /aip/general/
-  - title: gRPC Guides
-    count: 24
-    unit: 篇指南
-    label: 常见场景与使用指南
-    description: 面向认证、截止时间、错误处理、重试与性能等常见场景的操作指南。
-    link: /grpc/guides/
-  - title: gRPC Blog
-    count: 59
-    unit: 篇文章
-    label: 工程实践与社区动态
-    description: 按年份浏览发布说明、工程实践与社区动态，了解 gRPC 的演进。
-    link: /grpc/blog/
-
-reading:
-  - label: AIP 121
-    title: 面向资源的设计
-    link: /aip/general/0121_zh
-  - label: AIP 131
-    title: 标准方法：Get
-    link: /aip/general/0131_zh
-  - label: AIP 158
-    title: 分页
-    link: /aip/general/0158_zh
-  - label: gRPC
-    title: 错误处理
-    link: /grpc/guides/error_zh
+prev: false
+next: false
 ---
+
+# API 设计知识库
+
+面向团队与个人的 API 规范中文参考，帮助设计更清晰、更一致的接口。
+
+## 文档合集
+
+| 合集 | 内容 | 收录 |
+| --- | --- | --- |
+| [Google AIPs](/aip/) | 从资源设计、标准方法到兼容性的 API 设计规范 | 72 篇规范 |
+| [gRPC Guides](/grpc/guides/) | 认证、截止时间、错误处理、重试与性能等常见场景指南 | 24 篇指南 |
+| [gRPC Blog](/grpc/blog/) | 发布说明、工程实践与社区动态 | 59 篇文章 |
+
+## 从这里开始
+
+- [AIP 121：面向资源的设计](/aip/general/0121_zh)
+- [AIP 131：标准方法 Get](/aip/general/0131_zh)
+- [AIP 158：分页](/aip/general/0158_zh)
+- [gRPC：错误处理](/grpc/guides/error_zh)
 
 ## 关于 Fino
 
-Fino 用来收录值得反复查阅的 API 设计规范。当前以 Google AIP 中文版为核心入口，帮助中文读者快速理解成熟 API 设计实践。
+Fino 收录值得反复查阅的 API 设计规范与工程实践，按主题与编号组织，方便学习和日常参考。中文译文与英文原文互链，规范含义以原文为准。

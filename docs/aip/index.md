@@ -10,12 +10,6 @@ next: false
 
 Google 的 API 设计决策与实践，以更适合中文阅读的方式持续整理。译文仅供学习和参考，规范含义以原文为准。
 
-## 浏览方式
-
-- [General：通用 AIP](/aip/general/)：覆盖跨产品适用的 API 设计原则，收录当前全部 72 篇通用 AIP。
-- [AIPs by Scope：按 Scope 浏览](/aip/scopes)：查看针对特定产品、平台或团队范围的 AIP。
-- [中文翻译与页面布局计划](/aip/translation-plan)：了解后续翻译优先级和页面组织方式。
-
 ## 文档入口
 
 | 范围 | 内容 | 入口 |
@@ -43,4 +37,4 @@ Google 的 API 设计决策与实践，以更适合中文阅读的方式持续�
 
 - General 当前收录的 72 篇 AIP 均已提供中文正文；每个条目页均保留对应的英文原文入口。
 
-翻译元数据与官方 Scope 配置保持同形，见 `docs/aip/general/zh.yaml`。
+后续整理安排见[中文翻译计划](/aip/translation-plan)。

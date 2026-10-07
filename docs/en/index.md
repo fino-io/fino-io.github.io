@@ -1,30 +1,31 @@
 ---
-layout: home
 pageClass: fino-home
-
-hero:
-  name: Fino
-  text: API Design Knowledge Base
-  tagline: A Chinese reference for API standards that helps teams and individuals design clearer, more consistent interfaces.
-  image:
-    src: /fino-mark.png
-    alt: Fino
-  actions:
-    - theme: brand
-      text: Google AIPs in Chinese
-      link: /aip/
-
-features:
-  - title: AIPs in Chinese
-    details: A Chinese reading edition of Google API Improvement Proposals. Translations are continuously refined; the original text remains authoritative.
-  - title: API Design
-    details: From general principles and resource design to standard methods, build a reusable language for discussing APIs.
-  - title: Structured Reading
-    details: Content is organized by topic and number, from design principles to precise specifications.
-  - title: Continuously Curated
-    details: Built to remain useful over time, with ongoing translation and reading aids.
+sidebar: false
+aside: false
+outline: false
+prev: false
+next: false
 ---
+
+# API Design Knowledge Base
+
+A Chinese reference for API standards that helps teams and individuals design clearer, more consistent interfaces.
+
+## Collections
+
+| Collection | Content | Entries |
+| --- | --- | --- |
+| [Google AIPs](/aip/) | API design standards covering resources, standard methods, and compatibility | 72 proposals |
+| [gRPC Guides](/grpc/guides/) | Guides to authentication, deadlines, error handling, retries, and performance | 24 guides |
+| [gRPC Blog](/grpc/blog/) | Release notes, engineering practices, and community updates | 59 articles |
+
+## Start Here
+
+- [AIP 121: Resource-oriented design](/aip/general/0121)
+- [AIP 131: Standard methods — Get](/aip/general/0131)
+- [AIP 158: Pagination](/aip/general/0158)
+- [gRPC: Error handling](/grpc/guides/error)
 
 ## About Fino
 
-Fino collects API design standards worth revisiting. The Chinese edition of Google AIPs is its core entry point, making mature API design practices easier to explore.
+Fino collects API design standards and engineering practices worth revisiting, organized by topic and number for learning and everyday reference. Chinese translations link to the English originals, which remain authoritative.

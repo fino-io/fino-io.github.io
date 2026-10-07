@@ -5,30 +5,8 @@
 }
 
 .Layout .VPNav {
-  --library-surface: #fffdf8;
-  --library-muted: #f2eadf;
-  --vp-c-bg: #f8f5ee;
-  --vp-c-text-1: #261f1b;
-  --vp-c-text-2: #786b5f;
-  --vp-c-divider: #ded2c2;
-  --vp-c-brand-1: #c15f3c;
-  --vp-nav-bg-color: color-mix(in srgb, var(--vp-c-bg) 94%, var(--library-surface));
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.dark .Layout .VPNav {
-  --library-surface: #211e1b;
-  --library-muted: #2a2521;
-  --vp-c-bg: #171513;
-  --vp-c-text-1: #f4eee6;
-  --vp-c-text-2: #b8aa9b;
-  --vp-c-divider: #473d34;
-  --vp-c-brand-1: #f28a5d;
-}
-
-.Layout .VPNav {
   border-bottom: 1px solid var(--vp-c-divider);
-  background: var(--vp-nav-bg-color);
+  background: var(--vp-c-bg);
   box-shadow: none;
 }
 
@@ -78,24 +56,24 @@
 .Layout .ContentLanguageLink {
   min-height: 32px;
   height: 32px;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid transparent;
   border-radius: 6px;
   padding: 0 10px;
   color: var(--vp-c-text-1);
   font-size: .82rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .Layout .VPNavBarMenuGroup .text {
   font-size: .82rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .Layout .VPNavBarMenuLink:hover,
 .Layout .VPNavBarMenuGroup .button:hover,
 .Layout .ContentLanguageLink:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--library-muted);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
 }
 
 .Layout .VPNavBarSearch {
@@ -114,7 +92,7 @@
   height: 32px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  background: var(--library-surface);
+  background: var(--vp-c-bg);
 }
 
 .Layout .DocSearch-Button:hover {

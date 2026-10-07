@@ -88,12 +88,7 @@ html:has(.VPSidebar.open) {
   mix-blend-mode: multiply;
 }
 
-.VPHome .VPHero .image-src {
-  mix-blend-mode: multiply;
-}
-
-.dark .VPNavBarTitle .logo,
-.dark .VPHome .VPHero .image-src {
+.dark .VPNavBarTitle .logo {
   filter: invert(1);
   mix-blend-mode: screen;
 }
@@ -272,65 +267,6 @@ html:has(.VPSidebar.open) {
 .mermaid-diagram svg {
   height: auto;
   max-width: 100%;
-}
-
-.VPHome {
-  background:
-    radial-gradient(circle at 76% 12%, #e8f0fe 0, rgb(232 240 254 / 0%) 24rem),
-    var(--vp-c-bg);
-}
-
-.VPHome .VPHero {
-  padding: 96px 24px 72px;
-}
-
-.VPHome .VPHero .name,
-.VPHome .VPHero .text {
-  font-weight: 400;
-  letter-spacing: -.04em;
-}
-
-.VPHome .VPHero .name {
-  color: var(--vp-c-brand-1);
-}
-
-.VPHome .VPHero .image-container {
-  transform: none;
-}
-
-.VPHome .VPHero .image-bg {
-  background: rgb(26 115 232 / 12%);
-  filter: blur(56px);
-}
-
-.VPHome .VPHero .image-src {
-  max-width: 280px;
-}
-
-.VPHome .VPFeatures {
-  padding: 0 24px 56px;
-}
-
-.VPHome .VPFeature {
-  height: 100%;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-  box-shadow: none;
-}
-
-.VPHome .VPFeature .title {
-  font-weight: 500;
-}
-
-.VPHome .vp-doc.container {
-  max-width: 1152px;
-  padding: 0 24px 72px;
-}
-
-.VPHome .vp-doc h2 {
-  border-top: 0;
-  padding-top: 0;
 }
 
 .Layout:is(.fino-home, .aip-directory, .aip-article) .VPNavBarMenuGroup {
@@ -946,14 +882,6 @@ html:has(.VPSidebar.open) {
 }
 
 @media (max-width: 720px) {
-  .VPHome .VPHero {
-    padding-top: 56px;
-  }
-
-  .VPHome .VPHero .image-src {
-    max-width: 190px;
-  }
-
   .directory-header {
     align-items: stretch;
     flex-direction: column;
