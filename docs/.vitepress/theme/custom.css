@@ -37,121 +37,6 @@ html:has(.VPSidebar.open) {
   overflow: hidden;
 }
 
-@media (min-width: 960px) {
-  /* Keep document scrolling inside the app so the fixed sidebar is the only visible bar. */
-  html.fino-document-layout,
-  html.fino-document-layout body {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  html.fino-document-layout #app {
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-
-  html.fino-document-layout #app::-webkit-scrollbar {
-    display: none;
-  }
-
-  html.fino-document-layout .VPSidebar {
-    scrollbar-width: auto;
-    scrollbar-color: auto;
-  }
-}
-
-.VPNav {
-  border-bottom: 1px solid var(--vp-c-divider);
-  box-shadow: 0 1px 2px rgb(60 64 67 / 8%);
-}
-
-.VPNavBar .container {
-  max-width: 1240px;
-}
-
-.VPNavBar .title {
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: -.01em;
-}
-
-.VPNavBar .title::before {
-  content: none;
-}
-
-.VPNavBarTitle .logo {
-  width: auto;
-  height: 30px;
-  margin-right: 10px;
-  mix-blend-mode: multiply;
-}
-
-.dark .VPNavBarTitle .logo {
-  filter: invert(1);
-  mix-blend-mode: screen;
-}
-
-.VPNavBarMenuLink {
-  align-items: center;
-  height: 34px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  padding: 0 10px;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.VPNavBarMenuLink.active {
-  border-color: color-mix(in srgb, var(--vp-c-brand-1) 28%, var(--vp-c-divider));
-  background: var(--vp-c-bg-soft);
-}
-
-.VPNavBarMenuGroup .button {
-  height: 34px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  padding: 0 10px;
-}
-
-.VPNavBarMenuGroup .text {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.VPNavBarMenuGroup.active .button {
-  border-color: color-mix(in srgb, var(--vp-c-brand-1) 28%, var(--vp-c-divider));
-  background: var(--vp-c-bg-soft);
-}
-
-/* Keep the keyboard shortcut alive while moving the visible trigger into directories. */
-.VPNavBar .VPNavBarSearch {
-  flex: 0 0 0;
-  width: 0;
-  padding: 0;
-}
-
-.VPNavBar .VPNavBarSearch #local-search {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .VPNavBar .content-body {
-    justify-content: flex-start;
-  }
-
-  .VPNavBar .VPNavBarMenu {
-    flex: 1 1 auto;
-  }
-
-  .VPNavBar .ContentLanguageLink {
-    margin-left: auto;
-  }
-}
-
 :is(.aip-directory, .aip-article) .VPSidebar .vp-external-link-icon::after {
   display: none;
 }
@@ -271,26 +156,6 @@ html:has(.VPSidebar.open) {
 
 .Layout:is(.fino-home, .aip-directory, .aip-article) .VPNavBarMenuGroup {
   display: none;
-}
-
-.ContentLanguageLink {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  min-height: 32px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  gap: 6px;
-  padding: 0 12px;
-  color: var(--vp-c-text-1);
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.ContentLanguageLink:hover {
-  color: var(--vp-c-brand-1);
 }
 
 :is(.fino-home, .aip-directory, .aip-article, .grpc-directory, .grpc-article) .VPNavBarTranslations {
@@ -516,34 +381,6 @@ html:has(.VPSidebar.open) {
 
 /* Keep the General directory on the same grid as google.aip.dev/general. */
 @media (min-width: 960px) {
-  .ContentLanguageLink {
-    display: flex;
-  }
-  .Layout .VPNavBar.has-sidebar > .wrapper > .container {
-    max-width: 1240px;
-  }
-
-  .Layout .VPNavBar.has-sidebar > .wrapper {
-    padding: 0 32px;
-  }
-
-  .VPNavBar.has-sidebar > .wrapper > .container > .title {
-    position: static;
-    z-index: auto;
-    width: auto;
-    padding: 0;
-  }
-
-  .VPNavBar.has-sidebar > .wrapper > .container > .content {
-    position: static;
-    z-index: auto;
-    padding: 0;
-  }
-
-  .Layout:is(.aip-directory, .aip-article) .VPNavBar.has-sidebar {
-    background-color: var(--vp-nav-bg-color);
-  }
-
   .Layout:is(.aip-directory, .aip-article) .VPContent {
     width: min(1120px, calc(100% - 48px));
     margin: 80px auto 0;

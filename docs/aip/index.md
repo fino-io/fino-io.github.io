@@ -21,17 +21,17 @@ Google 的 API 设计决策与实践，以更适合中文阅读的方式持续�
 
 | 分类 | 入口 |
 | --- | --- |
-| 元规范 | [Meta](/aip/general/#meta-元规范) |
-| 流程 | [Process](/aip/general/#process-流程) |
-| API 概念 | [API Concepts](/aip/general/#api-concepts-api-概念) |
-| 资源设计 | [Resource Design](/aip/general/#resource-design-资源设计) |
-| 操作 | [Operations](/aip/general/#operations-操作) |
-| 字段 | [Fields](/aip/general/#fields-字段) |
-| 设计模式 | [Design Patterns](/aip/general/#design-patterns-设计模式) |
-| 兼容性与版本管理 | [Compatibility and Versioning](/aip/general/#compatibility-and-versioning-兼容性与版本管理) |
-| 润色 | [Polish](/aip/general/#polish-润色) |
-| Protocol Buffers | [Protocol Buffers](/aip/general/#protocol-buffers-protocol-buffers) |
-| 其他 | [Miscellaneous](/aip/general/#miscellaneous-其他) |
+| 元规范 | [Meta](/aip/general/#meta) |
+| 流程 | [Process](/aip/general/#process) |
+| API 概念 | [API Concepts](/aip/general/#api-concepts) |
+| 资源设计 | [Resource Design](/aip/general/#resource-design) |
+| 操作 | [Operations](/aip/general/#operations) |
+| 字段 | [Fields](/aip/general/#fields) |
+| 设计模式 | [Design Patterns](/aip/general/#design-patterns) |
+| 兼容性与版本管理 | [Compatibility and Versioning](/aip/general/#compatibility-and-versioning) |
+| 润色 | [Polish](/aip/general/#polish) |
+| Protocol Buffers | [Protocol Buffers](/aip/general/#protocol-buffers) |
+| 其他 | [Miscellaneous](/aip/general/#miscellaneous) |
 
 ## 翻译状态
 

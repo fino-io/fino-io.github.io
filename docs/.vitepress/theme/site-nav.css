@@ -22,6 +22,12 @@
 
 .Layout .VPNavBarTitle .title {
   gap: 12px;
+  border-bottom: 0;
+  letter-spacing: -.01em;
+}
+
+.Layout .VPNavBarTitle .title::before {
+  content: none;
 }
 
 .Layout .VPNavBarTitle .logo {
@@ -29,6 +35,12 @@
   height: 30px;
   margin: 0;
   object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.dark .Layout .VPNavBarTitle .logo {
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 
 .Layout .VPNavBarTitle .title > span {
@@ -43,12 +55,14 @@
 .Layout .VPNavBar .content-body {
   gap: 8px;
   background: transparent;
+  justify-content: flex-end;
 }
 
 .Layout .VPNavBarMenu {
   order: 1;
   align-items: center;
   gap: 8px;
+  flex: 0 1 auto;
 }
 
 .Layout .VPNavBarMenuLink,
@@ -62,6 +76,9 @@
   color: var(--vp-c-text-1);
   font-size: .82rem;
   font-weight: 500;
+  align-items: center;
+  line-height: normal;
+  white-space: nowrap;
 }
 
 .Layout .VPNavBarMenuGroup .text {
@@ -69,6 +86,8 @@
   font-weight: 500;
 }
 
+.Layout .VPNavBarMenuLink.active,
+.Layout .VPNavBarMenuGroup.active .button,
 .Layout .VPNavBarMenuLink:hover,
 .Layout .VPNavBarMenuGroup .button:hover,
 .Layout .ContentLanguageLink:hover {
@@ -115,15 +134,15 @@
   display: none;
 }
 
-.Layout .VPNavBarMenu { flex: 0 1 auto; }
 .Layout .ContentLanguageLink {
   display: flex;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
   order: 3;
   flex-shrink: 0;
   margin-left: 0;
 }
-.Layout .VPNavBarTitle .title { border-bottom: 0; }
-.Layout .VPNavBar .content-body { justify-content: flex-end; }
 .Layout .VPNav :is(a, button):focus-visible {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 2px;
@@ -132,6 +151,20 @@
 @media (min-width: 960px) {
   .Layout .VPNavBar.has-sidebar > .wrapper { padding: 0; }
   .Layout .VPNavBar.has-sidebar > .wrapper > .container { max-width: none; }
+
+  .VPNavBar.has-sidebar > .wrapper > .container > .title {
+    position: static;
+    z-index: auto;
+    width: auto;
+    padding: 0;
+  }
+
+  .VPNavBar.has-sidebar > .wrapper > .container > .content {
+    position: static;
+    z-index: auto;
+    padding: 0;
+  }
+
 }
 
 @media (max-width: 959px) {

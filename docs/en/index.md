@@ -13,11 +13,19 @@ A Chinese reference for API standards that helps teams and individuals design cl
 
 ## Collections
 
-| Collection | Content | Entries |
-| --- | --- | --- |
-| [Google AIPs](/aip/) | API design standards covering resources, standard methods, and compatibility | 72 proposals |
-| [gRPC Guides](/grpc/guides/) | Guides to authentication, deadlines, error handling, retries, and performance | 24 guides |
-| [gRPC Blog](/grpc/blog/) | Release notes, engineering practices, and community updates | 59 articles |
+- **[Google AIPs](/aip/)** · 72 proposals
+
+  API design standards covering resources, standard methods, and compatibility.
+
+- **[gRPC Guides](/grpc/guides/)** · 24 guides
+
+  Guides to authentication, deadlines, error handling, retries, and performance.
+
+- **[gRPC Blog](/grpc/blog/)** · 59 articles
+
+  Release notes, engineering practices, and community updates.
+
+Collection directories are in Chinese. The articles below open the English editions.
 
 ## Start Here
 
