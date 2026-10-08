@@ -5,6 +5,7 @@ import { instance } from '@viz-js/viz'
 import { defineConfig } from 'vitepress'
 import { isAipArticle } from './aip'
 import { isGrpcArticle } from './grpc'
+import { pythonSidebar } from './python'
 
 const graphviz = await instance()
 const configDir = dirname(fileURLToPath(import.meta.url))
@@ -108,6 +109,7 @@ export default defineConfig({
       { text: 'Google AIPs', link: '/aip/general', activeMatch: '^/aip/' },
       { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
       { text: 'Rust', link: '/rust/', activeMatch: '^/rust/' },
+      { text: 'Python', link: '/python/', activeMatch: '^/python/' },
     ],
     sidebar: {
       '/aip/general': generalSidebar,
@@ -154,6 +156,7 @@ export default defineConfig({
       '/grpc/guides/': grpcSidebar.guides,
       '/grpc/blog/': grpcSidebar.blog,
       '/grpc/': grpcSidebar.root,
+      '/python/': pythonSidebar,
       '/rust/': [
         { text: 'Rust 学习', items: [{ text: '学习路线与目录', link: '/rust/' }] },
         {

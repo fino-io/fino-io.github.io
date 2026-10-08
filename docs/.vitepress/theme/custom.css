@@ -37,7 +37,17 @@ html:has(.VPSidebar.open) {
   overflow: hidden;
 }
 
-/* VitePress owns the sidebar, article and outline column breakpoints. */
+/* AIP-style outline: a plain list with a blue vertical guide. */
+.VPDocAsideOutline .content {
+  border-left: 2px solid var(--vp-c-brand-1);
+}
+
+/* Narrow screens use VitePress's compact, expandable page outline. */
+.VPLocalNavOutlineDropdown button {
+  color: var(--vp-c-brand-1);
+  font-size: 13px;
+}
+
 .VPDoc .content-container {
   max-width: 760px;
 }

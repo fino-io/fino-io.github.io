@@ -22,6 +22,13 @@ const guidesDirectoryPage: DirectoryPage = {
 }
 
 const directoryPages: Record<string, DirectoryPage> = {
+  '/python': {
+    title: 'Python 学习指南',
+    description: '从语言基础到工程实践，循序掌握数据处理、接口开发与项目交付。',
+    count: '18 篇学习文档 · 3 个实战项目',
+    parent: null,
+    source: { label: '查看 Python 官方教程', href: 'https://docs.python.org/zh-cn/3/tutorial/' },
+  },
   '/rust': {
     title: 'Rust 学习指南',
     description: '从语言基础到工程实践，循序掌握所有权、类型系统、并发与异步开发。',
