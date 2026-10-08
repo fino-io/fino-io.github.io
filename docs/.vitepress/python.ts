@@ -31,11 +31,13 @@ export const pythonSidebar = [
     ],
   },
   {
-    text: '项目实战',
+    text: '项目与延伸阅读',
     items: [
       { text: '16 · CSV 消费报告 CLI', link: '/python/project-cli' },
       { text: '17 · 任务管理 API', link: '/python/project-api' },
       { text: '18 · 月度消费分析', link: '/python/project-data' },
+      { text: '19 · 从练习到完整项目', link: '/python/projects' },
+      { text: '20 · 资料、方向与常见问题', link: '/python/resources' },
     ],
   },
 ]
