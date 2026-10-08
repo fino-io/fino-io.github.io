@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import { useData, useRoute } from 'vitepress'
 import MermaidRenderer from './MermaidRenderer.vue'
 import ContentLanguageLink from './ContentLanguageLink.vue'
+import { goChapterCount } from '../go'
 
 type DirectoryPage = {
   title: string
@@ -24,10 +25,10 @@ const guidesDirectoryPage: DirectoryPage = {
 const directoryPages: Record<string, DirectoryPage> = {
   '/go': {
     title: 'Go 学习指南',
-    description: '从语言基础到服务交付，循序掌握类型、并发、测试与工程实践。',
-    count: '22 篇学习文档 · 2 个实战项目',
+    description: '按 roadmap.sh Go 逐项学习，用语义实验、完整示例与项目验证掌握程度。',
+    count: `${goChapterCount} 章学习文档 · 2 个综合项目`,
     parent: null,
-    source: { label: '查看 Go 官方学习资源', href: 'https://go.dev/learn/' },
+    source: { label: '查看 roadmap.sh Go', href: 'https://roadmap.sh/golang' },
   },
   '/python': {
     title: 'Python 学习指南',

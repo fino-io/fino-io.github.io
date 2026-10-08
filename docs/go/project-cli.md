@@ -1,10 +1,12 @@
 ---
-title: 19 · 实战一：日志统计 CLI
-description: Go 中文学习指南：实战一：日志统计 CLI，包含概念、示例、练习与验收。
+title: 39 · 实战：日志统计 CLI
+description: 完整源码、合成输入、错误路径与升级任务。
 pageClass: aip-article
 ---
 
-# 19 · 实战一：日志统计 CLI
+# 39 · 实战：日志统计 CLI
+
+学习前应能完成：[文件、流式 I/O 与 JSON](./io)、[Map、集合与逗号 ok](./maps)、[表驱动、替身与 HTTP 测试](./testing)。
 
 本章目标：交付一个可从文件或标准输入读取日志的 CLI，具备稳定输出、错误行号与测试。
 
@@ -234,7 +236,15 @@ ERROR 1
 
 验证退出码应使用编译后的程序；`go run` 对子进程失败的呈现不等于直接调用程序。Windows 在 PowerShell 可用 `Get-Content sample.jsonl | ./logstats.exe`，构建时指定 `.exe`。
 
-## 扩展与验收
+## 与路线节点的关系
+
+这个项目综合 Reader、bufio、JSON、map、flag、error 与 testing。不是读完例子即毕业：要能改变输入协议并维护错误契约。
+
+使用 <a href="/go/data/logs-valid.jsonl" download>正常数据</a>与 <a href="/go/data/logs-invalid.jsonl" download>失败数据</a>验证。失败数据第 3 行 DEBUG 不被接受，应退出 1，stderr 含行号，stdout 空。把标准输入读取失败、输出设备失败、未知参数各写成独立断言，覆盖资源边界而非只测 counts。
+
+升级任务：核心 summarize 不变，Cobra 包装 stats 子命令；新增 JSON 输出由具名响应结构体定义；增日期字段前定义 RFC3339 与业务时区。保持旧输入是否兼容是显式决策，不靠“解析成功就接受所有字段”。
+
+## 扩展与验收 {#lab}
 
 1. 增加 `-format json`，输出具名结构体，并测试稳定字段。
 2. 支持按日期聚合时先定义输入时间格式与时区，不仅按字符串切片。

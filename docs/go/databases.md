@@ -1,10 +1,12 @@
 ---
-title: 15 · SQL、连接池与事务
-description: Go 中文学习指南：SQL、连接池与事务，包含概念、示例、练习与验收。
+title: 28 · pgx、SQL、连接池与 GORM
+description: 数据库查询、事务、约束、迁移和 ORM 边界。
 pageClass: aip-article
 ---
 
-# 15 · SQL、连接池与事务
+# 28 · pgx、SQL、连接池与 GORM
+
+学习前应能完成：[HTTP 服务与 Web 框架](./web)、[Context、截止时间与取消](./context)。
 
 本章目标：可靠地访问关系数据库，理解连接池、参数化查询与事务一致性。
 
@@ -80,7 +82,51 @@ return nil
 
 集成测试使用隔离数据库，执行真实迁移，验证唯一约束、回滚与查询边界。mock 可验证调用，但不能发现 SQL 与数据库真实行为差异。
 
-## 练习与验收
+## pgx 原生连接池与 database/sql 选择
+
+PostgreSQL 专用程序可直接用 pgxpool，利用 PostgreSQL 类型与协议能力；需要 database/sql 统一接口或已有中间层时用 pgx/stdlib。二者选一套主要池管理，不为同一逻辑重复建两个池。设置连接预算考虑实例数：每实例 20 个连接、10 实例就是最多约 200，不能只按单进程吞吐调大。
+
+pgxpool 片段，ctx 与 DSN 来自启动配置：
+
+```go
+pool, err := pgxpool.New(ctx, dsn)
+if err != nil { return err }
+defer pool.Close()
+if err := pool.Ping(ctx); err != nil { return err }
+var title string
+err = pool.QueryRow(ctx, "SELECT title FROM tasks WHERE id=$1", id).Scan(&title)
+if errors.Is(err, pgx.ErrNoRows) { return ErrNotFound }
+if err != nil { return fmt.Errorf("查任务: %w", err) }
+```
+
+运行前创建 tasks 表并插入 fixture，不把没建表的片段宣称可直接运行。启动连接与每次请求共享服务生命周期；关闭池晚于在途请求收拢。
+
+## GORM 的明确查询与错误
+
+GORM 是对象映射和查询构造工具，不消除 SQL、约束和事务知识。用结构体映射时写明主键、列与关系；对用户输入选择允许更新的列，避免把请求对象直接全量 Save。
+
+片段，需要已配置 db 与 Task 模型：
+
+```go
+var task Task
+err := db.WithContext(ctx).First(&task, id).Error
+if errors.Is(err, gorm.ErrRecordNotFound) { return ErrNotFound }
+if err != nil { return err }
+result := db.WithContext(ctx).Model(&Task{}).Where("id = ?", id).
+    Updates(map[string]any{"title": title, "done": false})
+if result.Error != nil { return result.Error }
+if result.RowsAffected != 1 { return ErrNotFound }
+```
+
+结构体 Updates 默认可能忽略零值，显式 map 或 Select 才能表达更新 done=false；这属于 ORM 与 API 契约交界，必须测试。AutoMigrate 不能替代经过审查的生产迁移，删除列、回填数据和回滚方案需要显式设计。参考：[GORM 更新](https://gorm.io/docs/update.html)。
+
+## N+1、执行计划和数据库约束
+
+列表里逐任务查询用户会产生 N+1 次调用；通过 JOIN 或适当批量加载解决，测试查询数量与执行计划。索引并非越多越好，写入维护与空间也有代价。用户归属和游标列按查询模式建立组合索引，EXPLAIN 用真实量级验证。
+
+应用检查唯一性仍可能在并发中冲突，数据库 UNIQUE 才是最终约束；捕获唯一冲突后映射业务冲突。事务无法自动保证外部 HTTP 副作用一致，需 outbox 或其他明确流程，别在持锁事务里等待不可控网络。
+
+## 练习与验收 {#lab}
 
 1. 将任务 API 的内存存储替换成 PostgreSQL，保留 HTTP 契约。
 2. 在事务第二步制造失败，确认第一步没有持久化。

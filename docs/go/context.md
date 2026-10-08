@@ -1,10 +1,12 @@
 ---
-title: 12 · Context、取消与并发编排
-description: Go 中文学习指南：Context、取消与并发编排，包含概念、示例、练习与验收。
+title: 19 · Context、截止时间与取消
+description: 传播预算、原因、请求元数据与相关任务取消。
 pageClass: aip-article
 ---
 
-# 12 · Context、取消与并发编排
+# 19 · Context、截止时间与取消
+
+学习前应能完成：[Channel、缓冲与 select](./channels)、[错误模型、包装与恢复](./errors)。
 
 本章目标：在调用链传播截止时间与取消，保证任务失败后能收拢资源。
 
@@ -84,7 +86,42 @@ groupCtx 在首个错误或 Wait 返回时取消，不能在 Wait 后继续拿�
 
 CPU 循环定期观察 Done，长期后台任务由服务生命周期 Context 管理。不要起一个额外 goroutine 只为把任意阻塞函数包装成“有超时”，这通常会留下仍在执行的任务。
 
-## 练习与验收
+## 取消原因、超时和父子关系的实验
+
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+)
+
+func main() {
+	parent, cancel := context.WithCancelCause(context.Background())
+	child, stop := context.WithCancel(parent)
+	defer stop()
+	reason := errors.New("用户取消批次")
+	cancel(reason)
+	<-child.Done()
+	fmt.Println(child.Err())          // context canceled
+	fmt.Println(context.Cause(child)) // 用户取消批次
+}
+```
+
+Err 表达 canceled 或 deadline exceeded，Cause 可携带更具体原因。子 Context 被取消不取消父 Context；父取消会向子传播。Done 关闭是广播信号，多接收者都能观察到。Value 沿父链查找，键用自定义不可导出类型避免冲突，仅保存请求 ID 等少量请求范围数据。
+
+## 总预算怎样计算
+
+用户给请求 2 秒预算，业务先查数据库花 0.8 秒，再调用外部服务，剩余只有约 1.2 秒。后者从请求 ctx 派生自己的最多 1 秒预算，比重新 Background + 2 秒更可控。最早截止时间生效，客户端 Timeout 与 Context 也不能用来让总操作无限增长。
+
+重试退避等待也使用 timer + ctx.Done，不能直接 time.Sleep 忽略取消。cancel 在创建后 defer，资源与 goroutine 退出仍由实际操作观察信号保证。把阻塞函数扔进 goroutine 后外围超时返回，未取消的操作依然执行，是常见泄漏来源。
+
+## 请求工作与后台工作分开建生命周期
+
+请求结束后继续必要工作，应有明确任务队列、幂等 ID、持久化和服务级取消策略。Context.WithoutCancel 可剥离父取消，但不附带 deadline，不能把它当可靠后台执行系统。本地学习先用服务级 Context，生产任务按真实交付保证复用队列方案。
+
+## 练习与验收 {#lab}
 
 1. 让一个 worker 故意返回错误，确认其他 worker 停止接收任务。
 2. 测试调用前已经取消、执行中取消与正常完成。

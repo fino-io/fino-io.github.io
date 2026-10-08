@@ -1,10 +1,12 @@
 ---
-title: 06 · 错误处理与边界设计
-description: Go 中文学习指南：错误处理与边界设计，包含概念、示例、练习与验收。
+title: 15 · 错误模型、包装与恢复
+description: 错误链、自定义类型、哨兵、panic、recover 与堆栈。
 pageClass: aip-article
 ---
 
-# 06 · 错误处理与边界设计
+# 15 · 错误模型、包装与恢复
+
+学习前应能完成：[接口、断言与动态类型](./interfaces)、[函数、闭包与调用语义](./functions)。
 
 本章目标：让失败路径与正常路径一样明确，调用方能稳定识别并处理错误。
 
@@ -62,7 +64,70 @@ panic 会沿调用栈展开并执行 defer。recover 只有在同一 goroutine �
 
 文件写入要同时关注 Write 与 Close 的失败；读文件通常主要关注读取错误。事务 Commit、HTTP 编码等影响结果的操作不能一律忽略。
 
-## 练习与验收
+## 自定义错误与 errors.As
+
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+type ValidationError struct{ Field, Message string }
+
+func (e *ValidationError) Error() string { return e.Field + ": " + e.Message }
+
+func validate(title string) error {
+	if title == "" {
+		return &ValidationError{Field: "title", Message: "不能为空"}
+	}
+	return nil
+}
+
+func main() {
+	err := fmt.Errorf("创建任务: %w", validate(""))
+	var invalid *ValidationError
+	if errors.As(err, &invalid) {
+		fmt.Println(invalid.Field, invalid.Message)
+	}
+}
+```
+
+As 的目标是一个非 nil 指针，指向可以承接错误的变量，因此是 `&invalid`，不是未初始化 invalid 自身。错误文字给人读，字段/哨兵/类型给程序识别。包装暴露底层错误意味着调用方可能依赖它，公共包要考虑兼容性；不想公开驱动细节时转换为业务错误。
+
+## 多个错误与清理策略
+
+`errors.Unwrap` 处理普通单错误链，`errors.Is/As` 还能遍历实现多错误展开的链，`errors.Join` 用于保留多个失败。Write 失败后 Close 也可能失败，报告主错误并保留清理错误；不要先记录同一失败再层层包装又打印三次。
+
+运行边界有三种选择：终止当前操作、有限重试、降级返回部分结果。每种都需接口约定；错误发生不等于程序一定崩溃，也不等于应该无条件继续。
+
+## recover 的局部性与堆栈
+
+```go
+package main
+
+import (
+	"fmt"
+	"runtime/debug"
+)
+
+func guarded() {
+	defer func() {
+		if value := recover(); value != nil {
+			fmt.Printf("panic=%v\n", value)
+			stack := debug.Stack()
+			fmt.Println(len(stack) > 0) // true
+		}
+	}()
+	panic("内部不变量失败")
+}
+func main() { guarded(); fmt.Println("调用方继续") }
+```
+
+recover 结束正在展开的 panic 后，guarded 返回，不从 panic 那一行继续执行。只能在该 goroutine 的 deferred 调用中直接恢复；父 goroutine 的 recover 不覆盖子任务。堆栈有诊断价值，不直接返回给外部客户端。普通 error 值不会自动带完整堆栈，错误上下文应在必要边界补齐，调试可用 Delve 和运行日志。
+
+## 练习与验收 {#lab}
 
 1. 为标题校验返回 ErrInvalidTitle，在入口给出中文提示。
 2. 将文件错误包装两次，确认 errors.Is 仍能识别不存在。

@@ -1,10 +1,12 @@
 ---
-title: 09 · 泛型与常用容器算法
-description: Go 中文学习指南：泛型与常用容器算法，包含概念、示例、练习与验收。
+title: 13 · 泛型函数、泛型类型与约束
+description: 类型集合、推断、底层类型与通用容器设计。
 pageClass: aip-article
 ---
 
-# 09 · 泛型与常用容器算法
+# 13 · 泛型函数、泛型类型与约束
+
+学习前应能完成：[接口、断言与动态类型](./interfaces)、[Map、集合与逗号 ok](./maps)。
 
 本章目标：理解类型参数解决的问题，优先使用已有算法，避免把普通业务写成复杂泛型框架。
 
@@ -58,7 +60,40 @@ func main() {
 
 示例以 Go 1.22 为基线，因此不依赖后来引入的迭代器 API。查询标准库时注意对应 API 的版本标记。
 
-## 练习与验收
+## 泛型类型：保持元素类型的集合
+
+```go
+package main
+
+import "fmt"
+
+type Set[T comparable] map[T]struct{}
+
+func (s Set[T]) Has(value T) bool { _, ok := s[value]; return ok }
+func (s Set[T]) Add(value T)      { s[value] = struct{}{} }
+
+type UserID int64
+
+func main() {
+	ids := make(Set[UserID])
+	ids.Add(UserID(7))
+	fmt.Println(ids.Has(7), ids.Has(8)) // true false
+}
+```
+
+与 map[any]struct{} 相比，Set[UserID] 静态限制元素集合，混入 string 会编译失败。nil 集合 Add 会 panic，这个类型的构造契约是先 make；如果要求零值可用，可用封装结构体并在 Add 时初始化，但要解释增加的状态与接收者需求。
+
+## 类型约束和运行时接口分工
+
+片段：`type Integer interface { ~int | ~int64 }`，以 Integer 约束的泛型函数能使用该集合共有的操作。行为接口要求方法，类型约束可以规定底层类型；含类型项的接口不能当普通运行时变量。不能写一个任意 T 的加法，再指望运行时判断它是否为数字。
+
+泛型类型实例化通常显式写 Set[UserID]，函数参数可以帮助推断 T。推断失败时显式指定类型参数；不要让类型参数只出现在返回值并期望编译器从调用方目标类型自动猜出来。方法不能引入独立新类型参数，把此类操作写为泛型函数。
+
+## 数据结构复杂度与选择
+
+去重保序用 map 记录已见值 + result 切片，平均 O(n)；排序后去重 O(n log n) 但可复用已有排序数据。comparable 不保证业务相等语义，指针按地址、NaN 不自等；需要业务键时先提取稳定 key，再使用集合。泛型不能消除这些语义决定。
+
+## 练习与验收 {#lab}
 
 1. 给 Unique 添加整数与自定义 UserID 的测试。
 2. 用 SortFunc 按任务标题长度排序，同长按标题排序。

@@ -1,0 +1,2450 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08",
+  "source": {
+    "url": "https://roadmap.sh/golang",
+    "snapshotUrl": "https://roadmap.sh/pdfs/roadmaps/golang.pdf",
+    "sha256": "d8931fda36764f60fdfbb47b4c7617ce94b936cff2e9a35833149020cf19fe5b",
+    "note": "按官方 PDF 逐项人工核对；不伪造上游节点 ID。扩展章节 roadmapTopics 为空。"
+  },
+  "groups": [
+    "起步与语言基础",
+    "类型系统与代码组织",
+    "并发与取消",
+    "标准库与测试",
+    "应用生态",
+    "工具链与交付",
+    "运行时与高级主题",
+    "项目与学习资料"
+  ],
+  "chapters": [
+    {
+      "id": "introduction",
+      "order": 1,
+      "title": "Go 的定位、历史与运行模型",
+      "group": "起步与语言基础",
+      "summary": "为什么选择 Go；历史、编译模型与学习实验。",
+      "prerequisites": [],
+      "roadmapTopics": [
+        "Introduction to Go",
+        "Why use Go",
+        "History of Go"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "introduction-section-1",
+          "title": "Go 为什么出现，适合什么工作"
+        },
+        {
+          "id": "introduction-section-2",
+          "title": "从源码到进程"
+        },
+        {
+          "id": "introduction-section-3",
+          "title": "实验：构建产物不是源码的实时视图"
+        },
+        {
+          "id": "introduction-section-4",
+          "title": "语言约束怎样帮助协作"
+        },
+        {
+          "id": "introduction-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "introduction-lab",
+          "kind": "chapter",
+          "url": "/go/introduction#lab"
+        }
+      ]
+    },
+    {
+      "id": "toolchain",
+      "order": 2,
+      "title": "环境、命令与文档查询",
+      "group": "起步与语言基础",
+      "summary": "建立模块，掌握构建、运行、安装、清理与文档命令。",
+      "prerequisites": [
+        "introduction"
+      ],
+      "roadmapTopics": [
+        "Setting up the Environment",
+        "Hello World in Go",
+        "go command",
+        "Commands & Docs",
+        "go run",
+        "go build",
+        "go install",
+        "go fmt",
+        "go mod",
+        "go test",
+        "go clean",
+        "go doc",
+        "go version"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "toolchain-section-1",
+          "title": "安装与确认环境"
+        },
+        {
+          "id": "toolchain-section-2",
+          "title": "创建第一个模块"
+        },
+        {
+          "id": "toolchain-section-3",
+          "title": "常用命令"
+        },
+        {
+          "id": "toolchain-section-4",
+          "title": "go clean、install 与 build 的差异"
+        },
+        {
+          "id": "toolchain-section-5",
+          "title": "一次编译问题的诊断顺序"
+        },
+        {
+          "id": "toolchain-section-6",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "toolchain-lab",
+          "kind": "chapter",
+          "url": "/go/toolchain#lab"
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "order": 3,
+      "title": "变量、常量、iota 与作用域",
+      "group": "起步与语言基础",
+      "summary": "解释零值、短声明、常量表达式和变量遮蔽。",
+      "prerequisites": [
+        "toolchain"
+      ],
+      "roadmapTopics": [
+        "Variables & Constants",
+        "var vs :=",
+        "Zero Values",
+        "const and iota",
+        "Scope and Shadowing"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "variables-section-1",
+          "title": "var 与短声明的区别"
+        },
+        {
+          "id": "variables-section-2",
+          "title": "零值不是“未定义”"
+        },
+        {
+          "id": "variables-section-3",
+          "title": "const 与 iota：编译期表达式"
+        },
+        {
+          "id": "variables-section-4",
+          "title": "错误变量遮蔽的诊断"
+        },
+        {
+          "id": "variables-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "variables-lab",
+          "kind": "chapter",
+          "url": "/go/variables#lab"
+        }
+      ]
+    },
+    {
+      "id": "basics",
+      "order": 4,
+      "title": "基本类型、数值与类型转换",
+      "group": "起步与语言基础",
+      "summary": "掌握整数、浮点、复数、布尔、rune 与转换边界。",
+      "prerequisites": [
+        "variables"
+      ],
+      "roadmapTopics": [
+        "Data Types",
+        "Boolean",
+        "Numeric Types",
+        "Integers (Signed, Unsigned)",
+        "Floating Points",
+        "Complex Numbers",
+        "Runes",
+        "Type Conversion"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "basics-section-1",
+          "title": "整数与固定宽度"
+        },
+        {
+          "id": "basics-section-2",
+          "title": "浮点：表示误差与比较"
+        },
+        {
+          "id": "basics-section-3",
+          "title": "复数、布尔与 rune"
+        },
+        {
+          "id": "basics-section-4",
+          "title": "命名类型与别名"
+        },
+        {
+          "id": "basics-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "basics-lab",
+          "kind": "chapter",
+          "url": "/go/basics#lab"
+        }
+      ]
+    },
+    {
+      "id": "control-flow",
+      "order": 5,
+      "title": "条件、循环与控制转移",
+      "group": "起步与语言基础",
+      "summary": "理解 switch、range、break、continue 与 goto 的边界。",
+      "prerequisites": [
+        "variables",
+        "basics"
+      ],
+      "roadmapTopics": [
+        "Conditionals",
+        "if",
+        "if-else",
+        "switch",
+        "Loops",
+        "for loop",
+        "for range",
+        "Iterating Maps",
+        "Iterating Strings",
+        "break",
+        "continue",
+        "goto (discouraged)"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "control-flow-section-1",
+          "title": "if 初始化与 switch"
+        },
+        {
+          "id": "control-flow-section-2",
+          "title": "range 的值是复制"
+        },
+        {
+          "id": "control-flow-section-3",
+          "title": "break、continue 与标签"
+        },
+        {
+          "id": "control-flow-section-4",
+          "title": "循环的不变量与复杂度"
+        },
+        {
+          "id": "control-flow-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "control-flow-lab",
+          "kind": "chapter",
+          "url": "/go/control-flow#lab"
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "order": 6,
+      "title": "字符串、数组与切片模型",
+      "group": "起步与语言基础",
+      "summary": "通过容量、共享存储和转换实验理解容器语义。",
+      "prerequisites": [
+        "basics",
+        "control-flow"
+      ],
+      "roadmapTopics": [
+        "Composite Types",
+        "Arrays",
+        "Slices",
+        "Capacity and Growth",
+        "make()",
+        "Slice to Array Conversion",
+        "Array to Slice Conversion",
+        "Strings",
+        "Raw String Literals",
+        "Interpreted String Literals"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "collections-section-1",
+          "title": "容器怎么选"
+        },
+        {
+          "id": "collections-section-2",
+          "title": "看清共享与复制"
+        },
+        {
+          "id": "collections-section-3",
+          "title": "中文文本与有序词频"
+        },
+        {
+          "id": "collections-section-4",
+          "title": "原始字符串与解释字符串"
+        },
+        {
+          "id": "collections-section-5",
+          "title": "容量增长与三索引切片实验"
+        },
+        {
+          "id": "collections-section-6",
+          "title": "数组与切片的双向转换"
+        },
+        {
+          "id": "collections-section-7",
+          "title": "一个容器实验该验证什么"
+        },
+        {
+          "id": "collections-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "collections-lab",
+          "kind": "chapter",
+          "url": "/go/collections#lab"
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "order": 7,
+      "title": "Map、集合与逗号 ok",
+      "group": "起步与语言基础",
+      "summary": "键的可比较性、读写、删除、排序与集合运算。",
+      "prerequisites": [
+        "collections"
+      ],
+      "roadmapTopics": [
+        "Maps",
+        "Comma-Ok Idiom"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "maps-section-1",
+          "title": "创建、读取、更新与删除"
+        },
+        {
+          "id": "maps-section-2",
+          "title": "可比较的键与动态类型陷阱"
+        },
+        {
+          "id": "maps-section-3",
+          "title": "Map 元素不可取地址"
+        },
+        {
+          "id": "maps-section-4",
+          "title": "集合与确定性输出"
+        },
+        {
+          "id": "maps-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "maps-lab",
+          "kind": "chapter",
+          "url": "/go/maps#lab"
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "order": 8,
+      "title": "结构体、Tag 与嵌入",
+      "group": "起步与语言基础",
+      "summary": "字段建模、JSON、组合与方法提升的真实语义。",
+      "prerequisites": [
+        "basics",
+        "maps"
+      ],
+      "roadmapTopics": [
+        "Structs",
+        "Struct Tags & JSON",
+        "Embedding Structs"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "types-section-1",
+          "title": "结构体、方法与组合"
+        },
+        {
+          "id": "types-section-2",
+          "title": "小接口放在使用方"
+        },
+        {
+          "id": "types-section-3",
+          "title": "接口值为什么可能不等于 nil"
+        },
+        {
+          "id": "types-section-4",
+          "title": "Tag、字段可见性与 JSON 的真实关系"
+        },
+        {
+          "id": "types-section-5",
+          "title": "嵌入是方法提升，不是继承"
+        },
+        {
+          "id": "types-section-6",
+          "title": "可比较性与值语义"
+        },
+        {
+          "id": "types-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "types-lab",
+          "kind": "chapter",
+          "url": "/go/types#lab"
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "order": 9,
+      "title": "函数、闭包与调用语义",
+      "group": "类型系统与代码组织",
+      "summary": "多返回值、可变参数、命名返回与闭包捕获。",
+      "prerequisites": [
+        "control-flow",
+        "collections"
+      ],
+      "roadmapTopics": [
+        "Functions",
+        "Functions Basics",
+        "Variadic Functions",
+        "Multiple Return Values",
+        "Anonymous Functions",
+        "Closures",
+        "Named Return Values",
+        "Call by Value"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "functions-section-1",
+          "title": "参数始终按值传递"
+        },
+        {
+          "id": "functions-section-2",
+          "title": "defer 的执行顺序"
+        },
+        {
+          "id": "functions-section-3",
+          "title": "函数值与闭包"
+        },
+        {
+          "id": "functions-section-4",
+          "title": "可变参数与共享切片"
+        },
+        {
+          "id": "functions-section-5",
+          "title": "闭包是状态，不只是匿名语法"
+        },
+        {
+          "id": "functions-section-6",
+          "title": "命名返回值与 defer 的交互"
+        },
+        {
+          "id": "functions-section-7",
+          "title": "函数契约写进签名与测试"
+        },
+        {
+          "id": "functions-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "functions-lab",
+          "kind": "chapter",
+          "url": "/go/functions#lab"
+        }
+      ]
+    },
+    {
+      "id": "pointers",
+      "order": 10,
+      "title": "指针、别名与内存概览",
+      "group": "类型系统与代码组织",
+      "summary": "用实验解释结构体、map、切片的值复制和共享。",
+      "prerequisites": [
+        "functions",
+        "types"
+      ],
+      "roadmapTopics": [
+        "Pointers",
+        "Pointers Basics",
+        "Pointers with Structs",
+        "With Maps & Slices",
+        "Get a Brief Overview",
+        "Memory Management",
+        "Garbage Collection"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "pointers-section-1",
+          "title": "修改对象和替换指针不是一回事"
+        },
+        {
+          "id": "pointers-section-2",
+          "title": "map 与切片的复制模型"
+        },
+        {
+          "id": "pointers-section-3",
+          "title": "地址安全与内存管理概览"
+        },
+        {
+          "id": "pointers-section-4",
+          "title": "资源不是对象内存"
+        },
+        {
+          "id": "pointers-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "pointers-lab",
+          "kind": "chapter",
+          "url": "/go/pointers#lab"
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "order": 11,
+      "title": "方法集、值与指针接收者",
+      "group": "类型系统与代码组织",
+      "summary": "区分普通调用的自动取地址和接口方法集。",
+      "prerequisites": [
+        "pointers"
+      ],
+      "roadmapTopics": [
+        "Methods and Interfaces",
+        "Methods vs Functions",
+        "Pointer Receivers",
+        "Value Receivers"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "methods-section-1",
+          "title": "值接收者与指针接收者"
+        },
+        {
+          "id": "methods-section-2",
+          "title": "为什么不能只按“对象大小”选接收者"
+        },
+        {
+          "id": "methods-section-3",
+          "title": "方法值与方法表达式"
+        },
+        {
+          "id": "methods-section-4",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "methods-lab",
+          "kind": "chapter",
+          "url": "/go/methods#lab"
+        }
+      ]
+    },
+    {
+      "id": "interfaces",
+      "order": 12,
+      "title": "接口、断言与动态类型",
+      "group": "类型系统与代码组织",
+      "summary": "隐式实现、嵌入、空接口、类型断言和 type switch。",
+      "prerequisites": [
+        "methods"
+      ],
+      "roadmapTopics": [
+        "Interfaces",
+        "Interfaces Basics",
+        "Empty Interfaces",
+        "Embedding Interfaces",
+        "Type Assertions",
+        "Type Switch"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "interfaces-section-1",
+          "title": "用一个小接口替换真实 I/O"
+        },
+        {
+          "id": "interfaces-section-2",
+          "title": "嵌入接口与行为交集"
+        },
+        {
+          "id": "interfaces-section-3",
+          "title": "动态类型、any、断言与 type switch"
+        },
+        {
+          "id": "interfaces-section-4",
+          "title": "nil 与比较的两个坑"
+        },
+        {
+          "id": "interfaces-section-5",
+          "title": "为什么接口应该由使用方定义"
+        },
+        {
+          "id": "interfaces-section-6",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "interfaces-lab",
+          "kind": "chapter",
+          "url": "/go/interfaces#lab"
+        }
+      ]
+    },
+    {
+      "id": "generics",
+      "order": 13,
+      "title": "泛型函数、泛型类型与约束",
+      "group": "类型系统与代码组织",
+      "summary": "类型集合、推断、底层类型与通用容器设计。",
+      "prerequisites": [
+        "interfaces",
+        "maps"
+      ],
+      "roadmapTopics": [
+        "Generics",
+        "Why Generics?",
+        "Generic Functions",
+        "Generic Types / Interfaces",
+        "Type Constraints",
+        "Type Inference"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "generics-section-1",
+          "title": "重复来自类型时才考虑泛型"
+        },
+        {
+          "id": "generics-section-2",
+          "title": "约束与类型集合"
+        },
+        {
+          "id": "generics-section-3",
+          "title": "复用标准库"
+        },
+        {
+          "id": "generics-section-4",
+          "title": "泛型类型：保持元素类型的集合"
+        },
+        {
+          "id": "generics-section-5",
+          "title": "类型约束和运行时接口分工"
+        },
+        {
+          "id": "generics-section-6",
+          "title": "数据结构复杂度与选择"
+        },
+        {
+          "id": "generics-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "generics-lab",
+          "kind": "chapter",
+          "url": "/go/generics#lab"
+        }
+      ]
+    },
+    {
+      "id": "modules",
+      "order": 14,
+      "title": "包、模块、依赖与发布",
+      "group": "类型系统与代码组织",
+      "summary": "导入规则、MVS、vendor、工作区与版本发布。",
+      "prerequisites": [
+        "toolchain",
+        "functions"
+      ],
+      "roadmapTopics": [
+        "Code Organization",
+        "Modules & Dependencies",
+        "go mod init",
+        "go mod tidy",
+        "go mod vendor",
+        "Packages",
+        "Package Import Rules",
+        "Using 3rd Party Packages",
+        "Publishing Modules"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "modules-section-1",
+          "title": "从一个包开始"
+        },
+        {
+          "id": "modules-section-2",
+          "title": "模块与版本"
+        },
+        {
+          "id": "modules-section-3",
+          "title": "本地开发与私有模块"
+        },
+        {
+          "id": "modules-section-4",
+          "title": "从模块路径到一次包导入"
+        },
+        {
+          "id": "modules-section-5",
+          "title": "MVS 与直接/间接依赖"
+        },
+        {
+          "id": "modules-section-6",
+          "title": "工作区实验"
+        },
+        {
+          "id": "modules-section-7",
+          "title": "发布模块与 v2 的步骤"
+        },
+        {
+          "id": "modules-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "modules-lab",
+          "kind": "chapter",
+          "url": "/go/modules#lab"
+        }
+      ]
+    },
+    {
+      "id": "errors",
+      "order": 15,
+      "title": "错误模型、包装与恢复",
+      "group": "类型系统与代码组织",
+      "summary": "错误链、自定义类型、哨兵、panic、recover 与堆栈。",
+      "prerequisites": [
+        "interfaces",
+        "functions"
+      ],
+      "roadmapTopics": [
+        "Error Handling",
+        "Error Handling Basics",
+        "error interface",
+        "errors.New",
+        "fmt.Errorf",
+        "Wrapping/Unwrapping Errors",
+        "Sentinel Errors",
+        "panic and recover",
+        "Stack Traces & Debugging"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "errors-section-1",
+          "title": "先处理错误，再继续工作"
+        },
+        {
+          "id": "errors-section-2",
+          "title": "分清错误的职责"
+        },
+        {
+          "id": "errors-section-3",
+          "title": "panic、recover 与清理"
+        },
+        {
+          "id": "errors-section-4",
+          "title": "自定义错误与 errors.As"
+        },
+        {
+          "id": "errors-section-5",
+          "title": "多个错误与清理策略"
+        },
+        {
+          "id": "errors-section-6",
+          "title": "recover 的局部性与堆栈"
+        },
+        {
+          "id": "errors-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "errors-lab",
+          "kind": "chapter",
+          "url": "/go/errors#lab"
+        }
+      ]
+    },
+    {
+      "id": "concurrency",
+      "order": 16,
+      "title": "Goroutine 与任务生命周期",
+      "group": "并发与取消",
+      "summary": "调度、启动、等待、泄漏与并发规模。",
+      "prerequisites": [
+        "functions",
+        "pointers"
+      ],
+      "roadmapTopics": [
+        "Concurrency",
+        "Goroutines"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "concurrency-section-1",
+          "title": "并发不自动提升速度"
+        },
+        {
+          "id": "concurrency-section-2",
+          "title": "使用 Mutex 与 WaitGroup"
+        },
+        {
+          "id": "concurrency-section-3",
+          "title": "Channel 表达通信与所有权"
+        },
+        {
+          "id": "concurrency-section-4",
+          "title": "如何选同步方式"
+        },
+        {
+          "id": "concurrency-section-5",
+          "title": "调度与阻塞的运行模型"
+        },
+        {
+          "id": "concurrency-section-6",
+          "title": "谁等待后台任务"
+        },
+        {
+          "id": "concurrency-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "concurrency-lab",
+          "kind": "chapter",
+          "url": "/go/concurrency#lab"
+        }
+      ]
+    },
+    {
+      "id": "channels",
+      "order": 17,
+      "title": "Channel、缓冲与 select",
+      "group": "并发与取消",
+      "summary": "发送接收、关闭、缓冲、方向类型与 select 行为。",
+      "prerequisites": [
+        "concurrency"
+      ],
+      "roadmapTopics": [
+        "Channels",
+        "Buffered vs Unbuffered",
+        "Select Statement"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "channels-section-1",
+          "title": "五种状态决定能否继续"
+        },
+        {
+          "id": "channels-section-2",
+          "title": "方向类型表达谁拥有哪项操作"
+        },
+        {
+          "id": "channels-section-3",
+          "title": "select 的就绪规则"
+        },
+        {
+          "id": "channels-section-4",
+          "title": "缓冲只是排队能力"
+        },
+        {
+          "id": "channels-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "channels-lab",
+          "kind": "chapter",
+          "url": "/go/channels#lab"
+        }
+      ]
+    },
+    {
+      "id": "synchronization",
+      "order": 18,
+      "title": "Mutex、WaitGroup 与同步",
+      "group": "并发与取消",
+      "summary": "保护不变量、等待、Once、Cond、原子与竞态检测。",
+      "prerequisites": [
+        "concurrency",
+        "maps"
+      ],
+      "roadmapTopics": [
+        "sync Package",
+        "Mutexes",
+        "WaitGroups",
+        "Race Detection"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "synchronization-section-1",
+          "title": "完整临界区"
+        },
+        {
+          "id": "synchronization-section-2",
+          "title": "Mutex、RWMutex 与 WaitGroup"
+        },
+        {
+          "id": "synchronization-section-3",
+          "title": "Once、Cond 与 atomic 的角色"
+        },
+        {
+          "id": "synchronization-section-4",
+          "title": "Race 检测与逻辑错误"
+        },
+        {
+          "id": "synchronization-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "synchronization-lab",
+          "kind": "chapter",
+          "url": "/go/synchronization#lab"
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "order": 19,
+      "title": "Context、截止时间与取消",
+      "group": "并发与取消",
+      "summary": "传播预算、原因、请求元数据与相关任务取消。",
+      "prerequisites": [
+        "channels",
+        "errors"
+      ],
+      "roadmapTopics": [
+        "context Package",
+        "Deadlines & Cancellations",
+        "Common Usecases"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "context-section-1",
+          "title": "Context 是协作取消"
+        },
+        {
+          "id": "context-section-2",
+          "title": "Channel 操作也要能退出"
+        },
+        {
+          "id": "context-section-3",
+          "title": "复用 errgroup 汇总任务"
+        },
+        {
+          "id": "context-section-4",
+          "title": "超时预算与常见错误"
+        },
+        {
+          "id": "context-section-5",
+          "title": "取消原因、超时和父子关系的实验"
+        },
+        {
+          "id": "context-section-6",
+          "title": "总预算怎样计算"
+        },
+        {
+          "id": "context-section-7",
+          "title": "请求工作与后台工作分开建生命周期"
+        },
+        {
+          "id": "context-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "context-lab",
+          "kind": "chapter",
+          "url": "/go/context#lab"
+        }
+      ]
+    },
+    {
+      "id": "patterns",
+      "order": 20,
+      "title": "Worker Pool、Fan-in 与 Pipeline",
+      "group": "并发与取消",
+      "summary": "完整有界流水线、关闭协调、错误与取消验收。",
+      "prerequisites": [
+        "channels",
+        "synchronization",
+        "context"
+      ],
+      "roadmapTopics": [
+        "Worker Pools",
+        "Concurrency Patterns",
+        "fan-in",
+        "fan-out",
+        "pipeline"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "patterns-section-1",
+          "title": "角色与边界"
+        },
+        {
+          "id": "patterns-section-2",
+          "title": "可运行的平方汇总流水线"
+        },
+        {
+          "id": "patterns-section-3",
+          "title": "验证提前退出"
+        },
+        {
+          "id": "patterns-section-4",
+          "title": "错误、背压和顺序"
+        },
+        {
+          "id": "patterns-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "patterns-lab",
+          "kind": "chapter",
+          "url": "/go/patterns#lab"
+        }
+      ]
+    },
+    {
+      "id": "io",
+      "order": 21,
+      "title": "文件、流式 I/O 与 JSON",
+      "group": "标准库与测试",
+      "summary": "Read/Write 契约、扫描、限额、解码和数据边界。",
+      "prerequisites": [
+        "interfaces",
+        "errors"
+      ],
+      "roadmapTopics": [
+        "Standard Library",
+        "I/O & File Handling",
+        "os",
+        "bufio",
+        "encoding/json"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "io-section-1",
+          "title": "用 Reader 与 Writer 统一 I/O"
+        },
+        {
+          "id": "io-section-2",
+          "title": "一个严格 JSON 解码器"
+        },
+        {
+          "id": "io-section-3",
+          "title": "常用标准库与约定"
+        },
+        {
+          "id": "io-section-4",
+          "title": "Reader 的 n 与 err 要同时处理"
+        },
+        {
+          "id": "io-section-5",
+          "title": "文件写入与替换"
+        },
+        {
+          "id": "io-section-6",
+          "title": "JSON 数字、null 与未知字段"
+        },
+        {
+          "id": "io-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "io-lab",
+          "kind": "chapter",
+          "url": "/go/io#lab"
+        }
+      ]
+    },
+    {
+      "id": "standard-library",
+      "order": 22,
+      "title": "flag、time、regexp 与 embed",
+      "group": "标准库与测试",
+      "summary": "参数、时间、正则与编译期资源的具体使用。",
+      "prerequisites": [
+        "io"
+      ],
+      "roadmapTopics": [
+        "flag",
+        "time",
+        "regexp",
+        "go:embed for embedding"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "standard-library-section-1",
+          "title": "flag：解析与退出分离"
+        },
+        {
+          "id": "standard-library-section-2",
+          "title": "time：时间点、时长与时区"
+        },
+        {
+          "id": "standard-library-section-3",
+          "title": "regexp：编译、匹配与数据提取"
+        },
+        {
+          "id": "standard-library-section-4",
+          "title": "embed：编译时资源"
+        },
+        {
+          "id": "standard-library-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "standard-library-lab",
+          "kind": "chapter",
+          "url": "/go/standard-library#lab"
+        }
+      ]
+    },
+    {
+      "id": "testing",
+      "order": 23,
+      "title": "表驱动、替身与 HTTP 测试",
+      "group": "标准库与测试",
+      "summary": "隔离、Mock/Stub、httptest、覆盖率与 Fuzz。",
+      "prerequisites": [
+        "interfaces",
+        "errors"
+      ],
+      "roadmapTopics": [
+        "Testing & Benchmarking",
+        "testing package basics",
+        "Table-driven Tests",
+        "Mocks and Stubs",
+        "httptest for HTTP Tests",
+        "Coverage"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "testing-section-1",
+          "title": "从表驱动测试开始"
+        },
+        {
+          "id": "testing-section-2",
+          "title": "测试边界而非模仿实现"
+        },
+        {
+          "id": "testing-section-3",
+          "title": "Fuzz：寻找没想到的输入"
+        },
+        {
+          "id": "testing-section-4",
+          "title": "最小质量流程"
+        },
+        {
+          "id": "testing-section-5",
+          "title": "Stub 与 Mock：替身验证什么"
+        },
+        {
+          "id": "testing-section-6",
+          "title": "Recorder 与真实测试 Server 的区别"
+        },
+        {
+          "id": "testing-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "testing-lab",
+          "kind": "chapter",
+          "url": "/go/testing#lab"
+        }
+      ]
+    },
+    {
+      "id": "benchmarking",
+      "order": 24,
+      "title": "Benchmark 与分配实验",
+      "group": "标准库与测试",
+      "summary": "可信计时、输入规模、分配统计与结果比较。",
+      "prerequisites": [
+        "testing",
+        "collections"
+      ],
+      "roadmapTopics": [
+        "Benchmarks"
+      ],
+      "courses": [
+        "official",
+        "lgwt"
+      ],
+      "lessons": [
+        {
+          "id": "benchmarking-section-1",
+          "title": "同一任务、两种实现"
+        },
+        {
+          "id": "benchmarking-section-2",
+          "title": "如何解释复杂度"
+        },
+        {
+          "id": "benchmarking-section-3",
+          "title": "可复现比较"
+        },
+        {
+          "id": "benchmarking-section-4",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [
+        "benchmark-sizes"
+      ],
+      "exercises": [
+        {
+          "id": "benchmarking-lab",
+          "kind": "chapter",
+          "url": "/go/benchmarking#lab"
+        }
+      ]
+    },
+    {
+      "id": "cli",
+      "order": 25,
+      "title": "CLI 与终端界面生态",
+      "group": "应用生态",
+      "summary": "Cobra、urfave/cli 与 Bubble Tea 的接口和选型。",
+      "prerequisites": [
+        "standard-library",
+        "modules",
+        "testing"
+      ],
+      "roadmapTopics": [
+        "Ecosystem & Popular Libraries",
+        "Building CLIs",
+        "Cobra",
+        "urfave/cli",
+        "bubbletea"
+      ],
+      "courses": [
+        "official",
+        "schwarz",
+        "grider"
+      ],
+      "lessons": [
+        {
+          "id": "cli-section-1",
+          "title": "什么情况从 flag 升级"
+        },
+        {
+          "id": "cli-section-2",
+          "title": "Cobra 的完整最小入口"
+        },
+        {
+          "id": "cli-section-3",
+          "title": "urfave/cli 的对应职责"
+        },
+        {
+          "id": "cli-section-4",
+          "title": "Bubble Tea：事件驱动而非循环打印"
+        },
+        {
+          "id": "cli-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "cli-lab",
+          "kind": "chapter",
+          "url": "/go/cli#lab"
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "order": 26,
+      "title": "HTTP 服务与 Web 框架",
+      "group": "应用生态",
+      "summary": "请求边界与 Gin、Echo、Fiber、Beego 的差异。",
+      "prerequisites": [
+        "io",
+        "context",
+        "testing"
+      ],
+      "roadmapTopics": [
+        "Web Development",
+        "net/http (standard)",
+        "Frameworks (Optional)",
+        "gin",
+        "echo",
+        "fiber",
+        "beego"
+      ],
+      "courses": [
+        "official",
+        "schwarz",
+        "grider"
+      ],
+      "lessons": [
+        {
+          "id": "web-section-1",
+          "title": "最小 HTTP 服务"
+        },
+        {
+          "id": "web-section-2",
+          "title": "请求处理的顺序"
+        },
+        {
+          "id": "web-section-3",
+          "title": "常用接口约定"
+        },
+        {
+          "id": "web-section-4",
+          "title": "中间件与生命周期"
+        },
+        {
+          "id": "web-section-5",
+          "title": "框架节点逐项对照"
+        },
+        {
+          "id": "web-section-6",
+          "title": "一个 Gin 路由怎样保持职责清楚"
+        },
+        {
+          "id": "web-section-7",
+          "title": "路由、中间件与响应提交"
+        },
+        {
+          "id": "web-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "web-lab",
+          "kind": "chapter",
+          "url": "/go/web#lab"
+        }
+      ]
+    },
+    {
+      "id": "http",
+      "order": 27,
+      "title": "HTTP 客户端、超时与重试",
+      "group": "应用生态",
+      "summary": "服务章节的延伸：连接复用、有限重试与本地验证。",
+      "prerequisites": [
+        "web"
+      ],
+      "roadmapTopics": [],
+      "courses": [
+        "official",
+        "schwarz",
+        "grider"
+      ],
+      "lessons": [
+        {
+          "id": "http-section-1",
+          "title": "复用 Client，传递 Context"
+        },
+        {
+          "id": "http-section-2",
+          "title": "分别控制哪些时间"
+        },
+        {
+          "id": "http-section-3",
+          "title": "重试不是“失败就再来一次”"
+        },
+        {
+          "id": "http-section-4",
+          "title": "可验证的调用矩阵"
+        },
+        {
+          "id": "http-section-5",
+          "title": "Transport 与请求体复用"
+        },
+        {
+          "id": "http-section-6",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "http-lab",
+          "kind": "chapter",
+          "url": "/go/http#lab"
+        }
+      ]
+    },
+    {
+      "id": "databases",
+      "order": 28,
+      "title": "pgx、SQL、连接池与 GORM",
+      "group": "应用生态",
+      "summary": "数据库查询、事务、约束、迁移和 ORM 边界。",
+      "prerequisites": [
+        "web",
+        "context"
+      ],
+      "roadmapTopics": [
+        "ORMs & DB Access",
+        "pgx",
+        "GORM"
+      ],
+      "courses": [
+        "official",
+        "schwarz",
+        "grider"
+      ],
+      "lessons": [
+        {
+          "id": "databases-section-1",
+          "title": "SQL 基础先于 ORM"
+        },
+        {
+          "id": "databases-section-2",
+          "title": "参数化查询与结果关闭"
+        },
+        {
+          "id": "databases-section-3",
+          "title": "一次事务内完成一致性操作"
+        },
+        {
+          "id": "databases-section-4",
+          "title": "迁移、分页与测试"
+        },
+        {
+          "id": "databases-section-5",
+          "title": "pgx 原生连接池与 database/sql 选择"
+        },
+        {
+          "id": "databases-section-6",
+          "title": "GORM 的明确查询与错误"
+        },
+        {
+          "id": "databases-section-7",
+          "title": "N+1、执行计划和数据库约束"
+        },
+        {
+          "id": "databases-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "databases-lab",
+          "kind": "chapter",
+          "url": "/go/databases#lab"
+        }
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "order": 29,
+      "title": "gRPC 与 Protocol Buffers",
+      "group": "应用生态",
+      "summary": "契约、生成、状态码、Deadline 与流式 RPC。",
+      "prerequisites": [
+        "modules",
+        "web",
+        "context"
+      ],
+      "roadmapTopics": [
+        "gRPC & Protocol Buffers"
+      ],
+      "courses": [
+        "official",
+        "schwarz",
+        "grider"
+      ],
+      "lessons": [
+        {
+          "id": "ecosystem-section-1",
+          "title": "定义契约与生成路径"
+        },
+        {
+          "id": "ecosystem-section-2",
+          "title": "服务实现与错误映射"
+        },
+        {
+          "id": "ecosystem-section-3",
+          "title": "兼容性：编号、存在性与枚举"
+        },
+        {
+          "id": "ecosystem-section-4",
+          "title": "流式 RPC 与回压"
+        },
+        {
+          "id": "ecosystem-section-5",
+          "title": "测试与学习实验"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "ecosystem-lab",
+          "kind": "chapter",
+          "url": "/go/ecosystem#lab"
+        }
+      ]
+    },
+    {
+      "id": "logging-realtime",
+      "order": 30,
+      "title": "日志与实时通信生态",
+      "group": "应用生态",
+      "summary": "slog、Zap、Zerolog、Melody 和 Centrifugo。",
+      "prerequisites": [
+        "web",
+        "channels"
+      ],
+      "roadmapTopics": [
+        "slog",
+        "Logging",
+        "Zerolog",
+        "Zap",
+        "Realtime Communication",
+        "Melody",
+        "Centrifugo"
+      ],
+      "courses": [
+        "official",
+        "schwarz",
+        "grider"
+      ],
+      "lessons": [
+        {
+          "id": "logging-realtime-section-1",
+          "title": "slog：稳定事件与字段"
+        },
+        {
+          "id": "logging-realtime-section-2",
+          "title": "Zap 与 Zerolog 的具体使用"
+        },
+        {
+          "id": "logging-realtime-section-3",
+          "title": "WebSocket：连接是一段生命周期"
+        },
+        {
+          "id": "logging-realtime-section-4",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "logging-realtime-lab",
+          "kind": "chapter",
+          "url": "/go/logging-realtime#lab"
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "order": 31,
+      "title": "静态分析、Linter 与漏洞检查",
+      "group": "工具链与交付",
+      "summary": "vet、goimports、revive、Staticcheck、golangci-lint 和 govulncheck。",
+      "prerequisites": [
+        "testing",
+        "modules"
+      ],
+      "roadmapTopics": [
+        "Go Toolchain and Tools",
+        "Core Go Commands",
+        "Code Quality and Analysis",
+        "go vet",
+        "goimports",
+        "Linters",
+        "revive",
+        "staticcheck",
+        "golangci-lint",
+        "Security",
+        "govulncheck"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "quality-section-1",
+          "title": "基础质量流程与具体失败"
+        },
+        {
+          "id": "quality-section-2",
+          "title": "goimports：整理导入"
+        },
+        {
+          "id": "quality-section-3",
+          "title": "三类 Linter 节点"
+        },
+        {
+          "id": "quality-section-4",
+          "title": "govulncheck：依赖和调用路径"
+        },
+        {
+          "id": "quality-section-5",
+          "title": "工具失败应怎样处理"
+        },
+        {
+          "id": "quality-section-6",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "quality-lab",
+          "kind": "chapter",
+          "url": "/go/quality#lab"
+        }
+      ]
+    },
+    {
+      "id": "generation",
+      "order": 32,
+      "title": "代码生成与构建约束",
+      "group": "工具链与交付",
+      "summary": "go generate、工具版本、build tags 与平台文件。",
+      "prerequisites": [
+        "modules"
+      ],
+      "roadmapTopics": [
+        "Code Generation / Build Tags",
+        "go generate",
+        "Build Tags",
+        "Build Constraints & Tags"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "generation-section-1",
+          "title": "go generate 是显式命令"
+        },
+        {
+          "id": "generation-section-2",
+          "title": "不依赖外部工具的生成实验"
+        },
+        {
+          "id": "generation-section-3",
+          "title": "build tags 与平台文件"
+        },
+        {
+          "id": "generation-section-4",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "generation-lab",
+          "kind": "chapter",
+          "url": "/go/generation#lab"
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "order": 33,
+      "title": "pprof、Trace 与调试",
+      "group": "工具链与交付",
+      "summary": "按现象选择 Profile、Trace、Delve 和 race。",
+      "prerequisites": [
+        "benchmarking",
+        "patterns"
+      ],
+      "roadmapTopics": [
+        "Performance and Debugging",
+        "pprof",
+        "trace",
+        "Race Detector"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "performance-section-1",
+          "title": "从可复现问题开始"
+        },
+        {
+          "id": "performance-section-2",
+          "title": "可运行的 Benchmark"
+        },
+        {
+          "id": "performance-section-3",
+          "title": "逃逸、内存与 GC"
+        },
+        {
+          "id": "performance-section-4",
+          "title": "在线诊断要有边界"
+        },
+        {
+          "id": "performance-section-5",
+          "title": "从 Profile 到修复的具体链路"
+        },
+        {
+          "id": "performance-section-6",
+          "title": "Trace 的调度与等待实验"
+        },
+        {
+          "id": "performance-section-7",
+          "title": "Delve 与错误重现"
+        },
+        {
+          "id": "performance-section-8",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "performance-lab",
+          "kind": "chapter",
+          "url": "/go/performance#lab"
+        }
+      ]
+    },
+    {
+      "id": "deployment",
+      "order": 34,
+      "title": "可执行文件、交叉编译与部署",
+      "group": "工具链与交付",
+      "summary": "平台矩阵、链接参数、配置与运行生命周期。",
+      "prerequisites": [
+        "modules",
+        "web",
+        "quality"
+      ],
+      "roadmapTopics": [
+        "Deployment & Tooling",
+        "Building Executables",
+        "Cross-compilation",
+        "Compiler & Linker Flags"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "deployment-section-1",
+          "title": "配置先校验再启动"
+        },
+        {
+          "id": "deployment-section-2",
+          "title": "构建与平台边界"
+        },
+        {
+          "id": "deployment-section-3",
+          "title": "安全与依赖检查"
+        },
+        {
+          "id": "deployment-section-4",
+          "title": "健康、日志与关闭"
+        },
+        {
+          "id": "deployment-section-5",
+          "title": "编译器与链接器参数实验"
+        },
+        {
+          "id": "deployment-section-6",
+          "title": "发布与回滚的一次演练"
+        },
+        {
+          "id": "deployment-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "deployment-lab",
+          "kind": "chapter",
+          "url": "/go/deployment#lab"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "order": 35,
+      "title": "逃逸、GC 与内存预算",
+      "group": "运行时与高级主题",
+      "summary": "存活集、分配速率、逃逸实验、GOGC 与 GOMEMLIMIT。",
+      "prerequisites": [
+        "pointers",
+        "performance"
+      ],
+      "roadmapTopics": [
+        "Advanced Topics",
+        "Memory Mgmt. in Depth",
+        "Escape Analysis"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "memory-section-1",
+          "title": "栈、堆与逃逸实验"
+        },
+        {
+          "id": "memory-section-2",
+          "title": "分配速率、存活集与可达性"
+        },
+        {
+          "id": "memory-section-3",
+          "title": "GC 的工作与参数"
+        },
+        {
+          "id": "memory-section-4",
+          "title": "复用、池与数据布局"
+        },
+        {
+          "id": "memory-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "memory-lab",
+          "kind": "chapter",
+          "url": "/go/memory#lab"
+        }
+      ]
+    },
+    {
+      "id": "reflection",
+      "order": 36,
+      "title": "反射、类型检查与动态赋值",
+      "group": "运行时与高级主题",
+      "summary": "Type/Value、可寻址、可设置、Kind 与 Tag 遍历。",
+      "prerequisites": [
+        "interfaces",
+        "types"
+      ],
+      "roadmapTopics": [
+        "Reflection"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "reflection-section-1",
+          "title": "Type 与 Kind 不一样"
+        },
+        {
+          "id": "reflection-section-2",
+          "title": "可运行的字段更新实验"
+        },
+        {
+          "id": "reflection-section-3",
+          "title": "一条通用赋值链应检查什么"
+        },
+        {
+          "id": "reflection-section-4",
+          "title": "方法调用与接口"
+        },
+        {
+          "id": "reflection-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "reflection-lab",
+          "kind": "chapter",
+          "url": "/go/reflection#lab"
+        }
+      ]
+    },
+    {
+      "id": "unsafe-cgo",
+      "order": 37,
+      "title": "Unsafe、cgo 与边界约束",
+      "group": "运行时与高级主题",
+      "summary": "布局、指针生命周期、C 内存与跨平台构建。",
+      "prerequisites": [
+        "memory",
+        "generation"
+      ],
+      "roadmapTopics": [
+        "Unsafe Package",
+        "CGO Basics"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "unsafe-cgo-section-1",
+          "title": "unsafe 观察浅层布局"
+        },
+        {
+          "id": "unsafe-cgo-section-2",
+          "title": "Pointer 与 uintptr 的关键区别"
+        },
+        {
+          "id": "unsafe-cgo-section-3",
+          "title": "cgo 最小实验"
+        },
+        {
+          "id": "unsafe-cgo-section-4",
+          "title": "C 内存与 Go 指针规则"
+        },
+        {
+          "id": "unsafe-cgo-section-5",
+          "title": "构建与动态库"
+        },
+        {
+          "id": "unsafe-cgo-section-6",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "unsafe-cgo-lab",
+          "kind": "chapter",
+          "url": "/go/unsafe-cgo#lab"
+        }
+      ]
+    },
+    {
+      "id": "plugins",
+      "order": 38,
+      "title": "插件与动态加载",
+      "group": "运行时与高级主题",
+      "summary": "buildmode=plugin、ABI 限制与进程通信替代方案。",
+      "prerequisites": [
+        "interfaces",
+        "generation",
+        "deployment"
+      ],
+      "roadmapTopics": [
+        "Plugins & Dynamic Loading"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "plugins-section-1",
+          "title": "两个模块目录的最小实验"
+        },
+        {
+          "id": "plugins-section-2",
+          "title": "Symbol 与生命周期"
+        },
+        {
+          "id": "plugins-section-3",
+          "title": "扩展点的替代方案"
+        },
+        {
+          "id": "plugins-section-4",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "plugins-lab",
+          "kind": "chapter",
+          "url": "/go/plugins#lab"
+        }
+      ]
+    },
+    {
+      "id": "project-cli",
+      "order": 39,
+      "title": "实战：日志统计 CLI",
+      "group": "项目与学习资料",
+      "summary": "完整源码、合成输入、错误路径与升级任务。",
+      "prerequisites": [
+        "io",
+        "maps",
+        "testing"
+      ],
+      "roadmapTopics": [],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "project-cli-section-1",
+          "title": "需求与输入契约"
+        },
+        {
+          "id": "project-cli-section-2",
+          "title": "创建项目"
+        },
+        {
+          "id": "project-cli-section-3",
+          "title": "main.go"
+        },
+        {
+          "id": "project-cli-section-4",
+          "title": "main_test.go"
+        },
+        {
+          "id": "project-cli-section-5",
+          "title": "运行与结果"
+        },
+        {
+          "id": "project-cli-section-6",
+          "title": "与路线节点的关系"
+        },
+        {
+          "id": "project-cli-section-7",
+          "title": "扩展与验收"
+        }
+      ],
+      "datasets": [
+        "logs-valid",
+        "logs-invalid"
+      ],
+      "exercises": [
+        {
+          "id": "project-cli-lab",
+          "kind": "chapter",
+          "url": "/go/project-cli#lab"
+        }
+      ]
+    },
+    {
+      "id": "project-api",
+      "order": 40,
+      "title": "实战：任务管理 API",
+      "group": "项目与学习资料",
+      "summary": "完整源码、CRUD、分页、同步与数据库升级任务。",
+      "prerequisites": [
+        "web",
+        "synchronization",
+        "testing"
+      ],
+      "roadmapTopics": [],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "project-api-section-1",
+          "title": "契约与学习范围"
+        },
+        {
+          "id": "project-api-section-2",
+          "title": "创建项目"
+        },
+        {
+          "id": "project-api-section-3",
+          "title": "main.go"
+        },
+        {
+          "id": "project-api-section-4",
+          "title": "main_test.go"
+        },
+        {
+          "id": "project-api-section-5",
+          "title": "运行与接口体验"
+        },
+        {
+          "id": "project-api-section-6",
+          "title": "为什么这样组织"
+        },
+        {
+          "id": "project-api-section-7",
+          "title": "进阶练习与验收"
+        },
+        {
+          "id": "project-api-section-8",
+          "title": "按路线推进存储与接口升级"
+        }
+      ],
+      "datasets": [
+        "task-requests"
+      ],
+      "exercises": [
+        {
+          "id": "project-api-lab",
+          "kind": "chapter",
+          "url": "/go/project-api#lab"
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "order": 41,
+      "title": "综合实验、数据集与交付",
+      "group": "项目与学习资料",
+      "summary": "贯穿路线的实验清单、输入数据和验收规范。",
+      "prerequisites": [
+        "project-cli",
+        "project-api"
+      ],
+      "roadmapTopics": [],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "projects-section-1",
+          "title": "职责清楚，比层数多更重要"
+        },
+        {
+          "id": "projects-section-2",
+          "title": "迭代计划"
+        },
+        {
+          "id": "projects-section-3",
+          "title": "两个项目的检查单"
+        },
+        {
+          "id": "projects-section-4",
+          "title": "README 应包含什么"
+        },
+        {
+          "id": "projects-section-5",
+          "title": "贯穿路线的综合实验"
+        },
+        {
+          "id": "projects-section-6",
+          "title": "从两个项目推进到三个里程碑"
+        },
+        {
+          "id": "projects-section-7",
+          "title": "练习与验收"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "projects-lab",
+          "kind": "chapter",
+          "url": "/go/projects#lab"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "order": 42,
+      "title": "课程、开源练习与学习方向",
+      "group": "项目与学习资料",
+      "summary": "课程对应章节、资料版本与后续路线入口。",
+      "prerequisites": [],
+      "roadmapTopics": [
+        "Related Roadmaps",
+        "Backend Roadmap",
+        "DevOps Roadmap",
+        "Docker Roadmap",
+        "Kubernetes Roadmap",
+        "System Design",
+        "Software Design & Architecture"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "resources-section-1",
+          "title": "课程与本指南的对应关系"
+        },
+        {
+          "id": "resources-section-2",
+          "title": "怎样参考开源材料"
+        },
+        {
+          "id": "resources-section-3",
+          "title": "GitHub、Go Modules 与 npm 的分工"
+        },
+        {
+          "id": "resources-section-4",
+          "title": "后续路线不是 Go 语言必修清单"
+        },
+        {
+          "id": "resources-section-5",
+          "title": "学习实验与判定"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "resources-lab",
+          "kind": "chapter",
+          "url": "/go/resources#lab"
+        }
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": "official",
+      "title": "Go 官方文档与 Tour",
+      "provider": "Go",
+      "url": "https://go.dev/doc/",
+      "role": "语言语义与 API 校对",
+      "access": "免费"
+    },
+    {
+      "id": "lgwt",
+      "title": "Learn Go with Tests",
+      "provider": "GitHub / GitBook",
+      "url": "https://quii.gitbook.io/learn-go-with-tests",
+      "role": "测试驱动练习",
+      "access": "免费"
+    },
+    {
+      "id": "learngo",
+      "title": "Learn Go：Examples, Exercises and Quizzes",
+      "provider": "GitHub",
+      "url": "https://github.com/inancgumus/learngo",
+      "role": "小程序诊断与语法练习",
+      "access": "免费，参考仓库许可"
+    },
+    {
+      "id": "grider",
+      "title": "Go: The Complete Developer’s Guide",
+      "provider": "Udemy · Stephen Grider",
+      "url": "https://www.udemy.com/course/go-the-complete-developers-guide/",
+      "role": "类型、接口与并发的项目式学习",
+      "access": "付费，查看公开大纲"
+    },
+    {
+      "id": "schwarz",
+      "title": "Go - The Complete Guide",
+      "provider": "Udemy · Maximilian Schwarzmüller",
+      "url": "https://www.udemy.com/course/go-the-complete-guide/",
+      "role": "从基础到应用的项目练习",
+      "access": "付费，查看公开大纲"
+    },
+    {
+      "id": "mcleod",
+      "title": "Learn How To Code: Google’s Go",
+      "provider": "Udemy · Todd McLeod",
+      "url": "https://www.udemy.com/course/learn-how-to-code/",
+      "role": "语言与练习覆盖",
+      "access": "付费，查看公开大纲"
+    },
+    {
+      "id": "gobyexample",
+      "title": "Go by Example",
+      "provider": "开源教程",
+      "url": "https://gobyexample.com/",
+      "role": "短示例查阅",
+      "access": "免费"
+    }
+  ],
+  "datasets": [
+    {
+      "id": "logs-valid",
+      "url": "/go/data/logs-valid.jsonl",
+      "description": "标准、大小写归一化与空行输入"
+    },
+    {
+      "id": "logs-invalid",
+      "url": "/go/data/logs-invalid.jsonl",
+      "description": "第 3 行为非法级别，验证失败与行号"
+    },
+    {
+      "id": "task-requests",
+      "url": "/go/data/task-requests.json",
+      "description": "请求契约、状态和响应字段检查"
+    },
+    {
+      "id": "benchmark-sizes",
+      "url": "/go/data/benchmark-sizes.json",
+      "description": "统一规模与重复次数，避免一次微基准结论"
+    }
+  ],
+  "extensionFields": {
+    "lessons": "已填章节段落；可扩展独立课时路径与预计时长",
+    "datasets": "已填相关合成样本 ID；可扩展输入与预期产物",
+    "exercises": "已填章节实验入口；可扩展难度、提示和解答路径",
+    "prerequisites": "前置章节 ID，仅按真实依赖建立"
+  }
+}

@@ -1,10 +1,12 @@
 ---
-title: 04 · 函数、指针与 defer
-description: Go 中文学习指南：函数、指针与 defer，包含概念、示例、练习与验收。
+title: 09 · 函数、闭包与调用语义
+description: 多返回值、可变参数、命名返回与闭包捕获。
 pageClass: aip-article
 ---
 
-# 04 · 函数、指针与 defer
+# 09 · 函数、闭包与调用语义
+
+学习前应能完成：[条件、循环与控制转移](./control-flow)、[字符串、数组与切片模型](./collections)。
 
 本章目标：把操作表达为明确的函数，理解值复制、指针与资源生命周期。
 
@@ -68,7 +70,74 @@ func main() {
 
 函数可以传给其他函数或返回。闭包可捕获外层变量，适合少量局部状态；多个 goroutine 共享闭包变量仍须同步。回调参数和返回值先保持简单，不为一个调用点引入多层工厂。计算与 I/O 分开，让核心逻辑能用普通值测试。
 
-## 练习与验收
+## 可变参数与共享切片
+
+```go
+package main
+
+import "fmt"
+
+func mark(values ...int) {
+	if len(values) > 0 {
+		values[0] = 99
+	}
+}
+
+func main() {
+	items := []int{1, 2}
+	mark(items...)
+	fmt.Println(items) // [99 2]：展开后的底层存储共享
+}
+```
+
+可变参数在函数中是切片，调用 `mark(1,2)` 与 `mark(items...)` 的共享关系不同。只读接口不应偷偷修改可变参数；需要原地修改在命名和文档中表达。空可变参数必须与空切片一样可处理。
+
+## 闭包是状态，不只是匿名语法
+
+```go
+package main
+
+import "fmt"
+
+func counter() func() int {
+	next := 0
+	return func() int { next++; return next }
+}
+
+func main() {
+	a, b := counter(), counter()
+	fmt.Println(a(), a(), b()) // 1 2 1
+}
+```
+
+同一个返回闭包共享同一捕获变量，不同工厂调用各有独立状态；多 goroutine 调用 a 仍会发生竞争。返回闭包延长捕获变量生命周期。匿名函数适合局部一次性操作，复杂条件与多个调用点改为具名函数，避免回调层层嵌套。
+
+## 命名返回值与 defer 的交互
+
+```go
+package main
+
+import "fmt"
+
+func named() (result int) {
+	defer func() { result++ }()
+	return 10
+}
+func unnamed() int {
+	result := 10
+	defer func() { result++ }()
+	return result
+}
+func main() { fmt.Println(named(), unnamed()) } // 11 10
+```
+
+return 先设置返回值，再执行 defer。命名返回变量可在 defer 修改；普通局部变量不是已经确定的返回值。命名返回在处理 Write/Close 两个失败原因时有用，但隐藏修改会降低可读性，优先用显式返回与少量清理逻辑。
+
+## 函数契约写进签名与测试
+
+输入是否允许 nil，函数是否修改输入，空结果是否为 nil，哪些错误公开，依赖时间或随机数如何注入，都应有具体断言。函数拆分以完整职责为准，不把每一条语句过程化，也不把所有业务塞进 main。
+
+## 练习与验收 {#lab}
 
 1. 分别用结构体值和指针调用修改函数，比较原变量是否改变。
 2. 写 `readFile(path) ([]byte, error)`，打开失败不调用 Close。

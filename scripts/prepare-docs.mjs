@@ -3,6 +3,7 @@ const tasks = [
   'sync-grpc-english.mjs',
   'generate-aip-sidebar.mjs',
   'generate-grpc-sidebar.mjs',
+  'generate-go-docs.mjs',
 ]
 
 for (const task of tasks) {

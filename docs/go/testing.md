@@ -1,10 +1,12 @@
 ---
-title: 10 · 测试、模糊测试与质量检查
-description: Go 中文学习指南：测试、模糊测试与质量检查，包含概念、示例、练习与验收。
+title: 23 · 表驱动、替身与 HTTP 测试
+description: 隔离、Mock/Stub、httptest、覆盖率与 Fuzz。
 pageClass: aip-article
 ---
 
-# 10 · 测试、模糊测试与质量检查
+# 23 · 表驱动、替身与 HTTP 测试
+
+学习前应能完成：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
 
 本章目标：用测试固定行为，覆盖边界与失败路径，让并发和重构有可验证的依据。
 
@@ -85,7 +87,69 @@ go test -fuzz=FuzzNormalize -fuzztime=10s .
 
 格式化 → 单元与集成测试 → race（适用平台）→ vet → 构建。需要更强静态分析时再加入 Staticcheck 或组织已有的 golangci-lint 配置，避免同时打开大量未理解的规则。HTTP 示例的行为测试见 [任务 API 实战](./project-api)。
 
-## 练习与验收
+## Stub 与 Mock：替身验证什么
+
+Stub 提供固定结果，Mock 还验证互动契约。业务只关心读到什么时用 stub；真的要求“只有成功后通知一次”时才验证调用次数。不要用 mock 复制每个内部函数的调用顺序，否则重构实现会迫使测试一起改而没有保护行为。
+
+下面独立文件演示消费者接口与失败路径测试，可保存为 `notify_test.go`：
+
+```go
+package notify
+
+import (
+	"context"
+	"errors"
+	"testing"
+)
+
+type Sender interface {
+	Send(context.Context, string) error
+}
+
+func Notify(ctx context.Context, s Sender, name string) error {
+	if name == "" {
+		return errors.New("名字不能为空")
+	}
+	return s.Send(ctx, "你好，"+name)
+}
+
+type senderStub struct {
+	message string
+	failure error
+	calls   int
+}
+
+func (s *senderStub) Send(_ context.Context, message string) error {
+	s.calls++
+	s.message = message
+	return s.failure
+}
+
+func TestNotify(t *testing.T) {
+	failure := errors.New("上游不可用")
+	s := &senderStub{failure: failure}
+	if err := Notify(context.Background(), s, "Go"); !errors.Is(err, failure) {
+		t.Fatalf("错误未传播: %v", err)
+	}
+	if s.message != "你好，Go" || s.calls != 1 {
+		t.Fatalf("调用不符合契约: %+v", s)
+	}
+	if err := Notify(context.Background(), s, ""); err == nil {
+		t.Fatal("空名字应失败")
+	}
+	if s.calls != 1 {
+		t.Fatal("非法输入不应调用上游")
+	}
+}
+```
+
+## Recorder 与真实测试 Server 的区别
+
+Recorder 直接调用 handler，不开 TCP，适合状态码、头和 body；NewServer 建本机服务，可验证 Client 的重定向、超时和响应体行为。Recorder 不完全模拟真实网络、连接断开与流式行为，别把一次 Recorder 测试当成完整系统测试。
+
+覆盖率命令 `go test -coverprofile=coverage.out ./...`，用 `go tool cover -html=coverage.out` 找遗漏。100% 行覆盖仍可漏掉边界断言；高风险输入和失败路径优先。模糊测试必须定义性质，例如编码解码往返、幂等与不 panic，不能只调用函数没有断言。
+
+## 练习与验收 {#lab}
 
 1. 为标题添加最大码点长度约束，测试边界值与中文。
 2. 给错误路径写断言，不只判断“调用成功”。

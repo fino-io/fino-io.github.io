@@ -1,72 +1,88 @@
 ---
-title: 02 · 语法、类型与控制流
-description: Go 中文学习指南：语法、类型与控制流，包含概念、示例、练习与验收。
+title: 04 · 基本类型、数值与类型转换
+description: 掌握整数、浮点、复数、布尔、rune 与转换边界。
 pageClass: aip-article
 ---
 
-# 02 · 语法、类型与控制流
+# 04 · 基本类型、数值与类型转换
 
-本章目标：理解静态类型、零值与作用域，写出边界明确的顺序程序。
+学习前应能完成：[变量、常量、iota 与作用域](./variables)。
 
-## 变量、常量与零值
+本章用可观察的边界讲清基本类型。重点不是背类型列表，而是知道表达范围、运算语义和转换何时丢失信息。
 
-| 写法 | 语义 |
-| --- | --- |
-| `var count int` | 声明 int，零值为 0。 |
-| `count := 3` | 在函数内声明并推断类型，同一作用域至少有一个新变量。 |
-| `const limit = 10` | 编译期常量，可用于数组长度等位置。 |
-| `type UserID int64` | 定义新的命名类型，跨类型赋值通常需要转换。 |
+## 整数与固定宽度
 
-布尔零值为 false，字符串为 ""，指针、切片、map、channel 与接口的零值为 nil。零值可用是一种设计目标，但 nil map 不能写入、nil 指针不能解引用。
+int/uint 的宽度依平台而定；int8 至 int64、uint8 至 uint64 明确宽度。byte 是 uint8 别名，rune 是 int32 别名。索引通常用 int，协议中的固定范围字段用明确宽度；int64 转 int 不能假设每个平台都安全。
 
-`int` 的位数与目标架构有关，协议或持久化字段需要固定范围时选 `int64` 等类型。`byte` 是 uint8 的别名，`rune` 是 int32 的别名。Go 不做一般数值隐式转换，转换并不自动检查溢出；从 int64 转为 int 等操作需要先确认范围。金额采用整数最小单位或成熟十进制方案，不用 float64 表达精确账目。
+```go
+package main
 
-## 条件与循环
+import "fmt"
 
-下面是独立的 `main.go`：
+func main() {
+	var small uint8 = 255
+	small++
+	fmt.Println(small) // 0：无符号运算按位宽回绕
+	value := int64(300)
+	fmt.Println(uint8(value))    // 44：转换保留低位，不报告错误
+	fmt.Println(7/3, -7/3, -7%3) // 2 -2 -1：整数除法向零截断
+}
+```
+
+运行时整数溢出与常量溢出不同：`var n uint8 = 256` 在编译时就拒绝。外部数字转换先检查范围；只读到一个整数并不代表业务值合法。移位、位掩码用于协议时明确有符号还是无符号，避免靠位宽猜测结果。
+
+## 浮点：表示误差与比较
+
+float32、float64 表示二进制浮点数，大量十进制小数不能精确表示。不能用格式化后的样子判断内部值相等。
 
 ```go
 package main
 
 import (
 	"fmt"
-	"strconv"
+	"math"
 )
 
-func sumTo(n int) int {
-	total := 0
-	for i := 1; i <= n; i++ {
-		total += i
-	}
-	return total
-}
-
 func main() {
-	n, err := strconv.Atoi("5")
-	if err != nil || n < 0 || n > 10000 {
-		fmt.Println("请输入 0 到 10000 的整数")
-		return
-	}
-	fmt.Println(sumTo(n)) // 15
+	a, b := 0.1, 0.2
+	fmt.Printf("%.17f\n", a+b)               // 可观察舍入误差
+	fmt.Println(math.Abs((a+b)-0.3) < 1e-12) // true
+	nan := math.NaN()
+	fmt.Println(nan == nan, math.IsNaN(nan)) // false true
 }
 ```
 
-`for` 同时承担传统循环、条件循环与无限循环。`if` 条件必须是布尔表达式；可在条件前写短初始化语句，其变量只在该条件块范围有效。`switch` 默认匹配后退出，不需要手写 break；只有明确需要落入下一分支时才使用 fallthrough。
+容差来自量级与业务要求，不使用一个万能 epsilon。较大和较小数值可结合相对误差和绝对误差。NaN、Inf 是数值状态，需要在传感数据和 JSON 边界处理；标准 JSON 编码不接受非有限浮点值。金额使用整数最小单位，带精度规则的业务再复用成熟十进制库。
 
-`range` 遍历切片得到索引和值，遍历 map 得到键和值。map 遍历无固定顺序，不能把顺序当作接口契约。Go 1.22 的循环变量规则针对使用新语义的模块，为循环声明的变量提供每轮变量；外部预先声明的变量仍可能被共享。写并发闭包时显式传参仍有助于读者理解。
+## 复数、布尔与 rune
 
-## 作用域与容易忽略的边界
+complex64 由两个 float32 分量组成，complex128 由两个 float64 分量组成。`complex(real, imag)` 构造，`real(z)`、`imag(z)` 取分量；傅里叶等数值工作可用成熟数学库，不自己写复杂算法。
 
-- `:=` 可能在内部块创建同名变量。尤其检查 `err` 是否遮蔽了外层的错误。
-- `==` 比较要求类型可比较；切片、map 和函数不能互相比相等，但可与 nil 比较。
-- 除法两边都是整数时，结果是整数；平均值要先转换为浮点数。
-- `i++` 是语句，不能像其他语言一样嵌入表达式。
-- 用 `i < len(values)` 而非 `i <= len(values)` 访问索引，空输入要单独考虑。
+```go
+package main
 
-## 练习与验收
+import "fmt"
 
-1. 统计一组数中的正数、零、负数，并计算非空输入的平均值。
-2. 为输入增加空白、非数字和超范围情况，说明处理策略。
-3. 写一个月份到季度的 switch，拒绝 0 和 13。
+func main() {
+	z := complex(2.0, 3.0)
+	fmt.Println(z*z, real(z), imag(z)) // (-5+12i) 2 3
+	var enabled bool
+	fmt.Println(enabled, !enabled) // false true
+	r := '中'
+	fmt.Printf("%T %U %c\n", r, r, r) // int32 U+4E2D 中
+}
+```
 
-验收：能区分声明和赋值，解释零值、类型转换与局部作用域，并处理空输入。参考：[Tour 的变量与控制流](https://go.dev/tour/basics/1)、[语言规范](https://go.dev/ref/spec)。
+布尔不隐式转换为整数，if 条件必须是 bool。rune 是整数码点，不是独立的字符串；`string(65)` 得到 A，`strconv.Itoa(65)` 得到 "65"。从字符串解析整数用 strconv.Atoi/ParseInt，不能用类型转换代替解析。
+
+## 命名类型与别名
+
+片段：`type UserID int64` 定义不同类型，`type Identifier = int64` 只是别名。新的类型有助于防止把 UserID 和 OrderID 混传；相同底层类型仍可能显式转换，类型不能取代有效性校验。把领域单位放进类型名，比如 Duration、Bytes，能让边界清楚。
+
+## 学习实验与判定 {#lab}
+
+1. 写一个 int64 到 uint8 的安全转换，输入 -1、0、255、256、300，结果应只允许 0–255。
+2. 比较 float64 变量的 0.1+0.2 与无类型常量表达式，解释为什么输出可能不同。
+3. 将 "中" 的字节数、码点数与 rune 值写成三个测试断言。
+
+通过标准：能解释整数截断、浮点特殊值、复数分量和码点转换；所有外部数值有范围检查。参考：[类型与转换规范](https://go.dev/ref/spec#Types)、[strconv](https://pkg.go.dev/strconv)、[math](https://pkg.go.dev/math)。

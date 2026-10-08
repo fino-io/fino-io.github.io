@@ -1,10 +1,12 @@
 ---
-title: 17 · 调试、性能与运行时
-description: Go 中文学习指南：调试、性能与运行时，包含概念、示例、练习与验收。
+title: 33 · pprof、Trace 与调试
+description: 按现象选择 Profile、Trace、Delve 和 race。
 pageClass: aip-article
 ---
 
-# 17 · 调试、性能与运行时
+# 33 · pprof、Trace 与调试
+
+学习前应能完成：[Benchmark 与分配实验](./benchmarking)、[Worker Pool、Fan-in 与 Pipeline](./patterns)。
 
 本章目标：从证据定位瓶颈，理解运行时的基本代价，避免没有测量的优化。
 
@@ -67,7 +69,37 @@ GC 主要代价与分配速率、存活对象和指针扫描有关。先减少�
 
 pprof HTTP 端点放到受控管理地址或认证网关，不直接公开；profile 可能包含内部路径和请求信息。采样设置有成本，先在测试或灰度环境验证，再安排生产采集。
 
-## 练习与验收
+## 从 Profile 到修复的具体链路
+
+假设服务 CPU 高但延迟正常：先看 CPU profile 的 flat/cum 热点，确定时间在计算、编码还是 GC。假设 CPU 低但请求慢：看数据库等待、goroutine/block profile 和外部调用时间，不在本地字符串函数上盲目优化。
+
+```sh
+go test -run '^$' -bench . -cpuprofile cpu.out -memprofile heap.out .
+go tool pprof -top cpu.out
+go tool pprof -sample_index=alloc_space -top heap.out
+go tool pprof -sample_index=inuse_space -top heap.out
+```
+
+alloc_space 显示累计分配，inuse_space 看样本记录时保留，热点含义不同。cum 包含下游调用，不把某个包装函数的 cum 当它自身全部工作。优化前后保持输入规模与采样条件，先回归行为再比性能。
+
+## Trace 的调度与等待实验
+
+```sh
+go test -trace trace.out ./...
+go tool trace trace.out
+```
+
+trace 展示 goroutine 调度、阻塞、网络/系统调用、GC 等时间关系。记录只覆盖采样时段，需要包含问题发生窗口。trace/profile 文件可能包含内部信息，存储与共享遵循项目要求；本地实验使用合成输入。
+
+对 worker pool 看任务是否集中阻塞在一个结果 channel；对锁看是否在临界区等待外部调用；对泄漏看请求结束后 goroutine 数是否持续增长。runtime/trace 区域与任务可帮助标记业务阶段，但插桩命名与采样成本要受控。
+
+## Delve 与错误重现
+
+调试器适合停止在具体状态、看变量和调用栈；日志适合长期线上观察。构造稳定失败输入，断点放在错误产生附近，查看当前 ctx deadline、锁状态与对象值。race 构建改变运行代价，race 下的性能数据不直接作为生产吞吐基线。
+
+诊断记录应包括现象、负载、假设、证据、修改和复测。没有测量依据的“少用指针更快”“用 channel 替换所有锁”不作为性能结论。
+
+## 练习与验收 {#lab}
 
 1. 比较循环字符串拼接与 strings.Builder，测试真实大小而非一个常量。
 2. 制造未结束 goroutine，查看 profile 并修复结束条件。

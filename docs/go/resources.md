@@ -1,69 +1,58 @@
 ---
-title: 22 · 资料、方向与常见问题
-description: Go 中文学习指南：资料、方向与常见问题，包含概念、示例、练习与验收。
+title: 42 · 课程、开源练习与学习方向
+description: 课程对应章节、资料版本与后续路线入口。
 pageClass: aip-article
 ---
 
-# 22 · 资料、方向与常见问题
+# 42 · 课程、开源练习与学习方向
 
-本章目标：建立精简而可靠的资料体系，遇到问题能定位，完成基础后选择一个方向继续。
+资料体系按“语义依据、练习课程、应用扩展”组织。章节安排严格核对 [roadmap.sh Go](https://roadmap.sh/golang)及其[官方 PDF](https://roadmap.sh/pdfs/roadmaps/golang.pdf)，逐项对应见 [路线覆盖目录](./roadmap)。课程用于比较讲解与练习方式，不替代官方语义，也不宣称复制了付费课程的完整正文。
 
-## 主教材选一份
+## 课程与本指南的对应关系
 
-| 资料 | 用途 | 建议读法 |
+| 资源 | 能补充什么 | 对应章节 | 使用方式 |
+| --- | --- | --- | --- |
+| [Go 官方教程](https://go.dev/doc/tutorial/)与 [Tour](https://go.dev/tour/) | 模块、语言基础、接口、泛型、Fuzz | 起步、类型系统、测试 | 语义与 API 基准，每个主题亲自运行。 |
+| [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests) | 用行为测试推进实现与设计 | 函数、接口、错误、测试、HTTP | 先写失败断言，完成最小实现，再重构。 |
+| [inancgumus/learngo](https://github.com/inancgumus/learngo) | 小程序、诊断练习、字符串/容器 | 变量、类型、控制流、集合、指针 | 先预测编译/输出，再定位并修正。 |
+| [Go by Example](https://gobyexample.com/) | 简短运行示例 | 标准库与语法查阅 | 查一个具体操作，随后回到项目验收。 |
+| [Go: The Complete Developer’s Guide](https://www.udemy.com/course/go-the-complete-developers-guide/) · Stephen Grider | 项目式基础、类型、接口与并发 | 函数、方法、接口、并发 | 参考公开大纲选择补充课；自行完成本站原创实验。 |
+| [Go - The Complete Guide](https://www.udemy.com/course/go-the-complete-guide/) · Maximilian Schwarzmüller | 从基础向应用的课程组织 | 语言基础、应用生态、项目 | 用项目阶段检查掌握度，不按观看时长评估。 |
+| [Learn How To Code: Google’s Go](https://www.udemy.com/course/learn-how-to-code/) · Todd McLeod | 广泛语法与练习主题 | 语言基础、函数、接口与测试 | 与当前文档核对 API 和工具链版本。 |
+
+资料核对日期：2026-10-08。Udemy 的价格、时长、评分和课表会变化，本页不保留易过期数字；查看作者课程页面确认当前内容、语言与要求。这里只研究公开课程说明，不购买、下载或转载付费讲义。
+
+## 怎样参考开源材料
+
+优先官方示例与维护者文档。inancgumus/learngo 仓库材料许可包含非商业与相同方式共享条件；Learn Go with Tests 的许可另有说明，各资源分别核对。本站讲解、实验与数据重新编写，链接原资源而不把开源等同于无条件整份复制。
+
+[golang/example](https://github.com/golang/example)适合学习官方小项目；[Cobra](https://github.com/spf13/cobra)、[pgx](https://github.com/jackc/pgx)、[grpc-go](https://github.com/grpc/grpc-go)等库的 examples 用于核对真实 API。选择第三方发布版本时检查最低 Go 版本、主版本路径、许可证与维护状态，在项目中固定依赖。
+
+## GitHub、Go Modules 与 npm 的分工
+
+Go 服务端依赖来自 Go Modules 与其仓库，pkg.go.dev 查文档和版本；npm 服务 JavaScript/TypeScript 生态。比如 Centrifugo 的浏览器端使用 [centrifuge](https://www.npmjs.com/package/centrifuge)，服务端仍按 Go/独立服务文档接入。不要拿 npm 的同名 golang 包替代 Go 官方工具链。
+
+优先复用成熟解析器、路由、生成器、数据库驱动与测试工具。第三方数量不是学习完整性指标，每个依赖写明职责；能用标准库完成的边界先用标准库建立理解。
+
+## 后续路线不是 Go 语言必修清单
+
+roadmap 图末尾给出相关路线：
+
+| 方向 | 后续入口 | 进入条件 |
 | --- | --- | --- |
-| [Go 官方教程](https://go.dev/doc/tutorial/) | 从模块到泛型、Fuzz 等主题 | 配合本指南逐个运行，不只读代码。 |
-| [A Tour of Go](https://go.dev/tour/) | 交互式语言入门 | 先读基础与类型，再做接口与并发练习。 |
-| [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests) | 通过测试学习设计与实现 | 每节先理解行为，再自己写测试和代码。 |
-| [Go by Example](https://gobyexample.com/) | 小型可运行示例 | 用于查语法和标准库操作，不替代完整项目。 |
-| [roadmap.sh Go](https://roadmap.sh/golang) | 主题覆盖与后续方向 | 作为检查表，按需求挑分支。 |
+| 后端 | [Backend](https://roadmap.sh/backend) | 完成有测试的 API、SQL、取消和错误边界。 |
+| 运维交付 | [DevOps](https://roadmap.sh/devops) | 能构建、配置、观测和关闭服务。 |
+| 容器 | [Docker](https://roadmap.sh/docker) | 明确进程、文件、端口与依赖。 |
+| 编排 | [Kubernetes](https://roadmap.sh/kubernetes) | 已能交付容器化服务，理解健康与扩缩容。 |
+| 系统设计 | [System Design](https://roadmap.sh/system-design) | 出现真实容量与一致性需求。 |
+| 架构 | [Software Design & Architecture](https://roadmap.sh/software-design-architecture) | 能解释业务职责和依赖方向。 |
 
-本指南提供中文概念、代码与交付练习，外链用于核对原始 API 和深入专题。不要同时跟三门课程，先完成一个带测试的项目，再补尚未掌握的知识。
+这些是独立方向，不能把所有内容装进一章 Go “进阶”里。主线先交付一个 CLI 与一个服务，再按目标选一条继续。
 
-## 日常查阅与专题资料
+## 学习实验与判定 {#lab}
 
-- [pkg.go.dev](https://pkg.go.dev/)：查包接口、示例、版本与模块信息，阅读与项目所用版本对应的文档。
-- [Effective Go](https://go.dev/doc/effective_go)：学习命名、控制流与惯用表达。官方说明它没有覆盖现代模块、测试和泛型等全部进展，应配合当前文档。
-- [语言规范](https://go.dev/ref/spec)：遇到方法集、比较与类型语义争议时精确查阅，不必作为零基础第一本教材。
-- [模块参考](https://go.dev/ref/mod)：理解版本选择、模块路径、工作区与校验。
-- [Go 内存模型](https://go.dev/ref/mem)：理解并发读写与同步保证。
-- [Go Diagnostics](https://go.dev/doc/diagnostics) 与 [GC 指南](https://go.dev/doc/gc-guide)：在出现性能问题时按证据使用。
-- [官方安全页](https://go.dev/doc/security/)与 [发布记录](https://go.dev/doc/devel/release)：跟踪安全工具和受支持版本，升级前检查变更。
+1. 为不熟悉的一章只选一个补充课程，完成本站实验而非同时收藏多份课。
+2. 查一个第三方库的当前主版本、最低 Go 要求、官方示例与许可，记录选用理由。
+3. 用一个完整报告描述排查：症状、输入、版本、假设、实验、证据、修复。
 
-## 常见问题排查
-
-| 现象 | 先检查 |
-| --- | --- |
-| 找不到 go | PATH 与安装目录，重开终端确认。 |
-| 找不到 go.mod | 当前工作目录、GOMOD、是否在模块根内。 |
-| 依赖下载失败 | 网络、代理、模块路径和私有仓库认证，不先关闭校验。 |
-| import cycle | 包职责和依赖方向，检查是否把入口类型放进业务包。 |
-| 切片被意外修改 | 是否共享底层数组，Clone 是否仅复制了外层。 |
-| error 看起来为空却不等于 nil | 是否装入带类型的 nil 指针。 |
-| map 并发崩溃或 race 报告 | 所有访问是否遵循同一同步规则，包括遍历。 |
-| goroutine 不结束 | Channel 是否永远阻塞、任务是否观察 Context。 |
-| HTTP 调用悬挂 | 总超时、Context、响应体读取与上游行为。 |
-| 数据库连接池耗尽 | rows/事务是否及时关闭、连接上限与请求并发。 |
-| 重启任务数据丢失 | 项目采用内存存储，是否已经接入持久化。 |
-
-报告问题时给出最小复现、输入、完整错误、Go 版本、go.mod 和预期结果，移除凭据与个人数据。先缩小失败范围，再搜原始错误与相关官方文档。
-
-## 下一阶段方向
-
-| 方向 | 下一步 | 小型交付目标 |
-| --- | --- | --- |
-| 后端服务 | SQL、认证授权、缓存、幂等、部署 | 带用户归属与持久化的任务服务。 |
-| 平台与云原生 | Linux、网络、容器、Kubernetes API | 可取消、有日志和指标的资源巡检工具。 |
-| CLI 与自动化 | Cobra、配置、退出码、发布 | 多子命令工具，含补全、测试和安装说明。 |
-| 性能与基础设施 | 数据结构、pprof、GC、并发压测 | 对一个瓶颈做可重复的优化实验。 |
-| RPC 与分布式 | Protobuf、gRPC、超时、重试、一致性 | 带 deadline 和错误映射的双服务调用。 |
-
-基础还不稳时优先完善一个项目；完成后只选一个主方向。微服务、消息队列、分布式锁与复杂缓存都需要业务规模和一致性需求支撑，不作为“学完 Go”的必经安装清单。
-
-## 练习与验收
-
-1. 用官方包文档回答一个项目中的 API 问题，并记录具体版本。
-2. 为两个项目写下一项扩展，每项明确完成行为与验证方法。
-3. 解释一个排查过程：症状、假设、最小实验、证据与修复。
-
-验收：能独立查阅和交付，对后续方向有具体目标，而非只收藏更多链接。
+通过标准：每条资料链接解决明确问题，能用独立代码和测试证明掌握，不靠观看进度自评。

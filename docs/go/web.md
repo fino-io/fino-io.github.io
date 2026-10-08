@@ -1,10 +1,12 @@
 ---
-title: 14 · HTTP 服务与接口设计
-description: Go 中文学习指南：HTTP 服务与接口设计，包含概念、示例、练习与验收。
+title: 26 · HTTP 服务与 Web 框架
+description: 请求边界与 Gin、Echo、Fiber、Beego 的差异。
 pageClass: aip-article
 ---
 
-# 14 · HTTP 服务与接口设计
+# 26 · HTTP 服务与 Web 框架
+
+学习前应能完成：[文件、流式 I/O 与 JSON](./io)、[Context、截止时间与取消](./context)、[表驱动、替身与 HTTP 测试](./testing)。
 
 本章目标：使用标准库构建请求边界清楚的服务，区分校验、业务与响应职责。
 
@@ -78,7 +80,49 @@ func main() {
 
 关闭流程：收到信号 → 停止接收新请求 → 用独立超时 Context 调用 Shutdown → 收拢后台任务与依赖 → 超时后必要时 Close。Shutdown 不自动管理 hijacked 连接或业务后台 goroutine，需要额外跟踪。长连接与流式响应需要针对场景调整超时。
 
-## 练习与验收
+## 框架节点逐项对照
+
+| 框架 | 具体入口 | 与标准库关系 / 迁移点 |
+| --- | --- | --- |
+| [Gin](https://gin-gonic.com/en/docs/) | gin.New、GET/POST、ShouldBindJSON | 基于 net/http；Context 负责请求绑定与响应，业务仍传 context.Context。 |
+| [Echo](https://echo.labstack.com/docs/) | echo.New、GET、Context.Bind | 基于 net/http；统一错误处理器与中间件，绑定后仍做业务校验。 |
+| [Fiber](https://docs.gofiber.io/) | fiber.New、路由与版本对应 Context | 基于 fasthttp，不能假定 net/http 中间件、请求生命周期和 buffer 语义直接兼容。 |
+| [Beego](https://beegodoc.com/) | Controller、Router 与配套工具 | 提供更多约定与组件，需理解框架装配、生成和隐式行为。 |
+
+路线上把框架标为 Optional，不要求四个都精通。标准库建立 HTTP 概念后，只选择与你项目和团队一致的框架。比较维度是协议兼容、中间件、测试方式、API 版本和维护成本，不凭合成路由吞吐断言“更适合所有项目”。
+
+## 一个 Gin 路由怎样保持职责清楚
+
+片段，需要已安装 gin-gonic/gin，放入装配函数：
+
+```go
+router := gin.New()
+router.Use(gin.Recovery())
+router.POST("/tasks", func(c *gin.Context) {
+    var input struct { Title string `json:"title"` }
+    if err := c.ShouldBindJSON(&input); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "JSON 无效"})
+        return
+    }
+    title := strings.TrimSpace(input.Title)
+    if title == "" {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "标题不能为空"})
+        return
+    }
+    // 真实项目调用 createTask(c.Request.Context(), title)。
+    c.JSON(http.StatusCreated, gin.H{"title": title})
+})
+```
+
+这段展示路由/绑定 API，没有持久化和完整严格解码策略。body 大小限制在进入绑定前设置，未知字段策略按所选版本配置；成功绑定不代表授权或数据规则验证成功。用 handler + httptest 测状态、字段、空输入与超限，在不同框架中复用相同契约断言。
+
+## 路由、中间件与响应提交
+
+中间件前半段在业务前执行，后半段可能在返回后执行；恢复、日志、请求 ID、认证和授权顺序影响结果。外层日志应记录最终状态和持续时间；不能每层都无条件再写响应。标准 ResponseWriter 默认不允许写完再改变状态，包装它时还要保留流式、Hijacker 等可选接口，复用成熟中间件避免自行实现宽泛封装。
+
+请求超时不等于业务副作用取消：已经提交的数据库操作无法“倒退”，创建请求要配幂等与事务。认证确认身份，授权确认该身份能否操作该任务；列表同样过滤归属，不只检查单条读取。
+
+## 练习与验收 {#lab}
 
 1. 增加任务查询接口，分别测试有效 ID、非法 ID 与不存在。
 2. 用 httptest 验证状态码、Content-Type 和错误 body。

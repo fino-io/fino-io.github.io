@@ -1,0 +1,22 @@
+{
+  "sizes": [
+    10,
+    100,
+    1000
+  ],
+  "fragment": "Go学习",
+  "runs": 10,
+  "metrics": [
+    "ns/op",
+    "B/op",
+    "allocs/op"
+  ],
+  "record": [
+    "goVersion",
+    "cpu",
+    "os",
+    "inputBytes",
+    "timestamp"
+  ],
+  "note": "样本规模固定，测量数值由运行产生，不预填性能结论"
+}

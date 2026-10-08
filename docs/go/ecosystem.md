@@ -1,18 +1,18 @@
 ---
-title: 16 · gRPC、生态与技术选型
-description: Go 中文学习指南：gRPC、生态与技术选型，包含概念、示例、练习与验收。
+title: 29 · gRPC 与 Protocol Buffers
+description: 契约、生成、状态码、Deadline 与流式 RPC。
 pageClass: aip-article
 ---
 
-# 16 · gRPC、生态与技术选型
+# 29 · gRPC 与 Protocol Buffers
 
-本章目标：理解 RPC 契约与生态分工，按项目需求选择成熟工具。
+学习前应能完成：[包、模块、依赖与发布](./modules)、[HTTP 服务与 Web 框架](./web)、[Context、截止时间与取消](./context)。
 
-## gRPC 的最小契约
+本章实现 gRPC 契约与生成流程，区分 wire 编码、服务签名和运行协议。它适合明确类型的服务间调用，不是所有 HTTP API 的自动替代。
 
-HTTP JSON 便于浏览器与外部集成；gRPC 适合类型明确的服务间调用与流式场景。选型依据是调用方、网络与运维条件，不能只凭“性能更高”决定。
+## 定义契约与生成路径
 
-`task.proto` 契约示例：
+项目模块为 `example.com/tasks`，保存 `proto/task/v1/task.proto`：
 
 ```proto
 syntax = "proto3";
@@ -21,8 +21,10 @@ option go_package = "example.com/tasks/gen/task/v1;taskv1";
 
 service TaskService {
   rpc GetTask(GetTaskRequest) returns (Task);
+  rpc WatchTasks(WatchTasksRequest) returns (stream Task);
 }
 message GetTaskRequest { int64 id = 1; }
+message WatchTasksRequest { int64 after_id = 1; }
 message Task {
   int64 id = 1;
   string title = 2;
@@ -30,38 +32,49 @@ message Task {
 }
 ```
 
-字段编号是 wire 契约的一部分，已删除字段的编号与名字要 reserved，不重新分配给其他含义。proto3 普通标量的默认值不能总是表达“未提供”；需要字段存在性时选 optional 或合适消息模型。新增字段通常可以兼容，但语义、客户端假设和枚举未知值仍需评估。
+按照 [gRPC Go Quick start](https://grpc.io/docs/languages/go/quickstart/)安装 protoc 和两个 Go 生成插件，工具版本写入项目记录，生成输出路径与 go_package 一致：
 
-按 [gRPC Go 官方 Quick start](https://grpc.io/docs/languages/go/quickstart/)安装 protoc、protoc-gen-go 与 protoc-gen-go-grpc，并在项目中固定工具版本。使用 `--go_out` 与 `--go-grpc_out` 生成消息与服务绑定，不手写协议序列化，也不手工修改生成文件。
+```sh
+protoc -I proto --go_out=. --go_opt=module=example.com/tasks --go-grpc_out=. --go-grpc_opt=module=example.com/tasks proto/task/v1/task.proto
+```
 
-## RPC 运行边界
+生成 `gen/task/v1` 中的消息与服务绑定。`go_package` 是 Go 导入路径，proto package 是协议名称，两者不等价。生成文件不手改，修改契约后重新生成并检查差异。
 
-- 调用方设置 deadline，服务实现接收 Context 并向下传递。
-- 把业务错误映射为合适 status，例如 NotFound、InvalidArgument，而不是一律 Unknown。
-- 生产连接使用 TLS 与合适身份认证，不沿用本地明文实验配置。
-- metadata 承载请求元信息，不把密钥放进日志；跨服务传播遵循统一约定。
-- unary 与 streaming 分开考虑流量控制、取消、大小限制与关闭。
+## 服务实现与错误映射
 
-重试遵循服务幂等契约，拦截器可统一日志与认证，但不能把业务规则藏进拦截器。进一步阅读站内 [截止时间](/grpc/guides/deadlines_zh)与 [错误处理](/grpc/guides/error_zh)。
+片段，taskv1 为生成包，findTask 为业务方法：
 
-## 按需求选择工具
+```go
+type Server struct { taskv1.UnimplementedTaskServiceServer }
 
-| 需求 | 起步选择 | 需要扩展时 |
-| --- | --- | --- |
-| HTTP 服务 | net/http | 根据团队已有方案选择 Gin、Echo 或 chi。 |
-| CLI | flag | 多子命令、补全与帮助系统使用 Cobra。 |
-| PostgreSQL | database/sql + 驱动，或 pgx | 已知 SQL 可评估 sqlc 生成类型代码。 |
-| 并发编排 | Mutex、Channel | 相关任务汇总错误使用 errgroup。 |
-| 日志 | log/slog | 按现有日志系统选择 Zap 等。 |
-| RPC | grpc-go + Protobuf | 固定生成工具与契约版本。 |
-| 可观测性 | 日志、指标与 trace | 使用 OpenTelemetry 的官方 SDK。 |
+func (s *Server) GetTask(ctx context.Context, req *taskv1.GetTaskRequest) (*taskv1.Task, error) {
+    if req.GetId() <= 0 { return nil, status.Error(codes.InvalidArgument, "id 必须为正整数") }
+    task, err := findTask(ctx, req.GetId())
+    if errors.Is(err, ErrNotFound) { return nil, status.Error(codes.NotFound, "任务不存在") }
+    if err != nil { return nil, status.Error(codes.Internal, "读取失败") }
+    return &taskv1.Task{Id: task.ID, Title: task.Title, Done: task.Done}, nil
+}
+```
 
-工具入口：[Cobra](https://github.com/spf13/cobra)、[pgx](https://github.com/jackc/pgx)、[sqlc](https://docs.sqlc.dev/)、[OpenTelemetry Go](https://opentelemetry.io/docs/languages/go/)。选一个主要方案，验证版本要求、维护状态、许可证与团队经验；避免把多个同类库同时带入项目。
+生成结构体与业务模型分开，不让存储层返回 gRPC status。调用方使用 Context deadline，服务向数据库传递同一个 ctx。Internal 响应隐藏驱动细节，日志保留关联 ID；测试 InvalidArgument、NotFound 与依赖失败的状态码。
 
-## 练习与验收
+## 兼容性：编号、存在性与枚举
 
-1. 给任务服务生成客户端与服务端绑定，完成 GetTask。
-2. 设置很短的 deadline，验证状态码与服务端取消。
-3. 写一份选型记录，说明为什么标准库足够或为何需要框架。
+删除字段后 reserved 原编号与名称，不能重新给其他含义使用。添加字段一般可兼容 wire 格式，仍需看业务语义。普通 proto3 标量默认值不总能表达是否提供；optional 保留存在性，oneof 表达互斥选择，字段掩码可表达局部更新。枚举 0 定义 UNSPECIFIED，客户端需考虑未来未知值。
 
-验收：理解契约兼容性与运行边界，第三方库解决明确问题，生成过程可复现。
+不要把 int64 的 JSON 表现、protobuf 二进制和 Go int64 混为一谈；跨语言客户端尤其检查编号范围、时间与金额单位。协议版本写在包名中，Go 模块大版本是另一套发布维度。
+
+## 流式 RPC 与回压
+
+WatchTasks 是服务器流：服务持续 Send，客户端持续 Recv，结束时 EOF/错误。Send 可能阻塞于网络和流控，不在锁内持有整个存储状态；用快照或订阅机制释放锁再发送。客户端慢、断开或取消都需要使订阅退出。
+
+流式消息不是可靠消息队列，断连重连需要游标/事件序号与回放策略。身份使用 TLS 与认证 metadata，interceptor 统一观测与认证；不要用明文教学配置交付生产。站内 [deadline](/grpc/guides/deadlines_zh)与 [错误](/grpc/guides/error_zh)提供延伸资料。
+
+## 测试与学习实验 {#lab}
+
+1. 生成代码并构建，在公开契约不变时替换业务存储。
+2. 使用 gRPC bufconn 做本机内存连接测试，验证状态映射、deadline 与取消。
+3. 删除 title 后 reserved 编号 2，新增字段使用新编号，解释兼容策略。
+4. 给 WatchTasks 设计 after_id 语义，测试客户端断开不会留下订阅 goroutine。
+
+通过标准：生成可复现、业务不依赖传输状态类型、取消传递到真实工作。参考：[gRPC Go 基础](https://grpc.io/docs/languages/go/basics/)、[Protobuf Go 生成](https://protobuf.dev/reference/go/go-generated/)。

@@ -1,0 +1,87 @@
+{
+  "reset": "每组在新的内存 API 实例中执行，或明确沿用同组前序步骤",
+  "groups": [
+    {
+      "id": "lifecycle",
+      "steps": [
+        {
+          "method": "POST",
+          "path": "/tasks",
+          "body": {
+            "title": "学习 Go"
+          },
+          "status": 201,
+          "expect": {
+            "id": 1,
+            "title": "学习 Go",
+            "done": false
+          },
+          "headers": {
+            "Location": "/tasks/1"
+          }
+        },
+        {
+          "method": "PUT",
+          "path": "/tasks/1",
+          "body": {
+            "title": "完成练习",
+            "done": true
+          },
+          "status": 200,
+          "expect": {
+            "id": 1,
+            "title": "完成练习",
+            "done": true
+          }
+        },
+        {
+          "method": "DELETE",
+          "path": "/tasks/1",
+          "status": 204,
+          "bodyEmpty": true
+        },
+        {
+          "method": "GET",
+          "path": "/tasks/1",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "id": "validation",
+      "steps": [
+        {
+          "method": "POST",
+          "path": "/tasks",
+          "body": {
+            "title": " "
+          },
+          "status": 400
+        },
+        {
+          "method": "POST",
+          "path": "/tasks",
+          "body": {
+            "title": "Go",
+            "id": 9
+          },
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/tasks?limit=101",
+          "status": 400
+        },
+        {
+          "method": "GET",
+          "path": "/tasks?offset=999",
+          "status": 200,
+          "expect": {
+            "items": [],
+            "total": 0
+          }
+        }
+      ]
+    }
+  ]
+}
