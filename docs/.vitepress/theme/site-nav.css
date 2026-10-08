@@ -183,7 +183,34 @@
 }
 
 @media (max-width: 767px) {
-  .Layout { --site-nav-width: calc(100% - 32px); }
+  .Layout {
+    --site-nav-width: calc(100% - 32px);
+    --vp-nav-height: 102px;
+  }
+
+  .Layout .VPNavBar > .wrapper > .container,
+  .Layout .VPNavBar > .wrapper > .container > .title,
+  .Layout .VPNavBarTitle .title,
+  .Layout .VPNavBar .content-body {
+    height: 58px;
+  }
+
+  .Layout .VPNavBarMenu {
+    position: absolute;
+    top: 58px;
+    right: 16px;
+    left: 16px;
+    display: flex;
+    gap: 4px;
+    height: 44px;
+    overflow-x: auto;
+  }
+
+  .Layout .VPNavBarMenuLink {
+    flex-shrink: 0;
+    padding: 0 8px;
+  }
+
   .Layout .VPNavBarTitle .title {
     gap: 8px;
   }

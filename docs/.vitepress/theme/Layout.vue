@@ -22,6 +22,13 @@ const guidesDirectoryPage: DirectoryPage = {
 }
 
 const directoryPages: Record<string, DirectoryPage> = {
+  '/go': {
+    title: 'Go 学习指南',
+    description: '从语言基础到服务交付，循序掌握类型、并发、测试与工程实践。',
+    count: '22 篇学习文档 · 2 个实战项目',
+    parent: null,
+    source: { label: '查看 Go 官方学习资源', href: 'https://go.dev/learn/' },
+  },
   '/python': {
     title: 'Python 学习指南',
     description: '从语言基础到工程实践，循序掌握数据处理、接口开发与项目交付。',

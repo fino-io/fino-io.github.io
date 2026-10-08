@@ -6,6 +6,7 @@ import { defineConfig } from 'vitepress'
 import { isAipArticle } from './aip'
 import { isGrpcArticle } from './grpc'
 import { pythonSidebar } from './python'
+import { goSidebar } from './go'
 
 const graphviz = await instance()
 const configDir = dirname(fileURLToPath(import.meta.url))
@@ -110,6 +111,7 @@ export default defineConfig({
       { text: 'gRPC', link: '/grpc/', activeMatch: '^/grpc/' },
       { text: 'Rust', link: '/rust/', activeMatch: '^/rust/' },
       { text: 'Python', link: '/python/', activeMatch: '^/python/' },
+      { text: 'Go', link: '/go/', activeMatch: '^/go/' },
     ],
     sidebar: {
       '/aip/general': generalSidebar,
@@ -157,6 +159,7 @@ export default defineConfig({
       '/grpc/blog/': grpcSidebar.blog,
       '/grpc/': grpcSidebar.root,
       '/python/': pythonSidebar,
+      '/go/': goSidebar,
       '/rust/': [
         { text: 'Rust 学习', items: [{ text: '学习路线与目录', link: '/rust/' }] },
         {
