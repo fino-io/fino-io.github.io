@@ -1,7 +1,8 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 
 const root = new URL('../', import.meta.url)
-const curriculum = JSON.parse(readFileSync(new URL('docs/public/go/curriculum.json', root), 'utf8'))
+const curriculum = JSON.parse(readFileSync(new URL('docs/.vitepress/go-curriculum.json', root), 'utf8'))
+writeFileSync(new URL('docs/public/go/curriculum.json', root), JSON.stringify(curriculum, null, 2) + '\n')
 const { chapters, units, source, checkedAt } = curriculum
 const ids = new Set(chapters.map((chapter) => chapter.id))
 if (ids.size !== chapters.length) throw new Error('Go 章节 ID 重复')

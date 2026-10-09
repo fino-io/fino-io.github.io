@@ -1,64 +1,54 @@
 ---
-title: 2.3. 迭代器、生成器与装饰器
-description: Python 中文学习指南：迭代器、生成器与装饰器，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 4.3. 迭代协议、惰性与耗尽
+description: 理解 iter、next、StopIteration 与资源寿命。
+pageClass: aip-article python-course
 ---
 
-# 2.3. 迭代器、生成器与装饰器
+# 4.3. 迭代协议、惰性与耗尽
 
-本章目标：理解惰性计算和资源生命周期，读懂常用装饰器，并知道何时普通函数更简单。
+先修建议：[列表、元组、集合与字典](./collections)、[函数、内置函数与作用域](./functions)。
 
-## 可迭代对象与迭代器
+可迭代对象能提供迭代器，迭代器保存当前消费位置并给出下一项。列表可以反复创建新的迭代器；一个迭代器通常是一次性消费的状态对象。
 
-可迭代对象能交给 `iter()` 获取迭代器；迭代器通过 `next()` 产生下一个值，耗尽时抛 `StopIteration`。list 可重复遍历，生成器通常只能消费一次。生成器函数含 `yield`，每次执行暂停并保留局部状态。
-
-```python
-from pathlib import Path
-from collections.abc import Iterator
-
-def nonempty_lines(path: Path) -> Iterator[str]:
-    with path.open(encoding="utf-8") as source:
-        for line in source:
-            text = line.strip()
-            if text:
-                yield text
-```
-
-此函数逐行处理而不一次加载整个文件。使用时完整迭代，或显式管理提前停止时的关闭；资源位于生成器内部时，文件会在迭代期间保持打开。业务更复杂时让调用者管理 `with`，把纯迭代处理与文件生命周期分开。
-
-生成器表达式 `(x * x for x in values)` 适合一次性聚合。`itertools.islice` 截取迭代序列，`chain` 拼接，`groupby` 按连续相同键分组；groupby 不是全局分组，通常需要先按同一键排序。
-
-## 装饰器保留函数接口
+## iter、next 与耗尽 {#concept-1}
 
 ```python
-from functools import wraps
-from time import perf_counter
-
-def timed(function):
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        start = perf_counter()
-        try:
-            return function(*args, **kwargs)
-        finally:
-            print(f"{function.__name__}: {perf_counter() - start:.6f}s")
-    return wrapper
-
-@timed
-def total(values):
-    return sum(values)
-
-assert total([1, 2, 3]) == 6
+values = [10, 20]
+iterator = iter(values)
+assert next(iterator) == 10
+assert next(iterator) == 20
+assert next(iterator, "结束") == "结束"
+assert list(iterator) == []
+assert list(values) == [10, 20]
 ```
 
-`@timed` 等价于定义后执行 `total = timed(total)`。`wraps` 保留名称和文档等元数据。该装饰器用于同步示例，不可直接当作异步函数执行耗时统计。实际项目优先使用日志、框架中间件或成熟观测方案。
+没有默认值的 next 在耗尽时抛 StopIteration，for 循环把耗尽作为正常结束处理。重复消费同一个迭代器不会自动回到开头；如果需要重放，创建新的迭代器或在明确规模内保存结果。
 
-缓存可用 `functools.lru_cache`，前提是参数可哈希、函数结果适合复用；需考虑缓存上限、失效和敏感数据。不要缓存具有副作用或依赖变化环境的结果而不说明语义。
+```mermaid
+flowchart LR
+  A["可迭代对象"] --> I["iter：取得有位置状态的迭代器"] --> N["next：取下一项"]
+  N -->|仍有数据| N
+  N -->|StopIteration| D["正常结束"]
+```
 
-## 练习与验收
+## 惰性组合与资源 {#concept-2}
 
-1. 将文件词频统计改为逐行处理，解释内存变化。
-2. 对同一个生成器求和两次，解释第二次结果。
-3. 给同步函数增加计时装饰器，确认返回值和异常均保留。
+```python
+from itertools import islice
 
-验收：能判断何时发生计算、谁持有资源以及装饰器是否改变行为。参考：[itertools](https://docs.python.org/3/library/itertools.html)、[functools](https://docs.python.org/3/library/functools.html)。
+squares = map(lambda n: n*n, range(10))
+assert list(islice(squares, 3)) == [0, 1, 4]
+assert next(squares) == 9
+```
+
+map/islice 逐项推进，不会先生成所有结果。惰性也意味着异常和副作用在消费时才发生；传到函数边界的不是一份已经成功计算完的列表。
+
+文件、网络和生成器可能持有资源，消费者提前结束要有明确关闭协议。自定义 __iter__/__next__ 在 Dunder 单元学习；生成器表达式与 yield 在后续课程独立讲，不把三个概念混成同一词。
+
+## 动手练习与验收 {#lab}
+
+1. 两次消费同一迭代器，写出第二次为空的断言。
+2. 使用 islice 处理无限计数来源，限制数量后应结束。
+3. 对需要重复遍历的接口说明接受 iterable 还是 iterator，解释内存和资源代价。
+
+依据：[迭代器类型](https://docs.python.org/3/library/stdtypes.html#iterator-types)、[itertools](https://docs.python.org/3/library/itertools.html)。

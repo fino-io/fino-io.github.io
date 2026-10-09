@@ -1,55 +1,68 @@
 ---
-title: 3.4. Web 开发与 FastAPI
-description: Python 中文学习指南：Web 开发与 FastAPI，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 8.2. FastAPI 与接口开发
+description: 请求模型、响应、依赖、错误、测试和生命周期。
+pageClass: aip-article python-course
 ---
 
-# 3.4. Web 开发与 FastAPI
+# 8.2. FastAPI 与接口开发
 
-本章目标：理解请求、校验、业务与存储的职责，用成熟框架建立小型 API。
+先修建议：[框架路线、WSGI 与 ASGI](./frameworks)。
 
-## 框架选择
+FastAPI 把请求模型、路由与响应声明连接起来。框架负责协议处理，业务仍需定义字段规则、授权、存储和失败语义；先完成最小请求，再进入完整项目。
 
-FastAPI 适合基于类型标注的 API；Django 提供 ORM、管理后台、认证等完整应用能力；Flask 适合小型 Web 应用。先选一个完成项目，不必同时学习三个。HTML、HTTP、SQL 和测试比框架名称更值得优先掌握。
+## 可运行接口与请求模型 {#concept-1}
 
-```sh
-python -m pip install "fastapi[standard]"
-```
-
-保存为 `app.py`，运行 `fastapi dev app.py`，打开 `http://127.0.0.1:8000/docs`：
+在项目环境安装 `python -m pip install fastapi uvicorn httpx`，保存 app.py：
 
 ```python
 from fastapi import FastAPI
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
-app = FastAPI(title="学习任务 API")
+app = FastAPI()
 
-class TaskInput(BaseModel):
-    title: str = Field(min_length=1, max_length=200)
+class TaskCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    title: str = Field(min_length=1, max_length=100)
 
-@app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
-
-@app.post("/preview", status_code=201)
-def preview(task: TaskInput) -> dict[str, str]:
-    return {"title": task.title}
+@app.post("/tasks", status_code=201)
+def create_task(task: TaskCreate):
+    return {"title": task.title, "done": False}
 ```
 
-这里只展示请求模型与响应，不保存任务。长度约束不能拒绝全空白标题，实际项目要 strip 后验证。自动 OpenAPI 文档是接口契约入口，仍需写业务规则、失败场景和示例。
+`python -m uvicorn app:app --host 127.0.0.1 --port 8000` 启动。此例不存储数据；BaseModel 对外部 JSON 进行运行时验证，普通 Python 类型标注本身不做这个工作。
 
-## 请求生命周期
+## 在进程内验证契约 {#concept-2}
 
-路由解析路径和参数，模型验证输入，业务函数执行规则，存储层负责持久化，响应模型决定返回字段。小服务可以用两三个模块表达，不必引入通用框架抽象。同步数据库操作可放同步路由；异步路由中不能直接调用阻塞 I/O。
+保存 test_app.py：
 
-使用 201 表示创建，404 表示不存在，422 表示请求验证失败，409 表示明确的冲突。分页要有默认值和上限，响应按稳定顺序返回。认证识别用户，授权检查该用户能否操作特定资源；不要只验证 token 就开放全部对象。
+```python
+from fastapi.testclient import TestClient
+from app import app
 
-## 测试与部署边界
+client = TestClient(app)
+assert client.post("/tasks", json={"title": "学习 Python"}).status_code == 201
+assert client.post("/tasks", json={"title": ""}).status_code == 422
+assert client.post("/tasks", json={"title": "Go", "id": 1}).status_code == 422
+assert client.post("/tasks", json={"title": "Go"}).json() == {"title": "Go", "done": False}
+```
 
-TestClient 能在进程内请求应用；测试使用临时数据库，不连正式数据。至少覆盖创建、查询、非法输入、缺失记录和数据库故障。开发服务器和 reload 用于本地，部署时选择生产启动方式并配置日志、健康检查和优雅退出。
+这可以直接运行，也可改为 pytest 测试函数。接口返回与模型验证通过不代表“只有空白的标题”等业务规则已满足；补充 strip 校验和错误测试。完整严格校验、SQLite 与生命周期见 [任务 API 项目](./project-api)。
 
-凭据从环境配置读取，CORS 配置实际允许来源，错误响应不暴露内部 traceback。密码散列、认证和会话管理复用成熟方案，不自行设计加密算法。
+```mermaid
+flowchart LR
+  R["JSON 请求"] --> V["Pydantic 字段验证"] --> B["业务校验与操作"] --> O["响应契约"]
+```
 
-## 练习与验收
+## 依赖、错误与生命周期 {#concept-3}
 
-完成 [项目二：任务管理 API](./project-api)，把输入验证、SQLite 事务和接口测试连成闭环。验收：重启后数据保留，错误状态码一致，测试不会污染真实数据。参考：[FastAPI 教程](https://fastapi.tiangolo.com/tutorial/)、[FastAPI 测试](https://fastapi.tiangolo.com/tutorial/testing/)。
+Depends 用来装配请求范围依赖，HTTPException 表达公开错误，response_model 限制对外结构。认证确认身份，授权确认可以访问哪条资源；列表也要过滤归属。body 大小、超时和外部调用由服务边界配置，不只靠字段长度。
+
+普通 def 入口可在线程池执行，async def 在异步路径运行。后者不要直接放同步长 I/O 或 CPU 重工作；异步资源在 lifespan/async context 中管理，失败与关闭必须收拢。
+
+## 动手练习与验收 {#lab}
+
+1. 为标题增加空白处理，测试空串、纯空白、长度边界和未知字段。
+2. 增加查询不存在资源的 404，保持内部错误不直接暴露。
+3. 把最小接口升级为完整项目，数据重启保留并通过接口测试。
+
+依据：[FastAPI](https://fastapi.tiangolo.com/)、[Pydantic](https://docs.pydantic.dev/latest/)。

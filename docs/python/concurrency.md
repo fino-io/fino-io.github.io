@@ -1,58 +1,58 @@
 ---
-title: 3.3. 线程、进程与异步
-description: Python 中文学习指南：线程、进程与异步，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 9.1. 并发模型、GIL 与选择依据
+description: 区分并发和并行，注明常规与自由线程 CPython 条件。
+pageClass: aip-article python-course
 ---
 
-# 3.3. 线程、进程与异步
+# 9.1. 并发模型、GIL 与选择依据
 
-本章目标：按负载选并发方式，理解超时和取消，避免只为了“更快”引入异步。
+先修建议：[函数、内置函数与作用域](./functions)、[异常、异常链与清理](./exceptions)。
 
-## 如何选择
+并发让任务交错推进，并行让任务在多个执行资源上同时工作。性能收益取决于等待、CPU 工作、数据传递和依赖条件，不能用线程数代替瓶颈分析。
 
-| 工作 | 起点 | 需要关注 |
+## 按负载选模型 {#concept-1}
+
+| 工作 | 起点 | 关键成本 |
 | --- | --- | --- |
-| 少量文件或请求 | 同步代码 | 最容易调试，先测量瓶颈。 |
-| 多个阻塞 I/O | ThreadPoolExecutor | 有界线程数、共享状态、库的线程安全。 |
-| Python CPU 密集运算 | ProcessPoolExecutor | 序列化成本、进程内存、任务粒度。 |
-| 大量支持异步的网络 I/O | asyncio | 阻塞调用、连接上限、超时、取消。 |
+| 少量顺序操作 | 同步程序 | 最容易验证，先确认确有等待瓶颈。 |
+| 多个阻塞 I/O | 有界线程池 | 共享状态、库线程安全和连接上限。 |
+| Python CPU 密集工作 | 进程或合适原生实现 | 序列化、启动、内存与任务粒度。 |
+| 大量支持异步的 I/O | asyncio / 匹配框架 | 阻塞调用、背压、预算和取消。 |
 
-常规 CPython 的 GIL 会限制 Python 字节码线程并行执行；某些扩展会释放 GIL。较新版本有可选自由线程构建，但并非所有环境和依赖都适用，选型时核对目标运行环境，不能假设线程一定加速 CPU 工作。
-
-## 可运行的结构化并发
-
-```python
-import asyncio
-
-async def compute(value: int, limit: asyncio.Semaphore) -> int:
-    async with limit:
-        async with asyncio.timeout(1):
-            await asyncio.sleep(0.01)
-            return value * value
-
-async def main() -> None:
-    limit = asyncio.Semaphore(2)
-    async with asyncio.TaskGroup() as group:
-        tasks = [group.create_task(compute(n, limit)) for n in range(4)]
-    assert [task.result() for task in tasks] == [0, 1, 4, 9]
-    print("四个任务已完成")
-
-if __name__ == "__main__":
-    asyncio.run(main())
+```mermaid
+flowchart LR
+  W["主要瓶颈"] --> I["阻塞 I/O：线程或异步适配"]
+  W --> C["Python CPU：进程 / 合适原生方案"]
+  W --> S["没有明确瓶颈：先保留同步"]
 ```
 
-调用 async 函数只创建协程，需要 await 或调度执行。TaskGroup 等待组内任务，并在任务失败时处理同组取消与异常传播。Semaphore 限制同时执行数量；对于百万级输入，还要使用有界队列与固定工作者，避免一次创建百万任务。
+## GIL 的范围 {#concept-2}
 
-## 阻塞、取消与共享状态
+常规启用 GIL 的 CPython 通常限制 Python 字节码在线程中同时执行；某些 I/O 和原生扩展会释放 GIL。GIL 不保证多步业务不变量安全，也不保证所有线程任务都无收益。
 
-`time.sleep()`、同步 HTTP 和重 CPU 运算会阻塞事件循环。轻量阻塞 I/O 可以 `await asyncio.to_thread(...)`，但协程取消通常不会强制停止线程里已经开始的工作。CPU 工作移到进程或专门任务服务。
+从 3.13 开始有自由线程构建，可关闭 GIL，实际状态、依赖兼容性和性能仍需核对。不是“所有 Python 都有 GIL”，也不是“新版本自动没有 GIL”。
 
-取消时用 finally 释放资源，捕获 `CancelledError` 后通常重新抛出。锁保护共享状态，队列传递数据；不要持锁执行长时间网络 I/O。进程入口用 `if __name__ == "__main__"`，提交的函数与参数需支持进程传递。
+```python
+import sys
+import sysconfig
 
-## 练习与验收
+supports_free_threading = sysconfig.get_config_var("Py_GIL_DISABLED") == 1
+status = sys._is_gil_enabled() if hasattr(sys, "_is_gil_enabled") else None
+assert isinstance(supports_free_threading, bool)
+print("自由线程构建支持：", supports_free_threading)
+print("运行时 GIL 状态：", status)
+```
 
-1. 把 20 个模拟请求分别同步和并发执行，记录耗时与并发峰值。
-2. 让一个任务超时，验证资源清理和其他任务的预期行为。
-3. 解释为什么限制连接数不等于限制总任务数量。
+3.12 中运行时状态 API 可能不存在，None 表示这里未获取，而不是断言没有 GIL。某些扩展在自由线程构建中也可能重新启用 GIL，按官方说明检查。
 
-验收：能解释性能来源，并发数量和总等待时间都有边界。参考：[asyncio 任务](https://docs.python.org/3/library/asyncio-task.html)、[concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html)。
+## 生命周期先于加速 {#concept-3}
+
+每个任务应说明谁启动、谁等待、如何反馈失败、怎样取消、何时释放资源。限连接数不等于限任务数，线程/进程/协程都不能无界创建。退出时等待所需工作，后台任务不能靠 sleep 猜测结束。
+
+## 动手练习与验收 {#lab}
+
+1. 给一个 I/O 和一个 CPU 任务写出选型与测量计划。
+2. 确认当前解释器构建与 GIL 条件，不把其他机器结论照搬。
+3. 为任务生命周期列出成功、失败、超时和关闭行为。
+
+依据：[自由线程 Python](https://docs.python.org/3/howto/free-threading-python.html)、[threading](https://docs.python.org/3/library/threading.html)、[并发执行](https://docs.python.org/3/library/concurrency.html)。

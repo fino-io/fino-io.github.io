@@ -1,0 +1,42 @@
+{
+  "sorting": [
+    {
+      "input": [],
+      "want": []
+    },
+    {
+      "input": [
+        3,
+        1,
+        2,
+        1
+      ],
+      "want": [
+        1,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "parentheses": [
+    {
+      "input": "(a+(b))",
+      "want": true
+    },
+    {
+      "input": ")(",
+      "want": false
+    }
+  ],
+  "treeSearch": {
+    "values": [
+      8,
+      3,
+      10,
+      9
+    ],
+    "present": 9,
+    "missing": 7
+  }
+}

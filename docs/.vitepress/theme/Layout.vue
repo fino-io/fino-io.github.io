@@ -5,6 +5,7 @@ import { useData, useRoute } from 'vitepress'
 import MermaidRenderer from './MermaidRenderer.vue'
 import ContentLanguageLink from './ContentLanguageLink.vue'
 import { goChapterCount, goUnitCount } from '../go'
+import { pythonChapterCount, pythonUnitCount } from '../python'
 
 type DirectoryPage = {
   title: string
@@ -31,11 +32,11 @@ const directoryPages: Record<string, DirectoryPage> = {
     source: { label: '查看 roadmap.sh Go', href: 'https://roadmap.sh/golang' },
   },
   '/python': {
-    title: 'Python 学习指南',
-    description: '从语言基础到工程实践，循序掌握数据处理、接口开发与项目交付。',
-    count: '20 篇学习文档 · 3 个实战项目',
+    title: 'Python 语言课程',
+    description: '按路线理解语言、算法、框架与工程实践，用图解、示例和项目验证。',
+    count: `${pythonUnitCount} 个单元 · ${pythonChapterCount} 节课程`,
     parent: null,
-    source: { label: '查看 Python 官方教程', href: 'https://docs.python.org/zh-cn/3/tutorial/' },
+    source: { label: '查看 roadmap.sh Python', href: 'https://roadmap.sh/python' },
   },
   '/rust': {
     title: 'Rust 学习指南',

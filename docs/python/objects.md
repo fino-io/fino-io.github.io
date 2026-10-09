@@ -1,54 +1,67 @@
 ---
-title: 2.2. 对象、类与数据建模
-description: Python 中文学习指南：对象、类与数据建模，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 5.1. 类、实例、方法与数据建模
+description: 区分实例状态和类状态，选择 dataclass、组合和接口。
+pageClass: aip-article python-course
 ---
 
-# 2.2. 对象、类与数据建模
+# 5.1. 类、实例、方法与数据建模
 
-本章目标：理解实例、方法和组合，用少量类型表达数据，避免为了面向对象而增加层次。
+先修建议：[函数、内置函数与作用域](./functions)、[列表、元组、集合与字典](./collections)。
 
-## 名字指向对象
+类组织实例状态与操作，实例保存某一次具体数据。先分清对象自己的字段和所有对象共享的类字段，再选择普通类或 dataclass。
 
-Python 中函数、类、模块也都是对象。类定义数据与行为，实例持有具体状态；`self` 是实例方法的第一个参数名称约定。`__init__` 初始化实例，不是返回实例的工厂函数。
+## 实例与方法 {#concept-1}
 
 ```python
-from dataclasses import dataclass
-from decimal import Decimal
+class Task:
+    def __init__(self, title):
+        self.title = title
+        self.tags = []
+        self.done = False
 
-@dataclass(frozen=True)
-class Item:
-    name: str
-    price: Decimal
-    quantity: int = 1
+    def complete(self):
+        self.done = True
 
-    def subtotal(self) -> Decimal:
-        if self.quantity < 1 or self.price < 0:
-            raise ValueError("价格不能为负，数量必须为正")
-        return self.price * self.quantity
-
-item = Item("书", Decimal("39.90"), 2)
-assert item.subtotal() == Decimal("79.80")
+first, second = Task("学习"), Task("练习")
+first.tags.append("Python")
+first.complete()
+assert first.done and not second.done
+assert second.tags == []
 ```
 
-`dataclass` 自动生成初始化和比较等常用方法，适合内部数据。`frozen=True` 阻止字段重新赋值，不保证深层不可变。外部 JSON 的解析与校验可用成熟的 Pydantic，不必手写一套通用验证框架。
+self 是实例方法首参数的惯例名称。__init__ 初始化实例，不返回一个新实例；类对象本身也有属性。把可变列表放在类体里会让多个实例共享，下面对照模型解释。
 
-## 实例字段与类字段
+```mermaid
+flowchart LR
+  C["Task 类：共享定义"] --> A["实例 first：自己的 title、tags、done"]
+  C --> B["实例 second：另一份状态"]
+```
 
-每个对象自己的列表应在 `__init__` 中创建，或在 dataclass 中用 `field(default_factory=list)`。把列表放成类字段会让实例共享同一对象。类字段适合真正共享的常量或配置。
+## dataclass 与数据边界 {#concept-2}
 
-`@property` 适合保持简单属性接口的计算值；耗时 I/O 更适合显式方法。`@classmethod` 常用于替代构造方式，`@staticmethod` 没有实例状态需求；如果独立函数更自然，就用函数。
+```python
+from dataclasses import dataclass, field
 
-## 组合、继承与协议
+@dataclass
+class Record:
+    title: str
+    tags: list[str] = field(default_factory=list)
 
-组合是“包含某个协作者”，继承是“可以替代某种类型”。例如报告生成器接收读取函数或存储对象，通常比继承五层基类清楚。继承时必须保持父类型的行为约定，而不仅是复用代码。
+first, second = Record("一"), Record("二")
+first.tags.append("基础")
+assert second.tags == []
+```
 
-`__repr__` 帮助调试，`__len__`、`__iter__` 等特殊方法让对象参与内置协议。先使用现成容器，只有业务语义需要时才实现协议。单下划线表示内部约定，并不构成访问权限控制。
+default_factory 为每个实例生成新的默认对象。frozen 限制字段赋值，不保证深层不可变；外部输入校验由验证模型负责，dataclass 的类型注解不自动验证 JSON。
 
-## 练习与验收
+## 属性和职责 {#concept-3}
 
-1. 为订单行建模，拒绝负价格与零数量。
-2. 创建两个带标签的实例，确认修改其中一个不会影响另一个。
-3. 用组合给报告工具增加另一种输入来源，并解释为什么无需继承。
+简单派生属性可用 property，耗时 I/O 更适合明确方法。classmethod 可表达替代构造，staticmethod 不接实例或类状态；独立函数能清楚表达时无需强行放类里。组合让对象包含协作者，继承在下一节讨论替代关系。
 
-验收：能区分共享状态与实例状态，类的职责可用一句话说明。参考：[类教程](https://docs.python.org/zh-cn/3/tutorial/classes.html)、[dataclasses](https://docs.python.org/3/library/dataclasses.html)。
+## 动手练习与验收 {#lab}
+
+1. 比较实例列表与类列表，测试修改是否传播到另一个实例。
+2. 为记录定义不变量，明确何时校验，不能靠注解假设已验证。
+3. 用组合注入读取器，不为每种输入建立多层继承。
+
+依据：[类教程](https://docs.python.org/zh-cn/3/tutorial/classes.html)、[dataclasses](https://docs.python.org/3/library/dataclasses.html)。

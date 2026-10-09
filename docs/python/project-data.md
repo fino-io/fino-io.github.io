@@ -1,14 +1,27 @@
 ---
-title: 4.3. 实战：月度消费分析
-description: 用 pandas 完成数据校验、去重检查、按月聚合与报告导出，并规划后续学习方向。
-pageClass: aip-article
+title: 16.3. 实战：月度消费分析
+description: pandas 数据检查、聚合、金额核对与报告。
+pageClass: aip-article python-course
 ---
 
-# 4.3. 实战：月度消费分析
+# 16.3. 实战：月度消费分析
+
+先修建议：[pandas、自动化与性能](./data)、[实战：CSV 消费报告 CLI](./project-cli)。
 
 本项目把[实战：CSV 消费报告 CLI](./project-cli)的金额规则用于数据分析，产出能核对、能重复执行的月度报告。前置知识：[数据分析、自动化与性能](./data)，以及[实战：CSV 消费报告 CLI](./project-cli)的 `report.py`。使用 pandas 完成表格分析，不重新实现数据分析框架。
 
-## 数据契约与样本
+## 报告必须能回到原始数据核对 {#concept-1}
+
+先验证 id、日期、分类和金额，再按月聚合。记录数、总金额与排序可重复，是报告验收的一部分，不仅检查输出文件是否存在。
+
+```mermaid
+flowchart LR
+  I["合成订单 CSV"] --> V["类型、唯一键与金额校验"] --> G["月 / 分类聚合"] --> C["原始总额 = 汇总总额"] --> O["稳定排序导出"]
+```
+
+金额规则复用 CLI 的 parse_cents，表格计算复用 pandas；基础逻辑不因进入数据框就重新以 float 处理精确账目。
+
+## 数据契约与样本 {#concept-2}
 
 输入多一个唯一记录 id，字段顺序为 `id,date,category,amount`。重复 id 直接拒绝，不默默保留一条；金额单位输入为元，输出为分。样本保存为 `orders.csv`：
 
@@ -22,7 +35,7 @@ id,date,category,amount
 
 样本是合成数据，不含真实个人账单。预期一月总计 16000 分，二月总计 2500 分，总计 18500 分。
 
-## 完整分析脚本
+## 完整分析脚本 {#concept-3}
 
 将[实战：CSV 消费报告 CLI](./project-cli)的 `report.py` 放在同一目录，安装 `python -m pip install pandas`，保存以下代码为 `analyze.py`：
 
@@ -31,7 +44,6 @@ from pathlib import Path
 import argparse
 import pandas as pd
 from report import parse_cents
-
 
 def analyze(source: Path, output: Path) -> pd.DataFrame:
     if source.resolve() == output.resolve():
@@ -59,7 +71,6 @@ def analyze(source: Path, output: Path) -> pd.DataFrame:
     summary.to_csv(output, index=False, encoding="utf-8-sig")
     return summary
 
-
 def main() -> None:
     parser = argparse.ArgumentParser(description="生成月度分类消费报告")
     parser.add_argument("input", type=Path)
@@ -71,14 +82,13 @@ def main() -> None:
         parser.exit(1, f"分析失败：{error}\n")
     print(result.to_string(index=False))
 
-
 if __name__ == "__main__":
     main()
 ```
 
 `dtype=str` 保留原始文本，避免金额先变成 float、记录 id 丢失前导零；关闭默认缺失值转换后，空字段由业务规则处理。此版本全量读取，适合可放入内存的数据，不面向超大账单。
 
-## 执行与核对
+## 执行与核对 {#concept-4}
 
 ```sh
 python analyze.py orders.csv --output monthly.csv
@@ -91,7 +101,6 @@ python analyze.py orders.csv --output monthly.csv
 ```python
 import pytest
 from analyze import analyze
-
 
 def test_monthly_report(tmp_path):
     source, output = tmp_path / "orders.csv", tmp_path / "monthly.csv"
@@ -114,7 +123,7 @@ def test_monthly_report(tmp_path):
         analyze(source, output)
 ```
 
-## 交付与扩展
+## 交付与扩展 {#lab}
 
 交付 README、合成样本、脚本、测试与数据字典。验收应同时核对记录数、金额总和、月份范围和重复 id，不能只看图表“像是正确”。升级可增加分类占比图、质量报告和分块聚合；图表标明单位和样本范围。中文绘图需配置实际可用的中文字体。
 

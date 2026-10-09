@@ -1,52 +1,65 @@
 ---
-title: 1.2. 语法、类型与控制流
-description: Python 中文学习指南：语法、类型与控制流，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 1.2. 语法、缩进、输入与输出
+description: 从表达式和语句写出可复现的小程序。
+pageClass: aip-article python-course
 ---
 
-# 1.2. 语法、类型与控制流
+# 1.2. 语法、缩进、输入与输出
 
-本章目标：理解名字绑定、类型转换和条件循环，写出输入、处理、输出分明的小程序。
+先修建议：[安装、解释器与第一次运行](./toolchain)。
 
-## 值、名字与基本类型
+程序由语句组成，表达式产生值，缩进划分代码块。先写一段能解释每一步的小程序，再引入更多语法；不要把“少写符号”理解成“没有结构”。
 
-Python 的名字绑定对象，类型属于对象。`count = 3` 后可以赋值 `count = "三"`，但业务代码应保持名字含义稳定。缩进定义代码块，通常使用四个空格；`#` 开始注释。`int` 表示整数，`float` 表示浮点数，`bool` 表示真假，`str` 表示文本，`None` 表示缺少值。
-
-`input()` 返回字符串；运算前用 `int()` 或 `float()` 显式转换。`/` 是真除法，`//` 是向下取整，`%` 是余数，`**` 是幂。二进制浮点不能精确表示许多十进制小数，金额使用整数分或 `Decimal`。`==` 比较值；`is` 比较对象身份，常用于 `value is None`，不要用它比较数字或字符串。
-
-## 条件与循环
+## 表达式、语句和缩进 {#concept-1}
 
 ```python
-def shipping_fee(total: int) -> int:
-    if total < 0:
-        raise ValueError("订单金额不能为负数")
-    return 0 if total >= 100 else 10
-
-for total in [0, 99, 100]:
-    print(f"金额 {total}，运费 {shipping_fee(total)}")
+price = 20
+quantity = 3
+total = price * quantity
+if total >= 50:
+    print("满足活动金额")
+print(total)  # 60
+assert total == 60
 ```
 
-`if/elif/else` 按顺序选择分支。空字符串、空容器、零和 `None` 在条件中为假，但业务上它们可能不同；判断“没有提供”应明确使用 `is None`。`and`、`or` 会短路，且返回操作数，不一定返回 bool。
+乘法表达式先得到 60，赋值把名字 total 绑定到结果。if 后的冒号开始一个块，缩进的 print 只在条件成立时运行；最后的 print 不在块内。使用四个空格，避免混用 tab 与空格。
 
-`for` 遍历可迭代对象；`range(1, 4)` 依次产生 1、2、3。`while` 用于次数不确定的循环，必须确保退出条件。`break` 结束循环，`continue` 跳过本次迭代。循环的 `else` 在未通过 break 退出时执行，初学时可先不用。
+```mermaid
+flowchart LR
+  E["表达式计算值"] --> A["名字绑定结果"] --> C["条件选择语句块"] --> O["输出或继续处理"]
+```
+
+注释说明代码为何这样做，不替代有意义的名字。大小写有区别，Python 中 true/false 应写成 True/False，空值写 None。
+
+## 输入、转换和展示是三个动作 {#concept-2}
+
+输入通常得到 str，计算前须按需求解析。以下是独立程序，输入 8 时输出 16：
 
 ```python
-names = ["Ada", "Linus", "Guido"]
-for position, name in enumerate(names, start=1):
-    print(position, name)
-assert sum(range(1, 6)) == 15
+raw = input("请输入整数：")
+number = int(raw.strip())
+print(number * 2)
 ```
 
-遍历时优先使用元素和 `enumerate`，不要到处手写索引。并行遍历可用 `zip`；要求长度一致时用 `zip(a, b, strict=True)`。
+本例故意只展示正常路径，输入非整数会抛 ValueError；错误处理在[异常课程](./exceptions)学习。不会因为提示词写了“整数”就得到一个 int，也不会因为变量名叫 number 就自动完成校验。
 
-## 阅读程序与调试
+| 操作 | 得到什么 |
+| --- | --- |
+| `input(...)` | 用户提供的一行文本。 |
+| `int(text)` | 解析得到整数或失败。 |
+| `print(value)` | 写输出，返回 None。 |
+| `f"总计 {total}"` | 根据表达式构造字符串。 |
 
-从第一行开始跟踪值的变化，使用 `print(repr(value), type(value))` 区分空白和类型。错误信息从最后一行查看异常名称，再定位项目中的栈帧。`assert` 可辅助学习，但生产输入验证应使用显式条件和异常，因为优化模式可能禁用断言。
+## 运行顺序与错误定位 {#concept-3}
 
-## 练习与验收
+脚本通常从顶层向下运行，函数定义创建可调用对象，不立即执行函数体。语法错误先于正常运行被报告；运行异常有 traceback，最接近异常末尾的文件与行号通常给出关键失败位置。
 
-1. 写温度转换程序，验证零、负数和小数。
-2. 输出 1 到 100 中能被 3 整除的数及总和。
-3. 写三次机会的猜数字游戏，并给出成功和失败两种流程。
+用最小输入复现问题，不只看最后一行错误文字。逐步打印或调试可以观察值，但最终把预期写成 assert 或测试，让问题修复可重复验证。
 
-验收：能解释每个分支、循环边界和转换失败的位置。参考：[内置类型](https://docs.python.org/3/library/stdtypes.html)、[控制流教程](https://docs.python.org/zh-cn/3/tutorial/controlflow.html)。
+## 动手练习与验收 {#lab}
+
+1. 修改 price、quantity，预测条件是否执行及最后结果。
+2. 把 if 内 print 移出缩进，解释行为变化。
+3. 比较表达式值和 print 返回值，不把展示函数当计算结果。
+
+依据：[Python 速览](https://docs.python.org/zh-cn/3/tutorial/introduction.html)、[词法规则](https://docs.python.org/3/reference/lexical_analysis.html)。

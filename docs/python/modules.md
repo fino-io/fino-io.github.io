@@ -1,73 +1,64 @@
 ---
-title: 2.1. 模块、包与项目结构
-description: Python 中文学习指南：模块、包与项目结构，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 3.1. 内置模块、自定义模块与导入
+description: 组织单文件、包入口和模块搜索路径。
+pageClass: aip-article python-course
 ---
 
-# 2.1. 模块、包与项目结构
+# 3.1. 内置模块、自定义模块与导入
 
-本章目标：理解导入机制，为小项目建立清晰结构，让代码可直接运行和测试。
+先修建议：[函数、内置函数与作用域](./functions)。
 
-## 模块与入口
+模块把一组相关定义放在可导入的命名空间里。原路线区分 Builtin 与 Custom，本节分别运行标准库和自己的模块，再认识包与导入路径。
 
-一个 `.py` 文件是模块；包组织多个模块，常规包包含 `__init__.py`。导入通常先执行模块顶层代码并缓存模块，因此不要在导入时请求网络、修改文件或启动服务。
+## 标准库模块 {#concept-1}
 
 ```python
-# 2.1. greeting.py
-def greet(name: str) -> str:
-    return f"你好，{name}"
+import math
+from statistics import mean
 
-def main() -> None:
-    print(greet("Python"))
-
-if __name__ == "__main__":
-    main()
+assert math.isqrt(17) == 4
+assert mean([2, 4, 6]) == 4
 ```
 
-直接运行时 `__name__` 为 `__main__`，导入时使用模块名称。`python -m 包名.模块名` 按模块路径启动，适合包内程序。优先明确导入，避免 `from module import *` 和手动修改 `sys.path`。循环导入通常意味着职责交叉，先提取真正共享的数据模型或收敛模块边界。
+import 绑定模块或名字，不是把其他文件的文字简单粘贴过来。内置/标准库组件的实现方式可能不同，但使用时都按公开 API，不依赖私有布局。
 
-## 从单文件自然增长
+## 自定义模块的双文件实验 {#concept-2}
 
-```text
-study-tool/
-├── pyproject.toml
-├── README.md
-├── src/
-│   └── study_tool/
-│       ├── __init__.py
-│       ├── cli.py
-│       └── report.py
-└── tests/
-    └── test_report.py
+保存 pricing.py：
+
+```python
+def subtotal(price, quantity):
+    if price < 0 or quantity < 1:
+        raise ValueError("价格和数量不合法")
+    return price * quantity
 ```
 
-业务规则放 report，参数和输出放 cli。只有数据库、HTTP 或任务调度确实出现时才增加对应模块，不必预先建立 controller/service/repository 全套目录。
+同目录保存 main.py，执行 `python main.py`：
 
-## pyproject.toml 与安装
+```python
+from pricing import subtotal
 
-```toml
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
-name = "study-tool"
-version = "0.1.0"
-requires-python = ">=3.12"
-dependencies = []
-
-[project.scripts]
-study-tool = "study_tool.cli:main"
+assert subtotal(20, 3) == 60
+print(subtotal(20, 3))
 ```
 
-该配置配合上面的 src 布局使用；`cli.py` 中提供 `main()`。在环境中执行 `python -m pip install -e .`，即可运行 `study-tool`。可编辑安装方便开发，发布构建使用 wheel。构建后还应在干净环境安装 wheel 验证，防止本地路径掩盖漏打包文件。
+导入模块会执行其顶层语句，通常同一进程后续导入复用已加载对象。文件名不要遮住 json、typing、csv 等库；不要把数据库连接和大量工作隐藏在导入副作用里。
 
-依赖声明表达兼容范围；应用锁文件固定实际解析结果。应用通常保留锁文件以复现环境，库需要同时验证支持的依赖范围。README 至少说明安装、运行、输入格式和验证命令。
+```mermaid
+flowchart LR
+  M["main.py"] --> I["import pricing"] --> P["pricing 模块命名空间"] --> F["subtotal 函数"]
+```
 
-## 练习与验收
+## 包、入口与搜索路径 {#concept-3}
 
-1. 将词频统计拆成包和 CLI，导入业务模块时不产生输出。
-2. 在新的环境安装项目，验证命令行入口。
-3. 分析一次循环导入，减少互相依赖而非使用延迟导入掩盖设计。
+目录可组织为包，常规包使用 __init__.py，包内相对导入按包上下文解释。`python -m package.module` 与直接运行一个包内文件的上下文不同，不能靠随意修改 sys.path 掩盖结构问题。
 
-验收：从仓库根目录能按 README 安装和运行，模块没有意外副作用。参考：[模块教程](https://docs.python.org/zh-cn/3/tutorial/modules.html)、[Python 打包指南](https://packaging.python.org/en/latest/tutorials/packaging-projects/)。
+`if __name__ == "__main__"` 把脚本入口与可复用定义分开：被导入时不会执行入口工作。项目打包、src 布局和依赖声明在[配置课程](./configuration)继续学习，不在每个文件中各造一套加载器。
+
+## 动手练习与验收 {#lab}
+
+1. 按两个文件运行实验，再从另一个目录说明为什么搜索路径会变化。
+2. 给 pricing 增加主入口，验证直接运行与被导入的行为不同。
+3. 建一个最小包，通过 -m 运行，解释模块名与文件路径的区别。
+
+依据：[模块教程](https://docs.python.org/zh-cn/3/tutorial/modules.html)、[import 系统](https://docs.python.org/3/reference/import.html)。

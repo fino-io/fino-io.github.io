@@ -1,56 +1,77 @@
 ---
-title: 2.4. 类型标注与边界校验
-description: Python 中文学习指南：类型标注与边界校验，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 11.1. typing、mypy、Pyright 与 Pyre
+description: 用标注表达接口，静态发现不匹配，核对检查器工作流。
+pageClass: aip-article python-course
 ---
 
-# 2.4. 类型标注与边界校验
+# 11.1. typing、mypy、Pyright 与 Pyre
 
-本章目标：用标注明确接口，用静态检查发现类型错误，并在外部输入处做真实校验。
+先修建议：[类、实例、方法与数据建模](./objects)、[函数、内置函数与作用域](./functions)。
 
-## 标注不自动校验值
+类型标注给检查器、编辑器和读者描述接口；普通 Python 不因注解自动拒绝错误输入。原图的 typing、mypy、Pyright、Pyre 是静态部分，Pydantic 在下一节独立解释运行时校验。
 
-```python
-from collections.abc import Iterable
-from typing import TypedDict
-
-class Student(TypedDict):
-    name: str
-    score: int
-
-def passed_names(students: Iterable[Student]) -> list[str]:
-    return [student["name"] for student in students if student["score"] >= 60]
-
-assert passed_names([{"name": "小林", "score": 80}]) == ["小林"]
-```
-
-`list[str]` 描述元素类型，`str | None` 描述可选值。`TypedDict` 描述字典字段形状，运行时仍是普通 dict。类型检查器可发现传错参数，但 Python 本身通常不强制注解；不要把类型注解当作输入验证。
-
-接收只读数据时用 `Iterable`、`Sequence`、`Mapping` 等能力接口，返回具体容器更便于调用者使用。没有输入输出类型关系时无需强行引入泛型。`Any` 会削弱检查，适合逐步接入旧代码，不应传播到整个业务核心。
-
-## 先解析，再进入业务
+## 具体类型、Union 与容器 {#concept-1}
 
 ```python
-def parse_score(value: object) -> int:
-    if isinstance(value, bool) or not isinstance(value, int):
-        raise ValueError("分数必须为整数")
-    if not 0 <= value <= 100:
-        raise ValueError("分数必须在 0 到 100 之间")
-    return value
+def average(values: list[float]) -> float:
+    if not values:
+        raise ValueError("至少需要一个数")
+    return sum(values) / len(values)
+
+assert average([1.0, 2.0]) == 1.5
 ```
 
-bool 是 int 的子类，业务要求纯整数时要明确拒绝。HTTP 请求、配置文件和数据库结果都应在边界解析，内部尽量只流转已验证数据。使用 Pydantic 时阅读严格模式和转换规则，避免把意外的字符串悄悄当成正确值。
+`str | None` 表示可选值，使用前应缩小 None 分支；list[str] 表达元素类型。Any 会弱化检查，用在确实不知道类型的边界，不作为绕过所有错误的默认选择。
 
-## 逐步引入静态检查
+## TypedDict 与 Protocol {#concept-2}
 
-可以选 mypy 或 Pyright，先覆盖公共函数和主要数据模型，再逐步收紧。示例安装命令：`python -m pip install mypy`，检查命令：`python -m mypy src`。检查器只能覆盖自己理解的类型；第三方库可能需要类型存根。
+```python
+from typing import Protocol, TypedDict
 
-`Protocol` 用结构化类型表达协作者能力；例如只需 `.read()` 就不必绑定特定文件类。`cast()` 告诉检查器你的判断，不执行转换；`# type: ignore` 应标明具体原因，不能作为默认解决办法。
+class TaskData(TypedDict):
+    title: str
+    done: bool
 
-## 练习与验收
+class Reader(Protocol):
+    def read(self) -> str: ...
 
-1. 为词频函数标注参数和返回值，让检查器发现传入整数的问题。
-2. 验证 `None`、布尔值、越界整数和字符串分数。
-3. 为一个读数据协作者定义最小 Protocol，避免巨大接口。
+class MemoryReader:
+    def read(self) -> str:
+        return "Python"
 
-验收：能明确区分标注、静态检查和运行时校验。参考：[typing 文档](https://docs.python.org/3/library/typing.html)、[mypy 入门](https://mypy.readthedocs.io/en/stable/getting_started.html)。
+def load(reader: Reader) -> str:
+    return reader.read()
+
+record: TaskData = {"title": "学习", "done": False}
+assert load(MemoryReader()) == "Python"
+assert record["done"] is False
+```
+
+TypedDict 描述字典形状，不自动验证外部 JSON。Protocol 描述使用方需要的行为，不要求继承同一巨型基类。运行时检查和静态结构契约分别设计。
+
+```mermaid
+flowchart LR
+  S["源码与类型注解"] --> C["mypy / Pyright / Pyre"] --> D["诊断不匹配"]
+  S --> R["Python 执行"]
+  I["外部数据"] --> V["运行时校验模型"] --> R
+```
+
+## 检查器的真实工作流 {#concept-3}
+
+| 工具 | 入口与定位 | 配置重点 |
+| --- | --- | --- |
+| mypy | 对 Python 文件/包作静态分析 | Python 版本、strict 程度、导入与第三方 stubs。 |
+| Pyright | 官方 npm 工具与编辑器集成 | 环境、include、检查模式和目标版本。 |
+| Pyre | 原路线中的类型检查方案 | 截至核对日官方仓库已归档，保留历史节点；新项目评估当前维护的检查器。 |
+
+示例检查命令 `python -m mypy src`，要求安装对应工具并存在 src。Pyright 核心通过官方 npm/编辑器途径使用，不把同名包装误当所有来源等价。选择一套主检查流程，工具升级与规则变化单独验证。
+
+[Pyre 官方仓库](https://github.com/facebook/pyre-check)在核对时为归档状态，主页介绍后续 Pyrefly。保留原路线的 pyre 对应关系，维护状态以仓库事实为准，不把旧主页的开发宣传当作最新状态。
+
+## 动手练习与验收 {#lab}
+
+1. 故意传 list[str] 给 average，让检查器报告，再修复。
+2. 为 None 分支、TypedDict 缺字段与 Protocol 缺方法建立检查样例。
+3. 用运行时坏 JSON 说明为什么静态检查通过不代表输入已验证。
+
+依据：[Python typing](https://docs.python.org/3/library/typing.html)、[类型规范](https://typing.python.org/)、[mypy](https://mypy.readthedocs.io/en/stable/)、[Pyright](https://github.com/microsoft/pyright)、[Pyre](https://pyre-check.org/)。

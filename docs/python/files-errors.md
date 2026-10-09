@@ -1,68 +1,59 @@
 ---
-title: 1.5. 文件、异常与常用标准库
-description: Python 中文学习指南：文件、异常与常用标准库，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 1.8. 文件、JSON、CSV 与标准库 I/O
+description: 为后续项目补充流式输入、数据解析与资源边界。
+pageClass: aip-article python-course
 ---
 
-# 1.5. 文件、异常与常用标准库
+# 1.8. 文件、JSON、CSV 与标准库 I/O
 
-本章目标：可靠读取文本和结构化数据，区分错误类型，并在异常发生时正确释放资源。
+先修建议：[异常、异常链与清理](./exceptions)。
 
-## 路径与上下文管理
+文件是字节来源，解析器把字节或文本变成数据，业务再验证数据能否使用。本节是原路线的应用补充，为后续上下文管理器和完整项目建立 I/O 经验。
+
+## 路径与资源生命周期 {#concept-1}
 
 ```python
 from pathlib import Path
+from tempfile import TemporaryDirectory
+
+with TemporaryDirectory() as directory:
+    path = Path(directory) / "notes.txt"
+    path.write_text("学习 Python\n", encoding="utf-8")
+    with path.open(encoding="utf-8") as source:
+        assert source.readline() == "学习 Python\n"
+```
+
+明确编码，文本与二进制模式分开。with 在退出时关闭文件，资源协议后续独立讲解；小文件可 read_text，大输入考虑逐行或分块，不能无限读入内存。
+
+```mermaid
+flowchart LR
+  S["路径 / 输入流"] --> R["限额内读取"] --> P["JSON / CSV 解析器"] --> D["具名数据与业务校验"]
+```
+
+## JSON 与 CSV {#concept-2}
+
+```python
+import csv
+import io
 import json
 
-path = Path("settings.json")
-path.write_text(json.dumps({"language": "中文"}, ensure_ascii=False), encoding="utf-8")
-with path.open(encoding="utf-8") as source:
-    settings = json.load(source)
-print(settings["language"])
+record = json.loads('{"title":"学习 Python","done":false}')
+assert record["done"] is False
+assert json.loads(json.dumps(record, ensure_ascii=False)) == record
+rows = list(csv.DictReader(io.StringIO('name,note\nPython,"语言,工具"\n')))
+assert rows == [{"name": "Python", "note": "语言,工具"}]
 ```
 
-`Path` 负责路径组合与文件操作，使用 `Path("data") / "orders.csv"`，不手工拼斜杠。相对路径基于当前工作目录，未必是脚本所在目录。`with` 负责关闭文件，异常时也会执行退出逻辑。大文件逐行处理，避免无条件 `read_text()` 全量加载。
+JSON 解析成功不等于字段与范围合法，外部边界用明确模型和校验。CSV 可能含引号、逗号和换行，复用 csv 而不是 split(',')。金额、日期和缺失值各有独立契约。
 
-JSON 适合交换基本结构，CSV 适合表格。CSV 用 `csv` 模块解析，不能简单按逗号 split，因为字段可能包含逗号、引号或换行。打开 CSV 通常指定 `newline=""` 和编码。不要对不可信输入执行 `pickle.load`、`eval` 或 `exec`。
+## 时间、日志与命令入口 {#concept-3}
 
-## 只捕获能够处理的异常
+日期用 datetime/date，精确金额用 Decimal 或整数分，路径用 pathlib，参数用 argparse，结构化事件用 logging。写输出文件时明确覆盖与原子替换需求，拒绝报告路径覆盖输入。异常由入口映射输出，退出码不由深层函数随意决定。
 
-```python
-from pathlib import Path
+## 动手练习与验收 {#lab}
 
-def read_count(path: Path) -> int:
-    try:
-        text = path.read_text(encoding="utf-8")
-    except FileNotFoundError:
-        return 0
-    try:
-        count = int(text.strip())
-    except ValueError as error:
-        raise ValueError(f"计数文件格式错误：{path}") from error
-    if count < 0:
-        raise ValueError("计数不能为负数")
-    return count
-```
+1. 从临时目录读取 UTF-8 文本，测试不存在的文件与错误编码。
+2. 解析带逗号和换行的 CSV 字段，观察为何不能手工 split。
+3. 给 JSON 添加缺字段、未知字段和过大输入，分别说明错误由哪层处理。
 
-文件不存在可按业务返回默认值，权限错误和内容损坏应暴露。异常链保留原因，便于定位。`finally` 适合无论成功失败都执行的清理；`else` 表示 try 成功后的逻辑。不要用 `except: pass` 吞掉错误。
-
-## 日常标准库地图
-
-| 需求 | 优先使用 |
-| --- | --- |
-| 日期与时区 | `datetime`、`zoneinfo`，对跨时区时间使用带时区对象。 |
-| 金额 | `decimal.Decimal` 或整数分，定义舍入规则。 |
-| 命令行 | `argparse`，自动生成帮助和参数错误。 |
-| 复制、压缩、临时文件 | `shutil`、`zipfile`、`tempfile`。 |
-| 日志、进程 | `logging`、`subprocess.run`，传参数列表，避免拼 shell 字符串。 |
-| 随机 | 模拟用 `random`，令牌用 `secrets`。 |
-
-写入重要文件时可先写同目录临时文件，再替换目标文件；同时考虑崩溃、权限和并发，简单脚本不必提前设计复杂存储层。
-
-## 练习与验收
-
-1. 读 CSV 并导出 JSON，测试中文、带逗号字段和空文件。
-2. 对不存在、损坏、无权限的文件分别说明预期行为。
-3. 写日志时记录文件名和行号，不记录密码或完整凭据。
-
-验收：文件及时关闭，失败信息能定位输入，异常处理不掩盖真实错误。参考：[输入输出教程](https://docs.python.org/zh-cn/3/tutorial/inputoutput.html)、[异常教程](https://docs.python.org/zh-cn/3/tutorial/errors.html)。
+依据：[pathlib](https://docs.python.org/3/library/pathlib.html)、[json](https://docs.python.org/3/library/json.html)、[csv](https://docs.python.org/3/library/csv.html)。

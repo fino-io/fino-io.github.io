@@ -1,4 +1,4 @@
-import curriculum from '../public/go/curriculum.json'
+import curriculum from './go-curriculum.json'
 
 export const goChapterCount = curriculum.chapters.length
 export const goUnitCount = curriculum.units.length

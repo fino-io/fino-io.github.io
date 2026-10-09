@@ -266,27 +266,28 @@ html:has(.VPSidebar.open) {
   max-width: 100%;
 }
 
-.go-directory .vp-doc td:first-child {
+:is(.go-directory, .python-directory) .vp-doc td:first-child {
   width: 42%;
 }
 
-:is(.go-course, .go-directory) .vp-doc .language-mermaid {
+:is(.go-course, .go-directory, .python-course, .python-directory) .vp-doc .language-mermaid {
   margin: 24px 0;
   border-radius: 0;
   background: transparent;
 }
 
-:is(.go-course, .go-directory) .language-mermaid > :is(.copy, .lang) {
+:is(.go-course, .go-directory, .python-course, .python-directory) .language-mermaid > :is(.copy, .lang) {
   display: none;
 }
 
-:is(.go-course, .go-directory) .language-mermaid .mermaid-diagram {
+:is(.go-course, .go-directory, .python-course, .python-directory) .language-mermaid .mermaid-diagram {
   margin: 0;
 }
 
 @media (max-width: 767px) {
-  :is(.go-course, .go-directory) .mermaid-diagram svg {
-    min-width: 520px;
+  :is(.go-course, .go-directory, .python-course, .python-directory) .mermaid-diagram svg {
+    width: var(--diagram-width, 100%);
+    max-width: none !important;
   }
 }
 

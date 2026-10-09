@@ -1,0 +1,3582 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-09",
+  "source": {
+    "requestedUrl": "https://roadmap.sh/Python",
+    "url": "https://roadmap.sh/python",
+    "snapshotUrl": "https://roadmap.sh/pdfs/roadmaps/python.pdf",
+    "sha256": "bf6a1e94791b7295f5a94cdf1df1a581b369b189e9de7fe59860fd471b3cbf78",
+    "note": "使用官方小写路径与 PDF 核对层级；英文名称保留来源，额外应用和项目明确标为扩展。"
+  },
+  "groups": [
+    "语言基础",
+    "数据结构与算法",
+    "模块",
+    "函数与迭代进阶",
+    "面向对象",
+    "包管理与项目配置",
+    "表达式、范式与资源",
+    "框架",
+    "并发",
+    "环境管理",
+    "类型与校验",
+    "代码格式",
+    "文档",
+    "测试",
+    "应用扩展",
+    "综合项目与延伸"
+  ],
+  "units": [
+    {
+      "id": "unit-1",
+      "title": "语言基础",
+      "sourceTitle": "Learn the Basics",
+      "chapterIds": [
+        "toolchain",
+        "basics",
+        "variables",
+        "control-flow",
+        "collections",
+        "functions",
+        "exceptions",
+        "files-errors"
+      ],
+      "outcome": "先写出顺序程序，解释名字、对象、分支、容器与异常。"
+    },
+    {
+      "id": "unit-2",
+      "title": "数据结构与算法",
+      "sourceTitle": "Data Structures & Algorithms",
+      "chapterIds": [
+        "arrays-linked",
+        "hash-tables",
+        "stacks-queues",
+        "heaps",
+        "trees",
+        "recursion",
+        "sorting"
+      ],
+      "outcome": "从访问方式、不变量与复杂度理解结构，实际工作复用标准库。"
+    },
+    {
+      "id": "unit-3",
+      "title": "模块",
+      "sourceTitle": "Modules",
+      "chapterIds": [
+        "modules"
+      ],
+      "outcome": "把内置模块、自定义模块与导入路径连成可运行项目。"
+    },
+    {
+      "id": "unit-4",
+      "title": "函数与迭代进阶",
+      "sourceTitle": null,
+      "chapterIds": [
+        "lambdas",
+        "decorators",
+        "iterators",
+        "regex"
+      ],
+      "outcome": "学习原图的 Lambda、装饰器、迭代器和正则主题。"
+    },
+    {
+      "id": "unit-5",
+      "title": "面向对象",
+      "sourceTitle": "Object Oriented Programming",
+      "chapterIds": [
+        "objects",
+        "inheritance",
+        "dunder"
+      ],
+      "outcome": "定义状态与行为，理解继承契约和 Python 的特殊方法协议。"
+    },
+    {
+      "id": "unit-6",
+      "title": "包管理与项目配置",
+      "sourceTitle": "Package Managers",
+      "chapterIds": [
+        "package-managers",
+        "configuration",
+        "common-packages"
+      ],
+      "outcome": "区分包索引、安装工具、依赖管理、配置和常用生态包。"
+    },
+    {
+      "id": "unit-7",
+      "title": "表达式、范式与资源",
+      "sourceTitle": null,
+      "chapterIds": [
+        "comprehensions",
+        "generators",
+        "paradigms",
+        "context-managers"
+      ],
+      "outcome": "把推导式、生成器、编程范式与上下文管理器放回具体任务。"
+    },
+    {
+      "id": "unit-8",
+      "title": "框架",
+      "sourceTitle": "Learn a Framework",
+      "chapterIds": [
+        "frameworks",
+        "web",
+        "django-flask",
+        "sync-frameworks",
+        "async-frameworks"
+      ],
+      "outcome": "按原图覆盖全部框架，选择适合应用和执行模型的一种主要方案。"
+    },
+    {
+      "id": "unit-9",
+      "title": "并发",
+      "sourceTitle": "Concurrency",
+      "chapterIds": [
+        "concurrency",
+        "threading",
+        "multiprocessing",
+        "asyncio"
+      ],
+      "outcome": "按负载选择线程、进程或异步，管理共享状态、预算和取消。"
+    },
+    {
+      "id": "unit-10",
+      "title": "环境管理",
+      "sourceTitle": "Environments",
+      "chapterIds": [
+        "environments"
+      ],
+      "outcome": "分清解释器版本与项目环境，能重建依赖而不复制环境目录。"
+    },
+    {
+      "id": "unit-11",
+      "title": "类型与校验",
+      "sourceTitle": "Static Typing",
+      "chapterIds": [
+        "typing",
+        "validation"
+      ],
+      "outcome": "区分静态类型检查与外部数据的运行时校验。"
+    },
+    {
+      "id": "unit-12",
+      "title": "代码格式",
+      "sourceTitle": "Code Formatting",
+      "chapterIds": [
+        "formatting"
+      ],
+      "outcome": "使用 Ruff、Black 或 YAPF 的明确工作流，避免互相改写。"
+    },
+    {
+      "id": "unit-13",
+      "title": "文档",
+      "sourceTitle": "Documentation",
+      "chapterIds": [
+        "documentation"
+      ],
+      "outcome": "用 docstring、Sphinx 与可执行示例表达公开接口。"
+    },
+    {
+      "id": "unit-14",
+      "title": "测试",
+      "sourceTitle": "Testing",
+      "chapterIds": [
+        "testing",
+        "unittest-doctest",
+        "tox"
+      ],
+      "outcome": "用行为断言、隔离和环境矩阵验证结果，说明旧工具的现状。"
+    },
+    {
+      "id": "unit-15",
+      "title": "应用扩展",
+      "sourceTitle": null,
+      "chapterIds": [
+        "http",
+        "databases",
+        "data"
+      ],
+      "outcome": "补充原图 Common Packages 与项目所需的 HTTP、SQL 和表格实践。"
+    },
+    {
+      "id": "unit-16",
+      "title": "综合项目与延伸",
+      "sourceTitle": null,
+      "chapterIds": [
+        "project-cli",
+        "project-api",
+        "project-data",
+        "projects",
+        "resources"
+      ],
+      "outcome": "用三个项目交付程序、服务与分析结果，并进入相关路线。"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "toolchain",
+      "title": "安装、解释器与第一次运行",
+      "summary": "确认运行环境，创建虚拟环境，运行脚本并定位解释器。",
+      "roadmapTopics": [],
+      "prerequisites": [],
+      "lessons": [
+        {
+          "id": "toolchain-concept-1",
+          "title": "安装与解释器位置",
+          "anchor": "concept-1",
+          "url": "/python/toolchain#concept-1"
+        },
+        {
+          "id": "toolchain-concept-2",
+          "title": "第一次运行",
+          "anchor": "concept-2",
+          "url": "/python/toolchain#concept-2"
+        },
+        {
+          "id": "toolchain-concept-3",
+          "title": "导入失败先检查哪里",
+          "anchor": "concept-3",
+          "url": "/python/toolchain#concept-3"
+        },
+        {
+          "id": "toolchain-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/toolchain#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "toolchain-lab",
+          "url": "/python/toolchain#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "extension",
+      "learningOutcomes": [
+        "确认运行环境，创建虚拟环境，运行脚本并定位解释器。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://www.python.org/downloads/",
+        "https://docs.python.org/3/using/index.html",
+        "https://docs.python.org/3/library/venv.html"
+      ]
+    },
+    {
+      "id": "basics",
+      "title": "语法、缩进、输入与输出",
+      "summary": "从表达式和语句写出可复现的小程序。",
+      "roadmapTopics": [
+        "Learn the Basics",
+        "Basic Syntax"
+      ],
+      "prerequisites": [
+        "toolchain"
+      ],
+      "lessons": [
+        {
+          "id": "basics-concept-1",
+          "title": "表达式、语句和缩进",
+          "anchor": "concept-1",
+          "url": "/python/basics#concept-1"
+        },
+        {
+          "id": "basics-concept-2",
+          "title": "输入、转换和展示是三个动作",
+          "anchor": "concept-2",
+          "url": "/python/basics#concept-2"
+        },
+        {
+          "id": "basics-concept-3",
+          "title": "运行顺序与错误定位",
+          "anchor": "concept-3",
+          "url": "/python/basics#concept-3"
+        },
+        {
+          "id": "basics-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/basics#lab"
+        }
+      ],
+      "topicTargets": {
+        "Learn the Basics": "concept-1",
+        "Basic Syntax": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "basics-lab",
+          "url": "/python/basics#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "从表达式和语句写出可复现的小程序。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/introduction.html",
+        "https://docs.python.org/3/reference/lexical_analysis.html"
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "变量、数据类型与类型转换",
+      "summary": "理解名字绑定、可变对象、数字、文本、None 与转换边界。",
+      "roadmapTopics": [
+        "Variables and Data Types",
+        "Type Casting"
+      ],
+      "prerequisites": [
+        "basics"
+      ],
+      "lessons": [
+        {
+          "id": "variables-concept-1",
+          "title": "名字与共享对象",
+          "anchor": "concept-1",
+          "url": "/python/variables#concept-1"
+        },
+        {
+          "id": "variables-concept-2",
+          "title": "数值、布尔与 None",
+          "anchor": "concept-2",
+          "url": "/python/variables#concept-2"
+        },
+        {
+          "id": "variables-concept-3",
+          "title": "文本与类型转换",
+          "anchor": "concept-3",
+          "url": "/python/variables#concept-3"
+        },
+        {
+          "id": "variables-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/variables#lab"
+        }
+      ],
+      "topicTargets": {
+        "Variables and Data Types": "concept-2",
+        "Type Casting": "concept-3"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "variables-lab",
+          "url": "/python/variables#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解名字绑定、可变对象、数字、文本、None 与转换边界。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/stdtypes.html",
+        "https://docs.python.org/3/library/functions.html",
+        "https://docs.python.org/3/library/copy.html"
+      ]
+    },
+    {
+      "id": "control-flow",
+      "title": "条件、循环与终止条件",
+      "summary": "使用 if、for、while、range 与控制转移处理有限输入。",
+      "roadmapTopics": [
+        "Conditionals",
+        "Loops"
+      ],
+      "prerequisites": [
+        "variables"
+      ],
+      "lessons": [
+        {
+          "id": "control-flow-concept-1",
+          "title": "条件与短路",
+          "anchor": "concept-1",
+          "url": "/python/control-flow#concept-1"
+        },
+        {
+          "id": "control-flow-concept-2",
+          "title": "for、range、while",
+          "anchor": "concept-2",
+          "url": "/python/control-flow#concept-2"
+        },
+        {
+          "id": "control-flow-concept-3",
+          "title": "break、continue 与循环 else",
+          "anchor": "concept-3",
+          "url": "/python/control-flow#concept-3"
+        },
+        {
+          "id": "control-flow-concept-4",
+          "title": "遍历时修改的边界",
+          "anchor": "concept-4",
+          "url": "/python/control-flow#concept-4"
+        },
+        {
+          "id": "control-flow-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/control-flow#lab"
+        }
+      ],
+      "topicTargets": {
+        "Conditionals": "concept-1",
+        "Loops": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "control-flow-lab",
+          "url": "/python/control-flow#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "使用 if、for、while、range 与控制转移处理有限输入。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/reference/compound_stmts.html"
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "列表、元组、集合与字典",
+      "summary": "按顺序、唯一性、键查询和可变性选择内置容器。",
+      "roadmapTopics": [
+        "Lists",
+        "Tuples",
+        "Sets",
+        "Dictionaries"
+      ],
+      "prerequisites": [
+        "variables",
+        "control-flow"
+      ],
+      "lessons": [
+        {
+          "id": "collections-concept-1",
+          "title": "四种内置容器",
+          "anchor": "concept-1",
+          "url": "/python/collections#concept-1"
+        },
+        {
+          "id": "collections-concept-2",
+          "title": "修改、返回值与副本",
+          "anchor": "concept-2",
+          "url": "/python/collections#concept-2"
+        },
+        {
+          "id": "collections-concept-3",
+          "title": "查找与聚合",
+          "anchor": "concept-3",
+          "url": "/python/collections#concept-3"
+        },
+        {
+          "id": "collections-concept-4",
+          "title": "数据结构的成本",
+          "anchor": "concept-4",
+          "url": "/python/collections#concept-4"
+        },
+        {
+          "id": "collections-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/collections#lab"
+        }
+      ],
+      "topicTargets": {
+        "Lists": "concept-1",
+        "Tuples": "concept-1",
+        "Sets": "concept-1",
+        "Dictionaries": "concept-3"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "collections-lab",
+          "url": "/python/collections#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "按顺序、唯一性、键查询和可变性选择内置容器。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/datastructures.html",
+        "https://docs.python.org/3/library/collections.html"
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "函数、内置函数与作用域",
+      "summary": "把操作表达成清楚的参数、返回值与副作用。",
+      "roadmapTopics": [
+        "Functions, Builtin Functions"
+      ],
+      "prerequisites": [
+        "collections",
+        "control-flow"
+      ],
+      "lessons": [
+        {
+          "id": "functions-concept-1",
+          "title": "参数与返回值",
+          "anchor": "concept-1",
+          "url": "/python/functions#concept-1"
+        },
+        {
+          "id": "functions-concept-2",
+          "title": "默认参数只在定义时求值",
+          "anchor": "concept-2",
+          "url": "/python/functions#concept-2"
+        },
+        {
+          "id": "functions-concept-3",
+          "title": "作用域与闭包",
+          "anchor": "concept-3",
+          "url": "/python/functions#concept-3"
+        },
+        {
+          "id": "functions-concept-4",
+          "title": "内置函数与副作用",
+          "anchor": "concept-4",
+          "url": "/python/functions#concept-4"
+        },
+        {
+          "id": "functions-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/functions#lab"
+        }
+      ],
+      "topicTargets": {
+        "Functions, Builtin Functions": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "functions-lab",
+          "url": "/python/functions#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "把操作表达成清楚的参数、返回值与副作用。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/controlflow.html#more-on-defining-functions",
+        "https://docs.python.org/3/library/functions.html"
+      ]
+    },
+    {
+      "id": "exceptions",
+      "title": "异常、异常链与清理",
+      "summary": "区分失败类型，保留原因，让错误在合适边界处理。",
+      "roadmapTopics": [
+        "Exceptions"
+      ],
+      "prerequisites": [
+        "functions"
+      ],
+      "lessons": [
+        {
+          "id": "exceptions-concept-1",
+          "title": "try、except、else 与 finally",
+          "anchor": "concept-1",
+          "url": "/python/exceptions#concept-1"
+        },
+        {
+          "id": "exceptions-concept-2",
+          "title": "保留异常链",
+          "anchor": "concept-2",
+          "url": "/python/exceptions#concept-2"
+        },
+        {
+          "id": "exceptions-concept-3",
+          "title": "常见失败类别",
+          "anchor": "concept-3",
+          "url": "/python/exceptions#concept-3"
+        },
+        {
+          "id": "exceptions-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/exceptions#lab"
+        }
+      ],
+      "topicTargets": {
+        "Exceptions": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "exceptions-lab",
+          "url": "/python/exceptions#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分失败类型，保留原因，让错误在合适边界处理。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/errors.html",
+        "https://docs.python.org/3/library/exceptions.html"
+      ]
+    },
+    {
+      "id": "files-errors",
+      "title": "文件、JSON、CSV 与标准库 I/O",
+      "summary": "为后续项目补充流式输入、数据解析与资源边界。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "exceptions"
+      ],
+      "lessons": [
+        {
+          "id": "files-errors-concept-1",
+          "title": "路径与资源生命周期",
+          "anchor": "concept-1",
+          "url": "/python/files-errors#concept-1"
+        },
+        {
+          "id": "files-errors-concept-2",
+          "title": "JSON 与 CSV",
+          "anchor": "concept-2",
+          "url": "/python/files-errors#concept-2"
+        },
+        {
+          "id": "files-errors-concept-3",
+          "title": "时间、日志与命令入口",
+          "anchor": "concept-3",
+          "url": "/python/files-errors#concept-3"
+        },
+        {
+          "id": "files-errors-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/files-errors#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "files-errors-lab",
+          "url": "/python/files-errors#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "extension",
+      "learningOutcomes": [
+        "为后续项目补充流式输入、数据解析与资源边界。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/pathlib.html",
+        "https://docs.python.org/3/library/json.html",
+        "https://docs.python.org/3/library/csv.html"
+      ]
+    },
+    {
+      "id": "arrays-linked",
+      "title": "数组与链表的访问模型",
+      "summary": "对照索引访问、节点连接、插入和内存代价。",
+      "roadmapTopics": [
+        "Data Structures & Algorithms",
+        "Arrays and Linked Lists"
+      ],
+      "prerequisites": [
+        "collections"
+      ],
+      "lessons": [
+        {
+          "id": "arrays-linked-concept-1",
+          "title": "动态序列与同类型数组",
+          "anchor": "concept-1",
+          "url": "/python/arrays-linked#concept-1"
+        },
+        {
+          "id": "arrays-linked-concept-2",
+          "title": "链表按连接找下一项",
+          "anchor": "concept-2",
+          "url": "/python/arrays-linked#concept-2"
+        },
+        {
+          "id": "arrays-linked-concept-3",
+          "title": "选择依据",
+          "anchor": "concept-3",
+          "url": "/python/arrays-linked#concept-3"
+        },
+        {
+          "id": "arrays-linked-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/arrays-linked#lab"
+        }
+      ],
+      "topicTargets": {
+        "Data Structures & Algorithms": "concept-1",
+        "Arrays and Linked Lists": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "arrays-linked-lab",
+          "url": "/python/arrays-linked#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "对照索引访问、节点连接、插入和内存代价。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range",
+        "https://docs.python.org/3/library/array.html",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "hash-tables",
+      "title": "哈希表、键与复杂度",
+      "summary": "理解 dict/set 的键约束、查找和冲突，不依赖私有布局。",
+      "roadmapTopics": [
+        "Hash Tables"
+      ],
+      "prerequisites": [
+        "collections"
+      ],
+      "lessons": [
+        {
+          "id": "hash-tables-concept-1",
+          "title": "值、存在性与键",
+          "anchor": "concept-1",
+          "url": "/python/hash-tables#concept-1"
+        },
+        {
+          "id": "hash-tables-concept-2",
+          "title": "冲突与相等不是同一件事",
+          "anchor": "concept-2",
+          "url": "/python/hash-tables#concept-2"
+        },
+        {
+          "id": "hash-tables-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/hash-tables#lab"
+        }
+      ],
+      "topicTargets": {
+        "Hash Tables": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "hash-tables-lab",
+          "url": "/python/hash-tables#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解 dict/set 的键约束、查找和冲突，不依赖私有布局。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/stdtypes.html#mapping-types-dict",
+        "https://docs.python.org/3/glossary.html#term-hashable"
+      ]
+    },
+    {
+      "id": "stacks-queues",
+      "title": "栈、队列与 deque",
+      "summary": "用 LIFO/FIFO 不变量组织待处理任务。",
+      "roadmapTopics": [
+        "Heaps, Stacks and Queues"
+      ],
+      "prerequisites": [
+        "collections"
+      ],
+      "lessons": [
+        {
+          "id": "stacks-queues-concept-1",
+          "title": "LIFO 与 FIFO",
+          "anchor": "concept-1",
+          "url": "/python/stacks-queues#concept-1"
+        },
+        {
+          "id": "stacks-queues-concept-2",
+          "title": "用栈维护括号匹配的不变量",
+          "anchor": "concept-2",
+          "url": "/python/stacks-queues#concept-2"
+        },
+        {
+          "id": "stacks-queues-concept-3",
+          "title": "并发和限额",
+          "anchor": "concept-3",
+          "url": "/python/stacks-queues#concept-3"
+        },
+        {
+          "id": "stacks-queues-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/stacks-queues#lab"
+        }
+      ],
+      "topicTargets": {
+        "Heaps, Stacks and Queues": "concept-1"
+      },
+      "datasets": [
+        "algorithm-cases"
+      ],
+      "exercises": [
+        {
+          "id": "stacks-queues-lab",
+          "url": "/python/stacks-queues#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "用 LIFO/FIFO 不变量组织待处理任务。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/collections.html#collections.deque",
+        "https://docs.python.org/3/library/queue.html",
+        "https://docs.python.org/3/library/asyncio-queue.html"
+      ]
+    },
+    {
+      "id": "heaps",
+      "title": "堆与优先级队列",
+      "summary": "用 heapq 维护最小值、稳定优先级与 Top-k。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "stacks-queues"
+      ],
+      "lessons": [
+        {
+          "id": "heaps-concept-1",
+          "title": "最小堆与数组索引",
+          "anchor": "concept-1",
+          "url": "/python/heaps#concept-1"
+        },
+        {
+          "id": "heaps-concept-2",
+          "title": "优先级相同时保持稳定",
+          "anchor": "concept-2",
+          "url": "/python/heaps#concept-2"
+        },
+        {
+          "id": "heaps-concept-3",
+          "title": "Top-k 与版本边界",
+          "anchor": "concept-3",
+          "url": "/python/heaps#concept-3"
+        },
+        {
+          "id": "heaps-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/heaps#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "heaps-lab",
+          "url": "/python/heaps#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "sourceCompoundTopic": "Heaps, Stacks and Queues",
+      "learningOutcomes": [
+        "用 heapq 维护最小值、稳定优先级与 Top-k。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/heapq.html"
+      ]
+    },
+    {
+      "id": "trees",
+      "title": "二叉搜索树与查找",
+      "summary": "解释左右子树规则、查找路径、退化与平衡。",
+      "roadmapTopics": [
+        "Binary Search Tree"
+      ],
+      "prerequisites": [
+        "arrays-linked"
+      ],
+      "lessons": [
+        {
+          "id": "trees-concept-1",
+          "title": "搜索树不变量与路径",
+          "anchor": "concept-1",
+          "url": "/python/trees#concept-1"
+        },
+        {
+          "id": "trees-concept-2",
+          "title": "不提前引入类的教学模型",
+          "anchor": "concept-2",
+          "url": "/python/trees#concept-2"
+        },
+        {
+          "id": "trees-concept-3",
+          "title": "查找、遍历与业务方案",
+          "anchor": "concept-3",
+          "url": "/python/trees#concept-3"
+        },
+        {
+          "id": "trees-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/trees#lab"
+        }
+      ],
+      "topicTargets": {
+        "Binary Search Tree": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "trees-lab",
+          "url": "/python/trees#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "解释左右子树规则、查找路径、退化与平衡。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://docs.python.org/zh-cn/3/tutorial/datastructures.html"
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "递归、调用栈与终止",
+      "summary": "明确基本情况与缩小输入，比较递归和显式栈。",
+      "roadmapTopics": [
+        "Recursion"
+      ],
+      "prerequisites": [
+        "functions",
+        "trees"
+      ],
+      "lessons": [
+        {
+          "id": "recursion-concept-1",
+          "title": "基本情况与缩小输入",
+          "anchor": "concept-1",
+          "url": "/python/recursion#concept-1"
+        },
+        {
+          "id": "recursion-concept-2",
+          "title": "树的中序遍历",
+          "anchor": "concept-2",
+          "url": "/python/recursion#concept-2"
+        },
+        {
+          "id": "recursion-concept-3",
+          "title": "递归限额不是扩容建议",
+          "anchor": "concept-3",
+          "url": "/python/recursion#concept-3"
+        },
+        {
+          "id": "recursion-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/recursion#lab"
+        }
+      ],
+      "topicTargets": {
+        "Recursion": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "recursion-lab",
+          "url": "/python/recursion#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "明确基本情况与缩小输入，比较递归和显式栈。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/sys.html#sys.getrecursionlimit",
+        "https://docs.python.org/3/library/math.html"
+      ]
+    },
+    {
+      "id": "sorting",
+      "title": "排序算法、稳定性与二分",
+      "summary": "对照插入、归并、快速排序的思路，并使用 sorted/bisect。",
+      "roadmapTopics": [
+        "Sorting Algorithms"
+      ],
+      "prerequisites": [
+        "recursion",
+        "collections"
+      ],
+      "lessons": [
+        {
+          "id": "sorting-concept-1",
+          "title": "稳定排序与 key",
+          "anchor": "concept-1",
+          "url": "/python/sorting#concept-1"
+        },
+        {
+          "id": "sorting-concept-2",
+          "title": "算法思路与成本",
+          "anchor": "concept-2",
+          "url": "/python/sorting#concept-2"
+        },
+        {
+          "id": "sorting-concept-3",
+          "title": "二分查找不自动让插入便宜",
+          "anchor": "concept-3",
+          "url": "/python/sorting#concept-3"
+        },
+        {
+          "id": "sorting-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/sorting#lab"
+        }
+      ],
+      "topicTargets": {
+        "Sorting Algorithms": "concept-2"
+      },
+      "datasets": [
+        "algorithm-cases"
+      ],
+      "exercises": [
+        {
+          "id": "sorting-lab",
+          "url": "/python/sorting#lab"
+        }
+      ],
+      "group": "数据结构与算法",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "对照插入、归并、快速排序的思路，并使用 sorted/bisect。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/howto/sorting.html",
+        "https://docs.python.org/3/library/bisect.html"
+      ]
+    },
+    {
+      "id": "modules",
+      "title": "内置模块、自定义模块与导入",
+      "summary": "组织单文件、包入口和模块搜索路径。",
+      "roadmapTopics": [
+        "Modules",
+        "Builtin",
+        "Custom"
+      ],
+      "prerequisites": [
+        "functions"
+      ],
+      "lessons": [
+        {
+          "id": "modules-concept-1",
+          "title": "标准库模块",
+          "anchor": "concept-1",
+          "url": "/python/modules#concept-1"
+        },
+        {
+          "id": "modules-concept-2",
+          "title": "自定义模块的双文件实验",
+          "anchor": "concept-2",
+          "url": "/python/modules#concept-2"
+        },
+        {
+          "id": "modules-concept-3",
+          "title": "包、入口与搜索路径",
+          "anchor": "concept-3",
+          "url": "/python/modules#concept-3"
+        },
+        {
+          "id": "modules-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/modules#lab"
+        }
+      ],
+      "topicTargets": {
+        "Modules": "concept-1",
+        "Builtin": "concept-1",
+        "Custom": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "modules-lab",
+          "url": "/python/modules#lab"
+        }
+      ],
+      "group": "模块",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "组织单文件、包入口和模块搜索路径。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/modules.html",
+        "https://docs.python.org/3/reference/import.html"
+      ]
+    },
+    {
+      "id": "lambdas",
+      "title": "Lambda、函数值与闭包",
+      "summary": "用短函数表达排序规则，不把复杂流程藏进表达式。",
+      "roadmapTopics": [
+        "Lambdas"
+      ],
+      "prerequisites": [
+        "functions"
+      ],
+      "lessons": [
+        {
+          "id": "lambdas-concept-1",
+          "title": "排序规则作为函数",
+          "anchor": "concept-1",
+          "url": "/python/lambdas#concept-1"
+        },
+        {
+          "id": "lambdas-concept-2",
+          "title": "延迟绑定与固定本轮值",
+          "anchor": "concept-2",
+          "url": "/python/lambdas#concept-2"
+        },
+        {
+          "id": "lambdas-concept-3",
+          "title": "选择表达方式",
+          "anchor": "concept-3",
+          "url": "/python/lambdas#concept-3"
+        },
+        {
+          "id": "lambdas-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/lambdas#lab"
+        }
+      ],
+      "topicTargets": {
+        "Lambdas": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "lambdas-lab",
+          "url": "/python/lambdas#lab"
+        }
+      ],
+      "group": "函数与迭代进阶",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "用短函数表达排序规则，不把复杂流程藏进表达式。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/controlflow.html#lambda-expressions",
+        "https://docs.python.org/3/reference/executionmodel.html"
+      ]
+    },
+    {
+      "id": "decorators",
+      "title": "装饰器、wraps 与函数包装",
+      "summary": "理解装饰发生时机、参数转发和元数据保留。",
+      "roadmapTopics": [
+        "Decorators"
+      ],
+      "prerequisites": [
+        "lambdas"
+      ],
+      "lessons": [
+        {
+          "id": "decorators-concept-1",
+          "title": "包装一段行为",
+          "anchor": "concept-1",
+          "url": "/python/decorators#concept-1"
+        },
+        {
+          "id": "decorators-concept-2",
+          "title": "多个装饰器与成熟工具",
+          "anchor": "concept-2",
+          "url": "/python/decorators#concept-2"
+        },
+        {
+          "id": "decorators-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/decorators#lab"
+        }
+      ],
+      "topicTargets": {
+        "Decorators": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "decorators-lab",
+          "url": "/python/decorators#lab"
+        }
+      ],
+      "group": "函数与迭代进阶",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解装饰发生时机、参数转发和元数据保留。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/functools.html#functools.wraps",
+        "https://docs.python.org/3/reference/compound_stmts.html#function-definitions"
+      ]
+    },
+    {
+      "id": "iterators",
+      "title": "迭代协议、惰性与耗尽",
+      "summary": "理解 iter、next、StopIteration 与资源寿命。",
+      "roadmapTopics": [
+        "Iterators"
+      ],
+      "prerequisites": [
+        "collections",
+        "functions"
+      ],
+      "lessons": [
+        {
+          "id": "iterators-concept-1",
+          "title": "iter、next 与耗尽",
+          "anchor": "concept-1",
+          "url": "/python/iterators#concept-1"
+        },
+        {
+          "id": "iterators-concept-2",
+          "title": "惰性组合与资源",
+          "anchor": "concept-2",
+          "url": "/python/iterators#concept-2"
+        },
+        {
+          "id": "iterators-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/iterators#lab"
+        }
+      ],
+      "topicTargets": {
+        "Iterators": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "iterators-lab",
+          "url": "/python/iterators#lab"
+        }
+      ],
+      "group": "函数与迭代进阶",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解 iter、next、StopIteration 与资源寿命。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/stdtypes.html#iterator-types",
+        "https://docs.python.org/3/library/itertools.html"
+      ]
+    },
+    {
+      "id": "regex",
+      "title": "正则表达式与文本边界",
+      "summary": "匹配、提取、分组与预编译，不用正则替代结构化解析器。",
+      "roadmapTopics": [
+        "Regular Expressions"
+      ],
+      "prerequisites": [
+        "variables"
+      ],
+      "lessons": [
+        {
+          "id": "regex-concept-1",
+          "title": "全串与局部匹配",
+          "anchor": "concept-1",
+          "url": "/python/regex#concept-1"
+        },
+        {
+          "id": "regex-concept-2",
+          "title": "分组、替换与重复",
+          "anchor": "concept-2",
+          "url": "/python/regex#concept-2"
+        },
+        {
+          "id": "regex-concept-3",
+          "title": "Unicode 和格式协议",
+          "anchor": "concept-3",
+          "url": "/python/regex#concept-3"
+        },
+        {
+          "id": "regex-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/regex#lab"
+        }
+      ],
+      "topicTargets": {
+        "Regular Expressions": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "regex-lab",
+          "url": "/python/regex#lab"
+        }
+      ],
+      "group": "函数与迭代进阶",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "匹配、提取、分组与预编译，不用正则替代结构化解析器。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/3/library/re.html",
+        "https://docs.python.org/3/howto/regex.html"
+      ]
+    },
+    {
+      "id": "objects",
+      "title": "类、实例、方法与数据建模",
+      "summary": "区分实例状态和类状态，选择 dataclass、组合和接口。",
+      "roadmapTopics": [
+        "Object Oriented Programming",
+        "Classes"
+      ],
+      "prerequisites": [
+        "functions",
+        "collections"
+      ],
+      "lessons": [
+        {
+          "id": "objects-concept-1",
+          "title": "实例与方法",
+          "anchor": "concept-1",
+          "url": "/python/objects#concept-1"
+        },
+        {
+          "id": "objects-concept-2",
+          "title": "dataclass 与数据边界",
+          "anchor": "concept-2",
+          "url": "/python/objects#concept-2"
+        },
+        {
+          "id": "objects-concept-3",
+          "title": "属性和职责",
+          "anchor": "concept-3",
+          "url": "/python/objects#concept-3"
+        },
+        {
+          "id": "objects-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/objects#lab"
+        }
+      ],
+      "topicTargets": {
+        "Object Oriented Programming": "concept-1",
+        "Classes": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "objects-lab",
+          "url": "/python/objects#lab"
+        }
+      ],
+      "group": "面向对象",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分实例状态和类状态，选择 dataclass、组合和接口。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/classes.html",
+        "https://docs.python.org/3/library/dataclasses.html"
+      ]
+    },
+    {
+      "id": "inheritance",
+      "title": "继承、super 与替代关系",
+      "summary": "在保持行为契约的前提下复用类型，理解 MRO。",
+      "roadmapTopics": [
+        "Inheritance"
+      ],
+      "prerequisites": [
+        "objects"
+      ],
+      "lessons": [
+        {
+          "id": "inheritance-concept-1",
+          "title": "super 与单继承",
+          "anchor": "concept-1",
+          "url": "/python/inheritance#concept-1"
+        },
+        {
+          "id": "inheritance-concept-2",
+          "title": "MRO 与协作",
+          "anchor": "concept-2",
+          "url": "/python/inheritance#concept-2"
+        },
+        {
+          "id": "inheritance-concept-3",
+          "title": "组合与协议",
+          "anchor": "concept-3",
+          "url": "/python/inheritance#concept-3"
+        },
+        {
+          "id": "inheritance-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/inheritance#lab"
+        }
+      ],
+      "topicTargets": {
+        "Inheritance": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "inheritance-lab",
+          "url": "/python/inheritance#lab"
+        }
+      ],
+      "group": "面向对象",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "在保持行为契约的前提下复用类型，理解 MRO。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/classes.html#inheritance",
+        "https://docs.python.org/3/reference/datamodel.html"
+      ]
+    },
+    {
+      "id": "dunder",
+      "title": "方法类型、属性与 Dunder 协议",
+      "summary": "让对象参与表示、长度、迭代与比较等内置协议。",
+      "roadmapTopics": [
+        "Methods, Dunder"
+      ],
+      "prerequisites": [
+        "objects",
+        "iterators"
+      ],
+      "lessons": [
+        {
+          "id": "dunder-concept-1",
+          "title": "一个可迭代的小容器",
+          "anchor": "concept-1",
+          "url": "/python/dunder#concept-1"
+        },
+        {
+          "id": "dunder-concept-2",
+          "title": "不同方法绑定",
+          "anchor": "concept-2",
+          "url": "/python/dunder#concept-2"
+        },
+        {
+          "id": "dunder-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/dunder#lab"
+        }
+      ],
+      "topicTargets": {
+        "Methods, Dunder": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "dunder-lab",
+          "url": "/python/dunder#lab"
+        }
+      ],
+      "group": "面向对象",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "让对象参与表示、长度、迭代与比较等内置协议。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/3/reference/datamodel.html#special-method-names"
+      ]
+    },
+    {
+      "id": "package-managers",
+      "title": "PyPI、pip、Conda、uv 与 Poetry",
+      "summary": "区分包索引、安装、锁定、环境和非 Python 依赖。",
+      "roadmapTopics": [
+        "Package Managers",
+        "PyPI",
+        "Pip",
+        "Conda",
+        "uv",
+        "Poetry"
+      ],
+      "prerequisites": [
+        "toolchain",
+        "modules"
+      ],
+      "lessons": [
+        {
+          "id": "package-managers-concept-1",
+          "title": "PyPI 与 pip",
+          "anchor": "concept-1",
+          "url": "/python/package-managers#concept-1"
+        },
+        {
+          "id": "package-managers-concept-2",
+          "title": "原路线工具分工",
+          "anchor": "concept-2",
+          "url": "/python/package-managers#concept-2"
+        },
+        {
+          "id": "package-managers-concept-3",
+          "title": "uv 项目实验",
+          "anchor": "concept-3",
+          "url": "/python/package-managers#concept-3"
+        },
+        {
+          "id": "package-managers-concept-4",
+          "title": "Conda 与 Poetry 的对应流程",
+          "anchor": "concept-4",
+          "url": "/python/package-managers#concept-4"
+        },
+        {
+          "id": "package-managers-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/package-managers#lab"
+        }
+      ],
+      "topicTargets": {
+        "Package Managers": "concept-1",
+        "PyPI": "concept-1",
+        "Pip": "concept-1",
+        "Conda": "concept-4",
+        "uv": "concept-3",
+        "Poetry": "concept-4"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "package-managers-lab",
+          "url": "/python/package-managers#lab"
+        }
+      ],
+      "group": "包管理与项目配置",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分包索引、安装、锁定、环境和非 Python 依赖。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://packaging.python.org/en/latest/tutorials/installing-packages/",
+        "https://docs.astral.sh/uv/",
+        "https://docs.conda.io/projects/conda/en/stable/",
+        "https://python-poetry.org/docs/"
+      ]
+    },
+    {
+      "id": "configuration",
+      "title": "pyproject.toml 与配置职责",
+      "summary": "声明项目元数据、依赖、构建和工具配置，分离运行凭据。",
+      "roadmapTopics": [
+        "Configuration",
+        "pyproject.toml"
+      ],
+      "prerequisites": [
+        "package-managers"
+      ],
+      "lessons": [
+        {
+          "id": "configuration-concept-1",
+          "title": "最小可安装包",
+          "anchor": "concept-1",
+          "url": "/python/configuration#concept-1"
+        },
+        {
+          "id": "configuration-concept-2",
+          "title": "配置职责",
+          "anchor": "concept-2",
+          "url": "/python/configuration#concept-2"
+        },
+        {
+          "id": "configuration-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/configuration#lab"
+        }
+      ],
+      "topicTargets": {
+        "Configuration": "concept-1",
+        "pyproject.toml": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "configuration-lab",
+          "url": "/python/configuration#lab"
+        }
+      ],
+      "group": "包管理与项目配置",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "声明项目元数据、依赖、构建和工具配置，分离运行凭据。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://packaging.python.org/en/latest/guides/writing-pyproject-toml/",
+        "https://packaging.python.org/en/latest/tutorials/packaging-projects/"
+      ]
+    },
+    {
+      "id": "common-packages",
+      "title": "常用包与技术选型",
+      "summary": "为 HTTP、数据、验证、日志和测试选成熟方案。",
+      "roadmapTopics": [
+        "Common Packages"
+      ],
+      "prerequisites": [
+        "package-managers"
+      ],
+      "lessons": [
+        {
+          "id": "common-packages-concept-1",
+          "title": "从问题选工具",
+          "anchor": "concept-1",
+          "url": "/python/common-packages#concept-1"
+        },
+        {
+          "id": "common-packages-concept-2",
+          "title": "如何判断包是否合适",
+          "anchor": "concept-2",
+          "url": "/python/common-packages#concept-2"
+        },
+        {
+          "id": "common-packages-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/common-packages#lab"
+        }
+      ],
+      "topicTargets": {
+        "Common Packages": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "common-packages-lab",
+          "url": "/python/common-packages#lab"
+        }
+      ],
+      "group": "包管理与项目配置",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "为 HTTP、数据、验证、日志和测试选成熟方案。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pypi.org/",
+        "https://www.python-httpx.org/",
+        "https://pandas.pydata.org/docs/",
+        "https://numpy.org/doc/"
+      ]
+    },
+    {
+      "id": "comprehensions",
+      "title": "列表推导式与集合转换",
+      "summary": "把映射、过滤和嵌套的输入输出关系写清楚。",
+      "roadmapTopics": [
+        "List Comprehensions"
+      ],
+      "prerequisites": [
+        "control-flow",
+        "collections"
+      ],
+      "lessons": [
+        {
+          "id": "comprehensions-concept-1",
+          "title": "映射与过滤",
+          "anchor": "concept-1",
+          "url": "/python/comprehensions#concept-1"
+        },
+        {
+          "id": "comprehensions-concept-2",
+          "title": "嵌套与求值顺序",
+          "anchor": "concept-2",
+          "url": "/python/comprehensions#concept-2"
+        },
+        {
+          "id": "comprehensions-concept-3",
+          "title": "变量作用域与可变结果",
+          "anchor": "concept-3",
+          "url": "/python/comprehensions#concept-3"
+        },
+        {
+          "id": "comprehensions-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/comprehensions#lab"
+        }
+      ],
+      "topicTargets": {
+        "List Comprehensions": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "comprehensions-lab",
+          "url": "/python/comprehensions#lab"
+        }
+      ],
+      "group": "表达式、范式与资源",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "把映射、过滤和嵌套的输入输出关系写清楚。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/datastructures.html#list-comprehensions",
+        "https://docs.python.org/3/reference/expressions.html"
+      ]
+    },
+    {
+      "id": "generators",
+      "title": "生成器表达式、yield 与流式计算",
+      "summary": "通过惰性求值、一次性消费和资源管理减少中间集合。",
+      "roadmapTopics": [
+        "Generator Expressions"
+      ],
+      "prerequisites": [
+        "iterators",
+        "comprehensions"
+      ],
+      "lessons": [
+        {
+          "id": "generators-concept-1",
+          "title": "表达式与 yield",
+          "anchor": "concept-1",
+          "url": "/python/generators#concept-1"
+        },
+        {
+          "id": "generators-concept-2",
+          "title": "流式处理与边界",
+          "anchor": "concept-2",
+          "url": "/python/generators#concept-2"
+        },
+        {
+          "id": "generators-concept-3",
+          "title": "提前结束与清理",
+          "anchor": "concept-3",
+          "url": "/python/generators#concept-3"
+        },
+        {
+          "id": "generators-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/generators#lab"
+        }
+      ],
+      "topicTargets": {
+        "Generator Expressions": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "generators-lab",
+          "url": "/python/generators#lab"
+        }
+      ],
+      "group": "表达式、范式与资源",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "通过惰性求值、一次性消费和资源管理减少中间集合。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/classes.html#generators",
+        "https://docs.python.org/3/reference/expressions.html#generator-expressions"
+      ]
+    },
+    {
+      "id": "paradigms",
+      "title": "过程式、面向对象与函数式",
+      "summary": "围绕状态、职责和副作用选择表达方式。",
+      "roadmapTopics": [
+        "Paradigms"
+      ],
+      "prerequisites": [
+        "objects",
+        "lambdas"
+      ],
+      "lessons": [
+        {
+          "id": "paradigms-concept-1",
+          "title": "同一任务的不同组织",
+          "anchor": "concept-1",
+          "url": "/python/paradigms#concept-1"
+        },
+        {
+          "id": "paradigms-concept-2",
+          "title": "避免过度过程化与过度抽象",
+          "anchor": "concept-2",
+          "url": "/python/paradigms#concept-2"
+        },
+        {
+          "id": "paradigms-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/paradigms#lab"
+        }
+      ],
+      "topicTargets": {
+        "Paradigms": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "paradigms-lab",
+          "url": "/python/paradigms#lab"
+        }
+      ],
+      "group": "表达式、范式与资源",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "围绕状态、职责和副作用选择表达方式。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/zh-cn/3/tutorial/classes.html",
+        "https://docs.python.org/3/howto/functional.html"
+      ]
+    },
+    {
+      "id": "context-managers",
+      "title": "上下文管理器与资源协议",
+      "summary": "理解 with、enter/exit、contextmanager 和异常传播。",
+      "roadmapTopics": [
+        "Context Manager"
+      ],
+      "prerequisites": [
+        "exceptions",
+        "files-errors",
+        "generators"
+      ],
+      "lessons": [
+        {
+          "id": "context-managers-concept-1",
+          "title": "正常与异常退出",
+          "anchor": "concept-1",
+          "url": "/python/context-managers#concept-1"
+        },
+        {
+          "id": "context-managers-concept-2",
+          "title": "enter/exit 与异常抑制",
+          "anchor": "concept-2",
+          "url": "/python/context-managers#concept-2"
+        },
+        {
+          "id": "context-managers-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/context-managers#lab"
+        }
+      ],
+      "topicTargets": {
+        "Context Manager": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "context-managers-lab",
+          "url": "/python/context-managers#lab"
+        }
+      ],
+      "group": "表达式、范式与资源",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解 with、enter/exit、contextmanager 和异常传播。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/reference/compound_stmts.html#the-with-statement",
+        "https://docs.python.org/3/library/contextlib.html"
+      ]
+    },
+    {
+      "id": "frameworks",
+      "title": "框架路线、WSGI 与 ASGI",
+      "summary": "核对原图分类，并按真实运行模型区分各方案。",
+      "roadmapTopics": [
+        "Learn a Framework",
+        "Synchronous",
+        "Asynchronous",
+        "Synchronous + Asynchronous"
+      ],
+      "prerequisites": [
+        "modules",
+        "objects",
+        "configuration"
+      ],
+      "lessons": [
+        {
+          "id": "frameworks-concept-1",
+          "title": "WSGI、ASGI 与协作模型",
+          "anchor": "concept-1",
+          "url": "/python/frameworks#concept-1"
+        },
+        {
+          "id": "frameworks-concept-2",
+          "title": "原路线分支逐项对应",
+          "anchor": "concept-2",
+          "url": "/python/frameworks#concept-2"
+        },
+        {
+          "id": "frameworks-concept-3",
+          "title": "选择一个主方案",
+          "anchor": "concept-3",
+          "url": "/python/frameworks#concept-3"
+        },
+        {
+          "id": "frameworks-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/frameworks#lab"
+        }
+      ],
+      "topicTargets": {
+        "Learn a Framework": "concept-1",
+        "Synchronous": "concept-1",
+        "Asynchronous": "concept-1",
+        "Synchronous + Asynchronous": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "frameworks-lab",
+          "url": "/python/frameworks#lab"
+        }
+      ],
+      "group": "框架",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "核对原图分类，并按真实运行模型区分各方案。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://fastapi.tiangolo.com/async/",
+        "https://docs.djangoproject.com/en/stable/topics/async/",
+        "https://flask.palletsprojects.com/en/stable/async-await/"
+      ]
+    },
+    {
+      "id": "web",
+      "title": "FastAPI 与接口开发",
+      "summary": "请求模型、响应、依赖、错误、测试和生命周期。",
+      "roadmapTopics": [
+        "Fast API"
+      ],
+      "prerequisites": [
+        "frameworks"
+      ],
+      "lessons": [
+        {
+          "id": "web-concept-1",
+          "title": "可运行接口与请求模型",
+          "anchor": "concept-1",
+          "url": "/python/web#concept-1"
+        },
+        {
+          "id": "web-concept-2",
+          "title": "在进程内验证契约",
+          "anchor": "concept-2",
+          "url": "/python/web#concept-2"
+        },
+        {
+          "id": "web-concept-3",
+          "title": "依赖、错误与生命周期",
+          "anchor": "concept-3",
+          "url": "/python/web#concept-3"
+        },
+        {
+          "id": "web-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/web#lab"
+        }
+      ],
+      "topicTargets": {
+        "Fast API": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "web-lab",
+          "url": "/python/web#lab"
+        }
+      ],
+      "group": "框架",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "请求模型、响应、依赖、错误、测试和生命周期。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://fastapi.tiangolo.com/",
+        "https://docs.pydantic.dev/latest/"
+      ]
+    },
+    {
+      "id": "django-flask",
+      "title": "Django 与 Flask",
+      "summary": "用完整框架或轻量框架实现相同契约，理解 async 支持。",
+      "roadmapTopics": [
+        "Django",
+        "Flask"
+      ],
+      "prerequisites": [
+        "frameworks"
+      ],
+      "lessons": [
+        {
+          "id": "django-flask-concept-1",
+          "title": "Flask 的最小应用与测试",
+          "anchor": "concept-1",
+          "url": "/python/django-flask#concept-1"
+        },
+        {
+          "id": "django-flask-concept-2",
+          "title": "Django 的最小请求实验",
+          "anchor": "concept-2",
+          "url": "/python/django-flask#concept-2"
+        },
+        {
+          "id": "django-flask-concept-3",
+          "title": "完整框架与轻量核心的分工",
+          "anchor": "concept-3",
+          "url": "/python/django-flask#concept-3"
+        },
+        {
+          "id": "django-flask-concept-4",
+          "title": "async 支持有条件",
+          "anchor": "concept-4",
+          "url": "/python/django-flask#concept-4"
+        },
+        {
+          "id": "django-flask-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/django-flask#lab"
+        }
+      ],
+      "topicTargets": {
+        "Django": "concept-2",
+        "Flask": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "django-flask-lab",
+          "url": "/python/django-flask#lab"
+        }
+      ],
+      "group": "框架",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "用完整框架或轻量框架实现相同契约，理解 async 支持。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.djangoproject.com/en/stable/intro/",
+        "https://flask.palletsprojects.com/en/stable/",
+        "https://flask.palletsprojects.com/en/stable/async-await/"
+      ]
+    },
+    {
+      "id": "sync-frameworks",
+      "title": "Pyramid 与 Plotly Dash",
+      "summary": "分别理解路由配置与数据应用回调。",
+      "roadmapTopics": [
+        "Pyramid",
+        "Plotly Dash"
+      ],
+      "prerequisites": [
+        "frameworks"
+      ],
+      "lessons": [
+        {
+          "id": "sync-frameworks-concept-1",
+          "title": "Pyramid：显式路由与视图",
+          "anchor": "concept-1",
+          "url": "/python/sync-frameworks#concept-1"
+        },
+        {
+          "id": "sync-frameworks-concept-2",
+          "title": "Dash：布局与回调",
+          "anchor": "concept-2",
+          "url": "/python/sync-frameworks#concept-2"
+        },
+        {
+          "id": "sync-frameworks-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/sync-frameworks#lab"
+        }
+      ],
+      "topicTargets": {
+        "Pyramid": "concept-1",
+        "Plotly Dash": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "sync-frameworks-lab",
+          "url": "/python/sync-frameworks#lab"
+        }
+      ],
+      "group": "框架",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "分别理解路由配置与数据应用回调。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.pylonsproject.org/projects/pyramid/en/latest/",
+        "https://dash.plotly.com/"
+      ]
+    },
+    {
+      "id": "async-frameworks",
+      "title": "gevent、aiohttp、Tornado 与 Sanic",
+      "summary": "对照 greenlet 与 asyncio，识别客户端/服务端和阻塞边界。",
+      "roadmapTopics": [
+        "gevent",
+        "aiohttp",
+        "Tornado",
+        "Sanic"
+      ],
+      "prerequisites": [
+        "frameworks"
+      ],
+      "lessons": [
+        {
+          "id": "async-frameworks-concept-1",
+          "title": "gevent：greenlet 协作模型",
+          "anchor": "concept-1",
+          "url": "/python/async-frameworks#concept-1"
+        },
+        {
+          "id": "async-frameworks-concept-2",
+          "title": "aiohttp：HTTP 客户端和服务端",
+          "anchor": "concept-2",
+          "url": "/python/async-frameworks#concept-2"
+        },
+        {
+          "id": "async-frameworks-concept-3",
+          "title": "Tornado 与 Sanic 的路由入口",
+          "anchor": "concept-3",
+          "url": "/python/async-frameworks#concept-3"
+        },
+        {
+          "id": "async-frameworks-concept-4",
+          "title": "阻塞与背压",
+          "anchor": "concept-4",
+          "url": "/python/async-frameworks#concept-4"
+        },
+        {
+          "id": "async-frameworks-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/async-frameworks#lab"
+        }
+      ],
+      "topicTargets": {
+        "gevent": "concept-1",
+        "aiohttp": "concept-2",
+        "Tornado": "concept-3",
+        "Sanic": "concept-3"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "async-frameworks-lab",
+          "url": "/python/async-frameworks#lab"
+        }
+      ],
+      "group": "框架",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "对照 greenlet 与 asyncio，识别客户端/服务端和阻塞边界。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://www.gevent.org/",
+        "https://docs.aiohttp.org/en/stable/",
+        "https://www.tornadoweb.org/en/stable/",
+        "https://sanic.dev/en/"
+      ]
+    },
+    {
+      "id": "concurrency",
+      "title": "并发模型、GIL 与选择依据",
+      "summary": "区分并发和并行，注明常规与自由线程 CPython 条件。",
+      "roadmapTopics": [
+        "Concurrency",
+        "GIL"
+      ],
+      "prerequisites": [
+        "functions",
+        "exceptions"
+      ],
+      "lessons": [
+        {
+          "id": "concurrency-concept-1",
+          "title": "按负载选模型",
+          "anchor": "concept-1",
+          "url": "/python/concurrency#concept-1"
+        },
+        {
+          "id": "concurrency-concept-2",
+          "title": "GIL 的范围",
+          "anchor": "concept-2",
+          "url": "/python/concurrency#concept-2"
+        },
+        {
+          "id": "concurrency-concept-3",
+          "title": "生命周期先于加速",
+          "anchor": "concept-3",
+          "url": "/python/concurrency#concept-3"
+        },
+        {
+          "id": "concurrency-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/concurrency#lab"
+        }
+      ],
+      "topicTargets": {
+        "Concurrency": "concept-1",
+        "GIL": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "concurrency-lab",
+          "url": "/python/concurrency#lab"
+        }
+      ],
+      "group": "并发",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分并发和并行，注明常规与自由线程 CPython 条件。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/howto/free-threading-python.html",
+        "https://docs.python.org/3/library/threading.html",
+        "https://docs.python.org/3/library/concurrency.html"
+      ]
+    },
+    {
+      "id": "threading",
+      "title": "线程、锁与有界执行器",
+      "summary": "维护共享不变量并限制 I/O 任务规模。",
+      "roadmapTopics": [
+        "Threading"
+      ],
+      "prerequisites": [
+        "concurrency"
+      ],
+      "lessons": [
+        {
+          "id": "threading-concept-1",
+          "title": "独立任务与有界池",
+          "anchor": "concept-1",
+          "url": "/python/threading#concept-1"
+        },
+        {
+          "id": "threading-concept-2",
+          "title": "完整临界区",
+          "anchor": "concept-2",
+          "url": "/python/threading#concept-2"
+        },
+        {
+          "id": "threading-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/threading#lab"
+        }
+      ],
+      "topicTargets": {
+        "Threading": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "threading-lab",
+          "url": "/python/threading#lab"
+        }
+      ],
+      "group": "并发",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "维护共享不变量并限制 I/O 任务规模。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/threading.html",
+        "https://docs.python.org/3/library/concurrent.futures.html"
+      ]
+    },
+    {
+      "id": "multiprocessing",
+      "title": "进程、序列化与主入口",
+      "summary": "为 CPU 工作建立可传递任务，测量通信与内存成本。",
+      "roadmapTopics": [
+        "Multiprocessing"
+      ],
+      "prerequisites": [
+        "concurrency",
+        "modules"
+      ],
+      "lessons": [
+        {
+          "id": "multiprocessing-concept-1",
+          "title": "主入口与可传递函数",
+          "anchor": "concept-1",
+          "url": "/python/multiprocessing#concept-1"
+        },
+        {
+          "id": "multiprocessing-concept-2",
+          "title": "任务粒度与共享",
+          "anchor": "concept-2",
+          "url": "/python/multiprocessing#concept-2"
+        },
+        {
+          "id": "multiprocessing-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/multiprocessing#lab"
+        }
+      ],
+      "topicTargets": {
+        "Multiprocessing": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "multiprocessing-lab",
+          "url": "/python/multiprocessing#lab"
+        }
+      ],
+      "group": "并发",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "为 CPU 工作建立可传递任务，测量通信与内存成本。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/multiprocessing.html",
+        "https://docs.python.org/3/library/concurrent.futures.html#processpoolexecutor"
+      ]
+    },
+    {
+      "id": "asyncio",
+      "title": "异步、TaskGroup、超时与取消",
+      "summary": "在事件循环内协作推进任务，收拢失败与资源。",
+      "roadmapTopics": [
+        "Asynchrony"
+      ],
+      "prerequisites": [
+        "concurrency",
+        "generators"
+      ],
+      "lessons": [
+        {
+          "id": "asyncio-concept-1",
+          "title": "协程、任务与 await",
+          "anchor": "concept-1",
+          "url": "/python/asyncio#concept-1"
+        },
+        {
+          "id": "asyncio-concept-2",
+          "title": "超时和清理",
+          "anchor": "concept-2",
+          "url": "/python/asyncio#concept-2"
+        },
+        {
+          "id": "asyncio-concept-3",
+          "title": "有界并发与背压",
+          "anchor": "concept-3",
+          "url": "/python/asyncio#concept-3"
+        },
+        {
+          "id": "asyncio-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/asyncio#lab"
+        }
+      ],
+      "topicTargets": {
+        "Asynchrony": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "asyncio-lab",
+          "url": "/python/asyncio#lab"
+        }
+      ],
+      "group": "并发",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "在事件循环内协作推进任务，收拢失败与资源。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/asyncio-task.html",
+        "https://docs.python.org/3/library/asyncio-queue.html"
+      ]
+    },
+    {
+      "id": "environments",
+      "title": "Pipenv、virtualenv 与 pyenv",
+      "summary": "区分版本选择、环境隔离和依赖锁定。",
+      "roadmapTopics": [
+        "Environments",
+        "Pipenv",
+        "virtualenv",
+        "pyenv"
+      ],
+      "prerequisites": [
+        "package-managers"
+      ],
+      "lessons": [
+        {
+          "id": "environments-concept-1",
+          "title": "三个层次",
+          "anchor": "concept-1",
+          "url": "/python/environments#concept-1"
+        },
+        {
+          "id": "environments-concept-2",
+          "title": "virtualenv 与 Pipenv",
+          "anchor": "concept-2",
+          "url": "/python/environments#concept-2"
+        },
+        {
+          "id": "environments-concept-3",
+          "title": "pyenv 与编辑器",
+          "anchor": "concept-3",
+          "url": "/python/environments#concept-3"
+        },
+        {
+          "id": "environments-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/environments#lab"
+        }
+      ],
+      "topicTargets": {
+        "Environments": "concept-1",
+        "Pipenv": "concept-2",
+        "virtualenv": "concept-2",
+        "pyenv": "concept-3"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "environments-lab",
+          "url": "/python/environments#lab"
+        }
+      ],
+      "group": "环境管理",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分版本选择、环境隔离和依赖锁定。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://virtualenv.pypa.io/en/latest/",
+        "https://pipenv.pypa.io/en/latest/",
+        "https://github.com/pyenv/pyenv",
+        "https://docs.python.org/3/library/venv.html"
+      ]
+    },
+    {
+      "id": "typing",
+      "title": "typing、mypy、Pyright 与 Pyre",
+      "summary": "用标注表达接口，静态发现不匹配，核对检查器工作流。",
+      "roadmapTopics": [
+        "Static Typing",
+        "typing",
+        "mypy",
+        "pyright",
+        "pyre"
+      ],
+      "prerequisites": [
+        "objects",
+        "functions"
+      ],
+      "lessons": [
+        {
+          "id": "typing-concept-1",
+          "title": "具体类型、Union 与容器",
+          "anchor": "concept-1",
+          "url": "/python/typing#concept-1"
+        },
+        {
+          "id": "typing-concept-2",
+          "title": "TypedDict 与 Protocol",
+          "anchor": "concept-2",
+          "url": "/python/typing#concept-2"
+        },
+        {
+          "id": "typing-concept-3",
+          "title": "检查器的真实工作流",
+          "anchor": "concept-3",
+          "url": "/python/typing#concept-3"
+        },
+        {
+          "id": "typing-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/typing#lab"
+        }
+      ],
+      "topicTargets": {
+        "Static Typing": "concept-1",
+        "typing": "concept-1",
+        "mypy": "concept-1",
+        "pyright": "concept-1",
+        "pyre": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "typing-lab",
+          "url": "/python/typing#lab"
+        }
+      ],
+      "group": "类型与校验",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "用标注表达接口，静态发现不匹配，核对检查器工作流。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://github.com/facebook/pyre-check",
+        "https://docs.python.org/3/library/typing.html",
+        "https://typing.python.org/",
+        "https://mypy.readthedocs.io/en/stable/",
+        "https://github.com/microsoft/pyright",
+        "https://pyre-check.org/"
+      ]
+    },
+    {
+      "id": "validation",
+      "title": "Pydantic 与运行时数据校验",
+      "summary": "为外部数据定义字段、严格性与错误契约。",
+      "roadmapTopics": [
+        "Pydantic"
+      ],
+      "prerequisites": [
+        "typing"
+      ],
+      "lessons": [
+        {
+          "id": "validation-concept-1",
+          "title": "Pydantic 模型与严格性",
+          "anchor": "concept-1",
+          "url": "/python/validation#concept-1"
+        },
+        {
+          "id": "validation-concept-2",
+          "title": "字段规则与错误",
+          "anchor": "concept-2",
+          "url": "/python/validation#concept-2"
+        },
+        {
+          "id": "validation-concept-3",
+          "title": "与 dataclass 和类型检查分工",
+          "anchor": "concept-3",
+          "url": "/python/validation#concept-3"
+        },
+        {
+          "id": "validation-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/validation#lab"
+        }
+      ],
+      "topicTargets": {
+        "Pydantic": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "validation-lab",
+          "url": "/python/validation#lab"
+        }
+      ],
+      "group": "类型与校验",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "为外部数据定义字段、严格性与错误契约。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.pydantic.dev/latest/",
+        "https://docs.pydantic.dev/latest/concepts/strict_mode/"
+      ]
+    },
+    {
+      "id": "formatting",
+      "title": "Ruff、Black、YAPF 与质量流程",
+      "summary": "格式化、静态规则与测试分别验证不同问题。",
+      "roadmapTopics": [
+        "Code Formatting",
+        "ruff",
+        "black",
+        "yapf"
+      ],
+      "prerequisites": [
+        "configuration"
+      ],
+      "lessons": [
+        {
+          "id": "formatting-concept-1",
+          "title": "一条清楚的质量流程",
+          "anchor": "concept-1",
+          "url": "/python/formatting#concept-1"
+        },
+        {
+          "id": "formatting-concept-2",
+          "title": "Ruff 与 Black 示例",
+          "anchor": "concept-2",
+          "url": "/python/formatting#concept-2"
+        },
+        {
+          "id": "formatting-concept-3",
+          "title": "配置与规则",
+          "anchor": "concept-3",
+          "url": "/python/formatting#concept-3"
+        },
+        {
+          "id": "formatting-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/formatting#lab"
+        }
+      ],
+      "topicTargets": {
+        "Code Formatting": "concept-1",
+        "ruff": "concept-2",
+        "black": "concept-2",
+        "yapf": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "formatting-lab",
+          "url": "/python/formatting#lab"
+        }
+      ],
+      "group": "代码格式",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "格式化、静态规则与测试分别验证不同问题。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.astral.sh/ruff/",
+        "https://black.readthedocs.io/en/stable/",
+        "https://github.com/google/yapf"
+      ]
+    },
+    {
+      "id": "documentation",
+      "title": "Docstring、Sphinx 与 API 文档",
+      "summary": "让接口说明、示例和构建可以一起维护。",
+      "roadmapTopics": [
+        "Documentation",
+        "Sphinx"
+      ],
+      "prerequisites": [
+        "modules",
+        "configuration"
+      ],
+      "lessons": [
+        {
+          "id": "documentation-concept-1",
+          "title": "从可执行接口说明开始",
+          "anchor": "concept-1",
+          "url": "/python/documentation#concept-1"
+        },
+        {
+          "id": "documentation-concept-2",
+          "title": "最小 Sphinx 工程",
+          "anchor": "concept-2",
+          "url": "/python/documentation#concept-2"
+        },
+        {
+          "id": "documentation-concept-3",
+          "title": "导入副作用与交付",
+          "anchor": "concept-3",
+          "url": "/python/documentation#concept-3"
+        },
+        {
+          "id": "documentation-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/documentation#lab"
+        }
+      ],
+      "topicTargets": {
+        "Documentation": "concept-2",
+        "Sphinx": "concept-2"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "documentation-lab",
+          "url": "/python/documentation#lab"
+        }
+      ],
+      "group": "文档",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "让接口说明、示例和构建可以一起维护。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://www.sphinx-doc.org/en/master/",
+        "https://docs.python.org/3/library/doctest.html",
+        "https://docs.python.org/zh-cn/3/tutorial/controlflow.html#documentation-strings"
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "pytest、隔离、参数化与替身",
+      "summary": "先固定可观察行为，再进行实现和重构。",
+      "roadmapTopics": [
+        "Testing",
+        "pytest"
+      ],
+      "prerequisites": [
+        "functions",
+        "exceptions"
+      ],
+      "lessons": [
+        {
+          "id": "testing-concept-1",
+          "title": "双文件 pytest 实验",
+          "anchor": "concept-1",
+          "url": "/python/testing#concept-1"
+        },
+        {
+          "id": "testing-concept-2",
+          "title": "Fixture、隔离与替身",
+          "anchor": "concept-2",
+          "url": "/python/testing#concept-2"
+        },
+        {
+          "id": "testing-concept-3",
+          "title": "覆盖率与并发测试",
+          "anchor": "concept-3",
+          "url": "/python/testing#concept-3"
+        },
+        {
+          "id": "testing-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/testing#lab"
+        }
+      ],
+      "topicTargets": {
+        "Testing": "concept-1",
+        "pytest": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "testing-lab",
+          "url": "/python/testing#lab"
+        }
+      ],
+      "group": "测试",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "先固定可观察行为，再进行实现和重构。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.pytest.org/en/stable/",
+        "https://docs.python.org/3/library/unittest.mock.html"
+      ]
+    },
+    {
+      "id": "unittest-doctest",
+      "title": "unittest、doctest 与 nose 的位置",
+      "summary": "运行标准库测试与示例，解释旧测试体系迁移。",
+      "roadmapTopics": [
+        "unittest / pyUnit",
+        "doctest",
+        "nose"
+      ],
+      "prerequisites": [
+        "testing"
+      ],
+      "lessons": [
+        {
+          "id": "unittest-doctest-concept-1",
+          "title": "unittest 完整单文件",
+          "anchor": "concept-1",
+          "url": "/python/unittest-doctest#concept-1"
+        },
+        {
+          "id": "unittest-doctest-concept-2",
+          "title": "doctest 可运行说明",
+          "anchor": "concept-2",
+          "url": "/python/unittest-doctest#concept-2"
+        },
+        {
+          "id": "unittest-doctest-concept-3",
+          "title": "nose 的维护状态与迁移",
+          "anchor": "concept-3",
+          "url": "/python/unittest-doctest#concept-3"
+        },
+        {
+          "id": "unittest-doctest-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/unittest-doctest#lab"
+        }
+      ],
+      "topicTargets": {
+        "unittest / pyUnit": "concept-1",
+        "doctest": "concept-2",
+        "nose": "concept-3"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "unittest-doctest-lab",
+          "url": "/python/unittest-doctest#lab"
+        }
+      ],
+      "group": "测试",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "运行标准库测试与示例，解释旧测试体系迁移。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://docs.python.org/3/library/unittest.html",
+        "https://docs.python.org/3/library/doctest.html",
+        "https://nose.readthedocs.io/en/latest/"
+      ]
+    },
+    {
+      "id": "tox",
+      "title": "tox 与多环境测试",
+      "summary": "为工具链和依赖建立可复现环境矩阵。",
+      "roadmapTopics": [
+        "tox"
+      ],
+      "prerequisites": [
+        "testing",
+        "environments"
+      ],
+      "lessons": [
+        {
+          "id": "tox-concept-1",
+          "title": "最小配置",
+          "anchor": "concept-1",
+          "url": "/python/tox#concept-1"
+        },
+        {
+          "id": "tox-concept-2",
+          "title": "环境矩阵怎样解释",
+          "anchor": "concept-2",
+          "url": "/python/tox#concept-2"
+        },
+        {
+          "id": "tox-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/tox#lab"
+        }
+      ],
+      "topicTargets": {
+        "tox": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "tox-lab",
+          "url": "/python/tox#lab"
+        }
+      ],
+      "group": "测试",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "为工具链和依赖建立可复现环境矩阵。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://tox.wiki/en/stable/",
+        "https://packaging.python.org/en/latest/"
+      ]
+    },
+    {
+      "id": "http",
+      "title": "HTTPX、调用预算与采集",
+      "summary": "补充可靠 HTTP 调用、响应校验与有限重试。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "asyncio",
+        "exceptions"
+      ],
+      "lessons": [
+        {
+          "id": "http-concept-1",
+          "title": "调用完成不代表业务成功",
+          "anchor": "concept-1",
+          "url": "/python/http#concept-1"
+        },
+        {
+          "id": "http-concept-2",
+          "title": "从请求到业务数据",
+          "anchor": "concept-2",
+          "url": "/python/http#concept-2"
+        },
+        {
+          "id": "http-concept-3",
+          "title": "失败、分页与重试",
+          "anchor": "concept-3",
+          "url": "/python/http#concept-3"
+        },
+        {
+          "id": "http-concept-4",
+          "title": "采集与内容解析",
+          "anchor": "concept-4",
+          "url": "/python/http#concept-4"
+        },
+        {
+          "id": "http-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/python/http#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "http-lab",
+          "url": "/python/http#lab"
+        }
+      ],
+      "group": "应用扩展",
+      "kind": "extension",
+      "learningOutcomes": [
+        "补充可靠 HTTP 调用、响应校验与有限重试。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://www.python-httpx.org/quickstart/",
+        "https://www.python-httpx.org/advanced/timeouts/"
+      ]
+    },
+    {
+      "id": "databases",
+      "title": "SQL、SQLite 与事务",
+      "summary": "补充持久化、约束、参数化查询与迁移。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "context-managers"
+      ],
+      "lessons": [
+        {
+          "id": "databases-concept-1",
+          "title": "连接、事务与约束分别保护什么",
+          "anchor": "concept-1",
+          "url": "/python/databases#concept-1"
+        },
+        {
+          "id": "databases-concept-2",
+          "title": "从模型到表",
+          "anchor": "concept-2",
+          "url": "/python/databases#concept-2"
+        },
+        {
+          "id": "databases-concept-3",
+          "title": "事务与连接生命周期",
+          "anchor": "concept-3",
+          "url": "/python/databases#concept-3"
+        },
+        {
+          "id": "databases-concept-4",
+          "title": "索引、迁移与 ORM",
+          "anchor": "concept-4",
+          "url": "/python/databases#concept-4"
+        },
+        {
+          "id": "databases-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/python/databases#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "databases-lab",
+          "url": "/python/databases#lab"
+        }
+      ],
+      "group": "应用扩展",
+      "kind": "extension",
+      "learningOutcomes": [
+        "补充持久化、约束、参数化查询与迁移。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/sqlite3.html",
+        "https://docs.sqlalchemy.org/en/20/tutorial/"
+      ]
+    },
+    {
+      "id": "data",
+      "title": "pandas、自动化与性能",
+      "summary": "补充数据契约、聚合、可复现分析与测量。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "collections",
+        "files-errors"
+      ],
+      "lessons": [
+        {
+          "id": "data-concept-1",
+          "title": "数据契约与结果核对",
+          "anchor": "concept-1",
+          "url": "/python/data#concept-1"
+        },
+        {
+          "id": "data-concept-2",
+          "title": "一条清晰的数据流水线",
+          "anchor": "concept-2",
+          "url": "/python/data#concept-2"
+        },
+        {
+          "id": "data-concept-3",
+          "title": "分析的可信度",
+          "anchor": "concept-3",
+          "url": "/python/data#concept-3"
+        },
+        {
+          "id": "data-concept-4",
+          "title": "自动化与性能",
+          "anchor": "concept-4",
+          "url": "/python/data#concept-4"
+        },
+        {
+          "id": "data-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/python/data#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "data-lab",
+          "url": "/python/data#lab"
+        }
+      ],
+      "group": "应用扩展",
+      "kind": "extension",
+      "learningOutcomes": [
+        "补充数据契约、聚合、可复现分析与测量。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html",
+        "https://docs.python.org/3/library/profile.html"
+      ]
+    },
+    {
+      "id": "project-cli",
+      "title": "实战：CSV 消费报告 CLI",
+      "summary": "完整源码、金额规则、错误定位与标准库测试。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "files-errors",
+        "testing"
+      ],
+      "lessons": [
+        {
+          "id": "project-cli-concept-1",
+          "title": "沿一条输入记录阅读项目",
+          "anchor": "concept-1",
+          "url": "/python/project-cli#concept-1"
+        },
+        {
+          "id": "project-cli-concept-2",
+          "title": "需求与输入约定",
+          "anchor": "concept-2",
+          "url": "/python/project-cli#concept-2"
+        },
+        {
+          "id": "project-cli-concept-3",
+          "title": "完整实现",
+          "anchor": "concept-3",
+          "url": "/python/project-cli#concept-3"
+        },
+        {
+          "id": "project-cli-concept-4",
+          "title": "运行与预期结果",
+          "anchor": "concept-4",
+          "url": "/python/project-cli#concept-4"
+        },
+        {
+          "id": "project-cli-concept-5",
+          "title": "自动验证",
+          "anchor": "concept-5",
+          "url": "/python/project-cli#concept-5"
+        },
+        {
+          "id": "project-cli-concept-6",
+          "title": "交付与升级",
+          "anchor": "concept-6",
+          "url": "/python/project-cli#concept-6"
+        },
+        {
+          "id": "project-cli-lab",
+          "title": "课程验收",
+          "anchor": "lab",
+          "url": "/python/project-cli#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [
+        "expenses",
+        "invalid-expenses"
+      ],
+      "exercises": [
+        {
+          "id": "project-cli-lab",
+          "url": "/python/project-cli#lab"
+        }
+      ],
+      "group": "综合项目与延伸",
+      "kind": "extension",
+      "learningOutcomes": [
+        "完整源码、金额规则、错误定位与标准库测试。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://docs.python.org/3/library/csv.html",
+        "https://docs.python.org/3/library/decimal.html",
+        "https://docs.python.org/3/library/argparse.html"
+      ]
+    },
+    {
+      "id": "project-api",
+      "title": "实战：任务管理 API",
+      "summary": "FastAPI + SQLite，持久化、分页、校验和接口测试。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "web",
+        "validation",
+        "databases",
+        "testing"
+      ],
+      "lessons": [
+        {
+          "id": "project-api-concept-1",
+          "title": "请求契约、存储和寿命一起验证",
+          "anchor": "concept-1",
+          "url": "/python/project-api#concept-1"
+        },
+        {
+          "id": "project-api-concept-2",
+          "title": "接口与数据约定",
+          "anchor": "concept-2",
+          "url": "/python/project-api#concept-2"
+        },
+        {
+          "id": "project-api-concept-3",
+          "title": "安装与完整服务",
+          "anchor": "concept-3",
+          "url": "/python/project-api#concept-3"
+        },
+        {
+          "id": "project-api-lab",
+          "title": "运行与手动验收",
+          "anchor": "lab",
+          "url": "/python/project-api#lab"
+        },
+        {
+          "id": "project-api-concept-5",
+          "title": "可执行的接口测试",
+          "anchor": "concept-5",
+          "url": "/python/project-api#concept-5"
+        },
+        {
+          "id": "project-api-concept-6",
+          "title": "里程碑与升级",
+          "anchor": "concept-6",
+          "url": "/python/project-api#concept-6"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [
+        "task-cases"
+      ],
+      "exercises": [
+        {
+          "id": "project-api-lab",
+          "url": "/python/project-api#lab"
+        }
+      ],
+      "group": "综合项目与延伸",
+      "kind": "extension",
+      "learningOutcomes": [
+        "FastAPI + SQLite，持久化、分页、校验和接口测试。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://fastapi.tiangolo.com/tutorial/body/",
+        "https://fastapi.tiangolo.com/tutorial/testing/",
+        "https://docs.pydantic.dev/latest/concepts/validators/"
+      ]
+    },
+    {
+      "id": "project-data",
+      "title": "实战：月度消费分析",
+      "summary": "pandas 数据检查、聚合、金额核对与报告。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "data",
+        "project-cli"
+      ],
+      "lessons": [
+        {
+          "id": "project-data-concept-1",
+          "title": "报告必须能回到原始数据核对",
+          "anchor": "concept-1",
+          "url": "/python/project-data#concept-1"
+        },
+        {
+          "id": "project-data-concept-2",
+          "title": "数据契约与样本",
+          "anchor": "concept-2",
+          "url": "/python/project-data#concept-2"
+        },
+        {
+          "id": "project-data-concept-3",
+          "title": "完整分析脚本",
+          "anchor": "concept-3",
+          "url": "/python/project-data#concept-3"
+        },
+        {
+          "id": "project-data-concept-4",
+          "title": "执行与核对",
+          "anchor": "concept-4",
+          "url": "/python/project-data#concept-4"
+        },
+        {
+          "id": "project-data-lab",
+          "title": "交付与扩展",
+          "anchor": "lab",
+          "url": "/python/project-data#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [
+        "orders"
+      ],
+      "exercises": [
+        {
+          "id": "project-data-lab",
+          "url": "/python/project-data#lab"
+        }
+      ],
+      "group": "综合项目与延伸",
+      "kind": "extension",
+      "learningOutcomes": [
+        "pandas 数据检查、聚合、金额核对与报告。"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pandas.pydata.org/docs/getting_started/intro_tutorials/06_calculate_statistics.html",
+        "https://pandas.pydata.org/docs/user_guide/io.html"
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "综合实验、样本与交付",
+      "summary": "为各阶段写出输入契约和可重复验收。",
+      "roadmapTopics": [],
+      "prerequisites": [
+        "project-cli",
+        "project-api",
+        "project-data"
+      ],
+      "lessons": [
+        {
+          "id": "projects-concept-1",
+          "title": "按阶段交付而不是观看进度",
+          "anchor": "concept-1",
+          "url": "/python/projects#concept-1"
+        },
+        {
+          "id": "projects-concept-2",
+          "title": "按能力选择起点",
+          "anchor": "concept-2",
+          "url": "/python/projects#concept-2"
+        },
+        {
+          "id": "projects-concept-3",
+          "title": "先写一页需求说明",
+          "anchor": "concept-3",
+          "url": "/python/projects#concept-3"
+        },
+        {
+          "id": "projects-concept-4",
+          "title": "用职责划分代码",
+          "anchor": "concept-4",
+          "url": "/python/projects#concept-4"
+        },
+        {
+          "id": "projects-concept-5",
+          "title": "按里程碑推进",
+          "anchor": "concept-5",
+          "url": "/python/projects#concept-5"
+        },
+        {
+          "id": "projects-concept-6",
+          "title": "测试哪些行为",
+          "anchor": "concept-6",
+          "url": "/python/projects#concept-6"
+        },
+        {
+          "id": "projects-concept-7",
+          "title": "交付检查清单",
+          "anchor": "concept-7",
+          "url": "/python/projects#concept-7"
+        },
+        {
+          "id": "projects-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/python/projects#lab"
+        }
+      ],
+      "topicTargets": {},
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "projects-lab",
+          "url": "/python/projects#lab"
+        }
+      ],
+      "group": "综合项目与延伸",
+      "kind": "extension",
+      "learningOutcomes": [
+        "为各阶段写出输入契约和可重复验收。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://packaging.python.org/en/latest/tutorials/packaging-projects/"
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "官方资料与后续路线",
+      "summary": "按具体问题查资料，进入后端、运维或 AI/数据方向。",
+      "roadmapTopics": [
+        "Related Roadmaps",
+        "Backend Roadmap",
+        "DevOps Roadmap",
+        "AI & Data Scientist"
+      ],
+      "prerequisites": [],
+      "lessons": [
+        {
+          "id": "resources-concept-1",
+          "title": "官方资料按问题使用",
+          "anchor": "concept-1",
+          "url": "/python/resources#concept-1"
+        },
+        {
+          "id": "resources-concept-2",
+          "title": "辅助练习课程",
+          "anchor": "concept-2",
+          "url": "/python/resources#concept-2"
+        },
+        {
+          "id": "resources-concept-3",
+          "title": "维护状态与历史节点",
+          "anchor": "concept-3",
+          "url": "/python/resources#concept-3"
+        },
+        {
+          "id": "resources-concept-4",
+          "title": "相关路线",
+          "anchor": "concept-4",
+          "url": "/python/resources#concept-4"
+        },
+        {
+          "id": "resources-lab",
+          "title": "动手练习与验收",
+          "anchor": "lab",
+          "url": "/python/resources#lab"
+        }
+      ],
+      "topicTargets": {
+        "Related Roadmaps": "concept-1",
+        "Backend Roadmap": "concept-1",
+        "DevOps Roadmap": "concept-1",
+        "AI & Data Scientist": "concept-1"
+      },
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "resources-lab",
+          "url": "/python/resources#lab"
+        }
+      ],
+      "group": "综合项目与延伸",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "按具体问题查资料，进入后端、运维或 AI/数据方向。"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://roadmap.sh/python",
+        "https://roadmap.sh/pdfs/roadmaps/python.pdf",
+        "https://docs.python.org/zh-cn/3/tutorial/",
+        "https://docs.python.org/3/reference/",
+        "https://docs.python.org/3/library/functions.html",
+        "https://docs.python.org/3/library/",
+        "https://packaging.python.org/",
+        "https://typing.python.org/",
+        "https://docs.python.org/3/howto/free-threading-python.html",
+        "https://cs50.harvard.edu/python/",
+        "https://exercism.org/tracks/python",
+        "https://roadmap.sh/backend",
+        "https://roadmap.sh/devops",
+        "https://roadmap.sh/ai-data-scientist",
+        "https://nose.readthedocs.io/en/latest/",
+        "https://github.com/facebook/pyre-check",
+        "https://pyre-check.org/"
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "id": "expenses",
+      "url": "/python/data/expenses.csv",
+      "description": "CLI 正常输入，汇总为图书 6000 分、课程 10000 分"
+    },
+    {
+      "id": "invalid-expenses",
+      "url": "/python/data/invalid-expenses.csv",
+      "description": "第 3 行金额非法，应失败"
+    },
+    {
+      "id": "orders",
+      "url": "/python/data/orders.csv",
+      "description": "月度分析，原始与汇总总额 18500 分"
+    },
+    {
+      "id": "algorithm-cases",
+      "url": "/python/data/algorithm-cases.json",
+      "description": "排序、栈和树的边界样例"
+    },
+    {
+      "id": "task-cases",
+      "url": "/python/data/task-cases.json",
+      "description": "API 生命周期与错误请求"
+    }
+  ],
+  "verification": {
+    "date": "2026-10-09",
+    "python": "3.12.14",
+    "syntaxCheckedBlocks": 87,
+    "executedStandardLibraryScripts": 61,
+    "projectsTested": [
+      "project-cli",
+      "project-api",
+      "project-data"
+    ],
+    "executedExternalExamples": [
+      "FastAPI",
+      "Flask",
+      "Django",
+      "Pyramid",
+      "Pydantic"
+    ],
+    "documentationChecks": [
+      "Sphinx HTML -W",
+      "Sphinx doctest -W",
+      "stdlib doctest"
+    ],
+    "toxCheck": "配置与环境列表解析；未宣称完整多版本矩阵已运行",
+    "packages": {
+      "fastapi": "0.143.0",
+      "pydantic": "2.14.0",
+      "httpx": "0.28.1",
+      "pytest": "9.1.1",
+      "pandas": "2.2.3",
+      "Flask": "3.1.3",
+      "Django": "6.1.2",
+      "pyramid": "2.1",
+      "Sphinx": "9.1.0",
+      "tox": "4.64.10"
+    }
+  }
+}

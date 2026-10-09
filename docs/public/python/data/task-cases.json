@@ -1,0 +1,44 @@
+{
+  "isolation": "各组使用新的临时数据库，生命周期组按顺序执行",
+  "lifecycle": [
+    {
+      "method": "POST",
+      "path": "/tasks",
+      "json": {
+        "title": "学习 Python"
+      },
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/tasks",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/tasks/1",
+      "json": {
+        "done": true
+      },
+      "status": 200
+    }
+  ],
+  "invalid": [
+    {
+      "method": "POST",
+      "path": "/tasks",
+      "json": {
+        "title": " "
+      },
+      "status": 422
+    },
+    {
+      "method": "PATCH",
+      "path": "/tasks/999",
+      "json": {
+        "done": true
+      },
+      "status": 404
+    }
+  ]
+}

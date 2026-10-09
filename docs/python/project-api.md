@@ -1,14 +1,28 @@
 ---
-title: 4.2. 实战：任务管理 API
-description: 用 FastAPI、Pydantic 和 SQLite 实现有持久化、输入校验、分页与测试的任务管理接口。
-pageClass: aip-article
+title: 16.2. 实战：任务管理 API
+description: FastAPI + SQLite，持久化、分页、校验和接口测试。
+pageClass: aip-article python-course
 ---
 
-# 4.2. 实战：任务管理 API
+# 16.2. 实战：任务管理 API
+
+先修建议：[FastAPI 与接口开发](./web)、[Pydantic 与运行时数据校验](./validation)、[SQL、SQLite 与事务](./databases)、[pytest、隔离、参数化与替身](./testing)。
 
 本项目复用 FastAPI、Pydantic 和 SQLite，完成一个可运行的小型任务服务。前置知识：[类型标注](./typing)、[测试](./testing)、[HTTP](./http)、[数据库](./databases)、[并发](./concurrency)与 [Web 开发](./web)。它是本地单用户学习项目，扩展为公开服务前再加入用户身份、资源权限和部署配置。
 
-## 接口与数据约定
+## 请求契约、存储和寿命一起验证 {#concept-1}
+
+这个项目将 FastAPI、Pydantic 和 SQLite 的成熟能力连接起来。请求通过模型验证后仍有业务规则，数据库约束与事务保障持久化，测试验证重启、更新与非法输入。
+
+```mermaid
+flowchart LR
+  R["HTTP 请求"] --> V["字段与业务校验"] --> D["SQLite 操作 / 事务"] --> O["公开响应"]
+  L["应用 lifespan"] --> I["初始化存储"]
+```
+
+它是本地单用户学习项目，不包含完整用户权限。后续扩展认证时，列表和单条操作都检查归属，不把 JSON 解析成功等同于已授权。
+
+## 接口与数据约定 {#concept-2}
 
 | 请求 | 行为 | 关键结果 |
 | --- | --- | --- |
@@ -18,7 +32,7 @@ pageClass: aip-article
 
 标题去空白后长度为 1–200，done 必须为 JSON 布尔值。SQLite 文件重启后保留；参数化 SQL 与数据库约束共同守住输入边界。
 
-## 安装与完整服务
+## 安装与完整服务 {#concept-3}
 
 ```sh
 python -m pip install "fastapi[standard]" httpx pytest
@@ -34,7 +48,6 @@ import sqlite3
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-
 class TaskCreate(BaseModel):
     model_config = ConfigDict(extra="forbid")
     title: str = Field(min_length=1, max_length=200)
@@ -48,17 +61,14 @@ class TaskCreate(BaseModel):
                 raise ValueError("标题不能为空")
         return value
 
-
 class TaskUpdate(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     done: bool
-
 
 class Task(BaseModel):
     id: int
     title: str
     done: bool
-
 
 def create_app(database: Path = Path("tasks.db")) -> FastAPI:
     def connect():
@@ -104,13 +114,12 @@ def create_app(database: Path = Path("tasks.db")) -> FastAPI:
 
     return app
 
-
 app = create_app()
 ```
 
 每次同步路由请求创建和关闭自己的连接，不共享全局 SQLite 连接。小项目直接把 SQL 放在路由附近便于阅读，规则增长后再提取业务函数。连接上下文退出时提交，随后关闭；HTTPException 导致更新事务回滚。数据库错误应由日志定位，后续可为预期的锁冲突配置明确的重试或失败策略。
 
-## 运行与手动验收
+## 运行与手动验收 {#lab}
 
 ```sh
 fastapi dev app.py
@@ -118,14 +127,13 @@ fastapi dev app.py
 
 打开 `http://127.0.0.1:8000/docs` 创建 `{"title":"学习 Python"}`，记住返回 id；GET 应看到该记录，PATCH 发送 `{"done":true}` 后应更新。停止服务并重新启动，再 GET，记录仍然存在。
 
-## 可执行的接口测试
+## 可执行的接口测试 {#concept-5}
 
 保存为 `test_app.py`：
 
 ```python
 from fastapi.testclient import TestClient
 from app import create_app
-
 
 def test_task_lifecycle(tmp_path):
     database = tmp_path / "tasks.db"
@@ -148,7 +156,7 @@ def test_task_lifecycle(tmp_path):
 
 运行 `python -m pytest -q`。TestClient 上下文触发生命周期，临时目录隔离数据库；第二次创建应用模拟服务重启。
 
-## 里程碑与升级
+## 里程碑与升级 {#concept-6}
 
 第一步跑通创建和查询，第二步加入更新和输入校验，第三步验证重启与测试。完成后再增加删除、按状态过滤和游标分页，每一步补相应接口测试。
 

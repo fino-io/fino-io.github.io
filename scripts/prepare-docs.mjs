@@ -4,6 +4,7 @@ const tasks = [
   'generate-aip-sidebar.mjs',
   'generate-grpc-sidebar.mjs',
   'generate-go-docs.mjs',
+  'generate-python-docs.mjs',
 ]
 
 for (const task of tasks) {

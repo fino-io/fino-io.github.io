@@ -44,6 +44,8 @@ async function renderDiagrams(refresh = false) {
         diagram.className = 'mermaid-diagram'
         diagram.dataset.mermaidSource = source
         diagram.innerHTML = svg
+        const viewBox = diagram.querySelector('svg')?.getAttribute('viewBox')
+        if (viewBox) diagram.style.setProperty('--diagram-width', `${viewBox.split(/\s+/)[2]}px`)
         element.replaceWith(diagram)
         bindFunctions?.(diagram)
       } catch (error) {

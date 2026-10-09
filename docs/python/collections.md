@@ -1,57 +1,82 @@
 ---
-title: 1.3. 字符串、集合与数据处理
-description: Python 中文学习指南：字符串、集合与数据处理，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 1.5. 列表、元组、集合与字典
+description: 按顺序、唯一性、键查询和可变性选择内置容器。
+pageClass: aip-article python-course
 ---
 
-# 1.3. 字符串、集合与数据处理
+# 1.5. 列表、元组、集合与字典
 
-本章目标：根据数据含义选容器，掌握常见查询和转换，并识别可变对象共享问题。
+先修建议：[变量、数据类型与类型转换](./variables)、[条件、循环与终止条件](./control-flow)。
 
-## 容器如何选择
+容器选型先看访问方式：是否有顺序，是否允许重复，按位置还是按键查找，是否需要原地修改。内置容器已经能处理许多任务，不必先建立自己的集合框架。
 
-| 类型 | 适用场景 | 注意事项 |
+## 四种内置容器 {#concept-1}
+
+| 类型 | 适合 | 注意 |
 | --- | --- | --- |
-| list | 有序、可修改的数据序列 | `append` 修改原列表，索引越界抛异常。 |
-| tuple | 固定字段组合、不可变序列 | 不可变的是容器，内部仍可能含可变对象。 |
-| dict | 按键查询、聚合和配置 | 保持插入顺序；键必须可哈希。 |
-| set | 去重、成员判断、集合运算 | 不依赖其遍历顺序；空集合用 `set()`。 |
+| list | 有序、变长序列 | 可变，复制是浅复制；头部删除可能移动元素。 |
+| tuple | 固定组合或不可重新赋值的序列 | 可包含可变对象，外层不可变不等于深层不可变。 |
+| set | 唯一性、成员查询、集合运算 | 元素需可哈希，不依赖遍历顺序。 |
+| dict | 按键映射值 | 键需可哈希，保留插入顺序但不自动按键排序。 |
 
-字符串是不可变 Unicode 文本，`bytes` 是字节，两者经 `encode` / `decode` 转换。`len(text)` 计算 Unicode 码点数量，不一定等于用户看到的字符数。切片 `items[start:stop:step]` 不包含 stop；负索引从末尾开始。
+```python
+names = ["Go", "Python", "Python"]
+assert names[1:] == ["Python", "Python"]
+assert set(names) == {"Go", "Python"}
+location = ("上海", 8)
+city, hour = location
+assert city == "上海" and hour == 8
+counts = {"Python": 2, "Go": 1}
+assert counts.get("Rust", 0) == 0
+```
 
-## 清洗与聚合
+## 修改、返回值与副本 {#concept-2}
+
+```python
+items = [1, 2]
+result = items.append(3)
+assert result is None
+assert items == [1, 2, 3]
+rows = [[1], [2]]
+copied = rows.copy()
+copied[0].append(9)
+assert rows == [[1, 9], [2]]
+```
+
+append 等原地修改方法通常返回 None，不能写 `items = items.append(...)` 并期待新列表。浅复制只复制外层引用；需要逐层独立时明确复制深度，复杂对象可用 copy.deepcopy，但仍应理解共享语义。
+
+## 查找与聚合 {#concept-3}
 
 ```python
 from collections import Counter
 
-text = " Python, rust, PYTHON, go "
-languages = [part.strip().casefold() for part in text.split(",")]
-counts = Counter(name for name in languages if name)
-assert counts["python"] == 2
-print(sorted(counts.items(), key=lambda item: (-item[1], item[0])))
+words = "Python Go Python".split()
+counts = Counter(words)
+assert counts["Python"] == 2
+assert counts["Rust"] == 0
+assert sorted(counts.items()) == [("Go", 1), ("Python", 2)]
+assert {1, 2} & {2, 3} == {2}
+assert {1, 2} - {2, 3} == {1}
 ```
 
-`strip()` 清除边缘空白，`split()` 拆分，`join()` 合并。`casefold()` 适合无视大小写的文本比较。正则表达式用于真正的模式匹配；固定前后缀用 `startswith` 和 `endswith` 更清楚。
+`dict[key]` 缺失抛 KeyError，get 可提供默认。需要区分缺失与合法 None 时用 `key in mapping` 或专门哨兵。Counter 复用已有计数方案，输出排序由接口契约决定。
 
-列表推导式适合简单的映射与筛选；复杂嵌套、有日志或异常处理的流程用普通循环。字典计数优先复用 `Counter`，分组可用 `defaultdict(list)`，队列用 `deque`，避免反复 `list.pop(0)`。
+## 数据结构的成本 {#concept-4}
 
-## 可变性与复制
-
-```python
-original = [{"score": 10}]
-shallow = original.copy()
-shallow[0]["score"] = 20
-assert original[0]["score"] == 20
+```mermaid
+flowchart LR
+  Q["主要操作"] --> S["按位置与顺序：list / tuple"]
+  Q --> K["按键查值：dict"]
+  Q --> U["检查唯一和成员：set"]
+  Q --> D["两端进出：后续学习 deque"]
 ```
 
-赋值不会复制对象，浅复制只复制外层容器。只有确实需要独立嵌套结构时才考虑 `copy.deepcopy`。`[[0] * 3] * 2` 会重复引用同一行，二维列表应写 `[[0] * 3 for _ in range(2)]`。
+list 不是 C 意义上的同类型值数组，而是保存对象引用的动态序列。成员查询大集合时反复扫描 list 与使用 set 的成本不同；算法单元将通过实验进一步解释。
 
-`dict[key]` 适合键必须存在的场景，缺失会抛 `KeyError`；`dict.get(key, default)` 适合缺失有合理默认值的场景。不要让默认值掩盖格式错误。删除或新增集合元素时，优先构建新集合，避免一边遍历一边改变大小。
+## 动手练习与验收 {#lab}
 
-## 练习与验收
+1. 按第一次出现顺序去重，测试空输入和重复项。
+2. 比较 dict 插入顺序与 sorted(keys)，说明什么时候必须排序。
+3. 对嵌套列表说明“外层复制了，内部为何仍共享”。
 
-1. 统计一段文本的词频，按频率和词名排序。
-2. 用集合找出两个用户列表的共同用户和差异用户。
-3. 演示浅复制和深复制的区别；修正二维列表共享引用问题。
-
-验收：能说明所选容器的查询方式、顺序要求和修改影响范围。参考：[数据结构教程](https://docs.python.org/zh-cn/3/tutorial/datastructures.html)、[collections](https://docs.python.org/3/library/collections.html)。
+依据：[数据结构教程](https://docs.python.org/zh-cn/3/tutorial/datastructures.html)、[collections](https://docs.python.org/3/library/collections.html)。

@@ -1,14 +1,25 @@
 ---
-title: 3.2. SQL、SQLite 与持久化
-description: Python 中文学习指南：SQL、SQLite 与持久化，包含概念、代码示例、练习与验收。
-pageClass: aip-article
+title: 15.2. SQL、SQLite 与事务
+description: 补充持久化、约束、参数化查询与迁移。
+pageClass: aip-article python-course
 ---
 
-# 3.2. SQL、SQLite 与持久化
+# 15.2. SQL、SQLite 与事务
 
-本章目标：理解表、约束和事务，用参数化 SQL 保存数据，避免把数据库当成字典文件。
+先修建议：[上下文管理器与资源协议](./context-managers)。
 
-## 从模型到表
+## 连接、事务与约束分别保护什么 {#concept-1}
+
+连接提供数据库访问，事务组织一致性操作，约束守住数据规则。参数化查询保护值，不能用于任意动态表名；查询资源与连接需要明确关闭。
+
+```mermaid
+flowchart LR
+  I["业务输入"] --> Q["参数化 SQL"] --> T["约束与事务"] --> R["读取结果 / 提交"] --> C["释放资源"]
+```
+
+应用先查询“有没有”仍可能并发冲突，数据库 UNIQUE 等约束是最终保障。ORM 不替代 SQL、执行计划与迁移知识，先在真实数据库验证回滚和约束。
+
+## 从模型到表 {#concept-2}
 
 关系型表由行和列组成。主键标识记录，NOT NULL 保证字段存在，UNIQUE 保证唯一，CHECK 表达值域约束。应用校验提供友好错误，数据库约束守住最终一致性。
 
@@ -34,19 +45,19 @@ with closing(sqlite3.connect("tasks.db")) as connection:
 
 SQL 值使用占位符，不用 f-string 拼用户输入。表名和排序字段不能直接当值绑定，动态字段应走固定允许列表。单元素元组要有逗号。
 
-## 事务与连接生命周期
+## 事务与连接生命周期 {#concept-3}
 
 事务把多个修改作为一个整体提交；失败回滚，避免只写入一半。上面的 `with connection` 管理提交与回滚，**不会关闭连接**，因此外层使用 `closing`。示例依赖 sqlite3 默认事务行为，复杂应用应按 Python 版本明确配置 autocommit 策略。
 
 SQLite 适合本地工具和小型服务，写并发、长事务和网络共享文件都需要谨慎。更新后检查 rowcount 区分“成功”和“记录不存在”。分页用确定性排序；大型数据可采用基于 id 的游标，避免无限增长的 OFFSET。
 
-## 索引、迁移与 ORM
+## 索引、迁移与 ORM {#concept-4}
 
 学习 SELECT、WHERE、ORDER BY、JOIN、GROUP BY 和聚合函数，再接入 ORM。索引提升匹配查询的速度，也增加写入与存储成本；用查询计划确认实际收益，不要给每列建索引。
 
 Python 服务可选 SQLAlchemy，数据库迁移可选 Alembic；Django 项目优先用自身 ORM 与迁移。迁移应可审查、可在测试库演练，并备份重要数据。不要在正式环境每次启动时随意改变表结构。
 
-## 练习与验收
+## 练习与验收 {#lab}
 
 1. 增加任务、标记完成并按状态分页查询。
 2. 插入带引号的标题，确认参数化 SQL 正常工作。
