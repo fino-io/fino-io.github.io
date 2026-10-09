@@ -1,16 +1,26 @@
 ---
-title: 4.3. 表驱动、替身与 HTTP 测试
+title: 8.1. 表驱动、替身与 HTTP 测试
 description: 隔离、Mock/Stub、httptest、覆盖率与 Fuzz。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 4.3. 表驱动、替身与 HTTP 测试
+# 8.1. 表驱动、替身与 HTTP 测试
 
-学习前应能完成：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
+先修建议：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
 
-本章目标：用测试固定行为，覆盖边界与失败路径，让并发和重构有可验证的依据。
+## 从一个行为建立红、绿、重构循环 {#concept-1}
 
-## 从表驱动测试开始
+先用测试表达可观察的要求，让它在没有实现时失败；完成最小实现使它通过，再在行为保持不变的条件下重构。测试的价值来自准确断言，而不是它调用了多少内部函数。
+
+```mermaid
+flowchart LR
+  R["红：写一个会失败的行为断言"] --> G["绿：完成所需最小实现"]
+  G --> F["重构：改善表达，保留同一行为"] --> N["下一项边界或需求"] --> R
+```
+
+测试标题、输入与预期一起组成具体说明。验证 Normalize 时既要检查清理结果，也要检查空输入；验证 HTTP 时检查状态、头和 body；验证取消时检查任务是否在预算内结束，不能只看到函数返回就算成功。
+
+## 从表驱动测试开始 {#concept-2}
 
 在独立模块中保存 `title.go`：
 
@@ -54,13 +64,13 @@ go test -race ./...
 
 测试文件以 `_test.go` 结尾，测试函数以 Test 开头、接收 `*testing.T`。`t.Helper()` 用于标识测试辅助函数，`t.Cleanup()` 清理资源，`t.TempDir()` 隔离临时文件。覆盖率只显示代码执行到哪里，不证明断言充分。
 
-## 测试边界而非模仿实现
+## 测试边界而非模仿实现 {#concept-3}
 
 核心计算直接用值测试；文件测试用临时目录；HTTP 服务用 httptest.NewRecorder 或 NewServer；数据库测试使用隔离数据库与迁移。替身只替换不稳定的边界，不给每个私有函数做 mock。时间依赖可注入时钟函数，避免靠 sleep 猜测任务何时结束。
 
 并行测试不能共享可变全局变量、同一个固定端口或数据库数据。`t.Parallel()` 前先明确隔离方式。race 检测只发现实际执行路径中的数据竞争，还需要足够的并发覆盖；它不证明没有死锁或 goroutine 泄漏。参见 [竞态检测器](https://go.dev/doc/articles/race_detector)。
 
-## Fuzz：寻找没想到的输入
+## Fuzz：寻找没想到的输入 {#concept-4}
 
 在上述测试文件追加：
 
@@ -83,11 +93,11 @@ go test -fuzz=FuzzNormalize -fuzztime=10s .
 
 这里验证幂等性，不能替代“正确去除空白”的固定用例。模糊测试适合解析器、编解码和输入归一化；目标要确定、快速、无外部网络副作用。失败样本加入回归测试。参考：[官方 Fuzz 教程](https://go.dev/doc/tutorial/fuzz)。
 
-## 最小质量流程
+## 最小质量流程 {#concept-5}
 
 格式化 → 单元与集成测试 → race（适用平台）→ vet → 构建。需要更强静态分析时再加入 Staticcheck 或组织已有的 golangci-lint 配置，避免同时打开大量未理解的规则。HTTP 示例的行为测试见 [任务 API 实战](./project-api)。
 
-## Stub 与 Mock：替身验证什么
+## Stub 与 Mock：替身验证什么 {#concept-6}
 
 Stub 提供固定结果，Mock 还验证互动契约。业务只关心读到什么时用 stub；真的要求“只有成功后通知一次”时才验证调用次数。不要用 mock 复制每个内部函数的调用顺序，否则重构实现会迫使测试一起改而没有保护行为。
 
@@ -143,7 +153,7 @@ func TestNotify(t *testing.T) {
 }
 ```
 
-## Recorder 与真实测试 Server 的区别
+## Recorder 与真实测试 Server 的区别 {#concept-7}
 
 Recorder 直接调用 handler，不开 TCP，适合状态码、头和 body；NewServer 建本机服务，可验证 Client 的重定向、超时和响应体行为。Recorder 不完全模拟真实网络、连接断开与流式行为，别把一次 Recorder 测试当成完整系统测试。
 

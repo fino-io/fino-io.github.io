@@ -1,16 +1,29 @@
 ---
-title: 5.5. gRPC 与 Protocol Buffers
+title: 9.3. gRPC 与 Protocol Buffers
 description: 契约、生成、状态码、Deadline 与流式 RPC。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 5.5. gRPC 与 Protocol Buffers
+# 9.3. gRPC 与 Protocol Buffers
 
-学习前应能完成：[包、模块、依赖与发布](./modules)、[HTTP 服务与 Web 框架](./web)、[Context、截止时间与取消](./context)。
+先修建议：[包、模块、依赖与发布](./modules)、[HTTP 服务与 Web 框架](./web)、[Context、截止时间与取消](./context)。
 
 本章实现 gRPC 契约与生成流程，区分 wire 编码、服务签名和运行协议。它适合明确类型的服务间调用，不是所有 HTTP API 的自动替代。
 
-## 定义契约与生成路径
+## 协议契约、生成代码与业务实现 {#concept-1}
+
+Protobuf 文件定义消息与 RPC 契约，生成器把它转成 Go 类型和服务绑定，业务实现再填入实际行为。这三层各有修改入口：改契约后重新生成，不手改生成文件。
+
+```mermaid
+flowchart LR
+  P["task.proto：消息与 RPC"] --> G["protoc + Go 插件"]
+  G --> T["生成消息类型与服务接口"] --> S["业务实现"]
+  C["客户端：deadline、认证、调用"] --> S
+```
+
+字段编号属于 wire 契约，Go 导入路径属于代码组织，状态码属于运行协议。把它们分清楚，才能解释“源码仍能编译但老客户端语义已变化”的兼容问题。
+
+## 定义契约与生成路径 {#concept-2}
 
 项目模块为 `example.com/tasks`，保存 `proto/task/v1/task.proto`：
 
@@ -40,7 +53,7 @@ protoc -I proto --go_out=. --go_opt=module=example.com/tasks --go-grpc_out=. --g
 
 生成 `gen/task/v1` 中的消息与服务绑定。`go_package` 是 Go 导入路径，proto package 是协议名称，两者不等价。生成文件不手改，修改契约后重新生成并检查差异。
 
-## 服务实现与错误映射
+## 服务实现与错误映射 {#concept-3}
 
 片段，taskv1 为生成包，findTask 为业务方法：
 
@@ -58,13 +71,13 @@ func (s *Server) GetTask(ctx context.Context, req *taskv1.GetTaskRequest) (*task
 
 生成结构体与业务模型分开，不让存储层返回 gRPC status。调用方使用 Context deadline，服务向数据库传递同一个 ctx。Internal 响应隐藏驱动细节，日志保留关联 ID；测试 InvalidArgument、NotFound 与依赖失败的状态码。
 
-## 兼容性：编号、存在性与枚举
+## 兼容性：编号、存在性与枚举 {#concept-4}
 
 删除字段后 reserved 原编号与名称，不能重新给其他含义使用。添加字段一般可兼容 wire 格式，仍需看业务语义。普通 proto3 标量默认值不总能表达是否提供；optional 保留存在性，oneof 表达互斥选择，字段掩码可表达局部更新。枚举 0 定义 UNSPECIFIED，客户端需考虑未来未知值。
 
 不要把 int64 的 JSON 表现、protobuf 二进制和 Go int64 混为一谈；跨语言客户端尤其检查编号范围、时间与金额单位。协议版本写在包名中，Go 模块大版本是另一套发布维度。
 
-## 流式 RPC 与回压
+## 流式 RPC 与回压 {#concept-5}
 
 WatchTasks 是服务器流：服务持续 Send，客户端持续 Recv，结束时 EOF/错误。Send 可能阻塞于网络和流控，不在锁内持有整个存储状态；用快照或订阅机制释放锁再发送。客户端慢、断开或取消都需要使订阅退出。
 

@@ -1,16 +1,29 @@
 ---
-title: 4.2. flag、time、regexp 与 embed
+title: 7.2. flag、time、regexp 与 embed
 description: 参数、时间、正则与编译期资源的具体使用。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 4.2. flag、time、regexp 与 embed
+# 7.2. flag、time、regexp 与 embed
 
-学习前应能完成：[文件、流式 I/O 与 JSON](./io)。
+先修建议：[文件、流式 I/O 与 JSON](./io)。
 
 本章为 roadmap 中 flag、time、regexp 和 go:embed 建立具体实验。文件、os、bufio 与 JSON 见 [I/O](./io)，slog 见 [日志与实时通信](./logging-realtime)。
 
-## flag：解析与退出分离
+## 按输入、时间和资源选择标准库 {#concept-1}
+
+这四项工具各自解决不同边界：flag 解释命令输入，time 表达时间点与时长，regexp 匹配明确模式，embed 在构建时带入资源。先识别任务，再学习 API，避免把所有处理都写成字符串拼接。
+
+| 任务 | 负责的阶段 | 例子中需要观察的变化 |
+| --- | --- | --- |
+| 参数解析 | 程序入口 | 缺参数、非法范围与未知参数。 |
+| 时间解析 | 输入与预算 | 时区转换、Duration、截止时间。 |
+| 模式提取 | 数据匹配 | 是否全串匹配、捕获组和失败结果。 |
+| 嵌入文件 | 编译 | 源资源改变后是否重建。 |
+
+slog 也是路线中的标准库主题：使用结构化字段与 Handler 组织日志，在 [日志课程](./logging)中有完整示例；选 Zap/Zerolog 是生态分支，不改变日志责任的基本问题。
+
+## flag：解析与退出分离 {#concept-2}
 
 ```go
 package main
@@ -41,7 +54,7 @@ func main() {
 
 FlagSet 避免污染全局 flags，可独立测试。`--` 结束选项解析，标准 flag 通常在遇到首个非 flag 参数后停止；复杂子命令使用成熟 CLI 库。帮助错误、解析错误和运行错误在入口映射不同退出码，不能让解析函数内部 os.Exit。
 
-## time：时间点、时长与时区
+## time：时间点、时长与时区 {#concept-3}
 
 ```go
 package main
@@ -67,7 +80,7 @@ func main() {
 
 格式模板使用 Go 的参考日期，不能把 YYYY-MM-DD 字符串当模板。Elapsed 用 time.Since；由 time.Now 得到的值可携带单调时钟部分，序列化后通常丢失，跨进程计算仍要考虑墙钟漂移。业务日历用目标时区和 AddDate，不用“一个月等于 30 天”。ticker 在不用后 Stop，不能假设停止会关闭 C；等待仍要观察 Context。
 
-## regexp：编译、匹配与数据提取
+## regexp：编译、匹配与数据提取 {#concept-4}
 
 ```go
 package main
@@ -88,7 +101,7 @@ func main() {
 
 固定开发者字面量可 MustCompile，用户输入模式用 Compile 并返回错误。`^`、`$` 明确全串边界；提取前检查切片长度。Go regexp 不支持某些 PCRE 特性如回溯引用，设计为有限制的线性匹配；仍要限制输入大小和返回结果数量。CSV、JSON、HTML 使用专用解析器，不把格式协议都变成正则。
 
-## embed：编译时资源
+## embed：编译时资源 {#concept-5}
 
 独立目录保存 `main.go`：
 

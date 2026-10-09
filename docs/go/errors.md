@@ -1,16 +1,27 @@
 ---
-title: 2.7. 错误模型、包装与恢复
+title: 5.1. 错误模型、包装与恢复
 description: 错误链、自定义类型、哨兵、panic、recover 与堆栈。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 2.7. 错误模型、包装与恢复
+# 5.1. 错误模型、包装与恢复
 
-学习前应能完成：[接口、断言与动态类型](./interfaces)、[函数、闭包与调用语义](./functions)。
+先修建议：[接口、断言与动态类型](./interfaces)、[函数、闭包与调用语义](./functions)。
 
-本章目标：让失败路径与正常路径一样明确，调用方能稳定识别并处理错误。
+## 沿错误链保留原因 {#concept-1}
 
-## 先处理错误，再继续工作
+底层错误回答“哪件事失败”，外层包装回答“当时正在完成什么操作”。把操作上下文补在外面、保留原因在里面，调用方才能既读懂提示，又稳定识别不存在、超时或校验失败。
+
+```mermaid
+flowchart LR
+  O["创建任务失败"] -->|包装| M["读取配置失败"] -->|包装| R["文件不存在"]
+  I["errors.Is"] -.->|沿链识别目标| R
+  A["errors.As"] -.->|提取匹配类型| M
+```
+
+%w 保留可展开的关系，%v 通常只把文字写入消息。公开错误是否允许调用方依赖底层类型，也是接口设计的一部分；不是每个驱动错误都应无条件成为业务公开契约。
+
+## 先处理错误，再继续工作 {#concept-2}
 
 错误是普通值，`error` 接口只有 `Error() string`。文件不存在、用户输入无效、网络超时都是可预期失败，返回 error 即可。不要把错误赋给 `_`，除非确实决定忽略且能说明理由。
 
@@ -45,7 +56,39 @@ func main() {
 
 `%w` 保留底层错误链，`errors.Is` 检查链中的目标，`errors.As` 获取指定错误类型。不要用错误字符串比较控制业务流程。包装信息应说明操作和必要标识，同时避免把密码、token 或整个请求体写入错误。
 
-## 分清错误的职责
+## 创建错误值与稳定识别 {#error-values}
+
+`errors.New` 创建一个说明失败的错误值；`fmt.Errorf` 适合把参数带入消息，使用 %w 时还能保留底层原因。程序要稳定识别一种失败时，把它定义为可复用的哨兵值，而不是比较每次生成的文字。
+
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+	"strings"
+)
+
+var ErrEmptyTitle = errors.New("标题不能为空")
+
+func validate(raw string) error {
+	if strings.TrimSpace(raw) == "" {
+		return ErrEmptyTitle
+	}
+	return nil
+}
+
+func main() {
+	err := validate(" ")
+	wrapped := fmt.Errorf("创建任务: %w", err)
+	fmt.Println(errors.Is(wrapped, ErrEmptyTitle))           // true
+	fmt.Println(errors.Is(errors.New("x"), errors.New("x"))) // false
+}
+```
+
+第二个结果说明两份文字相同的 New 错误不自动代表同一个失败值。需要携带字段和原因时使用下一段的具名错误类型；Is 与 As 分别识别目标值和类型，沿包装链处理，不靠自由文本决定业务流程。
+
+## 分清错误的职责 {#concept-3}
 
 | 场景 | 建议 |
 | --- | --- |
@@ -58,13 +101,13 @@ func main() {
 
 底层返回错误，入口决定日志或响应，避免每一层都重复记录同一错误。HTTP 层可以把 ErrNotFound 映射为 404，但数据库层不应该知道 HTTP 状态码。调用方真正需要处理的错误才成为公开契约。
 
-## panic、recover 与清理
+## panic、recover 与清理 {#concept-4}
 
 panic 会沿调用栈展开并执行 defer。recover 只有在同一 goroutine 的 deferred 函数中直接调用才可有效捕获 panic，不能在父 goroutine 捕获另一个 goroutine 的 panic。框架边界可做恢复以保护进程，但恢复不能把已损坏状态自动修好，更不能拿它替代常规错误处理。
 
 文件写入要同时关注 Write 与 Close 的失败；读文件通常主要关注读取错误。事务 Commit、HTTP 编码等影响结果的操作不能一律忽略。
 
-## 自定义错误与 errors.As
+## 自定义错误与 errors.As {#concept-5}
 
 ```go
 package main
@@ -96,13 +139,13 @@ func main() {
 
 As 的目标是一个非 nil 指针，指向可以承接错误的变量，因此是 `&invalid`，不是未初始化 invalid 自身。错误文字给人读，字段/哨兵/类型给程序识别。包装暴露底层错误意味着调用方可能依赖它，公共包要考虑兼容性；不想公开驱动细节时转换为业务错误。
 
-## 多个错误与清理策略
+## 多个错误与清理策略 {#concept-6}
 
 `errors.Unwrap` 处理普通单错误链，`errors.Is/As` 还能遍历实现多错误展开的链，`errors.Join` 用于保留多个失败。Write 失败后 Close 也可能失败，报告主错误并保留清理错误；不要先记录同一失败再层层包装又打印三次。
 
 运行边界有三种选择：终止当前操作、有限重试、降级返回部分结果。每种都需接口约定；错误发生不等于程序一定崩溃，也不等于应该无条件继续。
 
-## recover 的局部性与堆栈
+## recover 的局部性与堆栈 {#concept-7}
 
 ```go
 package main

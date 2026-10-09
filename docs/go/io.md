@@ -1,22 +1,33 @@
 ---
-title: 4.1. 文件、流式 I/O 与 JSON
+title: 7.1. 文件、流式 I/O 与 JSON
 description: Read/Write 契约、扫描、限额、解码和数据边界。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 4.1. 文件、流式 I/O 与 JSON
+# 7.1. 文件、流式 I/O 与 JSON
 
-学习前应能完成：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
+先修建议：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
 
-本章目标：用标准库处理文件和结构化数据，主动控制内存、输入大小与资源生命周期。
+## 把输入、解析和业务校验分开 {#concept-1}
 
-## 用 Reader 与 Writer 统一 I/O
+读取成功只说明字节到达了程序，解码成功只说明格式可解释，业务校验成功才说明数据能用于当前操作。三个阶段各有独立错误，不要只因为 JSON 能解析就接受任意字段和大小。
+
+```mermaid
+flowchart LR
+  I["文件 / 标准输入 / 网络"] --> R["Reader：读取字节并控制限额"]
+  R --> P["解析器：JSON、CSV 或扫描器"] --> V["具名数据"]
+  V --> C["业务校验：范围、必填、数量"] --> O["执行操作或输出结果"]
+```
+
+资源的寿命与阶段边界一致：谁打开谁安排关闭，谁开始操作谁处理取消。Reader 的 n 与 err 可能同时有效，Scanner 有单条大小限制；下面的例子分别说明这些条件如何影响最后一段数据。
+
+## 用 Reader 与 Writer 统一 I/O {#concept-2}
 
 `io.Reader` 和 `io.Writer` 允许同一逻辑处理文件、内存与网络。小文件可用 os.ReadFile；大文件或流式输入使用 bufio、io.Copy 或 Decoder，避免一次读入整个内容。
 
 Read 可以同时返回 `n > 0` 与错误，调用方应先处理读到的字节，再处理错误；多数情况优先使用 io.Copy 等已有工具。bufio.Scanner 方便逐行读取，但默认 token 大小有限，必要时显式设置 Buffer 与最大长度，循环后检查 Scanner.Err。详见 [io 文档](https://pkg.go.dev/io)、[bufio 文档](https://pkg.go.dev/bufio)。
 
-## 一个严格 JSON 解码器
+## 一个严格 JSON 解码器 {#concept-3}
 
 保存为 `main.go`，无需第三方依赖：
 
@@ -65,7 +76,7 @@ func main() {
 
 Decoder 不自动限制输入大小。HTTP 使用 MaxBytesReader，文件可先检查大小并在流式读取时继续限制。仅用 LimitReader 截断后解码可能把尾部数据隐藏掉，判断超限应读取“限额 + 1”字节或使用能明确返回超限的机制。详见 [encoding/json](https://pkg.go.dev/encoding/json)。
 
-## 常用标准库与约定
+## 常用标准库与约定 {#concept-4}
 
 | 需求 | 优先工具 | 关键边界 |
 | --- | --- | --- |
@@ -78,7 +89,7 @@ Decoder 不自动限制输入大小。HTTP 使用 MaxBytesReader，文件可先�
 
 日志示例片段：`slog.Info("任务创建", "task_id", id)`；时间示例片段：`time.Parse(time.RFC3339, value)`。时间运算避免自己计算月份天数，日志与时间 API 参考 [slog](https://pkg.go.dev/log/slog)、[time](https://pkg.go.dev/time)。
 
-## Reader 的 n 与 err 要同时处理
+## Reader 的 n 与 err 要同时处理 {#concept-5}
 
 ```go
 package main
@@ -113,13 +124,13 @@ func main() {
 
 这个 Reader 保存尚未读出的内容，只有最后一段才同时返回数据与 EOF；小缓冲会分次读取。调用方若先看到 err 就丢弃 n，会丢最后一段数据。一般优先 io.Copy/io.ReadAll；自己写循环时先消费 buffer[:n]，再判断错误。Reader 不能假设每次填满缓冲，Writer 也要考虑短写与失败。
 
-## 文件写入与替换
+## 文件写入与替换 {#concept-6}
 
 写配置时采用“同目录临时文件 → 完整写入 → 按需求 Sync → Close → Rename”的明确协议，失败删除临时文件。Rename 的原子性和目标替换语义与操作系统/文件系统有关，不能宣称跨平台无条件原子和持久。需要强持久保证时还要考虑目录同步、权限和崩溃恢复，复用成熟存储方案。
 
 文件名来自外部输入时限制根目录与可接受名称，Join 不自动阻止 `..` 越界；跨平台路径校验需考虑符号链接和实际打开策略。教育文件样例不接收任意服务器路径。
 
-## JSON 数字、null 与未知字段
+## JSON 数字、null 与未知字段 {#concept-7}
 
 ```go
 package main

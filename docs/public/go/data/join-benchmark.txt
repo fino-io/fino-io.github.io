@@ -1,0 +1,36 @@
+goos: darwin
+goarch: amd64
+pkg: example.com/join-lab
+cpu: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz
+BenchmarkJoin/concat/10-16         	  658556	       353.1 ns/op	     456 B/op	       9 allocs/op
+BenchmarkJoin/concat/10-16         	  588763	       355.7 ns/op	     456 B/op	       9 allocs/op
+BenchmarkJoin/concat/10-16         	  607137	       353.6 ns/op	     456 B/op	       9 allocs/op
+BenchmarkJoin/concat/10-16         	  569127	       359.8 ns/op	     456 B/op	       9 allocs/op
+BenchmarkJoin/concat/10-16         	  600896	       356.8 ns/op	     456 B/op	       9 allocs/op
+BenchmarkJoin/join/10-16           	 2126676	       104.3 ns/op	      80 B/op	       1 allocs/op
+BenchmarkJoin/join/10-16           	 2228658	       106.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkJoin/join/10-16           	 2233794	       101.6 ns/op	      80 B/op	       1 allocs/op
+BenchmarkJoin/join/10-16           	 2323309	       106.5 ns/op	      80 B/op	       1 allocs/op
+BenchmarkJoin/join/10-16           	 2303122	       102.5 ns/op	      80 B/op	       1 allocs/op
+BenchmarkJoin/concat/100-16        	   24571	      9338 ns/op	   42216 B/op	      99 allocs/op
+BenchmarkJoin/concat/100-16        	   25713	      9283 ns/op	   42216 B/op	      99 allocs/op
+BenchmarkJoin/concat/100-16        	   25360	      9447 ns/op	   42216 B/op	      99 allocs/op
+BenchmarkJoin/concat/100-16        	   25471	      9857 ns/op	   42216 B/op	      99 allocs/op
+BenchmarkJoin/concat/100-16        	   24548	      9702 ns/op	   42216 B/op	      99 allocs/op
+BenchmarkJoin/join/100-16          	  251108	       873.8 ns/op	     896 B/op	       1 allocs/op
+BenchmarkJoin/join/100-16          	  277844	       835.8 ns/op	     896 B/op	       1 allocs/op
+BenchmarkJoin/join/100-16          	  281871	       822.2 ns/op	     896 B/op	       1 allocs/op
+BenchmarkJoin/join/100-16          	  249967	       843.3 ns/op	     896 B/op	       1 allocs/op
+BenchmarkJoin/join/100-16          	  279666	       860.0 ns/op	     896 B/op	       1 allocs/op
+BenchmarkJoin/concat/1000-16       	     354	    755348 ns/op	 4273920 B/op	     999 allocs/op
+BenchmarkJoin/concat/1000-16       	     350	    686657 ns/op	 4273921 B/op	     999 allocs/op
+BenchmarkJoin/concat/1000-16       	     338	    700557 ns/op	 4273926 B/op	     999 allocs/op
+BenchmarkJoin/concat/1000-16       	     336	    694126 ns/op	 4273924 B/op	     999 allocs/op
+BenchmarkJoin/concat/1000-16       	     356	    675055 ns/op	 4273924 B/op	     999 allocs/op
+BenchmarkJoin/join/1000-16         	   26733	      8271 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkJoin/join/1000-16         	   29690	      8074 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkJoin/join/1000-16         	   29060	      8127 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkJoin/join/1000-16         	   28764	      8198 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkJoin/join/1000-16         	   28508	      8062 ns/op	    8192 B/op	       1 allocs/op
+PASS
+ok  	example.com/join-lab	10.559s

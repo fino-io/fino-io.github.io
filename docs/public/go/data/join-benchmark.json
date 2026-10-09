@@ -1,0 +1,296 @@
+{
+  "measuredAt": "2026-10-09",
+  "toolchain": "go version go1.25.9 darwin/amd64",
+  "goos": "darwin",
+  "goarch": "amd64",
+  "cpu": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+  "command": "go test -run '^$' -bench BenchmarkJoin -benchmem -benchtime=200ms -count=5 .",
+  "sourceSha256": "66c2650ff2f1b60fb5af055f82912ac96f1987a4f3483a85728441c4c58b0478",
+  "note": "本机的一次教学实验；图中使用五次运行的中位数，不能当作所有平台固定性能承诺。",
+  "runs": [
+    {
+      "method": "concat",
+      "fragments": 10,
+      "iterations": 658556,
+      "nsPerOp": 353.1,
+      "bytesPerOp": 456,
+      "allocsPerOp": 9
+    },
+    {
+      "method": "concat",
+      "fragments": 10,
+      "iterations": 588763,
+      "nsPerOp": 355.7,
+      "bytesPerOp": 456,
+      "allocsPerOp": 9
+    },
+    {
+      "method": "concat",
+      "fragments": 10,
+      "iterations": 607137,
+      "nsPerOp": 353.6,
+      "bytesPerOp": 456,
+      "allocsPerOp": 9
+    },
+    {
+      "method": "concat",
+      "fragments": 10,
+      "iterations": 569127,
+      "nsPerOp": 359.8,
+      "bytesPerOp": 456,
+      "allocsPerOp": 9
+    },
+    {
+      "method": "concat",
+      "fragments": 10,
+      "iterations": 600896,
+      "nsPerOp": 356.8,
+      "bytesPerOp": 456,
+      "allocsPerOp": 9
+    },
+    {
+      "method": "join",
+      "fragments": 10,
+      "iterations": 2126676,
+      "nsPerOp": 104.3,
+      "bytesPerOp": 80,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 10,
+      "iterations": 2228658,
+      "nsPerOp": 106.2,
+      "bytesPerOp": 80,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 10,
+      "iterations": 2233794,
+      "nsPerOp": 101.6,
+      "bytesPerOp": 80,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 10,
+      "iterations": 2323309,
+      "nsPerOp": 106.5,
+      "bytesPerOp": 80,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 10,
+      "iterations": 2303122,
+      "nsPerOp": 102.5,
+      "bytesPerOp": 80,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "concat",
+      "fragments": 100,
+      "iterations": 24571,
+      "nsPerOp": 9338.0,
+      "bytesPerOp": 42216,
+      "allocsPerOp": 99
+    },
+    {
+      "method": "concat",
+      "fragments": 100,
+      "iterations": 25713,
+      "nsPerOp": 9283.0,
+      "bytesPerOp": 42216,
+      "allocsPerOp": 99
+    },
+    {
+      "method": "concat",
+      "fragments": 100,
+      "iterations": 25360,
+      "nsPerOp": 9447.0,
+      "bytesPerOp": 42216,
+      "allocsPerOp": 99
+    },
+    {
+      "method": "concat",
+      "fragments": 100,
+      "iterations": 25471,
+      "nsPerOp": 9857.0,
+      "bytesPerOp": 42216,
+      "allocsPerOp": 99
+    },
+    {
+      "method": "concat",
+      "fragments": 100,
+      "iterations": 24548,
+      "nsPerOp": 9702.0,
+      "bytesPerOp": 42216,
+      "allocsPerOp": 99
+    },
+    {
+      "method": "join",
+      "fragments": 100,
+      "iterations": 251108,
+      "nsPerOp": 873.8,
+      "bytesPerOp": 896,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 100,
+      "iterations": 277844,
+      "nsPerOp": 835.8,
+      "bytesPerOp": 896,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 100,
+      "iterations": 281871,
+      "nsPerOp": 822.2,
+      "bytesPerOp": 896,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 100,
+      "iterations": 249967,
+      "nsPerOp": 843.3,
+      "bytesPerOp": 896,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 100,
+      "iterations": 279666,
+      "nsPerOp": 860.0,
+      "bytesPerOp": 896,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "concat",
+      "fragments": 1000,
+      "iterations": 354,
+      "nsPerOp": 755348.0,
+      "bytesPerOp": 4273920,
+      "allocsPerOp": 999
+    },
+    {
+      "method": "concat",
+      "fragments": 1000,
+      "iterations": 350,
+      "nsPerOp": 686657.0,
+      "bytesPerOp": 4273921,
+      "allocsPerOp": 999
+    },
+    {
+      "method": "concat",
+      "fragments": 1000,
+      "iterations": 338,
+      "nsPerOp": 700557.0,
+      "bytesPerOp": 4273926,
+      "allocsPerOp": 999
+    },
+    {
+      "method": "concat",
+      "fragments": 1000,
+      "iterations": 336,
+      "nsPerOp": 694126.0,
+      "bytesPerOp": 4273924,
+      "allocsPerOp": 999
+    },
+    {
+      "method": "concat",
+      "fragments": 1000,
+      "iterations": 356,
+      "nsPerOp": 675055.0,
+      "bytesPerOp": 4273924,
+      "allocsPerOp": 999
+    },
+    {
+      "method": "join",
+      "fragments": 1000,
+      "iterations": 26733,
+      "nsPerOp": 8271.0,
+      "bytesPerOp": 8192,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 1000,
+      "iterations": 29690,
+      "nsPerOp": 8074.0,
+      "bytesPerOp": 8192,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 1000,
+      "iterations": 29060,
+      "nsPerOp": 8127.0,
+      "bytesPerOp": 8192,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 1000,
+      "iterations": 28764,
+      "nsPerOp": 8198.0,
+      "bytesPerOp": 8192,
+      "allocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 1000,
+      "iterations": 28508,
+      "nsPerOp": 8062.0,
+      "bytesPerOp": 8192,
+      "allocsPerOp": 1
+    }
+  ],
+  "summary": [
+    {
+      "method": "concat",
+      "fragments": 10,
+      "medianNsPerOp": 355.7,
+      "medianBytesPerOp": 456,
+      "medianAllocsPerOp": 9
+    },
+    {
+      "method": "concat",
+      "fragments": 100,
+      "medianNsPerOp": 9447.0,
+      "medianBytesPerOp": 42216,
+      "medianAllocsPerOp": 99
+    },
+    {
+      "method": "concat",
+      "fragments": 1000,
+      "medianNsPerOp": 694126.0,
+      "medianBytesPerOp": 4273924,
+      "medianAllocsPerOp": 999
+    },
+    {
+      "method": "join",
+      "fragments": 10,
+      "medianNsPerOp": 104.3,
+      "medianBytesPerOp": 80,
+      "medianAllocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 100,
+      "medianNsPerOp": 843.3,
+      "medianBytesPerOp": 896,
+      "medianAllocsPerOp": 1
+    },
+    {
+      "method": "join",
+      "fragments": 1000,
+      "medianNsPerOp": 8127.0,
+      "medianBytesPerOp": 8192,
+      "medianAllocsPerOp": 1
+    }
+  ]
+}

@@ -1,16 +1,28 @@
 ---
-title: 3.3. Mutex、WaitGroup 与同步
+title: 6.3. Mutex、WaitGroup 与同步
 description: 保护不变量、等待、Once、Cond、原子与竞态检测。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 3.3. Mutex、WaitGroup 与同步
+# 6.3. Mutex、WaitGroup 与同步
 
-学习前应能完成：[Goroutine 与任务生命周期](./concurrency)、[Map、集合与逗号 ok](./maps)。
+先修建议：[Goroutine 与任务生命周期](./concurrency)、[Map、集合与逗号 ok](./maps)。
 
 同步保护的是一个状态不变量，而非某一行赋值。比如“库存不为负”要求检查和扣减在一个临界区；只给扣减加锁仍可能卖出超量。
 
-## 完整临界区
+## 锁保护的是完整判断与修改 {#concept-1}
+
+余额是否足够与扣减余额，是同一个业务不变量的一部分。只给写入加锁、把检查放到锁外，仍可能让多个请求都看见旧余额并同时扣减。
+
+```mermaid
+flowchart LR
+  L["获取同一把锁"] --> C["读取当前状态"] --> J["判断操作是否允许"]
+  J --> U["按判断更新状态"] --> R["释放锁"]
+```
+
+只把维护这个不变量需要的短工作留在临界区，网络、数据库和不受控回调尽量放在外面。所有访问者遵循同一锁协议；看起来只读的方法也不能绕过保护。下面库存例子中，检查和扣减正好对应图里的中间两步。
+
+## 完整临界区 {#concept-2}
 
 ```go
 package main
@@ -57,7 +69,7 @@ func main() {
 
 结束前库存写入都在锁内；wg.Wait 后没有写者，main 读取最终值不会竞争。通道容量 10 能容纳每个任务的一条结果，否则在等待 wg 时发送者可能堵住，说明同步与队列仍需一起设计。
 
-## Mutex、RWMutex 与 WaitGroup
+## Mutex、RWMutex 与 WaitGroup {#concept-3}
 
 Mutex 不可重入，锁内再次 Lock 会阻塞；多把锁用固定顺序获取，降低循环等待。锁内只做保持不变量所需的短工作，不做网络 I/O 或调用不受控回调。使用后不可复制带锁值，含锁类型通过指针传递；go vet 可发现部分 copylock 问题。
 
@@ -65,7 +77,7 @@ RWMutex 允许并行只读，但不一定比 Mutex 快，写入等待和额外�
 
 WaitGroup 负责计数等待，不负责错误或取消。基线采用 Add 在启动前、defer Done、最后 Wait。不能让 Wait 在任务尚未登记时返回；复用时一批完全结束后再登记下一批。相关任务的错误与取消用 errgroup。
 
-## Once、Cond 与 atomic 的角色
+## Once、Cond 与 atomic 的角色 {#concept-4}
 
 | 工具 | 使用场景 | 易错点 |
 | --- | --- | --- |
@@ -77,7 +89,7 @@ WaitGroup 负责计数等待，不负责错误或取消。基线采用 Add 在�
 
 片段：`for !ready { cond.Wait() }`，Wait 释放锁并等待，被唤醒后重新获取锁；Signal/Broadcast 表达可能有状态变化，不代表条件必定成立。维护条件和发通知须遵循同一锁协议。通常 Channel/Mutex 已够用，Cond 只在确有需要时采用。
 
-## Race 检测与逻辑错误
+## Race 检测与逻辑错误 {#concept-5}
 
 ```sh
 go test -race ./...

@@ -1,16 +1,27 @@
 ---
-title: 8.2. 实战：任务管理 API
+title: 12.2. 实战：任务管理 API
 description: 完整源码、CRUD、分页、同步与数据库升级任务。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 8.2. 实战：任务管理 API
+# 12.2. 实战：任务管理 API
 
-学习前应能完成：[HTTP 服务与 Web 框架](./web)、[Mutex、WaitGroup 与同步](./synchronization)、[表驱动、替身与 HTTP 测试](./testing)。
+先修建议：[HTTP 服务与 Web 框架](./web)、[Mutex、WaitGroup 与同步](./synchronization)、[表驱动、替身与 HTTP 测试](./testing)。
 
-本章目标：实现一个具有清楚契约、并发保护与测试的任务 API，完整走通服务生命周期。
+## 请求处理与资源关闭两条线一起阅读 {#concept-1}
 
-## 契约与学习范围
+单次请求走 HTTP、校验、存储和响应，整个进程还走启动、运行与关闭。先看这两条路径，才容易理解 Mutex、Context 与服务器配置分别在哪里起作用。
+
+```mermaid
+flowchart LR
+  R["请求"] --> D["大小与 JSON 校验"] --> B["任务操作"] --> L["短临界区：内存存储"]
+  L --> O["锁外编码响应"]
+  S["停止信号"] --> H["停止接收新请求"] --> W["等待在途请求并收尾"]
+```
+
+内存模型让你集中验证契约与同步，重启就清空；数据库扩展是下一步学习任务。请求 body、分页范围和 ID 都有明确限额，测试应检查这些边界，不只验证能创建一条任务。
+
+## 契约与学习范围 {#concept-2}
 
 | 方法与路径 | 行为 |
 | --- | --- |
@@ -24,7 +35,7 @@ title 去除两端空白后长度为 1–100 个 Unicode 码点；ID 必须为�
 
 **存储使用内存，重启即清空；本项目用于本地学习，未实现认证和生产持久化。** 通过一个 Mutex 保护状态，创建、更新与查询快照各在完整临界区中进行；网络响应在锁外编码。扩展 PostgreSQL 见 [SQL](./databases)，交付要求见 [项目架构](./projects)。
 
-## 创建项目
+## 创建项目 {#concept-3}
 
 ```sh
 mkdir tasks
@@ -34,7 +45,7 @@ go mod init example.com/tasks
 
 创建 `main.go`、`main_test.go`，直接复用标准库，无额外安装步骤。
 
-## main.go
+## main.go {#concept-4}
 
 ```go
 package main
@@ -317,7 +328,7 @@ func main() {
 }
 ```
 
-## main_test.go
+## main_test.go {#concept-5}
 
 ```go
 package main
@@ -443,7 +454,7 @@ func TestConcurrentCreateAndPagination(t *testing.T) {
 }
 ```
 
-## 运行与接口体验
+## 运行与接口体验 {#concept-6}
 
 ```sh
 go fmt ./...
@@ -463,7 +474,7 @@ curl -i -X DELETE http://127.0.0.1:8080/tasks/1
 
 预期创建返回 201，正文 `{"id":1,"title":"学习 Go","done":false}`；更新返回 done=true；删除返回 204 且无正文。Windows PowerShell 可以使用 `curl.exe`，注意按 shell 规则处理 JSON 引号。按 Ctrl+C 触发最多 5 秒的优雅关闭。
 
-## 为什么这样组织
+## 为什么这样组织 {#concept-7}
 
 一个小项目保留 main 包便于通读，HTTP 解码、分页和状态操作都有明确函数，不预先建立多层 Service/Repository 框架。数据使用值复制后离开锁，不将可修改的 map 暴露给调用方。分页先排序再切片，offset 超出范围返回空数组，并避免 offset+limit 整数溢出。
 
@@ -477,7 +488,7 @@ PUT 使用指针字段区分“不提供”和“显式 false”。标题长度�
 4. 使用成熟认证方案加入用户身份，验证每个任务的归属权限。
 
 验收：CRUD、排序分页、错误输入与并发创建均通过测试；能解释重启清空的限制，且生产扩展没有破坏接口契约。
-## 按路线推进存储与接口升级
+## 按路线推进存储与接口升级 {#concept-9}
 
 本例用于 HTTP/JSON/同步/测试综合练习，数据生命周期明确为进程内存。使用 [请求契约数据](/go/data/task-requests.json)写表驱动用例，不仅检查状态，还检查成功字段、Location、空集合 [] 与错误 body。
 

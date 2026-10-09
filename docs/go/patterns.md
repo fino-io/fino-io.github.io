@@ -1,27 +1,34 @@
 ---
-title: 3.5. Worker Pool、Fan-in 与 Pipeline
+title: 6.5. Worker Pool、Fan-in 与 Pipeline
 description: 完整有界流水线、关闭协调、错误与取消验收。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 3.5. Worker Pool、Fan-in 与 Pipeline
+# 6.5. Worker Pool、Fan-in 与 Pipeline
 
-学习前应能完成：[Channel、缓冲与 select](./channels)、[Mutex、WaitGroup 与同步](./synchronization)、[Context、截止时间与取消](./context)。
+先修建议：[Channel、缓冲与 select](./channels)、[Mutex、WaitGroup 与同步](./synchronization)、[Context、截止时间与取消](./context)。
 
 本章交付一个完整流水线：单个生产者输入、固定 worker fan-out、多个结果 fan-in、消费者汇总。关闭责任和取消行为比模式名称更重要。
 
-## 角色与边界
+## 角色与边界 {#concept-1}
 
-```text
-numbers → producer → jobs(有界) → 3 workers → results(有界) → consumer
-                         ↑              ↑              ↑
-                         └──── 同一 Context 取消 ────────┘
-                                workers 全部结束后由协调者关闭 results
+```mermaid
+flowchart LR
+  P["producer"] --> J["有界 jobs"]
+  J --> W1["worker 1"]
+  J --> W2["worker 2"]
+  J --> W3["worker 3"]
+  W1 --> R["有界 results"]
+  W2 --> R
+  W3 --> R
+  R --> C["consumer 汇总"]
 ```
+
+左侧是任务分发 fan-out，右侧是结果汇聚 fan-in；这些阶段连接起来形成 pipeline。producer 负责关闭 jobs，协调者等待所有 worker 后关闭 results。所有阶段共享取消通知，消费者提前退出时必须通知发送方停止。
 
 Pipeline 把阶段连接起来，fan-out 让多个 worker 消费同一输入，fan-in 汇总它们的输出。只有固定 worker 数 + 有界队列 + 可取消入队，才能控制资源；仅设置 channel 容量不够。
 
-## 可运行的平方汇总流水线
+## 可运行的平方汇总流水线 {#concept-2}
 
 ```go
 package main
@@ -103,7 +110,7 @@ func main() {
 
 producer 独占 jobs 发送与关闭；workers 不关闭 out；协调者等待 processing 后关闭 out，再等待 producer 和 workers 全部结束后关闭 stopped。stopped 是生命周期完成通知，调用方提前结束消费必须 cancel 然后等待 stopped，不能只 break。
 
-## 验证提前退出
+## 验证提前退出 {#concept-3}
 
 把 main 的消费部分改成以下片段：
 
@@ -157,7 +164,7 @@ func TestPipelineCompleteAndCancel(t *testing.T) {
 }
 ```
 
-## 错误、背压和顺序
+## 错误、背压和顺序 {#concept-4}
 
 有失败的处理函数，用 errgroup 收拢首个错误与取消，而不是另造一套隐式丢错误的 channel 协议。需要继续处理其他项时定义每项 Result{Value, Err}，区分批次失败与单项失败。
 

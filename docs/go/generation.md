@@ -1,16 +1,28 @@
 ---
-title: 6.2. 代码生成与构建约束
+title: 10.3. 代码生成与构建约束
 description: go generate、工具版本、build tags 与平台文件。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 6.2. 代码生成与构建约束
+# 10.3. 代码生成与构建约束
 
-学习前应能完成：[包、模块、依赖与发布](./modules)。
+先修建议：[包、模块、依赖与发布](./modules)。
 
 生成与构建约束分别回答“源码怎样产生”和“哪些源码参与当前构建”。go build 不自动运行 go generate；标签也不是运行时开关。
 
-## go generate 是显式命令
+## 生成不是编译时自动发生的步骤 {#concept-1}
+
+生成器以一个输入定义为依据产出源码，编译器再编译这些源码。go generate 与 go build 分开执行，修改 schema 或 proto 后只 build 可能仍使用旧产物。
+
+```mermaid
+flowchart LR
+  I["schema / proto / 类型声明"] --> G["明确版本的生成工具"] --> S["生成源码"]
+  S --> C["go build：编译当前源码"] --> O["产物"]
+```
+
+把输入、工具版本、命令参数和输出路径写清楚，才能重复生成并审查差异。生成器输出随机排序或本机路径时，每次都可能产生无意义变化；测试可检查同一输入得到相同内容。
+
+## go generate 是显式命令 {#concept-2}
 
 生成指令通常写在源码注释，例如：
 
@@ -22,7 +34,7 @@ pageClass: aip-article
 
 生成流程清单：输入源→生成工具及版本→参数→产物→校验差异。Protobuf、SQL 绑定或类型枚举复用已有生成器，不为一个项目造通用代码生成框架。生成文件加 `Code generated ... DO NOT EDIT.` 约定，修改输入后重新生成。
 
-## 不依赖外部工具的生成实验
+## 不依赖外部工具的生成实验 {#concept-3}
 
 目录：
 
@@ -70,7 +82,7 @@ func main() {
 
 在根目录运行 go generate .，生成 Schema 常量。修改 schema.txt 后只 go build，常量仍来自旧产物；重新 generate 才更新。这个实验演示显式流程，真实工程优先成熟生成器。CI 可重新生成后检查差异，不把机器时间或随机顺序写进产物，否则每次都变化。
 
-## build tags 与平台文件
+## build tags 与平台文件 {#concept-4}
 
 文件首部写以下内容，并与 package 之间留空行：
 

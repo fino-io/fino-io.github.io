@@ -1,22 +1,33 @@
 ---
-title: 8.1. 实战：日志统计 CLI
+title: 12.1. 实战：日志统计 CLI
 description: 完整源码、合成输入、错误路径与升级任务。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 8.1. 实战：日志统计 CLI
+# 12.1. 实战：日志统计 CLI
 
-学习前应能完成：[文件、流式 I/O 与 JSON](./io)、[Map、集合与逗号 ok](./maps)、[表驱动、替身与 HTTP 测试](./testing)。
+先修建议：[文件、流式 I/O 与 JSON](./io)、[Map、集合与逗号 ok](./maps)、[表驱动、替身与 HTTP 测试](./testing)。
 
-本章目标：交付一个可从文件或标准输入读取日志的 CLI，具备稳定输出、错误行号与测试。
+## 沿数据流读完整项目 {#concept-1}
 
-## 需求与输入契约
+先跟踪一行输入怎样到达最终计数，再看命令和退出码。这能把项目中的每个函数放回实际职责，而不是只记住文件中的顺序。
+
+```mermaid
+flowchart LR
+  A["文件或标准输入"] --> S["Scanner：逐行与大小限制"] --> D["parseRecord：解码并校验 level"]
+  D --> M["summarize：更新次数"] --> O["run：固定顺序输出"]
+  E["任一输入失败"] --> F["stderr、行号、非零退出码"]
+```
+
+项目只在完整解析成功后输出成功统计；输出设备自身失败仍可能造成部分写入，此时退出码承担成功/失败契约。原先的业务函数不依赖 flag/Cobra，所以换命令入口不必重写计数逻辑。
+
+## 需求与输入契约 {#concept-2}
 
 输入为 JSON Lines，每个非空行只有一个对象，字段只有 `level`，值为 INFO、WARN 或 ERROR。允许字段值周围空白和小写，归一化后计数；空行忽略；语法错误、未知字段或未知级别直接失败并给出行号。输出顺序固定为 INFO、WARN、ERROR。
 
 这是合成日志的统计练习，不承担生产日志采集；单行限制为 1 MiB。退出码：0 成功，1 读取或内容失败，2 命令行用法错误。支持 `-file 路径`，不提供时读标准输入。
 
-## 创建项目
+## 创建项目 {#concept-3}
 
 ```sh
 mkdir logstats
@@ -26,7 +37,7 @@ go mod init example.com/logstats
 
 只创建两个文件：`main.go` 和 `main_test.go`，无第三方依赖。
 
-## main.go
+## main.go {#concept-4}
 
 ```go
 package main
@@ -136,7 +147,7 @@ func main() { os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr)) }
 
 这里使用 encoding/json 的标准字段匹配与重复键规则，若用于严格协议需额外处理重复键。更复杂的多子命令、补全与帮助系统可复用 Cobra，不在这个单命令工具中自行实现。
 
-## main_test.go
+## main_test.go {#concept-5}
 
 ```go
 package main
@@ -206,7 +217,7 @@ func TestRun(t *testing.T) {
 }
 ```
 
-## 运行与结果
+## 运行与结果 {#concept-6}
 
 保存 `sample.jsonl`：
 
@@ -236,7 +247,7 @@ ERROR 1
 
 验证退出码应使用编译后的程序；`go run` 对子进程失败的呈现不等于直接调用程序。Windows 在 PowerShell 可用 `Get-Content sample.jsonl | ./logstats.exe`，构建时指定 `.exe`。
 
-## 与路线节点的关系
+## 与路线节点的关系 {#concept-7}
 
 这个项目综合 Reader、bufio、JSON、map、flag、error 与 testing。不是读完例子即毕业：要能改变输入协议并维护错误契约。
 

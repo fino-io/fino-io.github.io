@@ -1,16 +1,33 @@
 ---
-title: 3.2. Channel、缓冲与 select
+title: 6.2. Channel、缓冲与 select
 description: 发送接收、关闭、缓冲、方向类型与 select 行为。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 3.2. Channel、缓冲与 select
+# 6.2. Channel、缓冲与 select
 
-学习前应能完成：[Goroutine 与任务生命周期](./concurrency)。
+先修建议：[Goroutine 与任务生命周期](./concurrency)。
 
 Channel 建立发送者与接收者间的通信与同步。它解决消息传递，不会自动修复任意共享状态，也不会自动限制你创建的 goroutine 数量。
 
-## 五种状态决定能否继续
+## 一次通信同时建立数据交接与同步 {#concept-1}
+
+无缓冲通道需要收发双方配对，带缓冲通道允许消息先排队。选择缓冲大小改变等待时机，不自动改变每条消息的意义或共享数据所有权。
+
+```mermaid
+sequenceDiagram
+  participant P as 发送者
+  participant C as 无缓冲 Channel
+  participant R as 接收者
+  P->>C: 发送一项数据，等待交接
+  R->>C: 接收
+  C-->>R: 交付数据
+  C-->>P: 此次发送完成
+```
+
+完成交接不等于接收者已经做完全部业务处理。若要知道处理完成，需要另一个结果或完成协议；发送了带切片字段的消息，也不意味着底层数组已被深复制。下面先通过状态表判断阻塞，再讨论关闭与 select。
+
+## 五种状态决定能否继续 {#concept-2}
 
 | 操作 | 无缓冲 | 带缓冲 | nil | 已关闭 |
 | --- | --- | --- | --- | --- |
@@ -39,13 +56,13 @@ func main() {
 
 输出依次是 `10 true`、`20 true`、`0 false`。第三次读取已不会阻塞；继续发送则 panic。
 
-## 方向类型表达谁拥有哪项操作
+## 方向类型表达谁拥有哪项操作 {#concept-3}
 
 片段：`func produce(out chan<- Item)` 只允许发送，`func consume(in <-chan Item)` 只允许接收。双向 channel 可传给单向参数。关闭通常由能够证明不会再有发送的一方执行；多生产者时协调者等待所有生产者结束再 close。
 
 接收方不随意关闭输入，这会让还在发送的生产者 panic。需要通知生产者退出时使用 Context 或专门的 done 信号。发送结构体值是浅复制；字段含切片时消息两端仍共享数组，必须约定发送后不再修改或显式复制。
 
-## select 的就绪规则
+## select 的就绪规则 {#concept-4}
 
 ```go
 package main
@@ -68,7 +85,7 @@ func main() {
 
 已关闭 channel 总是接收就绪。处理多个输入时读到 ok=false 后将该局部 channel 设为 nil，避免一直选择它。如果数据与取消同时就绪，仍可能处理一条数据，不能把 select 当作取消的绝对优先保证。
 
-## 缓冲只是排队能力
+## 缓冲只是排队能力 {#concept-5}
 
 容量 100 允许至多 100 个消息暂存在队列，但调用方仍可能已经启动 100 万个阻塞发送的 goroutine。真正有界需要 worker 数、队列长度和入队取消三个条件。len(channel) 是瞬时观察，不能做无竞争的“先看还有空间再发送”，直接使用 select/发送协议。
 

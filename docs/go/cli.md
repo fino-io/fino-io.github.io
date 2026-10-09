@@ -1,16 +1,29 @@
 ---
-title: 5.1. CLI 与终端界面生态
+title: 9.1. CLI 与终端界面生态
 description: Cobra、urfave/cli 与 Bubble Tea 的接口和选型。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 5.1. CLI 与终端界面生态
+# 9.1. CLI 与终端界面生态
 
-学习前应能完成：[flag、time、regexp 与 embed](./standard-library)、[包、模块、依赖与发布](./modules)、[表驱动、替身与 HTTP 测试](./testing)。
+先修建议：[flag、time、regexp 与 embed](./standard-library)、[包、模块、依赖与发布](./modules)、[表驱动、替身与 HTTP 测试](./testing)。
 
 roadmap 列出的 Cobra、urfave/cli 和 Bubble Tea 面向不同任务：子命令框架组织命令树，TUI 框架管理终端交互状态。本章先交付一个可测试子命令，再决定是否需要交互界面。
 
-## 什么情况从 flag 升级
+## 命令框架只组织程序入口 {#concept-1}
+
+把原有 summarize 函数放进 stats 子命令时，核心输入输出不应被 Cobra 类型包围。命令树负责名称、帮助、参数和退出边界，业务函数仍接收普通值或 Reader/Writer，便于测试与复用。
+
+```mermaid
+flowchart LR
+  A["终端参数"] --> F["Cobra / urfave：命令与选项"] --> V["解析和校验"]
+  V --> B["普通 Go 业务函数"] --> O["stdout / stderr / 退出码"]
+  T["Bubble Tea：事件与界面状态"] -.->|需要交互时选择| B
+```
+
+TUI 是交互模式，不是所有 CLI 的必经步骤。脚本调用需要稳定的非交互输出，键盘事件、加载状态与界面渲染另由 TUI 框架管理。
+
+## 什么情况从 flag 升级 {#concept-2}
 
 单命令加几个参数用 flag 足够。需要 `tasks add`、`tasks list`、补全、统一帮助和多级子命令时，用成熟库代替手写参数树。需要可交互选择、进度显示与键盘导航时才考虑 TUI，不把所有 CLI 都变成界面应用。
 
@@ -22,7 +35,7 @@ roadmap 列出的 Cobra、urfave/cli 和 Bubble Tea 面向不同任务：子命�
 
 urfave/cli 存在多个主版本，选择 v2/v3 时按其对应文档与 Go 要求，不能混用签名；Bubble Tea 同样核对主版本与模块路径。应用使用确定依赖写入 go.mod/go.sum，本章不宣称一套依赖版本永远适合所有工具链。
 
-## Cobra 的完整最小入口
+## Cobra 的完整最小入口 {#concept-3}
 
 本例已用 Cobra v1.10.1 验证。新建模块并固定依赖；升级版本时重新检查其 Go 要求与测试。
 
@@ -85,11 +98,11 @@ if out.String() != "创建：学习 Go\n" { t.Fatalf("out=%q", out.String()) }
 
 测试空标题、少参数、多参数和未知子命令。PersistentFlags 是子命令共享选项，不让每个命令悄悄读取全局变量；业务函数仍接收普通值和 Context。
 
-## urfave/cli 的对应职责
+## urfave/cli 的对应职责 {#concept-4}
 
 选择 urfave/cli 后，命令配置承担 Name/Usage/Flags/Action 与参数验证，错误仍回到入口。迁移关注帮助文字、位置参数规则、环境变量优先级和退出码，而不是只把 RunE 改名为 Action。一个项目通常选一种命令框架，不能为了学习把两套依赖接在同一命令树里。
 
-## Bubble Tea：事件驱动而非循环打印
+## Bubble Tea：事件驱动而非循环打印 {#concept-5}
 
 Model 保存状态；Update 收到键盘、计时或网络结果消息后返回新状态与 Cmd；View 根据状态生成文本。耗时 I/O 放进 Cmd，把完成结果转成消息，不能在 Update 阻塞网络，也不能用多个 goroutine 并发修改 Model。
 

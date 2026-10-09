@@ -1,22 +1,36 @@
 ---
-title: 3.1. Goroutine 与任务生命周期
+title: 6.1. Goroutine 与任务生命周期
 description: 调度、启动、等待、泄漏与并发规模。
-pageClass: aip-article
+pageClass: aip-article go-course
 ---
 
-# 3.1. Goroutine 与任务生命周期
+# 6.1. Goroutine 与任务生命周期
 
-学习前应能完成：[函数、闭包与调用语义](./functions)、[指针、别名与内存概览](./pointers)。
+先修建议：[函数、闭包与调用语义](./functions)、[指针、别名与内存概览](./pointers)。
 
-本章目标：明确并发任务的生命周期与共享数据归属，避免用 goroutine 掩盖顺序逻辑问题。
+## 并发任务需要一个负责收尾的调用方 {#concept-1}
 
-## 并发不自动提升速度
+启动 goroutine 表达“允许这段工作独立推进”，不表达它已经完成。调用方必须决定什么时候等待、怎样收到失败、何时取消；main 返回不会替所有任务收尾。
+
+```mermaid
+sequenceDiagram
+  participant M as 调用方
+  participant W as 工作 goroutine
+  M->>W: 启动任务并传入输入 / Context
+  Note over M,W: 两边可以交错推进，执行顺序不由源码位置保证
+  W-->>M: 返回结果或发送完成通知
+  M->>M: 等待所有所需任务结束后返回
+```
+
+I/O 等待适合并发推进，不表示任务越多越快。worker、队列、连接池和上游配额共同决定规模；先让顺序结果正确，再为需要重叠的等待引入并发。
+
+## 并发不自动提升速度 {#concept-2}
 
 Goroutine 是由运行时调度的执行单元，不与操作系统线程一一对应。并发让多个任务交错推进，并行是在多个执行资源上同时运行。网络等待适合并发，CPU 工作需要测量；对每条数据都起一个 goroutine 会放大内存、连接和调度开销。
 
 每个 goroutine 都应能回答：谁启动它、谁等待它、失败如何反馈、怎样取消、资源由谁释放。main 返回时，其他 goroutine 不会自动完成。
 
-## 使用 Mutex 与 WaitGroup
+## 使用 Mutex 与 WaitGroup {#concept-3}
 
 ```go
 package main
@@ -46,7 +60,7 @@ func main() {
 
 基线示例使用 Add/Done：Add 在启动前调用，避免 Wait 提前结束。WaitGroup 只负责等待，不自动传递错误。Mutex 保护完整状态不变量，例如“查找后插入”要处于同一临界区；仅保护单独的写操作可能仍有逻辑竞争。不要在锁内做长时间网络调用，也不要复制已经使用过的同步对象。
 
-## Channel 表达通信与所有权
+## Channel 表达通信与所有权 {#concept-4}
 
 无缓冲 channel 需要发送与接收配对；带缓冲 channel 在容量未满前可以发送。缓冲限制队列长度，不自动限制已创建 goroutine 的数量。
 
@@ -73,7 +87,7 @@ func main() {
 
 由能够确定“不再有发送”的一方关闭 channel，通常是唯一发送方。多发送者时让协调者等待全部发送完成后关闭。向已关闭 channel 发送或重复关闭会 panic；接收已关闭 channel 会得到剩余值，然后得到零值和 ok=false。nil channel 的收发永久阻塞，可在 select 中用于关闭某个分支，但一般业务中避免意外 nil。
 
-## 如何选同步方式
+## 如何选同步方式 {#concept-5}
 
 | 情况 | 优先考虑 |
 | --- | --- |
@@ -85,13 +99,13 @@ func main() {
 
 不要因为有并发就把所有状态改成 channel，也不要把 sync.Map 当作普通 map 的默认替代。竞态检测、超时测试与压测一起判断正确性。参考：[sync 包](https://pkg.go.dev/sync)、[Go 内存模型](https://go.dev/ref/mem)。
 
-## 调度与阻塞的运行模型
+## 调度与阻塞的运行模型 {#concept-6}
 
 Goroutine 的栈可增长，由 runtime 在多个线程上调度；GOMAXPROCS 主要限制同时执行 Go 代码的资源数量，不是 goroutine 上限或线程总上限。I/O 等待时运行时能调度其他任务，CPU 密集工作并发度通常围绕有效 CPU 容量测量。
 
 不要依赖创建顺序推出执行顺序。`go work()` 只是启动，调用者应等待成功、失败或取消反馈。队列长度、worker 数、连接池容量与外部服务配额共同决定资源上限。
 
-## 谁等待后台任务
+## 谁等待后台任务 {#concept-7}
 
 一个服务后台轮询器至少需要：服务级 ctx、ticker、等待完成的 done、失败记录与停止路径。请求 goroutine 不应创建不受追踪的永久后台工作。main 返回后所有 goroutine 都失去继续完成工作的保证。
 

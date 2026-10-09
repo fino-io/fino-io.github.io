@@ -266,6 +266,30 @@ html:has(.VPSidebar.open) {
   max-width: 100%;
 }
 
+.go-directory .vp-doc td:first-child {
+  width: 42%;
+}
+
+:is(.go-course, .go-directory) .vp-doc .language-mermaid {
+  margin: 24px 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+:is(.go-course, .go-directory) .language-mermaid > :is(.copy, .lang) {
+  display: none;
+}
+
+:is(.go-course, .go-directory) .language-mermaid .mermaid-diagram {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  :is(.go-course, .go-directory) .mermaid-diagram svg {
+    min-width: 520px;
+  }
+}
+
 /* Add reading hierarchy without replacing the native page layout. */
 .VPSidebarItem .link:hover,
 .VPSidebarItem.is-active > .item > .link {

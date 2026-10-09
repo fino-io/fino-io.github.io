@@ -1,30 +1,35 @@
 {
-  "schemaVersion": 1,
-  "checkedAt": "2026-10-08",
+  "schemaVersion": 3,
+  "checkedAt": "2026-10-09",
   "source": {
     "url": "https://roadmap.sh/golang",
     "snapshotUrl": "https://roadmap.sh/pdfs/roadmaps/golang.pdf",
     "sha256": "d8931fda36764f60fdfbb47b4c7617ce94b936cff2e9a35833149020cf19fe5b",
-    "note": "按官方 PDF 逐项人工核对；不伪造上游节点 ID。扩展章节 roadmapTopics 为空。"
+    "note": "按官方 PDF 的层级与节点人工核对。章内用 Go 官方资料解释语义，额外应用和项目标为延伸。"
   },
   "groups": [
-    "起步与语言基础",
-    "类型系统与代码组织",
-    "并发与取消",
-    "标准库与测试",
+    "语言基础",
+    "方法与接口",
+    "泛型",
+    "代码组织",
+    "错误处理",
+    "并发",
+    "标准库",
+    "测试与基准",
     "应用生态",
-    "工具链与交付",
-    "运行时与高级主题",
-    "项目与学习资料"
+    "工具链与工具",
+    "高级主题",
+    "综合练习与延伸"
   ],
   "chapters": [
     {
       "id": "introduction",
       "title": "Go 的定位、历史与运行模型",
-      "group": "起步与语言基础",
+      "group": "语言基础",
       "summary": "为什么选择 Go；历史、编译模型与学习实验。",
       "prerequisites": [],
       "roadmapTopics": [
+        "Language Basics",
         "Introduction to Go",
         "Why use Go",
         "History of Go"
@@ -36,24 +41,34 @@
       ],
       "lessons": [
         {
-          "id": "introduction-section-1",
-          "title": "Go 为什么出现，适合什么工作"
+          "id": "introduction-concept-1",
+          "title": "Go 为什么出现，适合什么工作",
+          "anchor": "concept-1",
+          "url": "/go/introduction#concept-1"
         },
         {
-          "id": "introduction-section-2",
-          "title": "从源码到进程"
+          "id": "introduction-concept-2",
+          "title": "从源码到进程",
+          "anchor": "concept-2",
+          "url": "/go/introduction#concept-2"
         },
         {
-          "id": "introduction-section-3",
-          "title": "实验：构建产物不是源码的实时视图"
+          "id": "introduction-concept-3",
+          "title": "实验：构建产物不是源码的实时视图",
+          "anchor": "concept-3",
+          "url": "/go/introduction#concept-3"
         },
         {
-          "id": "introduction-section-4",
-          "title": "语言约束怎样帮助协作"
+          "id": "introduction-concept-4",
+          "title": "语言约束怎样帮助协作",
+          "anchor": "concept-4",
+          "url": "/go/introduction#concept-4"
         },
         {
-          "id": "introduction-section-5",
-          "title": "学习实验与判定"
+          "id": "introduction-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/introduction#lab"
         }
       ],
       "datasets": [],
@@ -63,13 +78,28 @@
           "kind": "chapter",
           "url": "/go/introduction#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "为什么选择 Go；历史、编译模型与学习实验。",
+        "学习实验与判定"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://go.dev/doc/faq"
+      ],
+      "topicTargets": {
+        "Language Basics": "concept-1",
+        "Introduction to Go": "concept-1",
+        "Why use Go": "concept-1",
+        "History of Go": "concept-1"
+      }
     },
     {
       "id": "toolchain",
-      "title": "环境、命令与文档查询",
-      "group": "起步与语言基础",
-      "summary": "建立模块，掌握构建、运行、安装、清理与文档命令。",
+      "title": "安装环境、Hello World 与文档入口",
+      "group": "语言基础",
+      "summary": "从一个小程序看清包、模块与编译运行，建立工具链环境。",
       "prerequisites": [
         "introduction"
       ],
@@ -77,16 +107,7 @@
         "Setting up the Environment",
         "Hello World in Go",
         "go command",
-        "Commands & Docs",
-        "go run",
-        "go build",
-        "go install",
-        "go fmt",
-        "go mod",
-        "go test",
-        "go clean",
-        "go doc",
-        "go version"
+        "Commands & Docs"
       ],
       "courses": [
         "official",
@@ -95,28 +116,34 @@
       ],
       "lessons": [
         {
-          "id": "toolchain-section-1",
-          "title": "安装与确认环境"
+          "id": "toolchain-concept-1",
+          "title": "安装与确认环境",
+          "anchor": "concept-1",
+          "url": "/go/toolchain#concept-1"
         },
         {
-          "id": "toolchain-section-2",
-          "title": "创建第一个模块"
+          "id": "toolchain-concept-2",
+          "title": "创建第一个模块",
+          "anchor": "concept-2",
+          "url": "/go/toolchain#concept-2"
         },
         {
-          "id": "toolchain-section-3",
-          "title": "常用命令"
+          "id": "toolchain-concept-3",
+          "title": "编译与运行的数据流",
+          "anchor": "concept-3",
+          "url": "/go/toolchain#concept-3"
         },
         {
-          "id": "toolchain-section-4",
-          "title": "go clean、install 与 build 的差异"
+          "id": "toolchain-concept-4",
+          "title": "查资料也有明确入口",
+          "anchor": "concept-4",
+          "url": "/go/toolchain#concept-4"
         },
         {
-          "id": "toolchain-section-5",
-          "title": "一次编译问题的诊断顺序"
-        },
-        {
-          "id": "toolchain-section-6",
-          "title": "练习与验收"
+          "id": "toolchain-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/toolchain#lab"
         }
       ],
       "datasets": [],
@@ -126,12 +153,29 @@
           "kind": "chapter",
           "url": "/go/toolchain#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "从一个小程序看清包、模块与编译运行，建立工具链环境。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/install",
+        "https://go.dev/doc/tutorial/getting-started",
+        "https://go.dev/doc/toolchain"
+      ],
+      "topicTargets": {
+        "Setting up the Environment": "concept-1",
+        "Hello World in Go": "concept-2",
+        "go command": "concept-2",
+        "Commands & Docs": "concept-4"
+      }
     },
     {
       "id": "variables",
       "title": "变量、常量、iota 与作用域",
-      "group": "起步与语言基础",
+      "group": "语言基础",
       "summary": "解释零值、短声明、常量表达式和变量遮蔽。",
       "prerequisites": [
         "toolchain"
@@ -150,24 +194,40 @@
       ],
       "lessons": [
         {
-          "id": "variables-section-1",
-          "title": "var 与短声明的区别"
+          "id": "variables-concept-1",
+          "title": "用名字、值和作用域理解声明",
+          "anchor": "concept-1",
+          "url": "/go/variables#concept-1"
         },
         {
-          "id": "variables-section-2",
-          "title": "零值不是“未定义”"
+          "id": "variables-concept-2",
+          "title": "var 与短声明的区别",
+          "anchor": "concept-2",
+          "url": "/go/variables#concept-2"
         },
         {
-          "id": "variables-section-3",
-          "title": "const 与 iota：编译期表达式"
+          "id": "variables-concept-3",
+          "title": "零值不是“未定义”",
+          "anchor": "concept-3",
+          "url": "/go/variables#concept-3"
         },
         {
-          "id": "variables-section-4",
-          "title": "错误变量遮蔽的诊断"
+          "id": "variables-concept-4",
+          "title": "const 与 iota：编译期表达式",
+          "anchor": "concept-4",
+          "url": "/go/variables#concept-4"
         },
         {
-          "id": "variables-section-5",
-          "title": "学习实验与判定"
+          "id": "variables-concept-5",
+          "title": "错误变量遮蔽的诊断",
+          "anchor": "concept-5",
+          "url": "/go/variables#concept-5"
+        },
+        {
+          "id": "variables-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/variables#lab"
         }
       ],
       "datasets": [],
@@ -177,12 +237,28 @@
           "kind": "chapter",
           "url": "/go/variables#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "解释零值、短声明、常量表达式和变量遮蔽。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Declarations_and_scope"
+      ],
+      "topicTargets": {
+        "Variables & Constants": "concept-1",
+        "var vs :=": "concept-1",
+        "Zero Values": "concept-3",
+        "const and iota": "concept-4",
+        "Scope and Shadowing": "concept-1"
+      }
     },
     {
       "id": "basics",
       "title": "基本类型、数值与类型转换",
-      "group": "起步与语言基础",
+      "group": "语言基础",
       "summary": "掌握整数、浮点、复数、布尔、rune 与转换边界。",
       "prerequisites": [
         "variables"
@@ -204,24 +280,40 @@
       ],
       "lessons": [
         {
-          "id": "basics-section-1",
-          "title": "整数与固定宽度"
+          "id": "basics-concept-1",
+          "title": "先按需要保存的信息选择类型",
+          "anchor": "concept-1",
+          "url": "/go/basics#concept-1"
         },
         {
-          "id": "basics-section-2",
-          "title": "浮点：表示误差与比较"
+          "id": "basics-concept-2",
+          "title": "整数与固定宽度",
+          "anchor": "concept-2",
+          "url": "/go/basics#concept-2"
         },
         {
-          "id": "basics-section-3",
-          "title": "复数、布尔与 rune"
+          "id": "basics-concept-3",
+          "title": "浮点：表示误差与比较",
+          "anchor": "concept-3",
+          "url": "/go/basics#concept-3"
         },
         {
-          "id": "basics-section-4",
-          "title": "命名类型与别名"
+          "id": "basics-concept-4",
+          "title": "复数、布尔与 rune",
+          "anchor": "concept-4",
+          "url": "/go/basics#concept-4"
         },
         {
-          "id": "basics-section-5",
-          "title": "学习实验与判定"
+          "id": "basics-concept-5",
+          "title": "命名类型与别名",
+          "anchor": "concept-5",
+          "url": "/go/basics#concept-5"
+        },
+        {
+          "id": "basics-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/basics#lab"
         }
       ],
       "datasets": [],
@@ -231,16 +323,368 @@
           "kind": "chapter",
           "url": "/go/basics#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "掌握整数、浮点、复数、布尔、rune 与转换边界。",
+        "学习实验与判定"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://go.dev/ref/spec#Types",
+        "https://pkg.go.dev/strconv",
+        "https://pkg.go.dev/math"
+      ],
+      "topicTargets": {
+        "Data Types": "concept-1",
+        "Boolean": "concept-4",
+        "Numeric Types": "concept-1",
+        "Integers (Signed, Unsigned)": "concept-2",
+        "Floating Points": "concept-3",
+        "Complex Numbers": "concept-4",
+        "Runes": "concept-4",
+        "Type Conversion": "concept-2"
+      }
+    },
+    {
+      "id": "collections",
+      "title": "数组、切片、容量与共享存储",
+      "group": "语言基础",
+      "summary": "通过底层数组图解与逐步实验理解复制、扩容和转换。",
+      "prerequisites": [
+        "variables",
+        "basics"
+      ],
+      "roadmapTopics": [
+        "Composite Types",
+        "Arrays",
+        "Slices",
+        "Capacity and Growth",
+        "make()",
+        "Slice to Array Conversion",
+        "Array to Slice Conversion"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "collections-concept-1",
+          "title": "数组是带长度的值",
+          "anchor": "concept-1",
+          "url": "/go/collections#concept-1"
+        },
+        {
+          "id": "collections-concept-2",
+          "title": "切片是一段存储的描述",
+          "anchor": "concept-2",
+          "url": "/go/collections#concept-2"
+        },
+        {
+          "id": "collections-concept-3",
+          "title": "make 的长度与容量分别做什么",
+          "anchor": "concept-3",
+          "url": "/go/collections#concept-3"
+        },
+        {
+          "id": "collections-concept-4",
+          "title": "append 可能共享，也可能换数组",
+          "anchor": "concept-4",
+          "url": "/go/collections#concept-4"
+        },
+        {
+          "id": "collections-concept-5",
+          "title": "copy、Clone 与浅复制",
+          "anchor": "concept-5",
+          "url": "/go/collections#concept-5"
+        },
+        {
+          "id": "collections-concept-6",
+          "title": "数组与切片如何转换",
+          "anchor": "concept-6",
+          "url": "/go/collections#concept-6"
+        },
+        {
+          "id": "collections-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/collections#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "collections-lab",
+          "kind": "chapter",
+          "url": "/go/collections#lab"
+        }
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "通过底层数组图解与逐步实验理解复制、扩容和转换。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 2,
+      "officialSources": [
+        "https://go.dev/ref/spec#Slice_types",
+        "https://go.dev/blog/slices-intro",
+        "https://pkg.go.dev/slices"
+      ],
+      "topicTargets": {
+        "Composite Types": "concept-2",
+        "Arrays": "concept-1",
+        "Slices": "concept-2",
+        "Capacity and Growth": "concept-4",
+        "make()": "concept-3",
+        "Slice to Array Conversion": "concept-6",
+        "Array to Slice Conversion": "concept-6"
+      }
+    },
+    {
+      "id": "strings",
+      "title": "字符串、字节、rune 与 Unicode",
+      "summary": "将文本的字节表示、码点遍历与字面量形式区分清楚。",
+      "prerequisites": [
+        "basics",
+        "collections"
+      ],
+      "roadmapTopics": [
+        "Strings",
+        "Raw String Literals",
+        "Interpreted String Literals"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "strings-concept-1",
+          "title": "string、byte 与 rune 的三种视角",
+          "anchor": "concept-1",
+          "url": "/go/strings#concept-1"
+        },
+        {
+          "id": "strings-concept-2",
+          "title": "两种字面量只是书写方式不同",
+          "anchor": "concept-2",
+          "url": "/go/strings#concept-2"
+        },
+        {
+          "id": "strings-concept-3",
+          "title": "修改文本：先选择单位",
+          "anchor": "concept-3",
+          "url": "/go/strings#concept-3"
+        },
+        {
+          "id": "strings-concept-4",
+          "title": "搜索、清理和构建的分工",
+          "anchor": "concept-4",
+          "url": "/go/strings#concept-4"
+        },
+        {
+          "id": "strings-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/strings#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "strings-lab",
+          "kind": "chapter",
+          "url": "/go/strings#lab"
+        }
+      ],
+      "group": "语言基础",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "将文本的字节表示、码点遍历与字面量形式区分清楚。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/blog/strings",
+        "https://go.dev/ref/spec#String_types",
+        "https://pkg.go.dev/unicode/utf8"
+      ],
+      "topicTargets": {
+        "Strings": "concept-1",
+        "Raw String Literals": "concept-2",
+        "Interpreted String Literals": "concept-2"
+      }
+    },
+    {
+      "id": "maps",
+      "title": "Map、集合与逗号 ok",
+      "group": "语言基础",
+      "summary": "键的可比较性、读写、删除、排序与集合运算。",
+      "prerequisites": [
+        "collections",
+        "strings"
+      ],
+      "roadmapTopics": [
+        "Maps",
+        "Comma-Ok Idiom"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "maps-concept-1",
+          "title": "把查找结果拆成值与存在性",
+          "anchor": "concept-1",
+          "url": "/go/maps#concept-1"
+        },
+        {
+          "id": "maps-concept-2",
+          "title": "创建、读取、更新与删除",
+          "anchor": "concept-2",
+          "url": "/go/maps#concept-2"
+        },
+        {
+          "id": "maps-concept-3",
+          "title": "可比较的键与动态类型陷阱",
+          "anchor": "concept-3",
+          "url": "/go/maps#concept-3"
+        },
+        {
+          "id": "maps-concept-4",
+          "title": "Map 元素不可取地址",
+          "anchor": "concept-4",
+          "url": "/go/maps#concept-4"
+        },
+        {
+          "id": "maps-concept-5",
+          "title": "集合与确定性输出",
+          "anchor": "concept-5",
+          "url": "/go/maps#concept-5"
+        },
+        {
+          "id": "maps-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/maps#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "maps-lab",
+          "kind": "chapter",
+          "url": "/go/maps#lab"
+        }
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "键的可比较性、读写、删除、排序与集合运算。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Map_types",
+        "https://go.dev/blog/maps"
+      ],
+      "topicTargets": {
+        "Maps": "concept-2",
+        "Comma-Ok Idiom": "concept-1"
+      }
+    },
+    {
+      "id": "types",
+      "title": "结构体、字段标签与组合",
+      "group": "语言基础",
+      "summary": "字段建模、JSON、组合与方法提升的真实语义。",
+      "prerequisites": [
+        "basics",
+        "maps"
+      ],
+      "roadmapTopics": [
+        "Structs",
+        "Struct Tags & JSON",
+        "Embedding Structs"
+      ],
+      "courses": [
+        "official",
+        "learngo",
+        "mcleod"
+      ],
+      "lessons": [
+        {
+          "id": "types-concept-1",
+          "title": "用字段表达一份数据",
+          "anchor": "concept-1",
+          "url": "/go/types#concept-1"
+        },
+        {
+          "id": "types-concept-2",
+          "title": "Tag 给工具读，不改变字段类型",
+          "anchor": "concept-2",
+          "url": "/go/types#concept-2"
+        },
+        {
+          "id": "types-concept-3",
+          "title": "缺失、零值和 null 是不同问题",
+          "anchor": "concept-3",
+          "url": "/go/types#concept-3"
+        },
+        {
+          "id": "types-concept-4",
+          "title": "具名组合与嵌入",
+          "anchor": "concept-4",
+          "url": "/go/types#concept-4"
+        },
+        {
+          "id": "types-concept-5",
+          "title": "比较、标签和布局的边界",
+          "anchor": "concept-5",
+          "url": "/go/types#concept-5"
+        },
+        {
+          "id": "types-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/types#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "types-lab",
+          "kind": "chapter",
+          "url": "/go/types#lab"
+        }
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "字段建模、JSON、组合与方法提升的真实语义。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Struct_types",
+        "https://pkg.go.dev/encoding/json#Marshal"
+      ],
+      "topicTargets": {
+        "Structs": "concept-1",
+        "Struct Tags & JSON": "concept-2",
+        "Embedding Structs": "concept-4"
+      }
     },
     {
       "id": "control-flow",
       "title": "条件、循环与控制转移",
-      "group": "起步与语言基础",
+      "group": "语言基础",
       "summary": "理解 switch、range、break、continue 与 goto 的边界。",
       "prerequisites": [
         "variables",
-        "basics"
+        "basics",
+        "collections"
       ],
       "roadmapTopics": [
         "Conditionals",
@@ -263,24 +707,40 @@
       ],
       "lessons": [
         {
-          "id": "control-flow-section-1",
-          "title": "if 初始化与 switch"
+          "id": "control-flow-concept-1",
+          "title": "执行路径与循环不变量",
+          "anchor": "concept-1",
+          "url": "/go/control-flow#concept-1"
         },
         {
-          "id": "control-flow-section-2",
-          "title": "range 的值是复制"
+          "id": "control-flow-concept-2",
+          "title": "if 初始化与 switch",
+          "anchor": "concept-2",
+          "url": "/go/control-flow#concept-2"
         },
         {
-          "id": "control-flow-section-3",
-          "title": "break、continue 与标签"
+          "id": "control-flow-concept-3",
+          "title": "range 的值是复制",
+          "anchor": "concept-3",
+          "url": "/go/control-flow#concept-3"
         },
         {
-          "id": "control-flow-section-4",
-          "title": "循环的不变量与复杂度"
+          "id": "control-flow-concept-4",
+          "title": "break、continue 与标签",
+          "anchor": "concept-4",
+          "url": "/go/control-flow#concept-4"
         },
         {
-          "id": "control-flow-section-5",
-          "title": "学习实验与判定"
+          "id": "control-flow-concept-5",
+          "title": "循环的不变量与复杂度",
+          "anchor": "concept-5",
+          "url": "/go/control-flow#concept-5"
+        },
+        {
+          "id": "control-flow-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/control-flow#lab"
         }
       ],
       "datasets": [],
@@ -290,187 +750,35 @@
           "kind": "chapter",
           "url": "/go/control-flow#lab"
         }
-      ]
-    },
-    {
-      "id": "collections",
-      "title": "字符串、数组与切片模型",
-      "group": "起步与语言基础",
-      "summary": "通过容量、共享存储和转换实验理解容器语义。",
-      "prerequisites": [
-        "basics",
-        "control-flow"
       ],
-      "roadmapTopics": [
-        "Composite Types",
-        "Arrays",
-        "Slices",
-        "Capacity and Growth",
-        "make()",
-        "Slice to Array Conversion",
-        "Array to Slice Conversion",
-        "Strings",
-        "Raw String Literals",
-        "Interpreted String Literals"
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解 switch、range、break、continue 与 goto 的边界。",
+        "学习实验与判定"
       ],
-      "courses": [
-        "official",
-        "learngo",
-        "mcleod"
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Statements"
       ],
-      "lessons": [
-        {
-          "id": "collections-section-1",
-          "title": "容器怎么选"
-        },
-        {
-          "id": "collections-section-2",
-          "title": "看清共享与复制"
-        },
-        {
-          "id": "collections-section-3",
-          "title": "中文文本与有序词频"
-        },
-        {
-          "id": "collections-section-4",
-          "title": "原始字符串与解释字符串"
-        },
-        {
-          "id": "collections-section-5",
-          "title": "容量增长与三索引切片实验"
-        },
-        {
-          "id": "collections-section-6",
-          "title": "数组与切片的双向转换"
-        },
-        {
-          "id": "collections-section-7",
-          "title": "一个容器实验该验证什么"
-        },
-        {
-          "id": "collections-section-8",
-          "title": "练习与验收"
-        }
-      ],
-      "datasets": [],
-      "exercises": [
-        {
-          "id": "collections-lab",
-          "kind": "chapter",
-          "url": "/go/collections#lab"
-        }
-      ]
-    },
-    {
-      "id": "maps",
-      "title": "Map、集合与逗号 ok",
-      "group": "起步与语言基础",
-      "summary": "键的可比较性、读写、删除、排序与集合运算。",
-      "prerequisites": [
-        "collections"
-      ],
-      "roadmapTopics": [
-        "Maps",
-        "Comma-Ok Idiom"
-      ],
-      "courses": [
-        "official",
-        "learngo",
-        "mcleod"
-      ],
-      "lessons": [
-        {
-          "id": "maps-section-1",
-          "title": "创建、读取、更新与删除"
-        },
-        {
-          "id": "maps-section-2",
-          "title": "可比较的键与动态类型陷阱"
-        },
-        {
-          "id": "maps-section-3",
-          "title": "Map 元素不可取地址"
-        },
-        {
-          "id": "maps-section-4",
-          "title": "集合与确定性输出"
-        },
-        {
-          "id": "maps-section-5",
-          "title": "学习实验与判定"
-        }
-      ],
-      "datasets": [],
-      "exercises": [
-        {
-          "id": "maps-lab",
-          "kind": "chapter",
-          "url": "/go/maps#lab"
-        }
-      ]
-    },
-    {
-      "id": "types",
-      "title": "结构体、Tag 与嵌入",
-      "group": "起步与语言基础",
-      "summary": "字段建模、JSON、组合与方法提升的真实语义。",
-      "prerequisites": [
-        "basics",
-        "maps"
-      ],
-      "roadmapTopics": [
-        "Structs",
-        "Struct Tags & JSON",
-        "Embedding Structs"
-      ],
-      "courses": [
-        "official",
-        "learngo",
-        "mcleod"
-      ],
-      "lessons": [
-        {
-          "id": "types-section-1",
-          "title": "结构体、方法与组合"
-        },
-        {
-          "id": "types-section-2",
-          "title": "小接口放在使用方"
-        },
-        {
-          "id": "types-section-3",
-          "title": "接口值为什么可能不等于 nil"
-        },
-        {
-          "id": "types-section-4",
-          "title": "Tag、字段可见性与 JSON 的真实关系"
-        },
-        {
-          "id": "types-section-5",
-          "title": "嵌入是方法提升，不是继承"
-        },
-        {
-          "id": "types-section-6",
-          "title": "可比较性与值语义"
-        },
-        {
-          "id": "types-section-7",
-          "title": "练习与验收"
-        }
-      ],
-      "datasets": [],
-      "exercises": [
-        {
-          "id": "types-lab",
-          "kind": "chapter",
-          "url": "/go/types#lab"
-        }
-      ]
+      "topicTargets": {
+        "Conditionals": "concept-2",
+        "if": "concept-2",
+        "if-else": "concept-2",
+        "switch": "concept-2",
+        "Loops": "concept-1",
+        "for loop": "concept-3",
+        "for range": "concept-3",
+        "Iterating Maps": "concept-3",
+        "Iterating Strings": "concept-3",
+        "break": "concept-4",
+        "continue": "concept-4",
+        "goto (discouraged)": "concept-4"
+      }
     },
     {
       "id": "functions",
       "title": "函数、闭包与调用语义",
-      "group": "类型系统与代码组织",
+      "group": "语言基础",
       "summary": "多返回值、可变参数、命名返回与闭包捕获。",
       "prerequisites": [
         "control-flow",
@@ -493,36 +801,58 @@
       ],
       "lessons": [
         {
-          "id": "functions-section-1",
-          "title": "参数始终按值传递"
+          "id": "functions-concept-1",
+          "title": "参数、返回值与调用过程",
+          "anchor": "concept-1",
+          "url": "/go/functions#concept-1"
         },
         {
-          "id": "functions-section-2",
-          "title": "defer 的执行顺序"
+          "id": "functions-concept-2",
+          "title": "函数值、匿名函数与高阶操作",
+          "anchor": "concept-2",
+          "url": "/go/functions#concept-2"
         },
         {
-          "id": "functions-section-3",
-          "title": "函数值与闭包"
+          "id": "functions-concept-3",
+          "title": "可变参数与共享切片",
+          "anchor": "concept-3",
+          "url": "/go/functions#concept-3"
         },
         {
-          "id": "functions-section-4",
-          "title": "可变参数与共享切片"
+          "id": "functions-concept-4",
+          "title": "闭包是状态，不只是匿名语法",
+          "anchor": "concept-4",
+          "url": "/go/functions#concept-4"
         },
         {
-          "id": "functions-section-5",
-          "title": "闭包是状态，不只是匿名语法"
+          "id": "functions-concept-5",
+          "title": "闭包的状态寿命",
+          "anchor": "concept-5",
+          "url": "/go/functions#concept-5"
         },
         {
-          "id": "functions-section-6",
-          "title": "命名返回值与 defer 的交互"
+          "id": "functions-concept-6",
+          "title": "defer 的执行顺序",
+          "anchor": "concept-6",
+          "url": "/go/functions#concept-6"
         },
         {
-          "id": "functions-section-7",
-          "title": "函数契约写进签名与测试"
+          "id": "functions-concept-7",
+          "title": "命名返回值与 defer 的交互",
+          "anchor": "concept-7",
+          "url": "/go/functions#concept-7"
         },
         {
-          "id": "functions-section-8",
-          "title": "练习与验收"
+          "id": "functions-concept-8",
+          "title": "正常返回与清理的先后",
+          "anchor": "concept-8",
+          "url": "/go/functions#concept-8"
+        },
+        {
+          "id": "functions-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/functions#lab"
         }
       ],
       "datasets": [],
@@ -532,16 +862,36 @@
           "kind": "chapter",
           "url": "/go/functions#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "多返回值、可变参数、命名返回与闭包捕获。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 3,
+      "officialSources": [
+        "https://go.dev/ref/spec#Function_types",
+        "https://go.dev/blog/defer-panic-and-recover"
+      ],
+      "topicTargets": {
+        "Functions": "concept-1",
+        "Functions Basics": "concept-1",
+        "Variadic Functions": "concept-3",
+        "Multiple Return Values": "concept-1",
+        "Anonymous Functions": "concept-2",
+        "Closures": "concept-4",
+        "Named Return Values": "concept-7",
+        "Call by Value": "concept-1"
+      }
     },
     {
       "id": "pointers",
       "title": "指针、别名与内存概览",
-      "group": "类型系统与代码组织",
+      "group": "语言基础",
       "summary": "用实验解释结构体、map、切片的值复制和共享。",
       "prerequisites": [
-        "functions",
-        "types"
+        "types",
+        "functions"
       ],
       "roadmapTopics": [
         "Pointers",
@@ -559,24 +909,40 @@
       ],
       "lessons": [
         {
-          "id": "pointers-section-1",
-          "title": "修改对象和替换指针不是一回事"
+          "id": "pointers-concept-1",
+          "title": "先区分地址变量和地址指向的对象",
+          "anchor": "concept-1",
+          "url": "/go/pointers#concept-1"
         },
         {
-          "id": "pointers-section-2",
-          "title": "map 与切片的复制模型"
+          "id": "pointers-concept-2",
+          "title": "修改对象和替换指针不是一回事",
+          "anchor": "concept-2",
+          "url": "/go/pointers#concept-2"
         },
         {
-          "id": "pointers-section-3",
-          "title": "地址安全与内存管理概览"
+          "id": "pointers-concept-3",
+          "title": "map 与切片的复制模型",
+          "anchor": "concept-3",
+          "url": "/go/pointers#concept-3"
         },
         {
-          "id": "pointers-section-4",
-          "title": "资源不是对象内存"
+          "id": "pointers-concept-4",
+          "title": "地址安全与内存管理概览",
+          "anchor": "concept-4",
+          "url": "/go/pointers#concept-4"
         },
         {
-          "id": "pointers-section-5",
-          "title": "学习实验与判定"
+          "id": "pointers-concept-5",
+          "title": "资源不是对象内存",
+          "anchor": "concept-5",
+          "url": "/go/pointers#concept-5"
+        },
+        {
+          "id": "pointers-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/pointers#lab"
         }
       ],
       "datasets": [],
@@ -586,12 +952,31 @@
           "kind": "chapter",
           "url": "/go/pointers#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "用实验解释结构体、map、切片的值复制和共享。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Pointer_types",
+        "https://go.dev/doc/faq#stack_or_heap"
+      ],
+      "topicTargets": {
+        "Pointers": "concept-2",
+        "Pointers Basics": "concept-2",
+        "Pointers with Structs": "concept-2",
+        "With Maps & Slices": "concept-3",
+        "Get a Brief Overview": "concept-4",
+        "Memory Management": "concept-4",
+        "Garbage Collection": "concept-4"
+      }
     },
     {
       "id": "methods",
       "title": "方法集、值与指针接收者",
-      "group": "类型系统与代码组织",
+      "group": "方法与接口",
       "summary": "区分普通调用的自动取地址和接口方法集。",
       "prerequisites": [
         "pointers"
@@ -609,20 +994,34 @@
       ],
       "lessons": [
         {
-          "id": "methods-section-1",
-          "title": "值接收者与指针接收者"
+          "id": "methods-concept-1",
+          "title": "方法集与调用便利是两套规则",
+          "anchor": "concept-1",
+          "url": "/go/methods#concept-1"
         },
         {
-          "id": "methods-section-2",
-          "title": "为什么不能只按“对象大小”选接收者"
+          "id": "methods-concept-2",
+          "title": "值接收者与指针接收者",
+          "anchor": "concept-2",
+          "url": "/go/methods#concept-2"
         },
         {
-          "id": "methods-section-3",
-          "title": "方法值与方法表达式"
+          "id": "methods-concept-3",
+          "title": "为什么不能只按“对象大小”选接收者",
+          "anchor": "concept-3",
+          "url": "/go/methods#concept-3"
         },
         {
-          "id": "methods-section-4",
-          "title": "学习实验与判定"
+          "id": "methods-concept-4",
+          "title": "方法值与方法表达式",
+          "anchor": "concept-4",
+          "url": "/go/methods#concept-4"
+        },
+        {
+          "id": "methods-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/methods#lab"
         }
       ],
       "datasets": [],
@@ -632,12 +1031,28 @@
           "kind": "chapter",
           "url": "/go/methods#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分普通调用的自动取地址和接口方法集。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Method_sets",
+        "https://go.dev/tour/methods/4"
+      ],
+      "topicTargets": {
+        "Methods and Interfaces": "concept-2",
+        "Methods vs Functions": "concept-2",
+        "Pointer Receivers": "concept-2",
+        "Value Receivers": "concept-2"
+      }
     },
     {
       "id": "interfaces",
       "title": "接口、断言与动态类型",
-      "group": "类型系统与代码组织",
+      "group": "方法与接口",
       "summary": "隐式实现、嵌入、空接口、类型断言和 type switch。",
       "prerequisites": [
         "methods"
@@ -657,28 +1072,46 @@
       ],
       "lessons": [
         {
-          "id": "interfaces-section-1",
-          "title": "用一个小接口替换真实 I/O"
+          "id": "interfaces-concept-1",
+          "title": "接口值的两部分信息",
+          "anchor": "concept-1",
+          "url": "/go/interfaces#concept-1"
         },
         {
-          "id": "interfaces-section-2",
-          "title": "嵌入接口与行为交集"
+          "id": "interfaces-concept-2",
+          "title": "用一个小接口替换真实 I/O",
+          "anchor": "concept-2",
+          "url": "/go/interfaces#concept-2"
         },
         {
-          "id": "interfaces-section-3",
-          "title": "动态类型、any、断言与 type switch"
+          "id": "interfaces-concept-3",
+          "title": "嵌入接口与行为交集",
+          "anchor": "concept-3",
+          "url": "/go/interfaces#concept-3"
         },
         {
-          "id": "interfaces-section-4",
-          "title": "nil 与比较的两个坑"
+          "id": "interfaces-concept-4",
+          "title": "动态类型、any、断言与 type switch",
+          "anchor": "concept-4",
+          "url": "/go/interfaces#concept-4"
         },
         {
-          "id": "interfaces-section-5",
-          "title": "为什么接口应该由使用方定义"
+          "id": "interfaces-concept-5",
+          "title": "nil 与比较的两个坑",
+          "anchor": "concept-5",
+          "url": "/go/interfaces#concept-5"
         },
         {
-          "id": "interfaces-section-6",
-          "title": "学习实验与判定"
+          "id": "interfaces-concept-6",
+          "title": "为什么接口应该由使用方定义",
+          "anchor": "concept-6",
+          "url": "/go/interfaces#concept-6"
+        },
+        {
+          "id": "interfaces-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/interfaces#lab"
         }
       ],
       "datasets": [],
@@ -688,12 +1121,30 @@
           "kind": "chapter",
           "url": "/go/interfaces#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "隐式实现、嵌入、空接口、类型断言和 type switch。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Interface_types",
+        "https://go.dev/doc/effective_go#interfaces_and_types"
+      ],
+      "topicTargets": {
+        "Interfaces": "concept-1",
+        "Interfaces Basics": "concept-2",
+        "Empty Interfaces": "concept-4",
+        "Embedding Interfaces": "concept-3",
+        "Type Assertions": "concept-4",
+        "Type Switch": "concept-4"
+      }
     },
     {
       "id": "generics",
       "title": "泛型函数、泛型类型与约束",
-      "group": "类型系统与代码组织",
+      "group": "泛型",
       "summary": "类型集合、推断、底层类型与通用容器设计。",
       "prerequisites": [
         "interfaces",
@@ -714,32 +1165,52 @@
       ],
       "lessons": [
         {
-          "id": "generics-section-1",
-          "title": "重复来自类型时才考虑泛型"
+          "id": "generics-concept-1",
+          "title": "把类型参数放回算法中理解",
+          "anchor": "concept-1",
+          "url": "/go/generics#concept-1"
         },
         {
-          "id": "generics-section-2",
-          "title": "约束与类型集合"
+          "id": "generics-concept-2",
+          "title": "重复来自类型时才考虑泛型",
+          "anchor": "concept-2",
+          "url": "/go/generics#concept-2"
         },
         {
-          "id": "generics-section-3",
-          "title": "复用标准库"
+          "id": "generics-concept-3",
+          "title": "约束与类型集合",
+          "anchor": "concept-3",
+          "url": "/go/generics#concept-3"
         },
         {
-          "id": "generics-section-4",
-          "title": "泛型类型：保持元素类型的集合"
+          "id": "generics-concept-4",
+          "title": "复用标准库",
+          "anchor": "concept-4",
+          "url": "/go/generics#concept-4"
         },
         {
-          "id": "generics-section-5",
-          "title": "类型约束和运行时接口分工"
+          "id": "generics-concept-5",
+          "title": "泛型类型：保持元素类型的集合",
+          "anchor": "concept-5",
+          "url": "/go/generics#concept-5"
         },
         {
-          "id": "generics-section-6",
-          "title": "数据结构复杂度与选择"
+          "id": "generics-concept-6",
+          "title": "类型约束和运行时接口分工",
+          "anchor": "concept-6",
+          "url": "/go/generics#concept-6"
         },
         {
-          "id": "generics-section-7",
-          "title": "练习与验收"
+          "id": "generics-concept-7",
+          "title": "数据结构复杂度与选择",
+          "anchor": "concept-7",
+          "url": "/go/generics#concept-7"
+        },
+        {
+          "id": "generics-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/generics#lab"
         }
       ],
       "datasets": [],
@@ -749,12 +1220,31 @@
           "kind": "chapter",
           "url": "/go/generics#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "类型集合、推断、底层类型与通用容器设计。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/tutorial/generics",
+        "https://pkg.go.dev/slices",
+        "https://pkg.go.dev/maps"
+      ],
+      "topicTargets": {
+        "Generics": "concept-1",
+        "Why Generics?": "concept-2",
+        "Generic Functions": "concept-2",
+        "Generic Types / Interfaces": "concept-5",
+        "Type Constraints": "concept-6",
+        "Type Inference": "concept-6"
+      }
     },
     {
       "id": "modules",
       "title": "包、模块、依赖与发布",
-      "group": "类型系统与代码组织",
+      "group": "代码组织",
       "summary": "导入规则、MVS、vendor、工作区与版本发布。",
       "prerequisites": [
         "toolchain",
@@ -777,36 +1267,64 @@
       ],
       "lessons": [
         {
-          "id": "modules-section-1",
-          "title": "从一个包开始"
+          "id": "modules-concept-1",
+          "title": "从文件目录到模块版本",
+          "anchor": "concept-1",
+          "url": "/go/modules#concept-1"
         },
         {
-          "id": "modules-section-2",
-          "title": "模块与版本"
+          "id": "modules-concept-2",
+          "title": "从一个包开始",
+          "anchor": "concept-2",
+          "url": "/go/modules#concept-2"
         },
         {
-          "id": "modules-section-3",
-          "title": "本地开发与私有模块"
+          "id": "modules-concept-3",
+          "title": "模块与版本",
+          "anchor": "concept-3",
+          "url": "/go/modules#concept-3"
         },
         {
-          "id": "modules-section-4",
-          "title": "从模块路径到一次包导入"
+          "id": "modules-concept-4",
+          "title": "本地开发与私有模块",
+          "anchor": "concept-4",
+          "url": "/go/modules#concept-4"
         },
         {
-          "id": "modules-section-5",
-          "title": "MVS 与直接/间接依赖"
+          "id": "modules-concept-5",
+          "title": "模块初始化、整理与 vendor",
+          "anchor": "concept-5",
+          "url": "/go/modules#concept-5"
         },
         {
-          "id": "modules-section-6",
-          "title": "工作区实验"
+          "id": "modules-concept-6",
+          "title": "从模块路径到一次包导入",
+          "anchor": "concept-6",
+          "url": "/go/modules#concept-6"
         },
         {
-          "id": "modules-section-7",
-          "title": "发布模块与 v2 的步骤"
+          "id": "modules-concept-7",
+          "title": "MVS 与直接/间接依赖",
+          "anchor": "concept-7",
+          "url": "/go/modules#concept-7"
         },
         {
-          "id": "modules-section-8",
-          "title": "练习与验收"
+          "id": "modules-concept-8",
+          "title": "工作区实验",
+          "anchor": "concept-8",
+          "url": "/go/modules#concept-8"
+        },
+        {
+          "id": "modules-concept-9",
+          "title": "发布模块与 v2 的步骤",
+          "anchor": "concept-9",
+          "url": "/go/modules#concept-9"
+        },
+        {
+          "id": "modules-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/modules#lab"
         }
       ],
       "datasets": [],
@@ -816,12 +1334,35 @@
           "kind": "chapter",
           "url": "/go/modules#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "导入规则、MVS、vendor、工作区与版本发布。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/modules/layout",
+        "https://go.dev/doc/modules/publishing",
+        "https://go.dev/doc/modules/managing-dependencies",
+        "https://go.dev/ref/mod"
+      ],
+      "topicTargets": {
+        "Code Organization": "concept-1",
+        "Modules & Dependencies": "concept-5",
+        "go mod init": "concept-5",
+        "go mod tidy": "concept-5",
+        "go mod vendor": "concept-5",
+        "Packages": "concept-6",
+        "Package Import Rules": "concept-6",
+        "Using 3rd Party Packages": "concept-6",
+        "Publishing Modules": "concept-9"
+      }
     },
     {
       "id": "errors",
       "title": "错误模型、包装与恢复",
-      "group": "类型系统与代码组织",
+      "group": "错误处理",
       "summary": "错误链、自定义类型、哨兵、panic、recover 与堆栈。",
       "prerequisites": [
         "interfaces",
@@ -844,32 +1385,58 @@
       ],
       "lessons": [
         {
-          "id": "errors-section-1",
-          "title": "先处理错误，再继续工作"
+          "id": "errors-concept-1",
+          "title": "沿错误链保留原因",
+          "anchor": "concept-1",
+          "url": "/go/errors#concept-1"
         },
         {
-          "id": "errors-section-2",
-          "title": "分清错误的职责"
+          "id": "errors-concept-2",
+          "title": "先处理错误，再继续工作",
+          "anchor": "concept-2",
+          "url": "/go/errors#concept-2"
         },
         {
-          "id": "errors-section-3",
-          "title": "panic、recover 与清理"
+          "id": "errors-error-values",
+          "title": "创建错误值与稳定识别",
+          "anchor": "error-values",
+          "url": "/go/errors#error-values"
         },
         {
-          "id": "errors-section-4",
-          "title": "自定义错误与 errors.As"
+          "id": "errors-concept-3",
+          "title": "分清错误的职责",
+          "anchor": "concept-3",
+          "url": "/go/errors#concept-3"
         },
         {
-          "id": "errors-section-5",
-          "title": "多个错误与清理策略"
+          "id": "errors-concept-4",
+          "title": "panic、recover 与清理",
+          "anchor": "concept-4",
+          "url": "/go/errors#concept-4"
         },
         {
-          "id": "errors-section-6",
-          "title": "recover 的局部性与堆栈"
+          "id": "errors-concept-5",
+          "title": "自定义错误与 errors.As",
+          "anchor": "concept-5",
+          "url": "/go/errors#concept-5"
         },
         {
-          "id": "errors-section-7",
-          "title": "练习与验收"
+          "id": "errors-concept-6",
+          "title": "多个错误与清理策略",
+          "anchor": "concept-6",
+          "url": "/go/errors#concept-6"
+        },
+        {
+          "id": "errors-concept-7",
+          "title": "recover 的局部性与堆栈",
+          "anchor": "concept-7",
+          "url": "/go/errors#concept-7"
+        },
+        {
+          "id": "errors-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/errors#lab"
         }
       ],
       "datasets": [],
@@ -879,12 +1446,33 @@
           "kind": "chapter",
           "url": "/go/errors#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "错误链、自定义类型、哨兵、panic、recover 与堆栈。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/blog/go1.13-errors",
+        "https://pkg.go.dev/errors"
+      ],
+      "topicTargets": {
+        "Error Handling": "concept-1",
+        "Error Handling Basics": "concept-2",
+        "error interface": "concept-2",
+        "errors.New": "error-values",
+        "fmt.Errorf": "concept-2",
+        "Wrapping/Unwrapping Errors": "concept-2",
+        "Sentinel Errors": "error-values",
+        "panic and recover": "concept-7",
+        "Stack Traces & Debugging": "concept-7"
+      }
     },
     {
       "id": "concurrency",
       "title": "Goroutine 与任务生命周期",
-      "group": "并发与取消",
+      "group": "并发",
       "summary": "调度、启动、等待、泄漏与并发规模。",
       "prerequisites": [
         "functions",
@@ -900,32 +1488,52 @@
       ],
       "lessons": [
         {
-          "id": "concurrency-section-1",
-          "title": "并发不自动提升速度"
+          "id": "concurrency-concept-1",
+          "title": "并发任务需要一个负责收尾的调用方",
+          "anchor": "concept-1",
+          "url": "/go/concurrency#concept-1"
         },
         {
-          "id": "concurrency-section-2",
-          "title": "使用 Mutex 与 WaitGroup"
+          "id": "concurrency-concept-2",
+          "title": "并发不自动提升速度",
+          "anchor": "concept-2",
+          "url": "/go/concurrency#concept-2"
         },
         {
-          "id": "concurrency-section-3",
-          "title": "Channel 表达通信与所有权"
+          "id": "concurrency-concept-3",
+          "title": "使用 Mutex 与 WaitGroup",
+          "anchor": "concept-3",
+          "url": "/go/concurrency#concept-3"
         },
         {
-          "id": "concurrency-section-4",
-          "title": "如何选同步方式"
+          "id": "concurrency-concept-4",
+          "title": "Channel 表达通信与所有权",
+          "anchor": "concept-4",
+          "url": "/go/concurrency#concept-4"
         },
         {
-          "id": "concurrency-section-5",
-          "title": "调度与阻塞的运行模型"
+          "id": "concurrency-concept-5",
+          "title": "如何选同步方式",
+          "anchor": "concept-5",
+          "url": "/go/concurrency#concept-5"
         },
         {
-          "id": "concurrency-section-6",
-          "title": "谁等待后台任务"
+          "id": "concurrency-concept-6",
+          "title": "调度与阻塞的运行模型",
+          "anchor": "concept-6",
+          "url": "/go/concurrency#concept-6"
         },
         {
-          "id": "concurrency-section-7",
-          "title": "练习与验收"
+          "id": "concurrency-concept-7",
+          "title": "谁等待后台任务",
+          "anchor": "concept-7",
+          "url": "/go/concurrency#concept-7"
+        },
+        {
+          "id": "concurrency-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/concurrency#lab"
         }
       ],
       "datasets": [],
@@ -935,12 +1543,26 @@
           "kind": "chapter",
           "url": "/go/concurrency#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "调度、启动、等待、泄漏与并发规模。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/sync",
+        "https://go.dev/ref/mem"
+      ],
+      "topicTargets": {
+        "Concurrency": "concept-2",
+        "Goroutines": "concept-2"
+      }
     },
     {
       "id": "channels",
       "title": "Channel、缓冲与 select",
-      "group": "并发与取消",
+      "group": "并发",
       "summary": "发送接收、关闭、缓冲、方向类型与 select 行为。",
       "prerequisites": [
         "concurrency"
@@ -956,24 +1578,40 @@
       ],
       "lessons": [
         {
-          "id": "channels-section-1",
-          "title": "五种状态决定能否继续"
+          "id": "channels-concept-1",
+          "title": "一次通信同时建立数据交接与同步",
+          "anchor": "concept-1",
+          "url": "/go/channels#concept-1"
         },
         {
-          "id": "channels-section-2",
-          "title": "方向类型表达谁拥有哪项操作"
+          "id": "channels-concept-2",
+          "title": "五种状态决定能否继续",
+          "anchor": "concept-2",
+          "url": "/go/channels#concept-2"
         },
         {
-          "id": "channels-section-3",
-          "title": "select 的就绪规则"
+          "id": "channels-concept-3",
+          "title": "方向类型表达谁拥有哪项操作",
+          "anchor": "concept-3",
+          "url": "/go/channels#concept-3"
         },
         {
-          "id": "channels-section-4",
-          "title": "缓冲只是排队能力"
+          "id": "channels-concept-4",
+          "title": "select 的就绪规则",
+          "anchor": "concept-4",
+          "url": "/go/channels#concept-4"
         },
         {
-          "id": "channels-section-5",
-          "title": "学习实验与判定"
+          "id": "channels-concept-5",
+          "title": "缓冲只是排队能力",
+          "anchor": "concept-5",
+          "url": "/go/channels#concept-5"
+        },
+        {
+          "id": "channels-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/channels#lab"
         }
       ],
       "datasets": [],
@@ -983,12 +1621,26 @@
           "kind": "chapter",
           "url": "/go/channels#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "发送接收、关闭、缓冲、方向类型与 select 行为。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/spec#Channel_types"
+      ],
+      "topicTargets": {
+        "Channels": "concept-2",
+        "Buffered vs Unbuffered": "concept-2",
+        "Select Statement": "concept-4"
+      }
     },
     {
       "id": "synchronization",
       "title": "Mutex、WaitGroup 与同步",
-      "group": "并发与取消",
+      "group": "并发",
       "summary": "保护不变量、等待、Once、Cond、原子与竞态检测。",
       "prerequisites": [
         "concurrency",
@@ -1006,24 +1658,40 @@
       ],
       "lessons": [
         {
-          "id": "synchronization-section-1",
-          "title": "完整临界区"
+          "id": "synchronization-concept-1",
+          "title": "锁保护的是完整判断与修改",
+          "anchor": "concept-1",
+          "url": "/go/synchronization#concept-1"
         },
         {
-          "id": "synchronization-section-2",
-          "title": "Mutex、RWMutex 与 WaitGroup"
+          "id": "synchronization-concept-2",
+          "title": "完整临界区",
+          "anchor": "concept-2",
+          "url": "/go/synchronization#concept-2"
         },
         {
-          "id": "synchronization-section-3",
-          "title": "Once、Cond 与 atomic 的角色"
+          "id": "synchronization-concept-3",
+          "title": "Mutex、RWMutex 与 WaitGroup",
+          "anchor": "concept-3",
+          "url": "/go/synchronization#concept-3"
         },
         {
-          "id": "synchronization-section-4",
-          "title": "Race 检测与逻辑错误"
+          "id": "synchronization-concept-4",
+          "title": "Once、Cond 与 atomic 的角色",
+          "anchor": "concept-4",
+          "url": "/go/synchronization#concept-4"
         },
         {
-          "id": "synchronization-section-5",
-          "title": "学习实验与判定"
+          "id": "synchronization-concept-5",
+          "title": "Race 检测与逻辑错误",
+          "anchor": "concept-5",
+          "url": "/go/synchronization#concept-5"
+        },
+        {
+          "id": "synchronization-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/synchronization#lab"
         }
       ],
       "datasets": [],
@@ -1033,12 +1701,29 @@
           "kind": "chapter",
           "url": "/go/synchronization#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "保护不变量、等待、Once、Cond、原子与竞态检测。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/ref/mem",
+        "https://pkg.go.dev/sync",
+        "https://pkg.go.dev/sync/atomic"
+      ],
+      "topicTargets": {
+        "sync Package": "concept-2",
+        "Mutexes": "concept-3",
+        "WaitGroups": "concept-3",
+        "Race Detection": "concept-5"
+      }
     },
     {
       "id": "context",
       "title": "Context、截止时间与取消",
-      "group": "并发与取消",
+      "group": "并发",
       "summary": "传播预算、原因、请求元数据与相关任务取消。",
       "prerequisites": [
         "channels",
@@ -1055,36 +1740,58 @@
       ],
       "lessons": [
         {
-          "id": "context-section-1",
-          "title": "Context 是协作取消"
+          "id": "context-concept-1",
+          "title": "取消像沿调用链传播的一份通知",
+          "anchor": "concept-1",
+          "url": "/go/context#concept-1"
         },
         {
-          "id": "context-section-2",
-          "title": "Channel 操作也要能退出"
+          "id": "context-concept-2",
+          "title": "Context 是协作取消",
+          "anchor": "concept-2",
+          "url": "/go/context#concept-2"
         },
         {
-          "id": "context-section-3",
-          "title": "复用 errgroup 汇总任务"
+          "id": "context-concept-3",
+          "title": "Channel 操作也要能退出",
+          "anchor": "concept-3",
+          "url": "/go/context#concept-3"
         },
         {
-          "id": "context-section-4",
-          "title": "超时预算与常见错误"
+          "id": "context-concept-4",
+          "title": "复用 errgroup 汇总任务",
+          "anchor": "concept-4",
+          "url": "/go/context#concept-4"
         },
         {
-          "id": "context-section-5",
-          "title": "取消原因、超时和父子关系的实验"
+          "id": "context-concept-5",
+          "title": "超时预算与常见错误",
+          "anchor": "concept-5",
+          "url": "/go/context#concept-5"
         },
         {
-          "id": "context-section-6",
-          "title": "总预算怎样计算"
+          "id": "context-concept-6",
+          "title": "取消原因、超时和父子关系的实验",
+          "anchor": "concept-6",
+          "url": "/go/context#concept-6"
         },
         {
-          "id": "context-section-7",
-          "title": "请求工作与后台工作分开建生命周期"
+          "id": "context-concept-7",
+          "title": "总预算怎样计算",
+          "anchor": "concept-7",
+          "url": "/go/context#concept-7"
         },
         {
-          "id": "context-section-8",
-          "title": "练习与验收"
+          "id": "context-concept-8",
+          "title": "请求工作与后台工作分开建生命周期",
+          "anchor": "concept-8",
+          "url": "/go/context#concept-8"
+        },
+        {
+          "id": "context-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/context#lab"
         }
       ],
       "datasets": [],
@@ -1094,12 +1801,27 @@
           "kind": "chapter",
           "url": "/go/context#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "传播预算、原因、请求元数据与相关任务取消。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/context",
+        "https://pkg.go.dev/golang.org/x/sync/errgroup"
+      ],
+      "topicTargets": {
+        "context Package": "concept-2",
+        "Deadlines & Cancellations": "concept-6",
+        "Common Usecases": "concept-8"
+      }
     },
     {
       "id": "patterns",
       "title": "Worker Pool、Fan-in 与 Pipeline",
-      "group": "并发与取消",
+      "group": "并发",
       "summary": "完整有界流水线、关闭协调、错误与取消验收。",
       "prerequisites": [
         "channels",
@@ -1119,24 +1841,34 @@
       ],
       "lessons": [
         {
-          "id": "patterns-section-1",
-          "title": "角色与边界"
+          "id": "patterns-concept-1",
+          "title": "角色与边界",
+          "anchor": "concept-1",
+          "url": "/go/patterns#concept-1"
         },
         {
-          "id": "patterns-section-2",
-          "title": "可运行的平方汇总流水线"
+          "id": "patterns-concept-2",
+          "title": "可运行的平方汇总流水线",
+          "anchor": "concept-2",
+          "url": "/go/patterns#concept-2"
         },
         {
-          "id": "patterns-section-3",
-          "title": "验证提前退出"
+          "id": "patterns-concept-3",
+          "title": "验证提前退出",
+          "anchor": "concept-3",
+          "url": "/go/patterns#concept-3"
         },
         {
-          "id": "patterns-section-4",
-          "title": "错误、背压和顺序"
+          "id": "patterns-concept-4",
+          "title": "错误、背压和顺序",
+          "anchor": "concept-4",
+          "url": "/go/patterns#concept-4"
         },
         {
-          "id": "patterns-section-5",
-          "title": "学习实验与判定"
+          "id": "patterns-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/patterns#lab"
         }
       ],
       "datasets": [],
@@ -1146,12 +1878,29 @@
           "kind": "chapter",
           "url": "/go/patterns#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "完整有界流水线、关闭协调、错误与取消验收。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/blog/pipelines",
+        "https://pkg.go.dev/golang.org/x/sync/errgroup"
+      ],
+      "topicTargets": {
+        "Worker Pools": "concept-1",
+        "Concurrency Patterns": "concept-1",
+        "fan-in": "concept-1",
+        "fan-out": "concept-1",
+        "pipeline": "concept-1"
+      }
     },
     {
       "id": "io",
       "title": "文件、流式 I/O 与 JSON",
-      "group": "标准库与测试",
+      "group": "标准库",
       "summary": "Read/Write 契约、扫描、限额、解码和数据边界。",
       "prerequisites": [
         "interfaces",
@@ -1162,7 +1911,8 @@
         "I/O & File Handling",
         "os",
         "bufio",
-        "encoding/json"
+        "encoding/json",
+        "slog"
       ],
       "courses": [
         "official",
@@ -1170,32 +1920,52 @@
       ],
       "lessons": [
         {
-          "id": "io-section-1",
-          "title": "用 Reader 与 Writer 统一 I/O"
+          "id": "io-concept-1",
+          "title": "把输入、解析和业务校验分开",
+          "anchor": "concept-1",
+          "url": "/go/io#concept-1"
         },
         {
-          "id": "io-section-2",
-          "title": "一个严格 JSON 解码器"
+          "id": "io-concept-2",
+          "title": "用 Reader 与 Writer 统一 I/O",
+          "anchor": "concept-2",
+          "url": "/go/io#concept-2"
         },
         {
-          "id": "io-section-3",
-          "title": "常用标准库与约定"
+          "id": "io-concept-3",
+          "title": "一个严格 JSON 解码器",
+          "anchor": "concept-3",
+          "url": "/go/io#concept-3"
         },
         {
-          "id": "io-section-4",
-          "title": "Reader 的 n 与 err 要同时处理"
+          "id": "io-concept-4",
+          "title": "常用标准库与约定",
+          "anchor": "concept-4",
+          "url": "/go/io#concept-4"
         },
         {
-          "id": "io-section-5",
-          "title": "文件写入与替换"
+          "id": "io-concept-5",
+          "title": "Reader 的 n 与 err 要同时处理",
+          "anchor": "concept-5",
+          "url": "/go/io#concept-5"
         },
         {
-          "id": "io-section-6",
-          "title": "JSON 数字、null 与未知字段"
+          "id": "io-concept-6",
+          "title": "文件写入与替换",
+          "anchor": "concept-6",
+          "url": "/go/io#concept-6"
         },
         {
-          "id": "io-section-7",
-          "title": "练习与验收"
+          "id": "io-concept-7",
+          "title": "JSON 数字、null 与未知字段",
+          "anchor": "concept-7",
+          "url": "/go/io#concept-7"
+        },
+        {
+          "id": "io-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/io#lab"
         }
       ],
       "datasets": [],
@@ -1205,12 +1975,33 @@
           "kind": "chapter",
           "url": "/go/io#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "Read/Write 契约、扫描、限额、解码和数据边界。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/io",
+        "https://pkg.go.dev/bufio",
+        "https://pkg.go.dev/encoding/json",
+        "https://pkg.go.dev/log/slog",
+        "https://pkg.go.dev/time"
+      ],
+      "topicTargets": {
+        "Standard Library": "concept-5",
+        "I/O & File Handling": "concept-2",
+        "os": "concept-2",
+        "bufio": "concept-2",
+        "encoding/json": "concept-7",
+        "slog": "concept-4"
+      }
     },
     {
       "id": "standard-library",
       "title": "flag、time、regexp 与 embed",
-      "group": "标准库与测试",
+      "group": "标准库",
       "summary": "参数、时间、正则与编译期资源的具体使用。",
       "prerequisites": [
         "io"
@@ -1227,24 +2018,40 @@
       ],
       "lessons": [
         {
-          "id": "standard-library-section-1",
-          "title": "flag：解析与退出分离"
+          "id": "standard-library-concept-1",
+          "title": "按输入、时间和资源选择标准库",
+          "anchor": "concept-1",
+          "url": "/go/standard-library#concept-1"
         },
         {
-          "id": "standard-library-section-2",
-          "title": "time：时间点、时长与时区"
+          "id": "standard-library-concept-2",
+          "title": "flag：解析与退出分离",
+          "anchor": "concept-2",
+          "url": "/go/standard-library#concept-2"
         },
         {
-          "id": "standard-library-section-3",
-          "title": "regexp：编译、匹配与数据提取"
+          "id": "standard-library-concept-3",
+          "title": "time：时间点、时长与时区",
+          "anchor": "concept-3",
+          "url": "/go/standard-library#concept-3"
         },
         {
-          "id": "standard-library-section-4",
-          "title": "embed：编译时资源"
+          "id": "standard-library-concept-4",
+          "title": "regexp：编译、匹配与数据提取",
+          "anchor": "concept-4",
+          "url": "/go/standard-library#concept-4"
         },
         {
-          "id": "standard-library-section-5",
-          "title": "学习实验与判定"
+          "id": "standard-library-concept-5",
+          "title": "embed：编译时资源",
+          "anchor": "concept-5",
+          "url": "/go/standard-library#concept-5"
+        },
+        {
+          "id": "standard-library-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/standard-library#lab"
         }
       ],
       "datasets": [],
@@ -1254,12 +2061,30 @@
           "kind": "chapter",
           "url": "/go/standard-library#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "参数、时间、正则与编译期资源的具体使用。",
+        "学习实验与判定"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://pkg.go.dev/flag",
+        "https://pkg.go.dev/time",
+        "https://pkg.go.dev/regexp",
+        "https://pkg.go.dev/embed"
+      ],
+      "topicTargets": {
+        "flag": "concept-2",
+        "time": "concept-3",
+        "regexp": "concept-4",
+        "go:embed for embedding": "concept-5"
+      }
     },
     {
       "id": "testing",
       "title": "表驱动、替身与 HTTP 测试",
-      "group": "标准库与测试",
+      "group": "测试与基准",
       "summary": "隔离、Mock/Stub、httptest、覆盖率与 Fuzz。",
       "prerequisites": [
         "interfaces",
@@ -1279,32 +2104,52 @@
       ],
       "lessons": [
         {
-          "id": "testing-section-1",
-          "title": "从表驱动测试开始"
+          "id": "testing-concept-1",
+          "title": "从一个行为建立红、绿、重构循环",
+          "anchor": "concept-1",
+          "url": "/go/testing#concept-1"
         },
         {
-          "id": "testing-section-2",
-          "title": "测试边界而非模仿实现"
+          "id": "testing-concept-2",
+          "title": "从表驱动测试开始",
+          "anchor": "concept-2",
+          "url": "/go/testing#concept-2"
         },
         {
-          "id": "testing-section-3",
-          "title": "Fuzz：寻找没想到的输入"
+          "id": "testing-concept-3",
+          "title": "测试边界而非模仿实现",
+          "anchor": "concept-3",
+          "url": "/go/testing#concept-3"
         },
         {
-          "id": "testing-section-4",
-          "title": "最小质量流程"
+          "id": "testing-concept-4",
+          "title": "Fuzz：寻找没想到的输入",
+          "anchor": "concept-4",
+          "url": "/go/testing#concept-4"
         },
         {
-          "id": "testing-section-5",
-          "title": "Stub 与 Mock：替身验证什么"
+          "id": "testing-concept-5",
+          "title": "最小质量流程",
+          "anchor": "concept-5",
+          "url": "/go/testing#concept-5"
         },
         {
-          "id": "testing-section-6",
-          "title": "Recorder 与真实测试 Server 的区别"
+          "id": "testing-concept-6",
+          "title": "Stub 与 Mock：替身验证什么",
+          "anchor": "concept-6",
+          "url": "/go/testing#concept-6"
         },
         {
-          "id": "testing-section-7",
-          "title": "练习与验收"
+          "id": "testing-concept-7",
+          "title": "Recorder 与真实测试 Server 的区别",
+          "anchor": "concept-7",
+          "url": "/go/testing#concept-7"
+        },
+        {
+          "id": "testing-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/testing#lab"
         }
       ],
       "datasets": [],
@@ -1314,12 +2159,31 @@
           "kind": "chapter",
           "url": "/go/testing#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "隔离、Mock/Stub、httptest、覆盖率与 Fuzz。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/articles/race_detector",
+        "https://go.dev/doc/tutorial/fuzz",
+        "https://pkg.go.dev/testing"
+      ],
+      "topicTargets": {
+        "Testing & Benchmarking": "concept-1",
+        "testing package basics": "concept-1",
+        "Table-driven Tests": "concept-1",
+        "Mocks and Stubs": "concept-1",
+        "httptest for HTTP Tests": "concept-1",
+        "Coverage": "concept-1"
+      }
     },
     {
       "id": "benchmarking",
       "title": "Benchmark 与分配实验",
-      "group": "标准库与测试",
+      "group": "测试与基准",
       "summary": "可信计时、输入规模、分配统计与结果比较。",
       "prerequisites": [
         "testing",
@@ -1334,24 +2198,45 @@
       ],
       "lessons": [
         {
-          "id": "benchmarking-section-1",
-          "title": "同一任务、两种实现"
+          "id": "benchmarking-concept-1",
+          "title": "先确定比较问题，再读三个指标",
+          "anchor": "concept-1",
+          "url": "/go/benchmarking#concept-1"
         },
         {
-          "id": "benchmarking-section-2",
-          "title": "如何解释复杂度"
+          "id": "benchmarking-concept-2",
+          "title": "同一任务、两种实现",
+          "anchor": "concept-2",
+          "url": "/go/benchmarking#concept-2"
         },
         {
-          "id": "benchmarking-section-3",
-          "title": "可复现比较"
+          "id": "benchmarking-concept-3",
+          "title": "如何解释复杂度",
+          "anchor": "concept-3",
+          "url": "/go/benchmarking#concept-3"
         },
         {
-          "id": "benchmarking-section-4",
-          "title": "学习实验与判定"
+          "id": "benchmarking-measurements",
+          "title": "看一组真实测量",
+          "anchor": "measurements",
+          "url": "/go/benchmarking#measurements"
+        },
+        {
+          "id": "benchmarking-concept-4",
+          "title": "可复现比较",
+          "anchor": "concept-4",
+          "url": "/go/benchmarking#concept-4"
+        },
+        {
+          "id": "benchmarking-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/benchmarking#lab"
         }
       ],
       "datasets": [
-        "benchmark-sizes"
+        "benchmark-sizes",
+        "join-benchmark"
       ],
       "exercises": [
         {
@@ -1359,7 +2244,20 @@
           "kind": "chapter",
           "url": "/go/benchmarking#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "可信计时、输入规模、分配统计与结果比较。",
+        "学习实验与判定"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://pkg.go.dev/golang.org/x/perf/cmd/benchstat",
+        "https://pkg.go.dev/testing#hdr-Benchmarks"
+      ],
+      "topicTargets": {
+        "Benchmarks": "concept-2"
+      }
     },
     {
       "id": "cli",
@@ -1385,24 +2283,40 @@
       ],
       "lessons": [
         {
-          "id": "cli-section-1",
-          "title": "什么情况从 flag 升级"
+          "id": "cli-concept-1",
+          "title": "命令框架只组织程序入口",
+          "anchor": "concept-1",
+          "url": "/go/cli#concept-1"
         },
         {
-          "id": "cli-section-2",
-          "title": "Cobra 的完整最小入口"
+          "id": "cli-concept-2",
+          "title": "什么情况从 flag 升级",
+          "anchor": "concept-2",
+          "url": "/go/cli#concept-2"
         },
         {
-          "id": "cli-section-3",
-          "title": "urfave/cli 的对应职责"
+          "id": "cli-concept-3",
+          "title": "Cobra 的完整最小入口",
+          "anchor": "concept-3",
+          "url": "/go/cli#concept-3"
         },
         {
-          "id": "cli-section-4",
-          "title": "Bubble Tea：事件驱动而非循环打印"
+          "id": "cli-concept-4",
+          "title": "urfave/cli 的对应职责",
+          "anchor": "concept-4",
+          "url": "/go/cli#concept-4"
         },
         {
-          "id": "cli-section-5",
-          "title": "学习实验与判定"
+          "id": "cli-concept-5",
+          "title": "Bubble Tea：事件驱动而非循环打印",
+          "anchor": "concept-5",
+          "url": "/go/cli#concept-5"
+        },
+        {
+          "id": "cli-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/cli#lab"
         }
       ],
       "datasets": [],
@@ -1412,7 +2326,21 @@
           "kind": "chapter",
           "url": "/go/cli#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "Cobra、urfave/cli 与 Bubble Tea 的接口和选型。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [],
+      "topicTargets": {
+        "Ecosystem & Popular Libraries": "concept-1",
+        "Building CLIs": "concept-1",
+        "Cobra": "concept-3",
+        "urfave/cli": "concept-4",
+        "bubbletea": "concept-5"
+      }
     },
     {
       "id": "web",
@@ -1440,36 +2368,58 @@
       ],
       "lessons": [
         {
-          "id": "web-section-1",
-          "title": "最小 HTTP 服务"
+          "id": "web-concept-1",
+          "title": "请求从协议边界进入业务",
+          "anchor": "concept-1",
+          "url": "/go/web#concept-1"
         },
         {
-          "id": "web-section-2",
-          "title": "请求处理的顺序"
+          "id": "web-concept-2",
+          "title": "最小 HTTP 服务",
+          "anchor": "concept-2",
+          "url": "/go/web#concept-2"
         },
         {
-          "id": "web-section-3",
-          "title": "常用接口约定"
+          "id": "web-concept-3",
+          "title": "请求处理的顺序",
+          "anchor": "concept-3",
+          "url": "/go/web#concept-3"
         },
         {
-          "id": "web-section-4",
-          "title": "中间件与生命周期"
+          "id": "web-concept-4",
+          "title": "常用接口约定",
+          "anchor": "concept-4",
+          "url": "/go/web#concept-4"
         },
         {
-          "id": "web-section-5",
-          "title": "框架节点逐项对照"
+          "id": "web-concept-5",
+          "title": "中间件与生命周期",
+          "anchor": "concept-5",
+          "url": "/go/web#concept-5"
         },
         {
-          "id": "web-section-6",
-          "title": "一个 Gin 路由怎样保持职责清楚"
+          "id": "web-concept-6",
+          "title": "框架节点逐项对照",
+          "anchor": "concept-6",
+          "url": "/go/web#concept-6"
         },
         {
-          "id": "web-section-7",
-          "title": "路由、中间件与响应提交"
+          "id": "web-concept-7",
+          "title": "一个 Gin 路由怎样保持职责清楚",
+          "anchor": "concept-7",
+          "url": "/go/web#concept-7"
         },
         {
-          "id": "web-section-8",
-          "title": "练习与验收"
+          "id": "web-concept-8",
+          "title": "路由、中间件与响应提交",
+          "anchor": "concept-8",
+          "url": "/go/web#concept-8"
+        },
+        {
+          "id": "web-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/web#lab"
         }
       ],
       "datasets": [],
@@ -1479,17 +2429,39 @@
           "kind": "chapter",
           "url": "/go/web#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "请求边界与 Gin、Echo、Fiber、Beego 的差异。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/net/http#ServeMux"
+      ],
+      "topicTargets": {
+        "Web Development": "concept-1",
+        "net/http (standard)": "concept-2",
+        "Frameworks (Optional)": "concept-6",
+        "gin": "concept-6",
+        "echo": "concept-6",
+        "fiber": "concept-6",
+        "beego": "concept-6"
+      }
     },
     {
-      "id": "http",
-      "title": "HTTP 客户端、超时与重试",
+      "id": "ecosystem",
+      "title": "gRPC 与 Protocol Buffers",
       "group": "应用生态",
-      "summary": "服务章节的延伸：连接复用、有限重试与本地验证。",
+      "summary": "契约、生成、状态码、Deadline 与流式 RPC。",
       "prerequisites": [
-        "web"
+        "modules",
+        "web",
+        "context"
       ],
-      "roadmapTopics": [],
+      "roadmapTopics": [
+        "gRPC & Protocol Buffers"
+      ],
       "courses": [
         "official",
         "schwarz",
@@ -1497,38 +2469,60 @@
       ],
       "lessons": [
         {
-          "id": "http-section-1",
-          "title": "复用 Client，传递 Context"
+          "id": "ecosystem-concept-1",
+          "title": "协议契约、生成代码与业务实现",
+          "anchor": "concept-1",
+          "url": "/go/ecosystem#concept-1"
         },
         {
-          "id": "http-section-2",
-          "title": "分别控制哪些时间"
+          "id": "ecosystem-concept-2",
+          "title": "定义契约与生成路径",
+          "anchor": "concept-2",
+          "url": "/go/ecosystem#concept-2"
         },
         {
-          "id": "http-section-3",
-          "title": "重试不是“失败就再来一次”"
+          "id": "ecosystem-concept-3",
+          "title": "服务实现与错误映射",
+          "anchor": "concept-3",
+          "url": "/go/ecosystem#concept-3"
         },
         {
-          "id": "http-section-4",
-          "title": "可验证的调用矩阵"
+          "id": "ecosystem-concept-4",
+          "title": "兼容性：编号、存在性与枚举",
+          "anchor": "concept-4",
+          "url": "/go/ecosystem#concept-4"
         },
         {
-          "id": "http-section-5",
-          "title": "Transport 与请求体复用"
+          "id": "ecosystem-concept-5",
+          "title": "流式 RPC 与回压",
+          "anchor": "concept-5",
+          "url": "/go/ecosystem#concept-5"
         },
         {
-          "id": "http-section-6",
-          "title": "练习与验收"
+          "id": "ecosystem-lab",
+          "title": "测试与学习实验",
+          "anchor": "lab",
+          "url": "/go/ecosystem#lab"
         }
       ],
       "datasets": [],
       "exercises": [
         {
-          "id": "http-lab",
+          "id": "ecosystem-lab",
           "kind": "chapter",
-          "url": "/go/http#lab"
+          "url": "/go/ecosystem#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "契约、生成、状态码、Deadline 与流式 RPC。",
+        "测试与学习实验"
+      ],
+      "diagrams": 1,
+      "officialSources": [],
+      "topicTargets": {
+        "gRPC & Protocol Buffers": "concept-2"
+      }
     },
     {
       "id": "databases",
@@ -1551,36 +2545,58 @@
       ],
       "lessons": [
         {
-          "id": "databases-section-1",
-          "title": "SQL 基础先于 ORM"
+          "id": "databases-concept-1",
+          "title": "连接、约束和事务分别保护什么",
+          "anchor": "concept-1",
+          "url": "/go/databases#concept-1"
         },
         {
-          "id": "databases-section-2",
-          "title": "参数化查询与结果关闭"
+          "id": "databases-concept-2",
+          "title": "SQL 基础先于 ORM",
+          "anchor": "concept-2",
+          "url": "/go/databases#concept-2"
         },
         {
-          "id": "databases-section-3",
-          "title": "一次事务内完成一致性操作"
+          "id": "databases-concept-3",
+          "title": "参数化查询与结果关闭",
+          "anchor": "concept-3",
+          "url": "/go/databases#concept-3"
         },
         {
-          "id": "databases-section-4",
-          "title": "迁移、分页与测试"
+          "id": "databases-concept-4",
+          "title": "一次事务内完成一致性操作",
+          "anchor": "concept-4",
+          "url": "/go/databases#concept-4"
         },
         {
-          "id": "databases-section-5",
-          "title": "pgx 原生连接池与 database/sql 选择"
+          "id": "databases-concept-5",
+          "title": "迁移、分页与测试",
+          "anchor": "concept-5",
+          "url": "/go/databases#concept-5"
         },
         {
-          "id": "databases-section-6",
-          "title": "GORM 的明确查询与错误"
+          "id": "databases-concept-6",
+          "title": "pgx 原生连接池与 database/sql 选择",
+          "anchor": "concept-6",
+          "url": "/go/databases#concept-6"
         },
         {
-          "id": "databases-section-7",
-          "title": "N+1、执行计划和数据库约束"
+          "id": "databases-concept-7",
+          "title": "GORM 的明确查询与错误",
+          "anchor": "concept-7",
+          "url": "/go/databases#concept-7"
         },
         {
-          "id": "databases-section-8",
-          "title": "练习与验收"
+          "id": "databases-concept-8",
+          "title": "N+1、执行计划和数据库约束",
+          "anchor": "concept-8",
+          "url": "/go/databases#concept-8"
+        },
+        {
+          "id": "databases-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/databases#lab"
         }
       ],
       "datasets": [],
@@ -1590,111 +2606,322 @@
           "kind": "chapter",
           "url": "/go/databases#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "数据库查询、事务、约束、迁移和 ORM 边界。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/database/sql",
+        "https://go.dev/doc/database/execute-transactions"
+      ],
+      "topicTargets": {
+        "ORMs & DB Access": "concept-2",
+        "pgx": "concept-6",
+        "GORM": "concept-7"
+      }
     },
     {
-      "id": "ecosystem",
-      "title": "gRPC 与 Protocol Buffers",
-      "group": "应用生态",
-      "summary": "契约、生成、状态码、Deadline 与流式 RPC。",
+      "id": "logging",
+      "title": "结构化日志、slog、Zap 与 Zerolog",
+      "summary": "把事件、字段、等级和输出责任组织成可检索日志。",
       "prerequisites": [
-        "modules",
-        "web",
-        "context"
+        "io",
+        "web"
       ],
       "roadmapTopics": [
-        "gRPC & Protocol Buffers"
+        "Logging",
+        "Zerolog",
+        "Zap"
       ],
       "courses": [
-        "official",
-        "schwarz",
-        "grider"
+        "official"
       ],
       "lessons": [
         {
-          "id": "ecosystem-section-1",
-          "title": "定义契约与生成路径"
+          "id": "logging-concept-1",
+          "title": "事件、上下文与输出",
+          "anchor": "concept-1",
+          "url": "/go/logging#concept-1"
         },
         {
-          "id": "ecosystem-section-2",
-          "title": "服务实现与错误映射"
+          "id": "logging-concept-2",
+          "title": "标准库起点：结构化记录",
+          "anchor": "concept-2",
+          "url": "/go/logging#concept-2"
         },
         {
-          "id": "ecosystem-section-3",
-          "title": "兼容性：编号、存在性与枚举"
+          "id": "logging-concept-3",
+          "title": "Zap 与 Zerolog 的具体使用",
+          "anchor": "concept-3",
+          "url": "/go/logging#concept-3"
         },
         {
-          "id": "ecosystem-section-4",
-          "title": "流式 RPC 与回压"
+          "id": "logging-concept-4",
+          "title": "等级来自处理语义",
+          "anchor": "concept-4",
+          "url": "/go/logging#concept-4"
         },
         {
-          "id": "ecosystem-section-5",
-          "title": "测试与学习实验"
+          "id": "logging-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/logging#lab"
         }
       ],
       "datasets": [],
       "exercises": [
         {
-          "id": "ecosystem-lab",
+          "id": "logging-lab",
           "kind": "chapter",
-          "url": "/go/ecosystem#lab"
+          "url": "/go/logging#lab"
         }
-      ]
+      ],
+      "group": "应用生态",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "把事件、字段、等级和输出责任组织成可检索日志。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/log/slog"
+      ],
+      "topicTargets": {
+        "Logging": "concept-3",
+        "Zerolog": "concept-3",
+        "Zap": "concept-3"
+      }
     },
     {
-      "id": "logging-realtime",
-      "title": "日志与实时通信生态",
-      "group": "应用生态",
-      "summary": "slog、Zap、Zerolog、Melody 和 Centrifugo。",
+      "id": "realtime",
+      "title": "WebSocket、Melody 与 Centrifugo",
+      "summary": "以连接生命周期、授权和背压解释实时通信方案。",
       "prerequisites": [
         "web",
-        "channels"
+        "channels",
+        "context"
       ],
       "roadmapTopics": [
-        "slog",
-        "Logging",
-        "Zerolog",
-        "Zap",
         "Realtime Communication",
         "Melody",
         "Centrifugo"
       ],
       "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "realtime-concept-1",
+          "title": "一个连接的完整路径",
+          "anchor": "concept-1",
+          "url": "/go/realtime#concept-1"
+        },
+        {
+          "id": "realtime-concept-2",
+          "title": "WebSocket：连接是一段生命周期",
+          "anchor": "concept-2",
+          "url": "/go/realtime#concept-2"
+        },
+        {
+          "id": "realtime-concept-3",
+          "title": "背压和恢复要怎样设计",
+          "anchor": "concept-3",
+          "url": "/go/realtime#concept-3"
+        },
+        {
+          "id": "realtime-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/realtime#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "realtime-lab",
+          "kind": "chapter",
+          "url": "/go/realtime#lab"
+        }
+      ],
+      "group": "应用生态",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "以连接生命周期、授权和背压解释实时通信方案。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 2,
+      "officialSources": [],
+      "topicTargets": {
+        "Realtime Communication": "concept-2",
+        "Melody": "concept-2",
+        "Centrifugo": "concept-2"
+      }
+    },
+    {
+      "id": "http",
+      "title": "HTTP 客户端、超时与重试",
+      "group": "应用生态",
+      "summary": "服务章节的延伸：连接复用、有限重试与本地验证。",
+      "prerequisites": [
+        "web"
+      ],
+      "roadmapTopics": [],
+      "courses": [
         "official",
         "schwarz",
         "grider"
       ],
       "lessons": [
         {
-          "id": "logging-realtime-section-1",
-          "title": "slog：稳定事件与字段"
+          "id": "http-concept-1",
+          "title": "一次调用同时有时间预算和数据边界",
+          "anchor": "concept-1",
+          "url": "/go/http#concept-1"
         },
         {
-          "id": "logging-realtime-section-2",
-          "title": "Zap 与 Zerolog 的具体使用"
+          "id": "http-concept-2",
+          "title": "复用 Client，传递 Context",
+          "anchor": "concept-2",
+          "url": "/go/http#concept-2"
         },
         {
-          "id": "logging-realtime-section-3",
-          "title": "WebSocket：连接是一段生命周期"
+          "id": "http-concept-3",
+          "title": "分别控制哪些时间",
+          "anchor": "concept-3",
+          "url": "/go/http#concept-3"
         },
         {
-          "id": "logging-realtime-section-4",
-          "title": "学习实验与判定"
+          "id": "http-concept-4",
+          "title": "重试不是“失败就再来一次”",
+          "anchor": "concept-4",
+          "url": "/go/http#concept-4"
+        },
+        {
+          "id": "http-concept-5",
+          "title": "可验证的调用矩阵",
+          "anchor": "concept-5",
+          "url": "/go/http#concept-5"
+        },
+        {
+          "id": "http-concept-6",
+          "title": "Transport 与请求体复用",
+          "anchor": "concept-6",
+          "url": "/go/http#concept-6"
+        },
+        {
+          "id": "http-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/http#lab"
         }
       ],
       "datasets": [],
       "exercises": [
         {
-          "id": "logging-realtime-lab",
+          "id": "http-lab",
           "kind": "chapter",
-          "url": "/go/logging-realtime#lab"
+          "url": "/go/http#lab"
         }
-      ]
+      ],
+      "kind": "extension",
+      "learningOutcomes": [
+        "服务章节的延伸：连接复用、有限重试与本地验证。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/net/http"
+      ],
+      "topicTargets": {}
+    },
+    {
+      "id": "commands",
+      "title": "go 命令与工具工作流",
+      "summary": "区分运行、构建、安装、依赖整理、缓存与文档查询。",
+      "prerequisites": [
+        "toolchain",
+        "modules"
+      ],
+      "roadmapTopics": [
+        "Core Go Commands",
+        "go run",
+        "go build",
+        "go install",
+        "go fmt",
+        "go mod",
+        "go test",
+        "go clean",
+        "go doc",
+        "go version"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "commands-concept-1",
+          "title": "从修改源码到得到产物",
+          "anchor": "concept-1",
+          "url": "/go/commands#concept-1"
+        },
+        {
+          "id": "commands-concept-2",
+          "title": "get、install 与 run 的边界",
+          "anchor": "concept-2",
+          "url": "/go/commands#concept-2"
+        },
+        {
+          "id": "commands-concept-3",
+          "title": "测试缓存与下载缓存",
+          "anchor": "concept-3",
+          "url": "/go/commands#concept-3"
+        },
+        {
+          "id": "commands-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/commands#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "commands-lab",
+          "kind": "chapter",
+          "url": "/go/commands#lab"
+        }
+      ],
+      "group": "工具链与工具",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "区分运行、构建、安装、依赖整理、缓存与文档查询。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/cmd/go",
+        "https://go.dev/doc/modules/managing-dependencies"
+      ],
+      "topicTargets": {
+        "Core Go Commands": "concept-1",
+        "go run": "concept-1",
+        "go build": "concept-1",
+        "go install": "concept-1",
+        "go fmt": "concept-1",
+        "go mod": "concept-1",
+        "go test": "concept-1",
+        "go clean": "concept-1",
+        "go doc": "concept-1",
+        "go version": "concept-1"
+      }
     },
     {
       "id": "quality",
       "title": "静态分析、Linter 与漏洞检查",
-      "group": "工具链与交付",
+      "group": "工具链与工具",
       "summary": "vet、goimports、revive、Staticcheck、golangci-lint 和 govulncheck。",
       "prerequisites": [
         "testing",
@@ -1702,7 +2929,6 @@
       ],
       "roadmapTopics": [
         "Go Toolchain and Tools",
-        "Core Go Commands",
         "Code Quality and Analysis",
         "go vet",
         "goimports",
@@ -1718,28 +2944,46 @@
       ],
       "lessons": [
         {
-          "id": "quality-section-1",
-          "title": "基础质量流程与具体失败"
+          "id": "quality-concept-1",
+          "title": "每种工具负责一类证据",
+          "anchor": "concept-1",
+          "url": "/go/quality#concept-1"
         },
         {
-          "id": "quality-section-2",
-          "title": "goimports：整理导入"
+          "id": "quality-concept-2",
+          "title": "基础质量流程与具体失败",
+          "anchor": "concept-2",
+          "url": "/go/quality#concept-2"
         },
         {
-          "id": "quality-section-3",
-          "title": "三类 Linter 节点"
+          "id": "quality-concept-3",
+          "title": "goimports：整理导入",
+          "anchor": "concept-3",
+          "url": "/go/quality#concept-3"
         },
         {
-          "id": "quality-section-4",
-          "title": "govulncheck：依赖和调用路径"
+          "id": "quality-concept-4",
+          "title": "三类 Linter 节点",
+          "anchor": "concept-4",
+          "url": "/go/quality#concept-4"
         },
         {
-          "id": "quality-section-5",
-          "title": "工具失败应怎样处理"
+          "id": "quality-concept-5",
+          "title": "govulncheck：依赖和调用路径",
+          "anchor": "concept-5",
+          "url": "/go/quality#concept-5"
         },
         {
-          "id": "quality-section-6",
-          "title": "学习实验与判定"
+          "id": "quality-concept-6",
+          "title": "工具失败应怎样处理",
+          "anchor": "concept-6",
+          "url": "/go/quality#concept-6"
+        },
+        {
+          "id": "quality-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/quality#lab"
         }
       ],
       "datasets": [],
@@ -1749,12 +2993,34 @@
           "kind": "chapter",
           "url": "/go/quality#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "vet、goimports、revive、Staticcheck、golangci-lint 和 govulncheck。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/golang.org/x/tools/cmd/goimports",
+        "https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck"
+      ],
+      "topicTargets": {
+        "Go Toolchain and Tools": "concept-1",
+        "Code Quality and Analysis": "concept-1",
+        "go vet": "concept-2",
+        "goimports": "concept-3",
+        "Linters": "concept-4",
+        "revive": "concept-4",
+        "staticcheck": "concept-4",
+        "golangci-lint": "concept-4",
+        "Security": "concept-5",
+        "govulncheck": "concept-5"
+      }
     },
     {
       "id": "generation",
       "title": "代码生成与构建约束",
-      "group": "工具链与交付",
+      "group": "工具链与工具",
       "summary": "go generate、工具版本、build tags 与平台文件。",
       "prerequisites": [
         "modules"
@@ -1762,28 +3028,41 @@
       "roadmapTopics": [
         "Code Generation / Build Tags",
         "go generate",
-        "Build Tags",
-        "Build Constraints & Tags"
+        "Build Tags"
       ],
       "courses": [
         "official"
       ],
       "lessons": [
         {
-          "id": "generation-section-1",
-          "title": "go generate 是显式命令"
+          "id": "generation-concept-1",
+          "title": "生成不是编译时自动发生的步骤",
+          "anchor": "concept-1",
+          "url": "/go/generation#concept-1"
         },
         {
-          "id": "generation-section-2",
-          "title": "不依赖外部工具的生成实验"
+          "id": "generation-concept-2",
+          "title": "go generate 是显式命令",
+          "anchor": "concept-2",
+          "url": "/go/generation#concept-2"
         },
         {
-          "id": "generation-section-3",
-          "title": "build tags 与平台文件"
+          "id": "generation-concept-3",
+          "title": "不依赖外部工具的生成实验",
+          "anchor": "concept-3",
+          "url": "/go/generation#concept-3"
         },
         {
-          "id": "generation-section-4",
-          "title": "学习实验与判定"
+          "id": "generation-concept-4",
+          "title": "build tags 与平台文件",
+          "anchor": "concept-4",
+          "url": "/go/generation#concept-4"
+        },
+        {
+          "id": "generation-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/generation#lab"
         }
       ],
       "datasets": [],
@@ -1793,12 +3072,27 @@
           "kind": "chapter",
           "url": "/go/generation#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "go generate、工具版本、build tags 与平台文件。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/blog/generate",
+        "https://pkg.go.dev/cmd/go#hdr-Build_constraints"
+      ],
+      "topicTargets": {
+        "Code Generation / Build Tags": "concept-2",
+        "go generate": "concept-2",
+        "Build Tags": "concept-4"
+      }
     },
     {
       "id": "performance",
       "title": "pprof、Trace 与调试",
-      "group": "工具链与交付",
+      "group": "工具链与工具",
       "summary": "按现象选择 Profile、Trace、Delve 和 race。",
       "prerequisites": [
         "benchmarking",
@@ -1815,36 +3109,58 @@
       ],
       "lessons": [
         {
-          "id": "performance-section-1",
-          "title": "从可复现问题开始"
+          "id": "performance-concept-1",
+          "title": "先从现象选择观测工具",
+          "anchor": "concept-1",
+          "url": "/go/performance#concept-1"
         },
         {
-          "id": "performance-section-2",
-          "title": "可运行的 Benchmark"
+          "id": "performance-concept-2",
+          "title": "从可复现问题开始",
+          "anchor": "concept-2",
+          "url": "/go/performance#concept-2"
         },
         {
-          "id": "performance-section-3",
-          "title": "逃逸、内存与 GC"
+          "id": "performance-concept-3",
+          "title": "可运行的 Benchmark",
+          "anchor": "concept-3",
+          "url": "/go/performance#concept-3"
         },
         {
-          "id": "performance-section-4",
-          "title": "在线诊断要有边界"
+          "id": "performance-concept-4",
+          "title": "逃逸、内存与 GC",
+          "anchor": "concept-4",
+          "url": "/go/performance#concept-4"
         },
         {
-          "id": "performance-section-5",
-          "title": "从 Profile 到修复的具体链路"
+          "id": "performance-concept-5",
+          "title": "在线诊断要有边界",
+          "anchor": "concept-5",
+          "url": "/go/performance#concept-5"
         },
         {
-          "id": "performance-section-6",
-          "title": "Trace 的调度与等待实验"
+          "id": "performance-concept-6",
+          "title": "从 Profile 到修复的具体链路",
+          "anchor": "concept-6",
+          "url": "/go/performance#concept-6"
         },
         {
-          "id": "performance-section-7",
-          "title": "Delve 与错误重现"
+          "id": "performance-concept-7",
+          "title": "Trace 的调度与等待实验",
+          "anchor": "concept-7",
+          "url": "/go/performance#concept-7"
         },
         {
-          "id": "performance-section-8",
-          "title": "练习与验收"
+          "id": "performance-concept-8",
+          "title": "Delve 与错误重现",
+          "anchor": "concept-8",
+          "url": "/go/performance#concept-8"
+        },
+        {
+          "id": "performance-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/performance#lab"
         }
       ],
       "datasets": [],
@@ -1854,12 +3170,28 @@
           "kind": "chapter",
           "url": "/go/performance#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "按现象选择 Profile、Trace、Delve 和 race。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/diagnostics",
+        "https://go.dev/doc/gc-guide"
+      ],
+      "topicTargets": {
+        "Performance and Debugging": "concept-1",
+        "pprof": "concept-6",
+        "trace": "concept-7",
+        "Race Detector": "concept-8"
+      }
     },
     {
       "id": "deployment",
       "title": "可执行文件、交叉编译与部署",
-      "group": "工具链与交付",
+      "group": "工具链与工具",
       "summary": "平台矩阵、链接参数、配置与运行生命周期。",
       "prerequisites": [
         "modules",
@@ -1869,40 +3201,53 @@
       "roadmapTopics": [
         "Deployment & Tooling",
         "Building Executables",
-        "Cross-compilation",
-        "Compiler & Linker Flags"
+        "Cross-compilation"
       ],
       "courses": [
         "official"
       ],
       "lessons": [
         {
-          "id": "deployment-section-1",
-          "title": "配置先校验再启动"
+          "id": "deployment-concept-1",
+          "title": "产物、配置与运行环境共同构成交付",
+          "anchor": "concept-1",
+          "url": "/go/deployment#concept-1"
         },
         {
-          "id": "deployment-section-2",
-          "title": "构建与平台边界"
+          "id": "deployment-concept-2",
+          "title": "配置先校验再启动",
+          "anchor": "concept-2",
+          "url": "/go/deployment#concept-2"
         },
         {
-          "id": "deployment-section-3",
-          "title": "安全与依赖检查"
+          "id": "deployment-concept-3",
+          "title": "构建与平台边界",
+          "anchor": "concept-3",
+          "url": "/go/deployment#concept-3"
         },
         {
-          "id": "deployment-section-4",
-          "title": "健康、日志与关闭"
+          "id": "deployment-concept-4",
+          "title": "安全与依赖检查",
+          "anchor": "concept-4",
+          "url": "/go/deployment#concept-4"
         },
         {
-          "id": "deployment-section-5",
-          "title": "编译器与链接器参数实验"
+          "id": "deployment-concept-5",
+          "title": "健康、日志与关闭",
+          "anchor": "concept-5",
+          "url": "/go/deployment#concept-5"
         },
         {
-          "id": "deployment-section-6",
-          "title": "发布与回滚的一次演练"
+          "id": "deployment-concept-6",
+          "title": "发布与回滚的一次演练",
+          "anchor": "concept-6",
+          "url": "/go/deployment#concept-6"
         },
         {
-          "id": "deployment-section-7",
-          "title": "练习与验收"
+          "id": "deployment-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/deployment#lab"
         }
       ],
       "datasets": [],
@@ -1912,12 +3257,27 @@
           "kind": "chapter",
           "url": "/go/deployment#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "平台矩阵、链接参数、配置与运行生命周期。",
+        "练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/security/",
+        "https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck"
+      ],
+      "topicTargets": {
+        "Deployment & Tooling": "concept-3",
+        "Building Executables": "concept-3",
+        "Cross-compilation": "concept-3"
+      }
     },
     {
       "id": "memory",
       "title": "逃逸、GC 与内存预算",
-      "group": "运行时与高级主题",
+      "group": "高级主题",
       "summary": "存活集、分配速率、逃逸实验、GOGC 与 GOMEMLIMIT。",
       "prerequisites": [
         "pointers",
@@ -1933,24 +3293,40 @@
       ],
       "lessons": [
         {
-          "id": "memory-section-1",
-          "title": "栈、堆与逃逸实验"
+          "id": "memory-concept-1",
+          "title": "分配、存活与回收是三个时间视角",
+          "anchor": "concept-1",
+          "url": "/go/memory#concept-1"
         },
         {
-          "id": "memory-section-2",
-          "title": "分配速率、存活集与可达性"
+          "id": "memory-concept-2",
+          "title": "栈、堆与逃逸实验",
+          "anchor": "concept-2",
+          "url": "/go/memory#concept-2"
         },
         {
-          "id": "memory-section-3",
-          "title": "GC 的工作与参数"
+          "id": "memory-concept-3",
+          "title": "分配速率、存活集与可达性",
+          "anchor": "concept-3",
+          "url": "/go/memory#concept-3"
         },
         {
-          "id": "memory-section-4",
-          "title": "复用、池与数据布局"
+          "id": "memory-concept-4",
+          "title": "GC 的工作与参数",
+          "anchor": "concept-4",
+          "url": "/go/memory#concept-4"
         },
         {
-          "id": "memory-section-5",
-          "title": "学习实验与判定"
+          "id": "memory-concept-5",
+          "title": "复用、池与数据布局",
+          "anchor": "concept-5",
+          "url": "/go/memory#concept-5"
+        },
+        {
+          "id": "memory-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/memory#lab"
         }
       ],
       "datasets": [],
@@ -1960,12 +3336,26 @@
           "kind": "chapter",
           "url": "/go/memory#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "存活集、分配速率、逃逸实验、GOGC 与 GOMEMLIMIT。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/doc/gc-guide"
+      ],
+      "topicTargets": {
+        "Advanced Topics": "concept-1",
+        "Memory Mgmt. in Depth": "concept-3",
+        "Escape Analysis": "concept-2"
+      }
     },
     {
       "id": "reflection",
       "title": "反射、类型检查与动态赋值",
-      "group": "运行时与高级主题",
+      "group": "高级主题",
       "summary": "Type/Value、可寻址、可设置、Kind 与 Tag 遍历。",
       "prerequisites": [
         "interfaces",
@@ -1979,24 +3369,40 @@
       ],
       "lessons": [
         {
-          "id": "reflection-section-1",
-          "title": "Type 与 Kind 不一样"
+          "id": "reflection-concept-1",
+          "title": "动态检查从 Type 与 Value 开始",
+          "anchor": "concept-1",
+          "url": "/go/reflection#concept-1"
         },
         {
-          "id": "reflection-section-2",
-          "title": "可运行的字段更新实验"
+          "id": "reflection-concept-2",
+          "title": "Type 与 Kind 不一样",
+          "anchor": "concept-2",
+          "url": "/go/reflection#concept-2"
         },
         {
-          "id": "reflection-section-3",
-          "title": "一条通用赋值链应检查什么"
+          "id": "reflection-concept-3",
+          "title": "可运行的字段更新实验",
+          "anchor": "concept-3",
+          "url": "/go/reflection#concept-3"
         },
         {
-          "id": "reflection-section-4",
-          "title": "方法调用与接口"
+          "id": "reflection-concept-4",
+          "title": "一条通用赋值链应检查什么",
+          "anchor": "concept-4",
+          "url": "/go/reflection#concept-4"
         },
         {
-          "id": "reflection-section-5",
-          "title": "学习实验与判定"
+          "id": "reflection-concept-5",
+          "title": "方法调用与接口",
+          "anchor": "concept-5",
+          "url": "/go/reflection#concept-5"
+        },
+        {
+          "id": "reflection-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/reflection#lab"
         }
       ],
       "datasets": [],
@@ -2006,19 +3412,165 @@
           "kind": "chapter",
           "url": "/go/reflection#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "Type/Value、可寻址、可设置、Kind 与 Tag 遍历。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://go.dev/blog/laws-of-reflection",
+        "https://pkg.go.dev/reflect"
+      ],
+      "topicTargets": {
+        "Reflection": "concept-3"
+      }
     },
     {
-      "id": "unsafe-cgo",
-      "title": "Unsafe、cgo 与边界约束",
-      "group": "运行时与高级主题",
-      "summary": "布局、指针生命周期、C 内存与跨平台构建。",
+      "id": "unsafe",
+      "title": "Unsafe、内存布局与指针约束",
+      "summary": "理解布局观察与不安全转换的边界，优先保持安全语义。",
       "prerequisites": [
         "memory",
+        "pointers"
+      ],
+      "roadmapTopics": [
+        "Unsafe Package"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "unsafe-concept-1",
+          "title": "unsafe 观察浅层布局",
+          "anchor": "concept-1",
+          "url": "/go/unsafe#concept-1"
+        },
+        {
+          "id": "unsafe-concept-2",
+          "title": "浅层大小不等于全部内存",
+          "anchor": "concept-2",
+          "url": "/go/unsafe#concept-2"
+        },
+        {
+          "id": "unsafe-concept-3",
+          "title": "Pointer 与 uintptr 的关键区别",
+          "anchor": "concept-3",
+          "url": "/go/unsafe#concept-3"
+        },
+        {
+          "id": "unsafe-concept-4",
+          "title": "先把需求转成安全操作",
+          "anchor": "concept-4",
+          "url": "/go/unsafe#concept-4"
+        },
+        {
+          "id": "unsafe-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/unsafe#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "unsafe-lab",
+          "kind": "chapter",
+          "url": "/go/unsafe#lab"
+        }
+      ],
+      "group": "高级主题",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解布局观察与不安全转换的边界，优先保持安全语义。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/unsafe",
+        "https://go.dev/ref/spec#Package_unsafe"
+      ],
+      "topicTargets": {
+        "Unsafe Package": "concept-3"
+      }
+    },
+    {
+      "id": "build-advanced",
+      "title": "构建约束、编译器与链接器参数",
+      "summary": "理解条件编译、优化诊断和产物信息的分工。",
+      "prerequisites": [
+        "commands",
         "generation"
       ],
       "roadmapTopics": [
-        "Unsafe Package",
+        "Build Constraints & Tags",
+        "Compiler & Linker Flags"
+      ],
+      "courses": [
+        "official"
+      ],
+      "lessons": [
+        {
+          "id": "build-advanced-concept-1",
+          "title": "构建约束决定文件是否参与编译",
+          "anchor": "concept-1",
+          "url": "/go/build-advanced#concept-1"
+        },
+        {
+          "id": "build-advanced-concept-2",
+          "title": "两份互补实现的完整实验",
+          "anchor": "concept-2",
+          "url": "/go/build-advanced#concept-2"
+        },
+        {
+          "id": "build-advanced-concept-3",
+          "title": "编译器参数与链接器参数",
+          "anchor": "concept-3",
+          "url": "/go/build-advanced#concept-3"
+        },
+        {
+          "id": "build-advanced-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/build-advanced#lab"
+        }
+      ],
+      "datasets": [],
+      "exercises": [
+        {
+          "id": "build-advanced-lab",
+          "kind": "chapter",
+          "url": "/go/build-advanced#lab"
+        }
+      ],
+      "group": "高级主题",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "理解条件编译、优化诊断和产物信息的分工。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/cmd/go#hdr-Build_constraints",
+        "https://pkg.go.dev/cmd/compile",
+        "https://pkg.go.dev/cmd/link"
+      ],
+      "topicTargets": {
+        "Build Constraints & Tags": "concept-1",
+        "Compiler & Linker Flags": "concept-3"
+      }
+    },
+    {
+      "id": "cgo",
+      "title": "cgo、C 内存与跨平台构建",
+      "summary": "把 Go/C 调用、内存所有权、链接与工具链条件说清楚。",
+      "prerequisites": [
+        "unsafe",
+        "build-advanced"
+      ],
+      "roadmapTopics": [
         "CGO Basics"
       ],
       "courses": [
@@ -2026,43 +3578,62 @@
       ],
       "lessons": [
         {
-          "id": "unsafe-cgo-section-1",
-          "title": "unsafe 观察浅层布局"
+          "id": "cgo-concept-1",
+          "title": "cgo 最小实验",
+          "anchor": "concept-1",
+          "url": "/go/cgo#concept-1"
         },
         {
-          "id": "unsafe-cgo-section-2",
-          "title": "Pointer 与 uintptr 的关键区别"
+          "id": "cgo-concept-2",
+          "title": "谁分配，谁释放",
+          "anchor": "concept-2",
+          "url": "/go/cgo#concept-2"
         },
         {
-          "id": "unsafe-cgo-section-3",
-          "title": "cgo 最小实验"
+          "id": "cgo-concept-3",
+          "title": "C 内存与 Go 指针规则",
+          "anchor": "concept-3",
+          "url": "/go/cgo#concept-3"
         },
         {
-          "id": "unsafe-cgo-section-4",
-          "title": "C 内存与 Go 指针规则"
+          "id": "cgo-concept-4",
+          "title": "构建与动态库",
+          "anchor": "concept-4",
+          "url": "/go/cgo#concept-4"
         },
         {
-          "id": "unsafe-cgo-section-5",
-          "title": "构建与动态库"
-        },
-        {
-          "id": "unsafe-cgo-section-6",
-          "title": "学习实验与判定"
+          "id": "cgo-lab",
+          "title": "动手练习与解题线索",
+          "anchor": "lab",
+          "url": "/go/cgo#lab"
         }
       ],
       "datasets": [],
       "exercises": [
         {
-          "id": "unsafe-cgo-lab",
+          "id": "cgo-lab",
           "kind": "chapter",
-          "url": "/go/unsafe-cgo#lab"
+          "url": "/go/cgo#lab"
         }
-      ]
+      ],
+      "group": "高级主题",
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "把 Go/C 调用、内存所有权、链接与工具链条件说清楚。",
+        "动手练习与解题线索"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/cmd/cgo"
+      ],
+      "topicTargets": {
+        "CGO Basics": "concept-1"
+      }
     },
     {
       "id": "plugins",
       "title": "插件与动态加载",
-      "group": "运行时与高级主题",
+      "group": "高级主题",
       "summary": "buildmode=plugin、ABI 限制与进程通信替代方案。",
       "prerequisites": [
         "interfaces",
@@ -2077,20 +3648,34 @@
       ],
       "lessons": [
         {
-          "id": "plugins-section-1",
-          "title": "两个模块目录的最小实验"
+          "id": "plugins-concept-1",
+          "title": "动态加载仍然需要一份兼容契约",
+          "anchor": "concept-1",
+          "url": "/go/plugins#concept-1"
         },
         {
-          "id": "plugins-section-2",
-          "title": "Symbol 与生命周期"
+          "id": "plugins-concept-2",
+          "title": "两个模块目录的最小实验",
+          "anchor": "concept-2",
+          "url": "/go/plugins#concept-2"
         },
         {
-          "id": "plugins-section-3",
-          "title": "扩展点的替代方案"
+          "id": "plugins-concept-3",
+          "title": "Symbol 与生命周期",
+          "anchor": "concept-3",
+          "url": "/go/plugins#concept-3"
         },
         {
-          "id": "plugins-section-4",
-          "title": "学习实验与判定"
+          "id": "plugins-concept-4",
+          "title": "扩展点的替代方案",
+          "anchor": "concept-4",
+          "url": "/go/plugins#concept-4"
+        },
+        {
+          "id": "plugins-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/plugins#lab"
         }
       ],
       "datasets": [],
@@ -2100,12 +3685,24 @@
           "kind": "chapter",
           "url": "/go/plugins#lab"
         }
-      ]
+      ],
+      "kind": "roadmap",
+      "learningOutcomes": [
+        "buildmode=plugin、ABI 限制与进程通信替代方案。",
+        "学习实验与判定"
+      ],
+      "diagrams": 1,
+      "officialSources": [
+        "https://pkg.go.dev/plugin"
+      ],
+      "topicTargets": {
+        "Plugins & Dynamic Loading": "concept-2"
+      }
     },
     {
       "id": "project-cli",
       "title": "实战：日志统计 CLI",
-      "group": "项目与学习资料",
+      "group": "综合练习与延伸",
       "summary": "完整源码、合成输入、错误路径与升级任务。",
       "prerequisites": [
         "io",
@@ -2118,32 +3715,52 @@
       ],
       "lessons": [
         {
-          "id": "project-cli-section-1",
-          "title": "需求与输入契约"
+          "id": "project-cli-concept-1",
+          "title": "沿数据流读完整项目",
+          "anchor": "concept-1",
+          "url": "/go/project-cli#concept-1"
         },
         {
-          "id": "project-cli-section-2",
-          "title": "创建项目"
+          "id": "project-cli-concept-2",
+          "title": "需求与输入契约",
+          "anchor": "concept-2",
+          "url": "/go/project-cli#concept-2"
         },
         {
-          "id": "project-cli-section-3",
-          "title": "main.go"
+          "id": "project-cli-concept-3",
+          "title": "创建项目",
+          "anchor": "concept-3",
+          "url": "/go/project-cli#concept-3"
         },
         {
-          "id": "project-cli-section-4",
-          "title": "main_test.go"
+          "id": "project-cli-concept-4",
+          "title": "main.go",
+          "anchor": "concept-4",
+          "url": "/go/project-cli#concept-4"
         },
         {
-          "id": "project-cli-section-5",
-          "title": "运行与结果"
+          "id": "project-cli-concept-5",
+          "title": "main_test.go",
+          "anchor": "concept-5",
+          "url": "/go/project-cli#concept-5"
         },
         {
-          "id": "project-cli-section-6",
-          "title": "与路线节点的关系"
+          "id": "project-cli-concept-6",
+          "title": "运行与结果",
+          "anchor": "concept-6",
+          "url": "/go/project-cli#concept-6"
         },
         {
-          "id": "project-cli-section-7",
-          "title": "扩展与验收"
+          "id": "project-cli-concept-7",
+          "title": "与路线节点的关系",
+          "anchor": "concept-7",
+          "url": "/go/project-cli#concept-7"
+        },
+        {
+          "id": "project-cli-lab",
+          "title": "扩展与验收",
+          "anchor": "lab",
+          "url": "/go/project-cli#lab"
         }
       ],
       "datasets": [
@@ -2156,12 +3773,20 @@
           "kind": "chapter",
           "url": "/go/project-cli#lab"
         }
-      ]
+      ],
+      "kind": "practice",
+      "learningOutcomes": [
+        "完整源码、合成输入、错误路径与升级任务。",
+        "扩展与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [],
+      "topicTargets": {}
     },
     {
       "id": "project-api",
       "title": "实战：任务管理 API",
-      "group": "项目与学习资料",
+      "group": "综合练习与延伸",
       "summary": "完整源码、CRUD、分页、同步与数据库升级任务。",
       "prerequisites": [
         "web",
@@ -2174,36 +3799,58 @@
       ],
       "lessons": [
         {
-          "id": "project-api-section-1",
-          "title": "契约与学习范围"
+          "id": "project-api-concept-1",
+          "title": "请求处理与资源关闭两条线一起阅读",
+          "anchor": "concept-1",
+          "url": "/go/project-api#concept-1"
         },
         {
-          "id": "project-api-section-2",
-          "title": "创建项目"
+          "id": "project-api-concept-2",
+          "title": "契约与学习范围",
+          "anchor": "concept-2",
+          "url": "/go/project-api#concept-2"
         },
         {
-          "id": "project-api-section-3",
-          "title": "main.go"
+          "id": "project-api-concept-3",
+          "title": "创建项目",
+          "anchor": "concept-3",
+          "url": "/go/project-api#concept-3"
         },
         {
-          "id": "project-api-section-4",
-          "title": "main_test.go"
+          "id": "project-api-concept-4",
+          "title": "main.go",
+          "anchor": "concept-4",
+          "url": "/go/project-api#concept-4"
         },
         {
-          "id": "project-api-section-5",
-          "title": "运行与接口体验"
+          "id": "project-api-concept-5",
+          "title": "main_test.go",
+          "anchor": "concept-5",
+          "url": "/go/project-api#concept-5"
         },
         {
-          "id": "project-api-section-6",
-          "title": "为什么这样组织"
+          "id": "project-api-concept-6",
+          "title": "运行与接口体验",
+          "anchor": "concept-6",
+          "url": "/go/project-api#concept-6"
         },
         {
-          "id": "project-api-section-7",
-          "title": "进阶练习与验收"
+          "id": "project-api-concept-7",
+          "title": "为什么这样组织",
+          "anchor": "concept-7",
+          "url": "/go/project-api#concept-7"
         },
         {
-          "id": "project-api-section-8",
-          "title": "按路线推进存储与接口升级"
+          "id": "project-api-lab",
+          "title": "进阶练习与验收",
+          "anchor": "lab",
+          "url": "/go/project-api#lab"
+        },
+        {
+          "id": "project-api-concept-9",
+          "title": "按路线推进存储与接口升级",
+          "anchor": "concept-9",
+          "url": "/go/project-api#concept-9"
         }
       ],
       "datasets": [
@@ -2215,12 +3862,20 @@
           "kind": "chapter",
           "url": "/go/project-api#lab"
         }
-      ]
+      ],
+      "kind": "practice",
+      "learningOutcomes": [
+        "完整源码、CRUD、分页、同步与数据库升级任务。",
+        "进阶练习与验收"
+      ],
+      "diagrams": 1,
+      "officialSources": [],
+      "topicTargets": {}
     },
     {
       "id": "projects",
       "title": "综合实验、数据集与交付",
-      "group": "项目与学习资料",
+      "group": "综合练习与延伸",
       "summary": "贯穿路线的实验清单、输入数据和验收规范。",
       "prerequisites": [
         "project-cli",
@@ -2232,32 +3887,52 @@
       ],
       "lessons": [
         {
-          "id": "projects-section-1",
-          "title": "职责清楚，比层数多更重要"
+          "id": "projects-concept-1",
+          "title": "用阶段产物判断学习进展",
+          "anchor": "concept-1",
+          "url": "/go/projects#concept-1"
         },
         {
-          "id": "projects-section-2",
-          "title": "迭代计划"
+          "id": "projects-concept-2",
+          "title": "职责清楚，比层数多更重要",
+          "anchor": "concept-2",
+          "url": "/go/projects#concept-2"
         },
         {
-          "id": "projects-section-3",
-          "title": "两个项目的检查单"
+          "id": "projects-concept-3",
+          "title": "迭代计划",
+          "anchor": "concept-3",
+          "url": "/go/projects#concept-3"
         },
         {
-          "id": "projects-section-4",
-          "title": "README 应包含什么"
+          "id": "projects-concept-4",
+          "title": "两个项目的检查单",
+          "anchor": "concept-4",
+          "url": "/go/projects#concept-4"
         },
         {
-          "id": "projects-section-5",
-          "title": "贯穿路线的综合实验"
+          "id": "projects-concept-5",
+          "title": "README 应包含什么",
+          "anchor": "concept-5",
+          "url": "/go/projects#concept-5"
         },
         {
-          "id": "projects-section-6",
-          "title": "从两个项目推进到三个里程碑"
+          "id": "projects-concept-6",
+          "title": "贯穿路线的综合实验",
+          "anchor": "concept-6",
+          "url": "/go/projects#concept-6"
         },
         {
-          "id": "projects-section-7",
-          "title": "练习与验收"
+          "id": "projects-concept-7",
+          "title": "从两个项目推进到三个里程碑",
+          "anchor": "concept-7",
+          "url": "/go/projects#concept-7"
+        },
+        {
+          "id": "projects-lab",
+          "title": "练习与验收",
+          "anchor": "lab",
+          "url": "/go/projects#lab"
         }
       ],
       "datasets": [],
@@ -2267,12 +3942,22 @@
           "kind": "chapter",
           "url": "/go/projects#lab"
         }
-      ]
+      ],
+      "kind": "practice",
+      "learningOutcomes": [
+        "贯穿路线的实验清单、输入数据和验收规范。",
+        "练习与验收"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://go.dev/doc/modules/layout"
+      ],
+      "topicTargets": {}
     },
     {
       "id": "resources",
       "title": "课程、开源练习与学习方向",
-      "group": "项目与学习资料",
+      "group": "综合练习与延伸",
       "summary": "课程对应章节、资料版本与后续路线入口。",
       "prerequisites": [],
       "roadmapTopics": [
@@ -2289,24 +3974,40 @@
       ],
       "lessons": [
         {
-          "id": "resources-section-1",
-          "title": "课程与本指南的对应关系"
+          "id": "resources-concept-1",
+          "title": "官方依据、练习课程与后续方向分开使用",
+          "anchor": "concept-1",
+          "url": "/go/resources#concept-1"
         },
         {
-          "id": "resources-section-2",
-          "title": "怎样参考开源材料"
+          "id": "resources-concept-2",
+          "title": "课程与本指南的对应关系",
+          "anchor": "concept-2",
+          "url": "/go/resources#concept-2"
         },
         {
-          "id": "resources-section-3",
-          "title": "GitHub、Go Modules 与 npm 的分工"
+          "id": "resources-concept-3",
+          "title": "怎样参考开源材料",
+          "anchor": "concept-3",
+          "url": "/go/resources#concept-3"
         },
         {
-          "id": "resources-section-4",
-          "title": "后续路线不是 Go 语言必修清单"
+          "id": "resources-concept-4",
+          "title": "GitHub、Go Modules 与 npm 的分工",
+          "anchor": "concept-4",
+          "url": "/go/resources#concept-4"
         },
         {
-          "id": "resources-section-5",
-          "title": "学习实验与判定"
+          "id": "resources-concept-5",
+          "title": "后续路线不是 Go 语言必修清单",
+          "anchor": "concept-5",
+          "url": "/go/resources#concept-5"
+        },
+        {
+          "id": "resources-lab",
+          "title": "学习实验与判定",
+          "anchor": "lab",
+          "url": "/go/resources#lab"
         }
       ],
       "datasets": [],
@@ -2316,7 +4017,26 @@
           "kind": "chapter",
           "url": "/go/resources#lab"
         }
-      ]
+      ],
+      "kind": "practice",
+      "learningOutcomes": [
+        "课程对应章节、资料版本与后续路线入口。",
+        "学习实验与判定"
+      ],
+      "diagrams": 0,
+      "officialSources": [
+        "https://go.dev/doc/tutorial/",
+        "https://go.dev/tour/"
+      ],
+      "topicTargets": {
+        "Related Roadmaps": "concept-5",
+        "Backend Roadmap": "concept-5",
+        "DevOps Roadmap": "concept-5",
+        "Docker Roadmap": "concept-5",
+        "Kubernetes Roadmap": "concept-5",
+        "System Design": "concept-5",
+        "Software Design & Architecture": "concept-5"
+      }
     }
   ],
   "courses": [
@@ -2397,12 +4117,167 @@
       "id": "benchmark-sizes",
       "url": "/go/data/benchmark-sizes.json",
       "description": "统一规模与重复次数，避免一次微基准结论"
+    },
+    {
+      "id": "join-benchmark",
+      "url": "/go/data/join-benchmark.json",
+      "description": "本机五次基准运行与中位数、命令和工具链信息"
     }
   ],
   "extensionFields": {
     "lessons": "已填章节段落；可扩展独立课时路径与预计时长",
     "datasets": "已填相关合成样本 ID；可扩展输入与预期产物",
     "exercises": "已填章节实验入口；可扩展难度、提示和解答路径",
-    "prerequisites": "前置章节 ID，仅按真实依赖建立"
-  }
+    "prerequisites": "前置章节 ID，仅按真实依赖建立",
+    "units": "与路线主干对应的课程单元及其学习任务",
+    "topicTargets": "原路线主题对应的实际正文锚点，每次构建检查是否存在",
+    "officialSources": "语义与 API 的官方依据",
+    "diagrams": "实际图解数量，来自正文",
+    "learningOutcomes": "本节目标与练习入口，随实际内容维护"
+  },
+  "units": [
+    {
+      "id": "unit-1",
+      "title": "语言基础",
+      "sourceTitle": "Language Basics",
+      "outcome": "认识值、容器与控制流，先能解释顺序程序的每一步。",
+      "chapterIds": [
+        "introduction",
+        "toolchain",
+        "variables",
+        "basics",
+        "collections",
+        "strings",
+        "maps",
+        "types",
+        "control-flow",
+        "functions",
+        "pointers"
+      ]
+    },
+    {
+      "id": "unit-2",
+      "title": "方法与接口",
+      "sourceTitle": "Methods and Interfaces",
+      "outcome": "把数据上的操作与使用方需要的行为区分开。",
+      "chapterIds": [
+        "methods",
+        "interfaces"
+      ]
+    },
+    {
+      "id": "unit-3",
+      "title": "泛型",
+      "sourceTitle": "Generics",
+      "outcome": "仅在相同算法需要跨类型复用时引入类型参数。",
+      "chapterIds": [
+        "generics"
+      ]
+    },
+    {
+      "id": "unit-4",
+      "title": "代码组织",
+      "sourceTitle": "Code Organization",
+      "outcome": "把包、模块、依赖版本与发布过程连成一条完整链路。",
+      "chapterIds": [
+        "modules"
+      ]
+    },
+    {
+      "id": "unit-5",
+      "title": "错误处理",
+      "sourceTitle": "Error Handling",
+      "outcome": "让失败成为可识别的返回结果，而不是隐蔽的控制流。",
+      "chapterIds": [
+        "errors"
+      ]
+    },
+    {
+      "id": "unit-6",
+      "title": "并发",
+      "sourceTitle": "Concurrency",
+      "outcome": "先管理任务寿命，再理解通信、同步、取消和并发模式。",
+      "chapterIds": [
+        "concurrency",
+        "channels",
+        "synchronization",
+        "context",
+        "patterns"
+      ]
+    },
+    {
+      "id": "unit-7",
+      "title": "标准库",
+      "sourceTitle": "Standard Library",
+      "outcome": "围绕输入、解析、资源、时间和输出学习通用工具。",
+      "chapterIds": [
+        "io",
+        "standard-library"
+      ]
+    },
+    {
+      "id": "unit-8",
+      "title": "测试与基准",
+      "sourceTitle": "Testing & Benchmarking",
+      "outcome": "把行为写成断言，再用可复现测量回答性能问题。",
+      "chapterIds": [
+        "testing",
+        "benchmarking"
+      ]
+    },
+    {
+      "id": "unit-9",
+      "title": "应用生态",
+      "sourceTitle": "Ecosystem & Popular Libraries",
+      "outcome": "逐项认识路线中的成熟方案，按实际职责选择实现。",
+      "chapterIds": [
+        "cli",
+        "web",
+        "ecosystem",
+        "databases",
+        "logging",
+        "realtime",
+        "http"
+      ]
+    },
+    {
+      "id": "unit-10",
+      "title": "工具链与工具",
+      "sourceTitle": "Go Toolchain and Tools",
+      "outcome": "掌握构建、质量、生成、诊断和部署的完整工作流。",
+      "chapterIds": [
+        "commands",
+        "quality",
+        "generation",
+        "performance",
+        "deployment"
+      ]
+    },
+    {
+      "id": "unit-11",
+      "title": "高级主题",
+      "sourceTitle": "Advanced Topics",
+      "outcome": "在理解类型与运行时后，学习动态能力和平台边界。",
+      "chapterIds": [
+        "memory",
+        "reflection",
+        "unsafe",
+        "build-advanced",
+        "cgo",
+        "plugins"
+      ]
+    },
+    {
+      "id": "unit-12",
+      "title": "综合练习与延伸",
+      "sourceTitle": null,
+      "outcome": "用项目回顾主线，相关路线与课程只作为后续学习入口。",
+      "chapterIds": [
+        "project-cli",
+        "project-api",
+        "projects",
+        "resources"
+      ]
+    }
+  ]
 }
