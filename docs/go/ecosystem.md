@@ -1,10 +1,10 @@
 ---
-title: 29 · gRPC 与 Protocol Buffers
+title: 5.5. gRPC 与 Protocol Buffers
 description: 契约、生成、状态码、Deadline 与流式 RPC。
 pageClass: aip-article
 ---
 
-# 29 · gRPC 与 Protocol Buffers
+# 5.5. gRPC 与 Protocol Buffers
 
 学习前应能完成：[包、模块、依赖与发布](./modules)、[HTTP 服务与 Web 框架](./web)、[Context、截止时间与取消](./context)。
 

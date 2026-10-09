@@ -1,10 +1,10 @@
 ---
-title: 23 · 表驱动、替身与 HTTP 测试
+title: 4.3. 表驱动、替身与 HTTP 测试
 description: 隔离、Mock/Stub、httptest、覆盖率与 Fuzz。
 pageClass: aip-article
 ---
 
-# 23 · 表驱动、替身与 HTTP 测试
+# 4.3. 表驱动、替身与 HTTP 测试
 
 学习前应能完成：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
 

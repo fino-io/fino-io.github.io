@@ -1,10 +1,10 @@
 ---
-title: 14 · Async 与 Tokio
+title: 3.2. Async 与 Tokio
 description: 理解 Future 和任务调度，使用 Tokio 处理超时、取消、有界并发和阻塞工作。
 pageClass: aip-article rust-article
 ---
 
-# 14 · Async 与 Tokio
+# 3.2. Async 与 Tokio
 
 本章目标：能解释异步任务何时推进，为等待和资源使用设置边界，避免在运行时工作线程上执行长时间阻塞操作。
 

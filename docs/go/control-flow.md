@@ -1,10 +1,10 @@
 ---
-title: 05 · 条件、循环与控制转移
+title: 1.5. 条件、循环与控制转移
 description: 理解 switch、range、break、continue 与 goto 的边界。
 pageClass: aip-article
 ---
 
-# 05 · 条件、循环与控制转移
+# 1.5. 条件、循环与控制转移
 
 学习前应能完成：[变量、常量、iota 与作用域](./variables)、[基本类型、数值与类型转换](./basics)。
 

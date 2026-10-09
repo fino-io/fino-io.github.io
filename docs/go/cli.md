@@ -1,10 +1,10 @@
 ---
-title: 25 · CLI 与终端界面生态
+title: 5.1. CLI 与终端界面生态
 description: Cobra、urfave/cli 与 Bubble Tea 的接口和选型。
 pageClass: aip-article
 ---
 
-# 25 · CLI 与终端界面生态
+# 5.1. CLI 与终端界面生态
 
 学习前应能完成：[flag、time、regexp 与 embed](./standard-library)、[包、模块、依赖与发布](./modules)、[表驱动、替身与 HTTP 测试](./testing)。
 

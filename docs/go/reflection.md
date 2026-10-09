@@ -1,10 +1,10 @@
 ---
-title: 36 · 反射、类型检查与动态赋值
+title: 7.2. 反射、类型检查与动态赋值
 description: Type/Value、可寻址、可设置、Kind 与 Tag 遍历。
 pageClass: aip-article
 ---
 
-# 36 · 反射、类型检查与动态赋值
+# 7.2. 反射、类型检查与动态赋值
 
 学习前应能完成：[接口、断言与动态类型](./interfaces)、[结构体、Tag 与嵌入](./types)。
 

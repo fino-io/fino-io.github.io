@@ -1,10 +1,10 @@
 ---
-title: 12 · SQL、SQLite 与持久化
+title: 3.2. SQL、SQLite 与持久化
 description: Python 中文学习指南：SQL、SQLite 与持久化，包含概念、代码示例、练习与验收。
 pageClass: aip-article
 ---
 
-# 12 · SQL、SQLite 与持久化
+# 3.2. SQL、SQLite 与持久化
 
 本章目标：理解表、约束和事务，用参数化 SQL 保存数据，避免把数据库当成字典文件。
 

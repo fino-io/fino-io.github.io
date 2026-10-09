@@ -1,10 +1,10 @@
 ---
-title: 22 · flag、time、regexp 与 embed
+title: 4.2. flag、time、regexp 与 embed
 description: 参数、时间、正则与编译期资源的具体使用。
 pageClass: aip-article
 ---
 
-# 22 · flag、time、regexp 与 embed
+# 4.2. flag、time、regexp 与 embed
 
 学习前应能完成：[文件、流式 I/O 与 JSON](./io)。
 

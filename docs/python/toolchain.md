@@ -1,10 +1,10 @@
 ---
-title: 01 · 环境、解释器与虚拟环境
+title: 1.1. 环境、解释器与虚拟环境
 description: Python 中文学习指南：环境、解释器与虚拟环境，包含概念、代码示例、练习与验收。
 pageClass: aip-article
 ---
 
-# 01 · 环境、解释器与虚拟环境
+# 1.1. 环境、解释器与虚拟环境
 
 本章目标：能从空目录运行 Python 程序，确认解释器位置，并为每个项目隔离依赖。本文代码以 **Python 3.12 及以上**为基线，不依赖某个最新版本；生产环境应按依赖支持范围选版本。
 
@@ -15,9 +15,9 @@ pageClass: aip-article
 ```sh
 python3 --version
 python3 -m venv .venv
-# macOS / Linux
+# 1.1. macOS / Linux
 source .venv/bin/activate
-# Windows PowerShell 使用：.venv\Scripts\Activate.ps1
+# 1.1. Windows PowerShell 使用：.venv\Scripts\Activate.ps1
 python -c "import sys; print(sys.executable)"
 python -m pip --version
 ```

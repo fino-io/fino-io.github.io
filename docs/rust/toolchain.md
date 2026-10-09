@@ -1,10 +1,10 @@
 ---
-title: 01 · 环境与工具链
+title: 1.1. 环境与工具链
 description: 安装 stable 工具链，认识 Cargo、rustup、edition 与日常开发命令。
 pageClass: aip-article rust-article
 ---
 
-# 01 · 环境与工具链
+# 1.1. 环境与工具链
 
 本章目标：能创建、运行和检查一个 Rust 项目，知道工具链、包管理器与 edition 分别负责什么。先把本地开发循环跑通，后续章节都在小项目里试验。
 

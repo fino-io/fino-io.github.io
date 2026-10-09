@@ -1,10 +1,10 @@
 ---
-title: 28 · pgx、SQL、连接池与 GORM
+title: 5.4. pgx、SQL、连接池与 GORM
 description: 数据库查询、事务、约束、迁移和 ORM 边界。
 pageClass: aip-article
 ---
 
-# 28 · pgx、SQL、连接池与 GORM
+# 5.4. pgx、SQL、连接池与 GORM
 
 学习前应能完成：[HTTP 服务与 Web 框架](./web)、[Context、截止时间与取消](./context)。
 

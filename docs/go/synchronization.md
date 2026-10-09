@@ -1,10 +1,10 @@
 ---
-title: 18 · Mutex、WaitGroup 与同步
+title: 3.3. Mutex、WaitGroup 与同步
 description: 保护不变量、等待、Once、Cond、原子与竞态检测。
 pageClass: aip-article
 ---
 
-# 18 · Mutex、WaitGroup 与同步
+# 3.3. Mutex、WaitGroup 与同步
 
 学习前应能完成：[Goroutine 与任务生命周期](./concurrency)、[Map、集合与逗号 ok](./maps)。
 

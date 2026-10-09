@@ -1,10 +1,10 @@
 ---
-title: 16 · Goroutine 与任务生命周期
+title: 3.1. Goroutine 与任务生命周期
 description: 调度、启动、等待、泄漏与并发规模。
 pageClass: aip-article
 ---
 
-# 16 · Goroutine 与任务生命周期
+# 3.1. Goroutine 与任务生命周期
 
 学习前应能完成：[函数、闭包与调用语义](./functions)、[指针、别名与内存概览](./pointers)。
 

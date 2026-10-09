@@ -1,10 +1,10 @@
 ---
-title: 33 · pprof、Trace 与调试
+title: 6.3. pprof、Trace 与调试
 description: 按现象选择 Profile、Trace、Delve 和 race。
 pageClass: aip-article
 ---
 
-# 33 · pprof、Trace 与调试
+# 6.3. pprof、Trace 与调试
 
 学习前应能完成：[Benchmark 与分配实验](./benchmarking)、[Worker Pool、Fan-in 与 Pipeline](./patterns)。
 

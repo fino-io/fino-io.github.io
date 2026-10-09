@@ -1,10 +1,10 @@
 ---
-title: 41 · 综合实验、数据集与交付
+title: 8.3. 综合实验、数据集与交付
 description: 贯穿路线的实验清单、输入数据和验收规范。
 pageClass: aip-article
 ---
 
-# 41 · 综合实验、数据集与交付
+# 8.3. 综合实验、数据集与交付
 
 学习前应能完成：[实战：日志统计 CLI](./project-cli)、[实战：任务管理 API](./project-api)。
 

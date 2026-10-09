@@ -1,10 +1,10 @@
 ---
-title: 17 · Channel、缓冲与 select
+title: 3.2. Channel、缓冲与 select
 description: 发送接收、关闭、缓冲、方向类型与 select 行为。
 pageClass: aip-article
 ---
 
-# 17 · Channel、缓冲与 select
+# 3.2. Channel、缓冲与 select
 
 学习前应能完成：[Goroutine 与任务生命周期](./concurrency)。
 

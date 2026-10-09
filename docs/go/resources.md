@@ -1,10 +1,10 @@
 ---
-title: 42 · 课程、开源练习与学习方向
+title: 8.4. 课程、开源练习与学习方向
 description: 课程对应章节、资料版本与后续路线入口。
 pageClass: aip-article
 ---
 
-# 42 · 课程、开源练习与学习方向
+# 8.4. 课程、开源练习与学习方向
 
 资料体系按“语义依据、练习课程、应用扩展”组织。章节安排严格核对 [roadmap.sh Go](https://roadmap.sh/golang)及其[官方 PDF](https://roadmap.sh/pdfs/roadmaps/golang.pdf)，逐项对应见 [路线覆盖目录](./roadmap)。课程用于比较讲解与练习方式，不替代官方语义，也不宣称复制了付费课程的完整正文。
 

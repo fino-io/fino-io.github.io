@@ -1,10 +1,10 @@
 ---
-title: 31 · 静态分析、Linter 与漏洞检查
+title: 6.1. 静态分析、Linter 与漏洞检查
 description: vet、goimports、revive、Staticcheck、golangci-lint 和 govulncheck。
 pageClass: aip-article
 ---
 
-# 31 · 静态分析、Linter 与漏洞检查
+# 6.1. 静态分析、Linter 与漏洞检查
 
 学习前应能完成：[表驱动、替身与 HTTP 测试](./testing)、[包、模块、依赖与发布](./modules)。
 

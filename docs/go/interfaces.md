@@ -1,10 +1,10 @@
 ---
-title: 12 · 接口、断言与动态类型
+title: 2.4. 接口、断言与动态类型
 description: 隐式实现、嵌入、空接口、类型断言和 type switch。
 pageClass: aip-article
 ---
 
-# 12 · 接口、断言与动态类型
+# 2.4. 接口、断言与动态类型
 
 学习前应能完成：[方法集、值与指针接收者](./methods)。
 

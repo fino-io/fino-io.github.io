@@ -1,10 +1,10 @@
 ---
-title: 11 · 智能指针与内部可变性
+title: 2.5. 智能指针与内部可变性
 description: 根据所有权、共享与修改需求选择 Box、Rc、Arc、RefCell 和 Weak。
 pageClass: aip-article rust-article
 ---
 
-# 11 · 智能指针与内部可变性
+# 2.5. 智能指针与内部可变性
 
 本章目标：用简单的所有权模型解决问题，只有在确实需要共享时才引入智能指针和同步工具。
 

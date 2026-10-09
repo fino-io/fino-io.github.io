@@ -1,10 +1,10 @@
 ---
-title: 39 · 实战：日志统计 CLI
+title: 8.1. 实战：日志统计 CLI
 description: 完整源码、合成输入、错误路径与升级任务。
 pageClass: aip-article
 ---
 
-# 39 · 实战：日志统计 CLI
+# 8.1. 实战：日志统计 CLI
 
 学习前应能完成：[文件、流式 I/O 与 JSON](./io)、[Map、集合与逗号 ok](./maps)、[表驱动、替身与 HTTP 测试](./testing)。
 

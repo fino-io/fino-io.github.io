@@ -1,10 +1,10 @@
 ---
-title: 38 · 插件与动态加载
+title: 7.4. 插件与动态加载
 description: buildmode=plugin、ABI 限制与进程通信替代方案。
 pageClass: aip-article
 ---
 
-# 38 · 插件与动态加载
+# 7.4. 插件与动态加载
 
 学习前应能完成：[接口、断言与动态类型](./interfaces)、[代码生成与构建约束](./generation)、[可执行文件、交叉编译与部署](./deployment)。
 

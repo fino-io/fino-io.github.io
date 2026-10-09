@@ -1,10 +1,10 @@
 ---
-title: 30 · 日志与实时通信生态
+title: 5.6. 日志与实时通信生态
 description: slog、Zap、Zerolog、Melody 和 Centrifugo。
 pageClass: aip-article
 ---
 
-# 30 · 日志与实时通信生态
+# 5.6. 日志与实时通信生态
 
 学习前应能完成：[HTTP 服务与 Web 框架](./web)、[Channel、缓冲与 select](./channels)。
 

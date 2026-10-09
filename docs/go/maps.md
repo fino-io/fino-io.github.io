@@ -1,10 +1,10 @@
 ---
-title: 07 · Map、集合与逗号 ok
+title: 1.7. Map、集合与逗号 ok
 description: 键的可比较性、读写、删除、排序与集合运算。
 pageClass: aip-article
 ---
 
-# 07 · Map、集合与逗号 ok
+# 1.7. Map、集合与逗号 ok
 
 学习前应能完成：[字符串、数组与切片模型](./collections)。
 

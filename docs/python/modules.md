@@ -1,10 +1,10 @@
 ---
-title: 06 · 模块、包与项目结构
+title: 2.1. 模块、包与项目结构
 description: Python 中文学习指南：模块、包与项目结构，包含概念、代码示例、练习与验收。
 pageClass: aip-article
 ---
 
-# 06 · 模块、包与项目结构
+# 2.1. 模块、包与项目结构
 
 本章目标：理解导入机制，为小项目建立清晰结构，让代码可直接运行和测试。
 
@@ -13,7 +13,7 @@ pageClass: aip-article
 一个 `.py` 文件是模块；包组织多个模块，常规包包含 `__init__.py`。导入通常先执行模块顶层代码并缓存模块，因此不要在导入时请求网络、修改文件或启动服务。
 
 ```python
-# greeting.py
+# 2.1. greeting.py
 def greet(name: str) -> str:
     return f"你好，{name}"
 

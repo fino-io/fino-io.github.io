@@ -1,10 +1,10 @@
 ---
-title: 35 · 逃逸、GC 与内存预算
+title: 7.1. 逃逸、GC 与内存预算
 description: 存活集、分配速率、逃逸实验、GOGC 与 GOMEMLIMIT。
 pageClass: aip-article
 ---
 
-# 35 · 逃逸、GC 与内存预算
+# 7.1. 逃逸、GC 与内存预算
 
 学习前应能完成：[指针、别名与内存概览](./pointers)、[pprof、Trace 与调试](./performance)。
 

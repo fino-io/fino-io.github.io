@@ -1,10 +1,10 @@
 ---
-title: 05 · 字符串与集合
+title: 1.5. 字符串与集合
 description: 正确使用 String、str、Vec 和 HashMap，区分字节、字符与切片。
 pageClass: aip-article rust-article
 ---
 
-# 05 · 字符串与集合
+# 1.5. 字符串与集合
 
 本章目标：按数据是否需要拥有、增长和随机访问来选择容器，正确处理 UTF-8 文本。
 

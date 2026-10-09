@@ -1,10 +1,10 @@
 ---
-title: 09 · 模块、Cargo 与依赖
+title: 2.3. 模块、Cargo 与依赖
 description: 理解 package、crate 和 module，以清晰边界组织项目、管理依赖和工作区。
 pageClass: aip-article rust-article
 ---
 
-# 09 · 模块、Cargo 与依赖
+# 2.3. 模块、Cargo 与依赖
 
 本章目标：保持入口薄、业务边界清楚，在真实需求出现时拆分模块和 crate，复用成熟生态。
 

@@ -1,10 +1,10 @@
 ---
-title: 15 · 错误模型、包装与恢复
+title: 2.7. 错误模型、包装与恢复
 description: 错误链、自定义类型、哨兵、panic、recover 与堆栈。
 pageClass: aip-article
 ---
 
-# 15 · 错误模型、包装与恢复
+# 2.7. 错误模型、包装与恢复
 
 学习前应能完成：[接口、断言与动态类型](./interfaces)、[函数、闭包与调用语义](./functions)。
 

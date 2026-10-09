@@ -1,10 +1,10 @@
 ---
-title: 24 · Benchmark 与分配实验
+title: 4.4. Benchmark 与分配实验
 description: 可信计时、输入规模、分配统计与结果比较。
 pageClass: aip-article
 ---
 
-# 24 · Benchmark 与分配实验
+# 4.4. Benchmark 与分配实验
 
 学习前应能完成：[表驱动、替身与 HTTP 测试](./testing)、[字符串、数组与切片模型](./collections)。
 
@@ -80,7 +80,7 @@ concat 每轮复制已有结果，等长片段下总复制量近似 1+2+…+n，
 
 ```sh
 go test -run '^$' -bench . -benchmem -count=10 . > before.txt
-# 修改实现后，在同一工具链、机器和负载条件下运行：
+# 4.4. 修改实现后，在同一工具链、机器和负载条件下运行：
 go test -run '^$' -bench . -benchmem -count=10 . > after.txt
 ```
 

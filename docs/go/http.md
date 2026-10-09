@@ -1,10 +1,10 @@
 ---
-title: 27 · HTTP 客户端、超时与重试
+title: 5.3. HTTP 客户端、超时与重试
 description: 服务章节的延伸：连接复用、有限重试与本地验证。
 pageClass: aip-article
 ---
 
-# 27 · HTTP 客户端、超时与重试
+# 5.3. HTTP 客户端、超时与重试
 
 学习前应能完成：[HTTP 服务与 Web 框架](./web)。
 

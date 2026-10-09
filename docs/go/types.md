@@ -1,10 +1,10 @@
 ---
-title: 08 · 结构体、Tag 与嵌入
+title: 1.8. 结构体、Tag 与嵌入
 description: 字段建模、JSON、组合与方法提升的真实语义。
 pageClass: aip-article
 ---
 
-# 08 · 结构体、Tag 与嵌入
+# 1.8. 结构体、Tag 与嵌入
 
 学习前应能完成：[基本类型、数值与类型转换](./basics)、[Map、集合与逗号 ok](./maps)。
 

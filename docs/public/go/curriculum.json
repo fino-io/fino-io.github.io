@@ -20,7 +20,6 @@
   "chapters": [
     {
       "id": "introduction",
-      "order": 1,
       "title": "Go 的定位、历史与运行模型",
       "group": "起步与语言基础",
       "summary": "为什么选择 Go；历史、编译模型与学习实验。",
@@ -68,7 +67,6 @@
     },
     {
       "id": "toolchain",
-      "order": 2,
       "title": "环境、命令与文档查询",
       "group": "起步与语言基础",
       "summary": "建立模块，掌握构建、运行、安装、清理与文档命令。",
@@ -132,7 +130,6 @@
     },
     {
       "id": "variables",
-      "order": 3,
       "title": "变量、常量、iota 与作用域",
       "group": "起步与语言基础",
       "summary": "解释零值、短声明、常量表达式和变量遮蔽。",
@@ -184,7 +181,6 @@
     },
     {
       "id": "basics",
-      "order": 4,
       "title": "基本类型、数值与类型转换",
       "group": "起步与语言基础",
       "summary": "掌握整数、浮点、复数、布尔、rune 与转换边界。",
@@ -239,7 +235,6 @@
     },
     {
       "id": "control-flow",
-      "order": 5,
       "title": "条件、循环与控制转移",
       "group": "起步与语言基础",
       "summary": "理解 switch、range、break、continue 与 goto 的边界。",
@@ -299,7 +294,6 @@
     },
     {
       "id": "collections",
-      "order": 6,
       "title": "字符串、数组与切片模型",
       "group": "起步与语言基础",
       "summary": "通过容量、共享存储和转换实验理解容器语义。",
@@ -369,7 +363,6 @@
     },
     {
       "id": "maps",
-      "order": 7,
       "title": "Map、集合与逗号 ok",
       "group": "起步与语言基础",
       "summary": "键的可比较性、读写、删除、排序与集合运算。",
@@ -418,7 +411,6 @@
     },
     {
       "id": "types",
-      "order": 8,
       "title": "结构体、Tag 与嵌入",
       "group": "起步与语言基础",
       "summary": "字段建模、JSON、组合与方法提升的真实语义。",
@@ -477,7 +469,6 @@
     },
     {
       "id": "functions",
-      "order": 9,
       "title": "函数、闭包与调用语义",
       "group": "类型系统与代码组织",
       "summary": "多返回值、可变参数、命名返回与闭包捕获。",
@@ -545,7 +536,6 @@
     },
     {
       "id": "pointers",
-      "order": 10,
       "title": "指针、别名与内存概览",
       "group": "类型系统与代码组织",
       "summary": "用实验解释结构体、map、切片的值复制和共享。",
@@ -600,7 +590,6 @@
     },
     {
       "id": "methods",
-      "order": 11,
       "title": "方法集、值与指针接收者",
       "group": "类型系统与代码组织",
       "summary": "区分普通调用的自动取地址和接口方法集。",
@@ -647,7 +636,6 @@
     },
     {
       "id": "interfaces",
-      "order": 12,
       "title": "接口、断言与动态类型",
       "group": "类型系统与代码组织",
       "summary": "隐式实现、嵌入、空接口、类型断言和 type switch。",
@@ -704,7 +692,6 @@
     },
     {
       "id": "generics",
-      "order": 13,
       "title": "泛型函数、泛型类型与约束",
       "group": "类型系统与代码组织",
       "summary": "类型集合、推断、底层类型与通用容器设计。",
@@ -766,7 +753,6 @@
     },
     {
       "id": "modules",
-      "order": 14,
       "title": "包、模块、依赖与发布",
       "group": "类型系统与代码组织",
       "summary": "导入规则、MVS、vendor、工作区与版本发布。",
@@ -834,7 +820,6 @@
     },
     {
       "id": "errors",
-      "order": 15,
       "title": "错误模型、包装与恢复",
       "group": "类型系统与代码组织",
       "summary": "错误链、自定义类型、哨兵、panic、recover 与堆栈。",
@@ -898,7 +883,6 @@
     },
     {
       "id": "concurrency",
-      "order": 16,
       "title": "Goroutine 与任务生命周期",
       "group": "并发与取消",
       "summary": "调度、启动、等待、泄漏与并发规模。",
@@ -955,7 +939,6 @@
     },
     {
       "id": "channels",
-      "order": 17,
       "title": "Channel、缓冲与 select",
       "group": "并发与取消",
       "summary": "发送接收、关闭、缓冲、方向类型与 select 行为。",
@@ -1004,7 +987,6 @@
     },
     {
       "id": "synchronization",
-      "order": 18,
       "title": "Mutex、WaitGroup 与同步",
       "group": "并发与取消",
       "summary": "保护不变量、等待、Once、Cond、原子与竞态检测。",
@@ -1055,7 +1037,6 @@
     },
     {
       "id": "context",
-      "order": 19,
       "title": "Context、截止时间与取消",
       "group": "并发与取消",
       "summary": "传播预算、原因、请求元数据与相关任务取消。",
@@ -1117,7 +1098,6 @@
     },
     {
       "id": "patterns",
-      "order": 20,
       "title": "Worker Pool、Fan-in 与 Pipeline",
       "group": "并发与取消",
       "summary": "完整有界流水线、关闭协调、错误与取消验收。",
@@ -1170,7 +1150,6 @@
     },
     {
       "id": "io",
-      "order": 21,
       "title": "文件、流式 I/O 与 JSON",
       "group": "标准库与测试",
       "summary": "Read/Write 契约、扫描、限额、解码和数据边界。",
@@ -1230,7 +1209,6 @@
     },
     {
       "id": "standard-library",
-      "order": 22,
       "title": "flag、time、regexp 与 embed",
       "group": "标准库与测试",
       "summary": "参数、时间、正则与编译期资源的具体使用。",
@@ -1280,7 +1258,6 @@
     },
     {
       "id": "testing",
-      "order": 23,
       "title": "表驱动、替身与 HTTP 测试",
       "group": "标准库与测试",
       "summary": "隔离、Mock/Stub、httptest、覆盖率与 Fuzz。",
@@ -1341,7 +1318,6 @@
     },
     {
       "id": "benchmarking",
-      "order": 24,
       "title": "Benchmark 与分配实验",
       "group": "标准库与测试",
       "summary": "可信计时、输入规模、分配统计与结果比较。",
@@ -1387,7 +1363,6 @@
     },
     {
       "id": "cli",
-      "order": 25,
       "title": "CLI 与终端界面生态",
       "group": "应用生态",
       "summary": "Cobra、urfave/cli 与 Bubble Tea 的接口和选型。",
@@ -1441,7 +1416,6 @@
     },
     {
       "id": "web",
-      "order": 26,
       "title": "HTTP 服务与 Web 框架",
       "group": "应用生态",
       "summary": "请求边界与 Gin、Echo、Fiber、Beego 的差异。",
@@ -1509,7 +1483,6 @@
     },
     {
       "id": "http",
-      "order": 27,
       "title": "HTTP 客户端、超时与重试",
       "group": "应用生态",
       "summary": "服务章节的延伸：连接复用、有限重试与本地验证。",
@@ -1559,7 +1532,6 @@
     },
     {
       "id": "databases",
-      "order": 28,
       "title": "pgx、SQL、连接池与 GORM",
       "group": "应用生态",
       "summary": "数据库查询、事务、约束、迁移和 ORM 边界。",
@@ -1622,7 +1594,6 @@
     },
     {
       "id": "ecosystem",
-      "order": 29,
       "title": "gRPC 与 Protocol Buffers",
       "group": "应用生态",
       "summary": "契约、生成、状态码、Deadline 与流式 RPC。",
@@ -1672,7 +1643,6 @@
     },
     {
       "id": "logging-realtime",
-      "order": 30,
       "title": "日志与实时通信生态",
       "group": "应用生态",
       "summary": "slog、Zap、Zerolog、Melody 和 Centrifugo。",
@@ -1723,7 +1693,6 @@
     },
     {
       "id": "quality",
-      "order": 31,
       "title": "静态分析、Linter 与漏洞检查",
       "group": "工具链与交付",
       "summary": "vet、goimports、revive、Staticcheck、golangci-lint 和 govulncheck。",
@@ -1784,7 +1753,6 @@
     },
     {
       "id": "generation",
-      "order": 32,
       "title": "代码生成与构建约束",
       "group": "工具链与交付",
       "summary": "go generate、工具版本、build tags 与平台文件。",
@@ -1829,7 +1797,6 @@
     },
     {
       "id": "performance",
-      "order": 33,
       "title": "pprof、Trace 与调试",
       "group": "工具链与交付",
       "summary": "按现象选择 Profile、Trace、Delve 和 race。",
@@ -1891,7 +1858,6 @@
     },
     {
       "id": "deployment",
-      "order": 34,
       "title": "可执行文件、交叉编译与部署",
       "group": "工具链与交付",
       "summary": "平台矩阵、链接参数、配置与运行生命周期。",
@@ -1950,7 +1916,6 @@
     },
     {
       "id": "memory",
-      "order": 35,
       "title": "逃逸、GC 与内存预算",
       "group": "运行时与高级主题",
       "summary": "存活集、分配速率、逃逸实验、GOGC 与 GOMEMLIMIT。",
@@ -1999,7 +1964,6 @@
     },
     {
       "id": "reflection",
-      "order": 36,
       "title": "反射、类型检查与动态赋值",
       "group": "运行时与高级主题",
       "summary": "Type/Value、可寻址、可设置、Kind 与 Tag 遍历。",
@@ -2046,7 +2010,6 @@
     },
     {
       "id": "unsafe-cgo",
-      "order": 37,
       "title": "Unsafe、cgo 与边界约束",
       "group": "运行时与高级主题",
       "summary": "布局、指针生命周期、C 内存与跨平台构建。",
@@ -2098,7 +2061,6 @@
     },
     {
       "id": "plugins",
-      "order": 38,
       "title": "插件与动态加载",
       "group": "运行时与高级主题",
       "summary": "buildmode=plugin、ABI 限制与进程通信替代方案。",
@@ -2142,7 +2104,6 @@
     },
     {
       "id": "project-cli",
-      "order": 39,
       "title": "实战：日志统计 CLI",
       "group": "项目与学习资料",
       "summary": "完整源码、合成输入、错误路径与升级任务。",
@@ -2199,7 +2160,6 @@
     },
     {
       "id": "project-api",
-      "order": 40,
       "title": "实战：任务管理 API",
       "group": "项目与学习资料",
       "summary": "完整源码、CRUD、分页、同步与数据库升级任务。",
@@ -2259,7 +2219,6 @@
     },
     {
       "id": "projects",
-      "order": 41,
       "title": "综合实验、数据集与交付",
       "group": "项目与学习资料",
       "summary": "贯穿路线的实验清单、输入数据和验收规范。",
@@ -2312,7 +2271,6 @@
     },
     {
       "id": "resources",
-      "order": 42,
       "title": "课程、开源练习与学习方向",
       "group": "项目与学习资料",
       "summary": "课程对应章节、资料版本与后续路线入口。",

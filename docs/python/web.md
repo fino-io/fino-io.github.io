@@ -1,10 +1,10 @@
 ---
-title: 14 · Web 开发与 FastAPI
+title: 3.4. Web 开发与 FastAPI
 description: Python 中文学习指南：Web 开发与 FastAPI，包含概念、代码示例、练习与验收。
 pageClass: aip-article
 ---
 
-# 14 · Web 开发与 FastAPI
+# 3.4. Web 开发与 FastAPI
 
 本章目标：理解请求、校验、业务与存储的职责，用成熟框架建立小型 API。
 

@@ -1,12 +1,12 @@
 ---
-title: 18 · 实战：月度消费分析
+title: 4.3. 实战：月度消费分析
 description: 用 pandas 完成数据校验、去重检查、按月聚合与报告导出，并规划后续学习方向。
 pageClass: aip-article
 ---
 
-# 18 · 实战：月度消费分析
+# 4.3. 实战：月度消费分析
 
-本项目把第 16 章的金额规则用于数据分析，产出能核对、能重复执行的月度报告。前置知识：第 15 章，以及第 16 章的 `report.py`。使用 pandas 完成表格分析，不重新实现数据分析框架。
+本项目把[实战：CSV 消费报告 CLI](./project-cli)的金额规则用于数据分析，产出能核对、能重复执行的月度报告。前置知识：[数据分析、自动化与性能](./data)，以及[实战：CSV 消费报告 CLI](./project-cli)的 `report.py`。使用 pandas 完成表格分析，不重新实现数据分析框架。
 
 ## 数据契约与样本
 
@@ -24,7 +24,7 @@ id,date,category,amount
 
 ## 完整分析脚本
 
-将第 16 章的 `report.py` 放在同一目录，安装 `python -m pip install pandas`，保存以下代码为 `analyze.py`：
+将[实战：CSV 消费报告 CLI](./project-cli)的 `report.py` 放在同一目录，安装 `python -m pip install pandas`，保存以下代码为 `analyze.py`：
 
 ```python
 from pathlib import Path

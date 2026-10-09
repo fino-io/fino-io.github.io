@@ -49,10 +49,17 @@ const index = [
   '| 运行时方向 | 基准与 Profile 之后读内存、反射、unsafe/cgo、插件 | 有测量和平台依据，不把高级语法用于不需要的业务。 |', '',
   'roadmap 中框架属于可选分支：逐个认识其职责，实际项目选择一种主要方案。高级主题覆盖完整，但不要求初学者立刻用 unsafe 或动态插件。', '',
 ]
-for (const group of groups) {
-  index.push(`## ${group}`, '', '| 编号 | 章节与学习任务 |', '| --- | --- |')
-  for (const chapter of chapters.filter((item) => item.group === group)) {
-    index.push(`| ${String(chapter.order).padStart(2, '0')} | [${chapter.title}](./${chapter.id}) · ${chapter.summary} |`)
+for (const [groupIndex, group] of groups.entries()) {
+  index.push(`## ${groupIndex + 1}. ${group}`, '', '| 主题 | 学习任务 |', '| --- | --- |')
+  for (const [chapterIndex, chapter] of chapters.filter((item) => item.group === group).entries()) {
+    const number = `${groupIndex + 1}.${chapterIndex + 1}.`
+    const path = new URL(`docs/go/${chapter.id}.md`, root)
+    const body = readFileSync(path, 'utf8').replace(
+      /^(title: |# )(?:\d+(?:\.\d+)*\. )?(.+)$/gm,
+      (_, prefix, title) => `${prefix}${number} ${title}`,
+    )
+    writeFileSync(path, body)
+    index.push(`| [${number} ${chapter.title}](./${chapter.id}) | ${chapter.summary} |`)
   }
   index.push('')
 }
@@ -90,7 +97,7 @@ coverage.push('## 补充练习', '')
 for (const chapter of chapters.filter((item) => !item.roadmapTopics.length)) coverage.push(`- [${chapter.title}](./${chapter.id})：${chapter.summary}`)
 coverage.push('', '## 来源与扩展数据', '',
   `本次路线 PDF SHA-256：\`${source.sha256}\`。这是下载内容的校验，不代表官方路线版本号。`, '',
-  '[课程数据清单](/go/curriculum.json)记录稳定章节 ID、顺序、前置章节、来源主题、课程引用、已填课时、练习与样本。后续可扩展课时路径、难度、提示和解答位置；未制作的课时不标记已完成，不预填或伪造测量结果。', '',
+  '[课程数据清单](/go/curriculum.json)记录稳定章节 ID、阅读顺序、前置章节、来源主题、课程引用、已填课时、练习与样本。后续可扩展课时路径、难度、提示和解答位置；未制作的课时不标记已完成，不预填或伪造测量结果。', '',
   '数据与两份项目的详细任务见[综合实验与交付](./projects)，课程作者和公开大纲见[学习资料](./resources)。', '',
 )
 writeFileSync(new URL('docs/go/roadmap.md', root), coverage.join('\n'))

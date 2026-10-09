@@ -1,10 +1,10 @@
 ---
-title: 21 · 文件、流式 I/O 与 JSON
+title: 4.1. 文件、流式 I/O 与 JSON
 description: Read/Write 契约、扫描、限额、解码和数据边界。
 pageClass: aip-article
 ---
 
-# 21 · 文件、流式 I/O 与 JSON
+# 4.1. 文件、流式 I/O 与 JSON
 
 学习前应能完成：[接口、断言与动态类型](./interfaces)、[错误模型、包装与恢复](./errors)。
 

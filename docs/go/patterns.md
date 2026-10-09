@@ -1,10 +1,10 @@
 ---
-title: 20 · Worker Pool、Fan-in 与 Pipeline
+title: 3.5. Worker Pool、Fan-in 与 Pipeline
 description: 完整有界流水线、关闭协调、错误与取消验收。
 pageClass: aip-article
 ---
 
-# 20 · Worker Pool、Fan-in 与 Pipeline
+# 3.5. Worker Pool、Fan-in 与 Pipeline
 
 学习前应能完成：[Channel、缓冲与 select](./channels)、[Mutex、WaitGroup 与同步](./synchronization)、[Context、截止时间与取消](./context)。
 

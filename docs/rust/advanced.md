@@ -1,10 +1,10 @@
 ---
-title: 16 · 宏、Unsafe 与性能
+title: 3.4. 宏、Unsafe 与性能
 description: 了解声明宏、Unsafe、FFI、Pin 和性能测量的边界，按需要学习底层专题。
 pageClass: aip-article rust-article
 ---
 
-# 16 · 宏、Unsafe 与性能
+# 3.4. 宏、Unsafe 与性能
 
 本章目标：知道进阶工具为什么存在、使用时需要证明什么。普通应用应先掌握安全 Rust 和成熟库，再按真实需求进入这些专题。
 

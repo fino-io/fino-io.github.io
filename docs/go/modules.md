@@ -1,10 +1,10 @@
 ---
-title: 14 · 包、模块、依赖与发布
+title: 2.6. 包、模块、依赖与发布
 description: 导入规则、MVS、vendor、工作区与版本发布。
 pageClass: aip-article
 ---
 
-# 14 · 包、模块、依赖与发布
+# 2.6. 包、模块、依赖与发布
 
 学习前应能完成：[环境、命令与文档查询](./toolchain)、[函数、闭包与调用语义](./functions)。
 

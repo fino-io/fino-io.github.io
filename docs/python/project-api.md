@@ -1,12 +1,12 @@
 ---
-title: 17 · 实战：任务管理 API
+title: 4.2. 实战：任务管理 API
 description: 用 FastAPI、Pydantic 和 SQLite 实现有持久化、输入校验、分页与测试的任务管理接口。
 pageClass: aip-article
 ---
 
-# 17 · 实战：任务管理 API
+# 4.2. 实战：任务管理 API
 
-本项目复用 FastAPI、Pydantic 和 SQLite，完成一个可运行的小型任务服务。前置知识：第 09–14 章。它是本地单用户学习项目，扩展为公开服务前再加入用户身份、资源权限和部署配置。
+本项目复用 FastAPI、Pydantic 和 SQLite，完成一个可运行的小型任务服务。前置知识：[类型标注](./typing)、[测试](./testing)、[HTTP](./http)、[数据库](./databases)、[并发](./concurrency)与 [Web 开发](./web)。它是本地单用户学习项目，扩展为公开服务前再加入用户身份、资源权限和部署配置。
 
 ## 接口与数据约定
 

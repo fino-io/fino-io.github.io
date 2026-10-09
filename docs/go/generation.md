@@ -1,10 +1,10 @@
 ---
-title: 32 · 代码生成与构建约束
+title: 6.2. 代码生成与构建约束
 description: go generate、工具版本、build tags 与平台文件。
 pageClass: aip-article
 ---
 
-# 32 · 代码生成与构建约束
+# 6.2. 代码生成与构建约束
 
 学习前应能完成：[包、模块、依赖与发布](./modules)。
 

@@ -1,10 +1,10 @@
 ---
-title: 07 · 泛型与 Trait
+title: 2.1. 泛型与 Trait
 description: 通过泛型和 Trait 表达能力约束，理解关联类型、分发方式和接口设计。
 pageClass: aip-article rust-article
 ---
 
-# 07 · 泛型与 Trait
+# 2.1. 泛型与 Trait
 
 本章目标：在重复出现的真实需求上建立抽象，读懂标准库中的泛型签名，避免为了通用而通用。
 

@@ -1,10 +1,10 @@
 ---
-title: 40 · 实战：任务管理 API
+title: 8.2. 实战：任务管理 API
 description: 完整源码、CRUD、分页、同步与数据库升级任务。
 pageClass: aip-article
 ---
 
-# 40 · 实战：任务管理 API
+# 8.2. 实战：任务管理 API
 
 学习前应能完成：[HTTP 服务与 Web 框架](./web)、[Mutex、WaitGroup 与同步](./synchronization)、[表驱动、替身与 HTTP 测试](./testing)。
 

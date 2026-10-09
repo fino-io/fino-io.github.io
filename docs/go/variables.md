@@ -1,10 +1,10 @@
 ---
-title: 03 · 变量、常量、iota 与作用域
+title: 1.3. 变量、常量、iota 与作用域
 description: 解释零值、短声明、常量表达式和变量遮蔽。
 pageClass: aip-article
 ---
 
-# 03 · 变量、常量、iota 与作用域
+# 1.3. 变量、常量、iota 与作用域
 
 学习前应能完成：[环境、命令与文档查询](./toolchain)。
 

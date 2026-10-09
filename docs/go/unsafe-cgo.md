@@ -1,10 +1,10 @@
 ---
-title: 37 · Unsafe、cgo 与边界约束
+title: 7.3. Unsafe、cgo 与边界约束
 description: 布局、指针生命周期、C 内存与跨平台构建。
 pageClass: aip-article
 ---
 
-# 37 · Unsafe、cgo 与边界约束
+# 7.3. Unsafe、cgo 与边界约束
 
 学习前应能完成：[逃逸、GC 与内存预算](./memory)、[代码生成与构建约束](./generation)。
 

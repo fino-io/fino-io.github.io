@@ -11,12 +11,12 @@ export const goSidebar = [
     ],
   },
   ...curriculum.groups.map((group, index) => ({
-    text: group,
+    text: `${index + 1}. ${group}`,
     collapsed: index > 1,
     items: curriculum.chapters
       .filter((chapter) => chapter.group === group)
-      .map((chapter) => ({
-        text: `${String(chapter.order).padStart(2, '0')} · ${chapter.title}`,
+      .map((chapter, chapterIndex) => ({
+        text: `${index + 1}.${chapterIndex + 1}. ${chapter.title}`,
         link: `/go/${chapter.id}`,
       })),
   })),

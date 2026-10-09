@@ -1,10 +1,10 @@
 ---
-title: 11 · HTTP、接口调用与采集
+title: 3.1. HTTP、接口调用与采集
 description: Python 中文学习指南：HTTP、接口调用与采集，包含概念、代码示例、练习与验收。
 pageClass: aip-article
 ---
 
-# 11 · HTTP、接口调用与采集
+# 3.1. HTTP、接口调用与采集
 
 本章目标：使用成熟客户端调用接口，设置超时，验证响应，并合理处理重试与采集边界。
 

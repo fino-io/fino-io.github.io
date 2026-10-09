@@ -1,10 +1,10 @@
 ---
-title: 19 · Context、截止时间与取消
+title: 3.4. Context、截止时间与取消
 description: 传播预算、原因、请求元数据与相关任务取消。
 pageClass: aip-article
 ---
 
-# 19 · Context、截止时间与取消
+# 3.4. Context、截止时间与取消
 
 学习前应能完成：[Channel、缓冲与 select](./channels)、[错误模型、包装与恢复](./errors)。
 
