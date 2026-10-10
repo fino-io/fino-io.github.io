@@ -25,6 +25,10 @@ A Chinese reference for API standards that helps teams and individuals design cl
 
   Release notes, engineering practices, and community updates.
 
+- **[Rust Learning Guide](/rust/)** 18 learning chapters
+
+  Learn Rust step by step, from tooling, ownership, and the type system to concurrency, async, and hands-on projects.
+
 Collection directories are in Chinese. The articles below open the English editions.
 
 ## Start Here
